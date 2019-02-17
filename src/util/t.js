@@ -2,10 +2,10 @@ import * as RNLocalize from "react-native-localize";
 import { config } from 'common';
 import { app } from "stores";
 import translations from "translations";
+import locale from "./locale";
 
 const lang = (string) => {
-  console.log(RNLocalize.getLocales());
-  const strings = translations.en;
+  const strings = translations[locale()];
 
   if (typeof strings[string] === "undefined") {
     // Fallback

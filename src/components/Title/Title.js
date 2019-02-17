@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Txt } from 'components';
+import Txt from '../Txt/Txt';
 import styles from './styles';
 
 class Title extends React.Component {

@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { Txt } from 'components';
+import Txt from '../Txt/Txt';
 import styles from './styles';
-import { ArrowRightCircle, DE, FR, PL, AT } from '../../icons';
+import { ArrowRightCircle } from '../../icons';
+import { getCountryFlag } from "util";
 
 class CountryPill extends React.Component {
   static propTypes = {
@@ -28,21 +29,6 @@ class CountryPill extends React.Component {
     this.state = {
       active: false,
     };
-  }
-
-  getFlag = () => {
-    switch(this.props.locale) {
-      case "de":
-        return <DE />
-      case "fr":
-        return <FR />
-      case "pl":
-        return <PL />
-      case "at":
-        return <AT />;
-    }
-
-    return <View />;
   }
 
   render() {
@@ -71,7 +57,7 @@ class CountryPill extends React.Component {
             style={styles.root}
           >
             <View style={styles.flag}>
-              {this.getFlag()}
+              {getCountryFlag(this.props.locale)}
             </View>
             <View style={styles.content}>
               <Txt medium style={styles.title}>{this.props.name}</Txt>

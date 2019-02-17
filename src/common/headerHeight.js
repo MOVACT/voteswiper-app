@@ -1,8 +1,7 @@
-import { isIphoneX } from 'util';
+import { isIphoneX } from '../util/iPhoneXHelper';
 import { Header } from 'react-navigation';
 
 const headerHeight = () => {
-  console.log(Header);
   if (isIphoneX()) {
     return Header.HEIGHT + 30;
   }
