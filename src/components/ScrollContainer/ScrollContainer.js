@@ -62,6 +62,7 @@ class ScrollContainer extends React.Component {
               [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
               { useNativeDriver: true },
            )}
+           {...this.props}
           >
             <View style={this.props.withPadding ? styles.withPadding : {}}>
               {this.props.children}

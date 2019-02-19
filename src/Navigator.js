@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Dimensions, Platform, TouchableOpacity } from "react-native";
 import { createAppContainer, createStackNavigator, createBottomTabNavigator } from "react-navigation";
-import { ElectionsIndex } from "screens";
+import { ElectionsIndex, SettingsCountry } from "screens";
 import { t } from "util";
 import HelpIcon from "./icons/HelpCircle";
 import InfosIcon from "./icons/InfoCircle";
@@ -37,13 +37,19 @@ const navigatorStyles = StyleSheet.create({
     fontSize: titleFontSize,
     fontFamily: "Rubik-Medium",
     fontWeight: "600",
-    marginLeft: Platform.OS === "android" ? 8 : -5,
+    //marginLeft: Platform.OS === "android" ? 8 : -5,
     paddingLeft: 0,
     elevation: 0,
   },
+  backTitle: {
+    fontSize: titleFontSize,
+    fontFamily: "Rubik-Medium",
+    fontWeight: "600",
+    color: "#fff",
+  },
   titleContainerStyle: {
     alignContent: "center",
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     paddingLeft: 0,
     marginLeft: 0,
   }
@@ -63,6 +69,7 @@ function getIcon(name) {
 const ElectionsStack = createStackNavigator(
   {
     Index: { screen: ElectionsIndex },
+    SettingsCountry: { screen: SettingsCountry },
   },
   {
     initialRouteName: "Index",
@@ -70,6 +77,9 @@ const ElectionsStack = createStackNavigator(
       headerStyle: navigatorStyles.header,
       headerTitleContainerStyle: navigatorStyles.titleContainerStyle,
       headerTransparent: true,
+      headerTintColor: "#ffffff",
+      headerBackTitleStyle: navigatorStyles.backTitle,
+      headerBackTitle: t('navigation.backTitle'),
       headerRight: (
         <TouchableOpacity
           onPress={() => {

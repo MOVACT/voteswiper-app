@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
 });
 
 class ElectionsIndex extends React.Component {
-  static navigationOptions = ({ navigation, screenProps }) => {
+  static navigationOptions = ({ navigation }) => {
     return {
       headerLeft: (
         <TouchableOpacity
           onPress={() => {
-            console.log(navigation, screenProps);
+            navigation.navigate('SettingsCountry');
           }}
           style={styles.countryLink}
         >

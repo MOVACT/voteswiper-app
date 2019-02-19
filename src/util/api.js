@@ -11,6 +11,7 @@ const GET_COUNTRIES = gql`
       name
       slug
       country_code
+      elections_count
     }
   }
 `;
