@@ -18,8 +18,8 @@ class SettingsCountry extends React.Component {
         <Query
           query="GET_COUNTRIES"
         >
-          {({ loading, error, data, refetch }) => {
-            if (loading) return <Loader />;
+          {({ loading, error, data, refetch, networkStatus }) => {
+            if (loading && networkStatus !== 4) return <Loader />;
             if (error) {
               return <View />;
             }
@@ -28,8 +28,10 @@ class SettingsCountry extends React.Component {
                 withPadding
                 refreshControl={
                   <RefreshControl
-                    refreshing={data.loading && data.networkStatus === 4}
-                    onRefresh={refetch}
+                    refreshing={loading && networkStatus === 4}
+                    onRefresh={() => {
+                      refetch();
+                    }}
                     colors={["#ffffff"]}
                     enabled
                     tintColor={"#ffffff"}

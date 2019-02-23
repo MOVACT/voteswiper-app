@@ -10,7 +10,11 @@ const lang = {
   // Screen:SettingsCountry
   "settingsCountry.title": "Countries",
   "settingsCountry.boxTitle": "Change country",
-  "settingsCountry.boxText": "We have translated the questionaiires from other countries in English so you can try them out and learn about the other countries parties."
+  "settingsCountry.boxText": "We have translated the questionaiires from other countries in English so you can try them out and learn about the other countries parties.",
+
+  // Screen:ElectionsIndex
+  "electionsIndex.boxTitle": "Current Elections",
+  "electionsIndex.boxText": "Please choose the election for which you want to take the quiz.",
 }
 
 export default lang;

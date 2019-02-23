@@ -11,7 +11,11 @@ const lang = {
   // Screen:SettingsCountry
   "settingsCountry.title": "Länder",
   "settingsCountry.boxTitle": "Wechsle in ein anderes Land",
-  "settingsCountry.boxText": "Wir haben die Fragen aus anderen Ländern neben den Landessprachen auch auf Englisch übersetzt, sodass du dich auch über die Parteien und ihre Standpunkte dort informieren kannst."
+  "settingsCountry.boxText": "Wir haben die Fragen aus anderen Ländern neben den Landessprachen auch auf Englisch übersetzt, sodass du dich auch über die Parteien und ihre Standpunkte dort informieren kannst.",
+
+  // Screen:ElectionsIndex
+  "electionsIndex.boxTitle": "Aktuelle Wahlen",
+  "electionsIndex.boxText": "Wähle eine Wahl aus, für die du swipen möchtest.",
 }
 
 export default lang;

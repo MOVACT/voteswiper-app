@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Dimensions, Platform, TouchableOpacity } from "react-native";
 import { createAppContainer, createStackNavigator, createBottomTabNavigator } from "react-navigation";
-import { ElectionsIndex, SettingsCountry } from "screens";
+import { ElectionsIndex, SettingsCountry, ElectionDetails } from "screens";
 import { t } from "util";
 import HelpIcon from "./icons/HelpCircle";
 import InfosIcon from "./icons/InfoCircle";
@@ -70,6 +70,7 @@ const ElectionsStack = createStackNavigator(
   {
     Index: { screen: ElectionsIndex },
     SettingsCountry: { screen: SettingsCountry },
+    Details: { screen: ElectionDetails },
   },
   {
     initialRouteName: "Index",

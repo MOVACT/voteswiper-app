@@ -1,9 +1,9 @@
 import React from "react";
-import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet, RefreshControl } from "react-native";
 import { inject, observer } from "mobx-react/native";
-import { Container, Txt } from "components";
+import { Container, Txt, Loader, ScrollContainer, BoxGradient, Title, ElectionPill } from "components";
 import stores from "stores";
-import { getCountryFlag } from "util";
+import { getCountryFlag, t, Query } from "util";
 import ChevronRight from "../../icons/ChevronRight";
 
 const styles = StyleSheet.create({
@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#fff',
     marginRight: 5
+  },
+  electionsList: {
+    paddingTop: 10,
   }
 });
 
@@ -44,7 +47,54 @@ class ElectionsIndex extends React.Component {
   render() {
     return (
       <Container>
-        <Txt>hello</Txt>
+        <Query query="GET_ELECTIONS" variables={{country: this.props.app.country.id}}>
+          {({ loading, error, data, refetch, networkStatus }) => {
+            if (loading && networkStatus !== 4) return <Loader />;
+            if (error) {
+              return <View />;
+            }
+
+            return (
+              <ScrollContainer
+                withPadding
+                refreshControl={
+                  <RefreshControl
+                    refreshing={loading && networkStatus === 4}
+                    onRefresh={() => {
+                      refetch();
+                    }}
+                    colors={["#ffffff"]}
+                    enabled
+                    tintColor={"#ffffff"}
+                  />
+                }
+              >
+                <BoxGradient>
+                  <Title mainBig center>{t('electionsIndex.boxTitle')}</Title>
+                  {t('electionsIndex.boxText') !== "" ?
+                    <Txt copy center>{t('electionsIndex.boxText')}</Txt> : null}
+                </BoxGradient>
+
+                <View style={styles.electionsList}>
+                  {data.elections.map(election => {
+                    return (
+                      <ElectionPill
+                        key={election.id}
+                        {...election}
+                        onPress={() => {
+                          this.props.navigation.navigate("Details", {
+                            title: election.name,
+                            election: election
+                          });
+                        }}
+                      />
+                    )
+                  })}
+                </View>
+              </ScrollContainer>
+            )
+          }}
+        </Query>
       </Container>
     );
   }

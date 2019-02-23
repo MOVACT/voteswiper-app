@@ -13,6 +13,14 @@ export default StyleSheet.create({
     elevation: 2,
     marginTop: 10,
   },
+  card: {
+    aspectRatio: 16/9,
+  },
+  cardHolder: {
+    borderTopLeftRadius: borderRadius,
+    borderTopRightRadius: borderRadius,
+    overflow: 'hidden',
+  },
   root: {
     borderRadius,
     paddingHorizontal: 15,

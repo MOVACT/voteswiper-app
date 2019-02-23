@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableWithoutFeedback } from 'react-native';
+import { View, TouchableWithoutFeedback, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { Icon } from 'util';
-import { moment } from 'common';
+import { moment, cdn } from 'util';
+import ArrowRightCircle from '../../icons/ArrowRightCircle';
 import { Txt } from 'components';
 import styles from './styles';
 
@@ -34,6 +34,7 @@ class ElectionPill extends React.Component {
   }
 
   render() {
+    console.log(cdn(this.props.card))
     return (
       <TouchableWithoutFeedback
         onPress={this.props.onPress}
@@ -43,14 +44,21 @@ class ElectionPill extends React.Component {
         onPressOut={() => {
           this.setState({ active: false });
         }}
-        disabled={!this.props.active}
+        /*disabled={!this.props.active}*/
       >
         <View
           style={[
             styles.shadow,
-            this.props.active ? {} : styles.disabled,
+            // this.props.active ? {} : styles.disabled,
           ]}
         >
+          <View style={styles.cardHolder}>
+            <Image
+              source={{ uri: cdn(this.props.card)}}
+              resizeMode="cover"
+              style={styles.card}
+            />
+          </View>
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}
@@ -61,21 +69,14 @@ class ElectionPill extends React.Component {
             style={styles.root}
           >
             <View style={styles.content}>
-              <Txt medium style={styles.title}>{this.props.shortName}</Txt>
+              <Txt medium style={styles.title}>{this.props.name}</Txt>
               <Txt medium style={styles.subTitle}>
-                {this.props.active ? moment(this.props.date).format('LL') : this.props.note}
+                {moment(this.props.voting_day).format('LL')}
               </Txt>
             </View>
-            {this.props.active === true ?
-              <View style={styles.iconHolder}>
-                <Icon
-                  name="play-circle"
-                  size={20}
-                  color="#8186D7"
-                  style={styles.icon}
-                />
-              </View>
-              : null}
+            <View style={styles.iconHolder}>
+              <ArrowRightCircle fill="#8186D7" width={20} height={20} />
+            </View>
           </LinearGradient>
         </View>
       </TouchableWithoutFeedback>
