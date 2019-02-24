@@ -98,7 +98,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.voteswiper"
+        applicationId "com.wahlswiper"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -134,6 +134,10 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-onesignal')
+    implementation project(':react-native-video')
+    implementation project(':react-native-view-shot')
+    implementation project(':react-native-share')
     implementation project(':react-native-localize')
     implementation project(':react-native-svg')
     implementation project(':react-native-gesture-handler')

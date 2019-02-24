@@ -49,7 +49,7 @@ class ElectionsIndex extends React.Component {
       <Container>
         <Query query="GET_ELECTIONS" variables={{country: this.props.app.country.id}}>
           {({ loading, error, data, refetch, networkStatus }) => {
-            if (loading && networkStatus !== 4) return <Loader />;
+            if (loading && networkStatus !== 4) return <Loader fullscreen />;
             if (error) {
               return <View />;
             }

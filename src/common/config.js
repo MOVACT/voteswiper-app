@@ -1,5 +1,5 @@
 const config = {
-  apiUrl: 'https://wahlswiper-api.test/!',
+  apiUrl: 'https://www.voteswiper.org/!',
   fallbackLocale: 'en',
   locales: ['en', 'de']
 }

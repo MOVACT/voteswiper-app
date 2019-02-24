@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Dimensions, Platform, TouchableOpacity } from "react-native";
 import { createAppContainer, createStackNavigator, createBottomTabNavigator } from "react-navigation";
-import { ElectionsIndex, SettingsCountry, ElectionDetails } from "screens";
+import { ElectionsIndex, SettingsCountry, ElectionDetails, ElectionSwiper } from "screens";
 import { t } from "util";
 import HelpIcon from "./icons/HelpCircle";
 import InfosIcon from "./icons/InfoCircle";
@@ -163,9 +163,22 @@ const TabStack = createBottomTabNavigator(
   }
 );
 
+const ModalStack = createStackNavigator(
+  {
+    ModalSwiper: { screen: ElectionSwiper },
+    //ModalCompareParty: { screen: ElectionCompareParty }
+  },
+  {
+    mode: "modal",
+    headerMode: "none",
+    initialRouteName: "ModalSwiper"
+  }
+);
+
 export default createAppContainer(createStackNavigator(
   {
     Tabs: { screen: TabStack },
+    ModalSwiper: { screen: ModalStack }
   },
   {
     mode: "modal",

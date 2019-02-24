@@ -1,0 +1,6 @@
+/*
+ Tutorial: https://hackernoon.com/localize-an-application-name-in-react-native-c36c4b2be7c3
+*/
+"CFBundleDisplayName" = "VoteSwiper";
+"CFBundleName" = "VoteSwiper";
+"NSPhotoLibraryAddUsageDescription" = "To save your VoteSwiper result as image.";

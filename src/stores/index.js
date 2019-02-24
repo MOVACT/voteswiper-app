@@ -2,6 +2,7 @@
 import { AsyncStorage } from 'react-native';
 import { create } from 'mobx-persist';
 import AppStore from './AppStore';
+import SwiperStore from './SwiperStore';
 
 const hydrate = create({
   storage: AsyncStorage,
@@ -13,10 +14,12 @@ const hydrateApp = create({
   jsonify: true,
 });
 
+const swiper = new SwiperStore();
 const app = new AppStore();
 
 export default {
   app,
+  swiper
 };
 
 hydrateApp('app', app)
