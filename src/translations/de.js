@@ -13,6 +13,9 @@ const lang = {
   // Swiper
   "swiper.doubleWeight": "Doppelt gewichten",
   "swiper.doubleWeighted": "Doppelt gewichtet",
+  "swiper.questionNumber": "Frage {1} von {2}",
+  "swiper.yes": "Ja",
+  "swiper.no": "Nein",
 
   // Screen:SelectCountry,
   "selectCountry.title": "Schön, dass du dabei bist!",

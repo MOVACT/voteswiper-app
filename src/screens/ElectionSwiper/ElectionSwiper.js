@@ -17,6 +17,7 @@ import NextButton from "./partials/NextButton";
 import styles from "./styles";
 import SelectParties from "./SelectParties";
 import Close from "../../icons/Close";
+import { t } from "util";
 
 class ElectionSwiper extends React.Component {
   static propTypes = {
@@ -150,13 +151,13 @@ class ElectionSwiper extends React.Component {
   onDragLeft = card => {
     this.props.swiper.setAnswer(card.id, 1);
     this.trackAnswer(1, card.id);
-    this.updateIndex(card.id, {});
+    this.updateIndex(this.state.currentIndex + 1, {});
   };
 
   onDragRight = card => {
     this.props.swiper.setAnswer(card.id, 2);
     this.trackAnswer(2, card.id);
-    this.updateIndex(card.id, {});
+    this.updateIndex(this.state.currentIndex + 1, {});
   };
 
   /**
@@ -347,12 +348,10 @@ class ElectionSwiper extends React.Component {
           </View>
           <View style={styles.headerTitle}>
             <Txt medium style={styles.headerTitleText}>
-              Frage{" "}
-              {this.state.currentIndex + 1 >
+              {t('swiper.questionNumber', this.state.currentIndex + 1 >
               this.props.swiper.election.questions.length
                 ? this.props.swiper.election.questions.length
-                : this.state.currentIndex + 1}{" "}
-              von {this.props.swiper.election.questions.length}
+                : this.state.currentIndex + 1, this.props.swiper.election.questions.length)}
             </Txt>
           </View>
         </Animated.View>
@@ -421,7 +420,7 @@ class ElectionSwiper extends React.Component {
       return (
         <Swiper
           ref={swiper => (this.swiper = swiper)}
-          cards={this.props.swiper.election.questions.slice()}
+          cards={this.props.swiper.election.questions.peek()}
           renderCard={cardData => (
             <Card
               {...cardData}
@@ -537,6 +536,7 @@ class ElectionSwiper extends React.Component {
   }
 
   render() {
+    console.log(this.props.swiper.answers, this.state.currentIndex);
     return (
       <Container noPadding>
         <View style={styles.root}>

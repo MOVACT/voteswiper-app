@@ -13,6 +13,9 @@ const lang = {
   // Swiper
   "swiper.doubleWeight": "Weigh double",
   "swiper.doubleWeighted": "Double weighted",
+  "swiper.questionNumber": "Question {1} of {2}",
+  "swiper.yes": "Yes",
+  "swiper.no": "No",
 
   // Screen:SelectCountry,
   "selectCountry.title": "Great to have you!",

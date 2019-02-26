@@ -4,8 +4,11 @@ import { app } from "stores";
 import translations from "translations";
 import locale from "./locale";
 
-const lang = (string) => {
+const lang = function() {
+  const args = arguments;
+
   const strings = translations[locale()];
+  const string = args[0];
 
   if (typeof strings[string] === "undefined") {
     // Fallback
@@ -13,10 +16,18 @@ const lang = (string) => {
       return "#UNDEFINED#";
     }
 
-    return translations[config.fallbackLocale][string];
+    return translations[config.fallbackLocale][string].replace(/{(\d+)}/g, function(match, number) {
+      return typeof args[number] != 'undefined'
+        ? args[number]
+        : match;
+    });
   }
 
-  return strings[string];
+  return strings[string].replace(/{(\d+)}/g, function(match, number) {
+    return typeof args[number] != 'undefined'
+      ? args[number]
+      : match;
+  });
 };
 
 export default lang;

@@ -10,6 +10,8 @@ import ShareButton from './ShareButton/ShareButton';
 import Countdown from './Countdown/Countdown';
 import ButtonGradient from './ButtonGradient/ButtonGradient';
 import Box from './Box/Box';
+import Swiper from './Swiper/Swiper';
+import FullScreenVideo from './FullScreenVideo/FullScreenVideo';
 
 export {
   Box,
@@ -23,5 +25,7 @@ export {
   Txt,
   ScrollContainer,
   ShareButton,
-  Countdown
+  Countdown,
+  Swiper,
+  FullScreenVideo,
 }

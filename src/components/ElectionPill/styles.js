@@ -11,7 +11,7 @@ export default StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 7,
     elevation: 2,
-    marginTop: 10,
+    marginTop: 20,
   },
   card: {
     aspectRatio: 16/9,
@@ -34,9 +34,11 @@ export default StyleSheet.create({
   },
   content: {
     paddingRight: 10,
+    flex: 1,
   },
   title: {
     fontSize: 16,
+    flexWrap: 'wrap',
     color: '#59568B',
   },
   subTitle: {

@@ -4,6 +4,7 @@ import { TouchableWithoutFeedback, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Txt } from 'components';
 import styles from '../styles';
+import { t } from 'util';
 
 class NoButton extends React.Component {
   static propTypes = {
@@ -48,7 +49,7 @@ class NoButton extends React.Component {
           />
 
           <View style={styles.yesNoButtonInner}>
-            <Txt style={styles.yesNoButtonText} medium>Nein</Txt>
+            <Txt style={styles.yesNoButtonText} medium>{t('swiper.no')}</Txt>
           </View>
         </View>
       </TouchableWithoutFeedback>

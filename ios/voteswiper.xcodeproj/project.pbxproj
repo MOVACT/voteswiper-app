@@ -48,6 +48,7 @@
 		320A853B22233EAD00ECE289 /* launch_gradient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 320A853A22233EAD00ECE289 /* launch_gradient.jpg */; };
 		320A853D22233EBA00ECE289 /* launch_icon_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 320A853C22233EBA00ECE289 /* launch_icon_de.png */; };
 		320A853F22233F6300ECE289 /* launch_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 320A853E22233F6300ECE289 /* launch_icon.png */; };
+		32A051052225DBD30050CB5E /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A051042225DBD30050CB5E /* test.swift */; };
 		3DC6F7901C3D420BA4C37581 /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 090F62C1A2A34759A37467B0 /* libRNShare.a */; };
 		49EB05097A604F02AB78FC63 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0BB4030DEC4633B16264D5 /* libRCTVideo.a */; };
 		4C2E4C000E9A4B55B233C6CC /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3BD0EFC1314023BE6858C3 /* libRNGestureHandler.a */; };
@@ -59,6 +60,7 @@
 		B6A11224BA1344B68AF68CD0 /* libRNLocalize.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1481DF8BF3744E5BB7CC78E2 /* libRNLocalize.a */; };
 		CA94D8CEB8FA487EA1792FB6 /* libRNViewShot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C897D06CDA9840ADB2292DCF /* libRNViewShot.a */; };
 		CD7D75BEAFB9446AB0B03D5F /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DB1D63F21B749C2B350F3C3 /* Rubik-Medium.ttf */; };
+		E779FAAFB35246BDA7487EBE /* libBNFMatomo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B79194B538442CABBAA41C0 /* libBNFMatomo.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 		ED3B51ED531741B58C7A9387 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E8A78B24898463E9CB368B9 /* Rubik-Bold.ttf */; };
@@ -333,6 +335,13 @@
 			remoteGlobalIDString = 320A851C22233A4E00ECE289;
 			remoteInfo = OneSignalNotificationServiceExtension;
 		};
+		32A051012225D9D30050CB5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FCA765DD064C99B932D52B /* BNFMatomo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A01249E21B5AF5E004E207B;
+			remoteInfo = BNFMatomo;
+		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -510,6 +519,8 @@
 		320A853C22233EBA00ECE289 /* launch_icon_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_icon_de.png; sourceTree = "<group>"; };
 		320A853E22233F6300ECE289 /* launch_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_icon.png; sourceTree = "<group>"; };
 		320A85422223404100ECE289 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		32A051032225DBD20050CB5E /* voteswiper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "voteswiper-Bridging-Header.h"; sourceTree = "<group>"; };
+		32A051042225DBD30050CB5E /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		3A4E17E7702D412BBA1D3434 /* RNShare.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNShare.xcodeproj; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; };
 		496ED1D6BFD2403C9DC5924C /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 		4A958FD314BD497C9211829E /* RNBlur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
@@ -520,6 +531,7 @@
 		78C4CD6182CB457FA9E25192 /* RNLocalize.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNLocalize.xcodeproj; path = "../node_modules/react-native-localize/ios/RNLocalize.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8A01EC9C16B64FB98D0E5064 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
+		8B79194B538442CABBAA41C0 /* libBNFMatomo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBNFMatomo.a; sourceTree = "<group>"; };
 		9F89605563D5483D810CC480 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		BA0BB4030DEC4633B16264D5 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
@@ -528,6 +540,7 @@
 		CDF7EBF8CD8F414DA3897670 /* libRNLocalize-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNLocalize-tvOS.a"; sourceTree = "<group>"; };
 		D2844B4D5DFB463684FBD2BA /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		D32C8A0EF4F44EC8AD67C8FA /* Wahlswiper.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Wahlswiper.ttf; path = ../src/resources/fonts/Wahlswiper.ttf; sourceTree = "<group>"; };
+		D9FCA765DD064C99B932D52B /* BNFMatomo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BNFMatomo.xcodeproj; path = "../node_modules/react-native-matomo/ios/BNFMatomo.xcodeproj"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F0859C2B38BF464CB6FB00B2 /* RCTOneSignal.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOneSignal.xcodeproj; path = "../node_modules/react-native-onesignal/ios/RCTOneSignal.xcodeproj"; sourceTree = "<group>"; };
@@ -569,6 +582,7 @@
 				CA94D8CEB8FA487EA1792FB6 /* libRNViewShot.a in Frameworks */,
 				49EB05097A604F02AB78FC63 /* libRCTVideo.a in Frameworks */,
 				1B08B382C7F9416F81E1F6EE /* libRCTOneSignal.a in Frameworks */,
+				E779FAAFB35246BDA7487EBE /* libBNFMatomo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +719,8 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				320A853322233BF900ECE289 /* InfoPlist.strings */,
+				32A051042225DBD30050CB5E /* test.swift */,
+				32A051032225DBD20050CB5E /* voteswiper-Bridging-Header.h */,
 			);
 			name = voteswiper;
 			sourceTree = "<group>";
@@ -758,6 +774,7 @@
 				F5437D4CC4E54A6084CD6FFD /* libRCTOneSignal.a */,
 				8A01EC9C16B64FB98D0E5064 /* libRNSVG-tvOS.a */,
 				CDF7EBF8CD8F414DA3897670 /* libRNLocalize-tvOS.a */,
+				8B79194B538442CABBAA41C0 /* libBNFMatomo.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -849,6 +866,14 @@
 			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
+		32A050FE2225D9D20050CB5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32A051022225D9D30050CB5E /* libBNFMatomo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,6 +927,7 @@
 				C32C236427274C118A2B032F /* RNViewShot.xcodeproj */,
 				D2844B4D5DFB463684FBD2BA /* RCTVideo.xcodeproj */,
 				F0859C2B38BF464CB6FB00B2 /* RCTOneSignal.xcodeproj */,
+				D9FCA765DD064C99B932D52B /* BNFMatomo.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1062,6 +1088,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 6FB3Z6BNU5;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1105,6 +1132,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 32A050FE2225D9D20050CB5E /* Products */;
+					ProjectRef = D9FCA765DD064C99B932D52B /* BNFMatomo.xcodeproj */;
+				},
 				{
 					ProductGroup = 320A84E6222338FE00ECE289 /* Products */;
 					ProjectRef = 2E1F5D15E0CF4AD599E0B34A /* BVLinearGradient.xcodeproj */;
@@ -1447,6 +1478,13 @@
 			remoteRef = 320A85162223390000ECE289 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		32A051022225D9D30050CB5E /* libBNFMatomo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBNFMatomo.a;
+			remoteRef = 32A051012225D9D30050CB5E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1655,6 +1693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				32A051052225DBD30050CB5E /* test.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1735,6 +1774,7 @@
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1751,12 +1791,14 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-matomo/ios/**",
 				);
 				INFOPLIST_FILE = voteswiperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1782,6 +1824,7 @@
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				HEADER_SEARCH_PATHS = (
@@ -1795,12 +1838,14 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-matomo/ios/**",
 				);
 				INFOPLIST_FILE = voteswiperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1827,6 +1872,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = voteswiper/voteswiper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1843,6 +1889,7 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-matomo/ios/**",
 				);
 				INFOPLIST_FILE = voteswiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1853,6 +1900,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.movact.wahlswiper;
 				PRODUCT_NAME = voteswiper;
+				SWIFT_OBJC_BRIDGING_HEADER = "voteswiper-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1862,6 +1912,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = voteswiper/voteswiper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1877,6 +1928,7 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-matomo/ios/**",
 				);
 				INFOPLIST_FILE = voteswiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1887,6 +1939,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.movact.wahlswiper;
 				PRODUCT_NAME = voteswiper;
+				SWIFT_OBJC_BRIDGING_HEADER = "voteswiper-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1915,11 +1969,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-matomo/ios/**",
 				);
 				INFOPLIST_FILE = "voteswiper-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1967,11 +2023,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-matomo/ios/**",
 				);
 				INFOPLIST_FILE = "voteswiper-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -2018,11 +2076,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-matomo/ios/**",
 				);
 				INFOPLIST_FILE = "voteswiper-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -2069,11 +2129,13 @@
 					"$(SRCROOT)/../node_modules/react-native-view-shot/ios",
 					"$(SRCROOT)/../node_modules/react-native-video/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-matomo/ios/**",
 				);
 				INFOPLIST_FILE = "voteswiper-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -2116,6 +2178,10 @@
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.movact.wahlswiper.OneSignalNotificationServiceExtension;
@@ -2144,6 +2210,10 @@
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.movact.wahlswiper.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

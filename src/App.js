@@ -3,6 +3,7 @@ import { Provider } from "mobx-react/native";
 import { ApolloProvider } from "react-apollo";
 import { View, StatusBar } from "react-native";
 import OneSignal from "react-native-onesignal";
+import Matomo from "react-native-matomo";
 import stores from "stores";
 import { client } from "util";
 import Init from "./Init";
@@ -14,7 +15,8 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    //Text.allowFontScaling = false;
+    // console.log(Matomo);
+    Matomo.initTracker('https://t.voteswiper.org/piwik.php', 1);
   }
 
   render() {

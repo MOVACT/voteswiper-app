@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Txt } from 'components';
+import Txt from '../Txt/Txt';
 import { moment, t } from 'util';
 import styles from './styles';
 

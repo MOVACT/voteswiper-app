@@ -4,7 +4,7 @@ import { View, TouchableWithoutFeedback, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { moment, cdn } from 'util';
 import ArrowRightCircle from '../../icons/ArrowRightCircle';
-import { Txt } from 'components';
+import Txt from '../Txt/Txt';
 import styles from './styles';
 
 class ElectionPill extends React.Component {
@@ -34,7 +34,6 @@ class ElectionPill extends React.Component {
   }
 
   render() {
-    console.log(cdn(this.props.card))
     return (
       <TouchableWithoutFeedback
         onPress={this.props.onPress}

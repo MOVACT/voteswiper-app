@@ -1,6 +1,7 @@
 import React from "react";
 import { View, TouchableOpacity, StyleSheet, RefreshControl } from "react-native";
 import { inject, observer } from "mobx-react/native";
+import Matomo from "react-native-matomo";
 import { Container, Txt, Loader, ScrollContainer, BoxGradient, Title, ElectionPill } from "components";
 import stores from "stores";
 import { getCountryFlag, t, Query } from "util";
@@ -44,6 +45,11 @@ class ElectionsIndex extends React.Component {
       ),
     };
   }
+
+  componentDidMount() {
+    Matomo.trackScreen('/elections', 'ElectionsIndex');
+  }
+
   render() {
     return (
       <Container>

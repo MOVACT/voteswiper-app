@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { View } from "react-native";
+import Matomo from "react-native-matomo";
 import {
   Container,
   ScrollContainer,
@@ -14,7 +15,7 @@ import {
   Box
 } from "components";
 import styles from "./styles";
-import { moment, Query, t } from "util";
+import { moment, Query, t, locale } from "util";
 import { headerHeight } from "../../common";
 // mport PartnerInfo from './PartnerInfo';
 
@@ -30,6 +31,10 @@ class ElectionDetails extends React.Component {
     title: `${navigation.state.params.title}`,
     headerRight: <ShareButton message="Probiere den WahlSwiper aus: " url={`https://www.wahlswiper.de/wahlen/${navigation.state.params.election.slug}`} title="Finde deine Partei" />
   });
+
+  componentDidMount() {
+    Matomo.trackScreen(`${this.props.navigation.state.params.election.slug}`, 'ElectionDetails');
+  }
 
   render() {
     return (

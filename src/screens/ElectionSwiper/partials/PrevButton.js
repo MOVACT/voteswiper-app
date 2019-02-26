@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { Icon } from 'util';
+import ArrowLeft from '../../../icons/ArrowLeft';
 import styles from '../styles';
 
 class PrevButton extends React.Component {
@@ -31,11 +31,7 @@ class PrevButton extends React.Component {
             this.props.disabled ? styles.headerNavButtonDisabled : {},
           ]}
         >
-          <Icon
-            name="arrow-left"
-            size={8}
-            color={this.props.disabled ? "rgba(0,0,0,0.5)" : "#fff"}
-          />
+          <ArrowLeft />
         </LinearGradient>
       </TouchableOpacity>
     );

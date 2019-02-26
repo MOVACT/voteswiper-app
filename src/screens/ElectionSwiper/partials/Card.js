@@ -17,12 +17,12 @@ import { cdn, t } from "util";
 
 class Card extends React.Component {
   static propTypes = {
-    thesis: PropTypes.string.isRequired,
+    question: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,
     playVideo: PropTypes.func.isRequired,
-    videoStreamLegacyFormat: PropTypes.bool.isRequired,
-    videoStreamUrl: PropTypes.string.isRequired,
+    video_legacy: PropTypes.bool.isRequired,
+    video_url: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired
   };
 
@@ -98,7 +98,7 @@ class Card extends React.Component {
     const {
       question,
       title,
-      card,
+      thumbnail,
       video_url,
       video_legacy,
       id
@@ -114,7 +114,7 @@ class Card extends React.Component {
         >
           <View style={styles.cardVideo}>
             <Image
-              source={{ uri: cdn(card) }}
+              source={{ uri: cdn(thumbnail) }}
               resizeMode="cover"
               style={styles.cardThumbnail}
             />
@@ -140,7 +140,7 @@ class Card extends React.Component {
             <Title h5dark uppercase center>
               {title}
             </Title>
-            <Title mainBig center textCenter>
+            <Title mainBig center textCenter style={{ color: '#392F52' }}>
               {question}
             </Title>
           </View>

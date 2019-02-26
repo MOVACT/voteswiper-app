@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Icon } from 'util';
+import ArrowRight from '../../../icons/ArrowRight';
 import styles from '../styles';
 
 class NextButton extends React.Component {
@@ -30,11 +31,7 @@ class NextButton extends React.Component {
             this.props.disabled ? styles.headerNavButtonDisabled : {},
           ]}
         >
-          <Icon
-            name="arrow-right"
-            size={8}
-            color={this.props.disabled ? "rgba(0,0,0,0.5)" : "#fff"}
-          />
+          <ArrowRight />
         </LinearGradient>
       </TouchableOpacity>
     );

@@ -9,7 +9,7 @@ import {
   Easing
 } from "react-native";
 import PropTypes from "prop-types";
-import { FullLoader, Txt, FadeIn, ButtonGradient } from "components";
+import { Txt, FadeIn, ButtonGradient } from "components";
 import LinearGradient from "react-native-linear-gradient";
 import styles from "./styles";
 import Result from "./Result";
@@ -17,7 +17,6 @@ import Result from "./Result";
 class SelectParties extends React.Component {
   static propTypes = {
     swiper: PropTypes.object.isRequired,
-    data: PropTypes.object.isRequired,
     onShowResult: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired
   };
@@ -110,7 +109,7 @@ class SelectParties extends React.Component {
     if (this.state.showResult) {
       return (
         <Result
-          parties={this.props.data.election.parties}
+          parties={this.props.swiper.election.parties}
           election={this.props.swiper.election}
           navigation={this.props.navigation}
           closeResult={() => {
@@ -175,11 +174,11 @@ class SelectParties extends React.Component {
                   this.props.swiper.election.slug
                   ] !== "undefined" &&
                   this.props.swiper.parties[this.props.swiper.election.slug]
-                    .length >= this.props.data.election.parties.length
+                    .length >= this.props.swiper.election.parties.length
                 }
                 onPress={() => {
                   this.props.swiper.selectAllParties(
-                    this.props.data.election.parties
+                    this.props.swiper.election.parties
                   );
                 }}
                 style={[
@@ -188,7 +187,7 @@ class SelectParties extends React.Component {
                     this.props.swiper.election.slug
                   ] !== "undefined" &&
                     this.props.swiper.parties[this.props.swiper.election.slug]
-                      .length >= this.props.data.election.parties.length
+                      .length >= this.props.swiper.election.parties.length
                     ? styles.selectPartyActionDisabled
                     : null
                 ]}
@@ -225,7 +224,7 @@ class SelectParties extends React.Component {
               }
             ]}
           >
-            {this.props.data.election.parties.map(party => {
+            {this.props.swiper.election.parties.map(party => {
               delay = delay + 75;
 
               return (
