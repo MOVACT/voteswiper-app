@@ -12,6 +12,9 @@ import ButtonGradient from './ButtonGradient/ButtonGradient';
 import Box from './Box/Box';
 import Swiper from './Swiper/Swiper';
 import FullScreenVideo from './FullScreenVideo/FullScreenVideo';
+import FadeIn from './FadeIn/FadeIn';
+import ButtonDark from './ButtonDark/ButtonDark';
+import ResultBar from './ResultBar/ResultBar';
 
 export {
   Box,
@@ -28,4 +31,7 @@ export {
   Countdown,
   Swiper,
   FullScreenVideo,
+  FadeIn,
+  ButtonDark,
+  ResultBar
 }

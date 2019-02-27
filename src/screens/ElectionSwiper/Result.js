@@ -17,6 +17,7 @@ import {
 import { ButtonDark, ResultBar, Loader, Title, Txt } from "components";
 import styles from "./styles";
 import Download from "../../icons/Download";
+import { cdn } from "util";
 
 const iPhone6 = 375;
 const { width } = Dimensions.get("window");
@@ -25,7 +26,7 @@ class Result extends React.Component {
   static propTypes = {
     swiper: PropTypes.object.isRequired,
     navigation: PropTypes.object.isRequired,
-    parties: PropTypes.array.isRequired,
+    parties: PropTypes.object.isRequired,
     closeResult: PropTypes.func.isRequired,
     election: PropTypes.object.isRequired
   };
@@ -62,8 +63,9 @@ class Result extends React.Component {
         this.props.parties.map(party => {
           let addToScore = 0;
 
-          const partyAnswer = party.answers.find(
-            a => a.questionId === question.id
+
+          const partyAnswer = party.pivot.answers.find(
+            a => a.question_id === question.id
           ).answer;
           // console.log(partyAnswer, party.slug);
           // If party has not given answer, zero points
@@ -137,7 +139,7 @@ class Result extends React.Component {
           >
             <View style={styles.topMatchLogo}>
               <Image
-                source={{ uri: party.logo }}
+                source={{ uri: cdn(party.logo) }}
                 style={styles.topMatchLogoImage}
                 resizeMode="contain"
               />
@@ -147,7 +149,7 @@ class Result extends React.Component {
                 DEIN TOP MATCH
               </Title>
               <Txt medium style={styles.topMatchTitle}>
-                {party.fullName}
+                {party.full_name}
               </Txt>
 
               <TouchableOpacity
@@ -155,7 +157,7 @@ class Result extends React.Component {
                   /* firebase.analytics().logEvent("requested_wahlprogramm", {
                     party: party.name
                   }); */
-                  Linking.openURL(party.url);
+                  Linking.openURL(party.program);
                 }}
                 style={styles.programLink}
               >

@@ -13,6 +13,7 @@ import { Txt, FadeIn, ButtonGradient } from "components";
 import LinearGradient from "react-native-linear-gradient";
 import styles from "./styles";
 import Result from "./Result";
+import { cdn } from "util";
 
 class SelectParties extends React.Component {
   static propTypes = {
@@ -248,7 +249,7 @@ class SelectParties extends React.Component {
                         ]}
                       >
                         <Image
-                          source={{ uri: party.logo }}
+                          source={{ uri: cdn(party.logo) }}
                           style={styles.partyLogo}
                           resizeMode="contain"
                         />

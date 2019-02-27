@@ -536,7 +536,6 @@ class ElectionSwiper extends React.Component {
   }
 
   render() {
-    console.log(this.props.swiper.answers, this.state.currentIndex);
     return (
       <Container noPadding>
         <View style={styles.root}>
