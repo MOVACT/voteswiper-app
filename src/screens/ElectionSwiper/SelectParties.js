@@ -13,7 +13,7 @@ import { Txt, FadeIn, ButtonGradient } from "components";
 import LinearGradient from "react-native-linear-gradient";
 import styles from "./styles";
 import Result from "./Result";
-import { cdn } from "util";
+import { cdn, t } from "util";
 
 class SelectParties extends React.Component {
   static propTypes = {
@@ -164,8 +164,7 @@ class SelectParties extends React.Component {
             ]}
           >
             <Txt white style={styles.explainerText}>
-              Wähle nun noch die Parteien aus, mit denen du deine Antworten
-              vergleichen möchtest. Du kannst beliebig viele Parteien auswählen.
+              {t('swiperSelectParties.text')}
             </Txt>
 
             <View style={styles.selectPartyActions}>
@@ -194,7 +193,7 @@ class SelectParties extends React.Component {
                 ]}
               >
                 <Txt white medium style={styles.selectPartyActionText}>
-                  Alle Auswählen
+                  {t('swiperSelectParties.checkAll')}
                 </Txt>
               </TouchableOpacity>
               <TouchableOpacity
@@ -210,7 +209,7 @@ class SelectParties extends React.Component {
                 ]}
               >
                 <Txt white medium style={styles.selectPartyActionText}>
-                  Alle abwählen
+                  {t('swiperSelectParties.uncheckAll')}
                 </Txt>
               </TouchableOpacity>
             </View>
@@ -278,8 +277,8 @@ class SelectParties extends React.Component {
               onPress={this.goToResult}
               text={
                 !this.hasEnoughParties()
-                  ? "Wähle mindestens eine Partei um fortzufahren"
-                  : "Weiter"
+                  ? t('swiperSelectParties.chooseMinOne')
+                  : t('swiperSelectParties.nextButton')
               }
               disabled={!this.hasEnoughParties()}
             />

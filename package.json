@@ -19,6 +19,7 @@
     "react-apollo": "^2.4.1",
     "react-native": "0.58.4",
     "react-native-blur": "^3.2.2",
+    "react-native-collapsible": "^1.4.0",
     "react-native-gesture-handler": "^1.0.15",
     "react-native-linear-gradient": "^2.5.3",
     "react-native-localize": "^1.0.3",

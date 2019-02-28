@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Dimensions, Platform, TouchableOpacity } from "react-native";
 import { createAppContainer, createStackNavigator, createBottomTabNavigator } from "react-navigation";
-import { ElectionsIndex, SettingsCountry, ElectionDetails, ElectionSwiper } from "screens";
+import { ElectionsIndex, SettingsCountry, ElectionDetails, ElectionSwiper, HelpIndex } from "screens";
 import { t } from "util";
 import HelpIcon from "./icons/HelpCircle";
 import InfosIcon from "./icons/InfoCircle";
@@ -96,10 +96,24 @@ const ElectionsStack = createStackNavigator(
   }
 );
 
+const HelpStack = createStackNavigator(
+  {
+    Index: { screen: HelpIndex }
+  },
+  {
+    initialRouteName: "Index",
+    defaultNavigationOptions: () => ({
+      headerStyle: navigatorStyles.header,
+      headerTransparent: true,
+      headerTitleStyle: navigatorStyles.titleStyle
+    })
+  }
+);
+
 const TabStack = createBottomTabNavigator(
   {
     Help: {
-      screen: ElectionsStack,
+      screen: HelpStack,
       navigationOptions: { tabBarLabel: t('navigation.helpTitle') }
     },
     Elections: {

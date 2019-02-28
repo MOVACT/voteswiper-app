@@ -17,7 +17,7 @@ import {
 import { ButtonDark, ResultBar, Loader, Title, Txt } from "components";
 import styles from "./styles";
 import Download from "../../icons/Download";
-import { cdn } from "util";
+import { cdn, t } from "util";
 
 const iPhone6 = 375;
 const { width } = Dimensions.get("window");
@@ -146,7 +146,7 @@ class Result extends React.Component {
             </View>
             <View style={styles.topMatchContent}>
               <Title h5dark style={styles.topMatchSubTitle}>
-                DEIN TOP MATCH
+                {t('swiperResult.topmatch')}
               </Title>
               <Txt medium style={styles.topMatchTitle}>
                 {party.full_name}
@@ -163,7 +163,7 @@ class Result extends React.Component {
               >
                 <Download />
                 <Txt medium style={styles.programLinkText}>
-                  Wahlprogramm
+                  {t('swiperResult.program')}
                 </Txt>
               </TouchableOpacity>
             </View>
@@ -222,8 +222,8 @@ class Result extends React.Component {
       }).then(result => {
         this.setState({ screenshotLoading: false });
         Share.open({
-          title: "#WahlSwiper Ergebnis",
-          message: `Mein #WahlSwiper Ergebnis zur ${this.props.election.name}`,
+          title: t('swiperResult.shareTitle'),
+          message: t('swiperResult.shareMessage', this.props.election.name),
           type: "image/png",
           url: result
         });
@@ -256,28 +256,13 @@ class Result extends React.Component {
           {ordered.map(result => {
             return this.renderBar(result);
           })}
-
-          {this.props.election.slug === 'landtagswahl-hessen-2018' ?
-            <View style={{ borderRadius: 5, padding: 15, marginTop: 15, backgroundColor: '#fff' }}>
-              <Txt style={{ fontSize: 14, lineHeight: 20 }}>
-                Unsere Partner von der <Txt medium>Universität Freiburg</Txt> bitten um eine freiwillige Umfrage zum Wahlswiper-Ergebnis.
-                </Txt>
-
-              <TouchableOpacity
-                onPress={() => {
-                  Linking.openURL("https://ww2.unipark.de/uc/UniFreiburg_Hessen-LTW-2018/");
-                }}
-              >
-                <Txt style={{ fontSize: 14, lineHeight: 20, marginTop: 5, color: '#000' }} bold>Teilnahme an Umfrage &raquo;</Txt>
-              </TouchableOpacity>
-            </View> : null}
         </View>
 
         <View style={{ height: 100 }} />
       </ScrollView>
       <View style={styles.screenshotArea} ref={screenshotArea => (this.screenshotArea = screenshotArea)}>
         <Title h1>
-          WahlSwiper-Ergebnis zur {this.props.election.name}
+          {t('swiperResult.screenshotTitle', this.props.election.name)}
         </Title>
         {ordered.map(result => {
           return this.renderBar(result, true);

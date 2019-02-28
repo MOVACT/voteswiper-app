@@ -17,6 +17,18 @@ const lang = {
   "swiper.yes": "Yes",
   "swiper.no": "No",
 
+  "swiperSelectParties.text": "Now select the parties with which you want to compare your answers. You can select as many parties as you like.",
+  "swiperSelectParties.checkAll": "Choose all",
+  "swiperSelectParties.uncheckAll": "Uncheck all",
+  "swiperSelectParties.chooseMinOne": "Select at least one party to proceed",
+  "swiperSelectParties.nextButton": "Next",
+
+  "swiperResult.topmatch": "Your Top Match",
+  "swiperResult.program": "Election program",
+  "swiperResult.shareTitle": "#VoteSwiper Result",
+  "swiperResult.shareMessage": "My #VoteSwiper-Result for the {1}",
+  "swiperResult.screenshotTitle": "VoteSwiper-Result for {1}",
+
   // Screen:SelectCountry,
   "selectCountry.title": "Great to have you!",
   "selectCountry.introText": "To get started let please select the country in which you live or where you’re able to vote.",

@@ -4816,6 +4816,13 @@ react-native-blur@^3.2.2:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-collapsible@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-1.4.0.tgz#ec03cac361178319b77bb9993b73677356dd89d2"
+  integrity sha512-lf2U3gRHTNakqtN04NLJkmF02XaOF/DPOTGlwK8yrn85wMAdRaPpD0fnb7RvH4OID3SmxXBTWzZqkBTmasJyIQ==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-gesture-handler@^1.0.15, react-native-gesture-handler@~1.0.14:
   version "1.0.15"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.15.tgz#7e0d0a457820a3c9325a3d492daaed14400508a6"
