@@ -4,7 +4,7 @@ import { inject, observer } from "mobx-react/native";
 import { Container, Txt } from "components";
 import SelectCountry from "./screens/SelectCountry/SelectCountry";
 import { Loader } from "components";
-import Navigator from "./Navigator";
+// import Navigator from "./Navigator";
 
 class Init extends React.Component {
   render() {
@@ -21,6 +21,9 @@ class Init extends React.Component {
         <SelectCountry />
       );
     }
+
+    const Navigator = require('./Navigator').default;
+    console.log(Navigator);
     return (
       <Navigator />
     );

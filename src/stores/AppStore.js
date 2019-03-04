@@ -3,8 +3,8 @@ import { persist } from 'mobx-persist';
 
 class AppStore {
   @persist('object') @observable country = null;
-  @observable language = null;
-  @observable languageNotice = { shouldShow: true };
+  @persist @observable language = null;
+  @persist('object') @observable languageNotice = { shouldShow: true };
 
   @action setCountry = country => {
     this.country = country;

@@ -8,6 +8,8 @@ import stores from "stores";
 import { client } from "util";
 import Init from "./Init";
 
+
+
 class App extends React.Component {
   componentWillMount() {
     OneSignal.init("3cbf99cf-a3e1-4f71-917f-3ef70c0fe6df");

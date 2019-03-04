@@ -3,6 +3,7 @@ package com.wahlswiper;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
 import de.bonify.reactnativematomo.MatomoPackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.brentvatne.react.ReactVideoPackage;
@@ -34,6 +35,7 @@ public class MainApplication extends Application implements ShareApplication, Re
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeRestartPackage(),
             new MatomoPackage(),
             new ReactNativeOneSignalPackage(),
             new ReactVideoPackage(),

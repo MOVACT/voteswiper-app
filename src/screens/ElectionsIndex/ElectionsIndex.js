@@ -2,6 +2,7 @@ import React from "react";
 import { View, TouchableOpacity, StyleSheet, RefreshControl } from "react-native";
 import { inject, observer } from "mobx-react/native";
 import Matomo from "react-native-matomo";
+import RNRestart from 'react-native-restart';
 import { Container, Txt, Loader, ScrollContainer, BoxGradient, Title, ElectionPill } from "components";
 import stores from "stores";
 import { getCountryFlag, t, Query, locale } from "util";
@@ -116,7 +117,10 @@ class ElectionsIndex extends React.Component {
                     <Txt copy center>If so, then we advise you to switch the app language to german to get the questionairre in the original language it was created.</Txt>
                     
                     <View style={styles.infoActions}>
-                      <TouchableOpacity onPress={() => { this.props.app.setLanguage(this.props.app.country.country_code); }} style={styles.infoMainAction}><Txt copy center medium style={{ color: '#392F52' }}>Switch to german</Txt></TouchableOpacity>
+                      <TouchableOpacity onPress={() => {
+                        this.props.app.setLanguage(this.props.app.country.country_code);
+                        RNRestart.Restart();
+                      }} style={styles.infoMainAction}><Txt copy center medium style={{ color: '#392F52' }}>Switch to german</Txt></TouchableOpacity>
                       <TouchableOpacity onPress={() => { this.props.app.dismissLanguageNotice(); }} style={styles.infoAction}><Txt copy center medium>Dismiss</Txt></TouchableOpacity>
                     </View>
                   </View>
