@@ -1,6 +1,6 @@
 const lang = {
   "navigation.backTitle": "Zurück",
-  "navigation.helpTitle": "HILFE",
+  "navigation.helpTitle": "FAQ",
   "navigation.electionsTitle": "WAHLEN",
   "navigation.infoTitle": "INFOS",
 
@@ -41,12 +41,29 @@ const lang = {
   // Screen:ElectionsIndex
   "electionsIndex.boxTitle": "Aktuelle Wahlen",
   "electionsIndex.boxText": "Wähle eine Wahl aus, für die du swipen möchtest.",
+  "electionsIndex.boxPastTitle": "Vergangene Wahlen",
+  "electionsIndex.boxPastText": "Diese WahlSwiper sind für vergangene Wahlen. Bitte beachte, dass sich die Standpunkte der Parteien zu einzelnen Punkten dieser Umfragen geändert haben könnten.",
+  "electionsIndex.noElections": "Für dieses Land sind keine aktuellen WahlSwiper verfügbar.",
 
   // Screen:ElectionDetails
   "electionDetails.countdownPast": "Die Wahl fand statt am",
   "electionDetails.countdown": "Countdown zur Wahl",
   "electionDetails.infoText": "Wir stellen dir einige Fragen zu politischen Themen. Beantworte die Fragen durch swipen und wir matchen dich mit einer Partei, die gut zu deinen Ansichten passt.",
-  "electionDetails.startButtonText": "Jetzt starten"
+  "electionDetails.startButtonText": "Jetzt starten",
+
+  // Screen:HelpIndex
+  "helpIndex.title": "FAQ",
+
+  // Screen:InfosIndex
+  "infosIndex.title": "Informationen",
+  "infosIndex.headline": "Über den WahlSwiper",
+  "infosIndex.paragraph1": "Sich eine Meinung zu Wahlen zu bilden soll einfach sein und Spaß machen – das ist unsere Mission beim WahlSwiper. Das Prinzip: Politische Fragen können mit einem einfachen Wisch nach links zu „Nein“ und rechts zu „Ja“ beantwortet werden. Der WahlSwiper errechnet dann die Übereinstimmung mit den Antworten der Parteien.",
+  "infosIndex.paragraph2": "Wir stehen auf klare Kante. Bei uns gibt’s nur „Ja“ und „Nein“, kein „vielleicht“. Das bringt die Parteien manchmal ins Schwitzen, hilft dir aber bei der Entscheidung. Natürlich kannst du einzelne Fragen auch ohne Antwort überspringen.",
+  "infosIndex.paragraph3": "Wählen gehen ist so einfach wie Online-Dating – der „Match“ hält dann jedoch mindestens eine Legislaturperiode lang.",
+  "infosIndex.imprintButton": "Impressum",
+  "infosIndex.imprintLink": "https://www.voteswiper.org/de/imprint",
+  "infosIndex.privacyButton": "Datenschutz",
+  "infosIndex.privacyLink": "https://www.voteswiper.org/de/privacy",
 }
 
 export default lang;

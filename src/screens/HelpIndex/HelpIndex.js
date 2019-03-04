@@ -2,36 +2,13 @@ import React from "react";
 import { View, ScrollView } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Accordion from "react-native-collapsible/Accordion";
-import { Container, Txt, Title, ScrollContainer } from "components";
+import { Container, Txt, Title, Loader, ScrollContainer } from "components";
+import { Query, t } from "util";
 import styles from "./styles";
-
-const faq = [
-  {
-    title: "Kann ich eine Frage überspringen oder zu einer vorherigen zurück?",
-    body:
-      "Ja, du findest oben links zwei Pfeiltasten. Nach links bringt dich zur vorherigen Frage und nach rechts überspringt die aktuelle Frage. Wenn du eine Frage überspringst, geht sie nicht in die Wertung ein."
-  },
-  {
-    title:
-      "Warum kann ich hier mehr Parteien auswählen, als auf meinem Wahlschein stehen?",
-    body:
-      "Wir haben alle Parteien angefragt, die in Deutschland zur Wahl antreten. Nicht in allen Regionen sind alle Parteien verfügbar. Daher kann es sein, dass dir im WahlSwiper eine Partei angezeigt wird, die du gar nicht wählen kannst."
-  },
-  {
-    title: "Wie wird das Ergebnis berechnet?",
-    body:
-      "Bei jeder Frage, die du beantwortest, vergleichen wir deine Position mit den Antworten der Parteien. Bei einer Übereinstimmung gibt es einen Punkt. Gewichtest du eine These doppelt, gibt es zwei Punkte. Bei der Auswertung zeigt die Prozentangabe an, wie sehr du mit den Antworten der Parteien übereinstimmst."
-  },
-  {
-    title: "Von wem wurde die App entwickelt?",
-    body:
-      "Wir sind ein Team aus Journalisten, Politik-Studenten, App-Entwicklern, Grafikern und Videoproduzenten, das gemeinsam in seiner Freizeit an dem Projekt gearbeitet hat. Die Inhalte erarbeiten wir gemeinsam mit unabhängigen Partnern beispielsweise Universitäten. Wer das im Einzelfall ist, siehst du, wenn du eine Wahl auswählst."
-  }
-];
 
 class HelpIndex extends React.Component {
   static navigationOptions = {
-    title: "Hilfe"
+    title: t('helpIndex.title'),
   }
   constructor(props) {
     super(props);
@@ -63,7 +40,7 @@ class HelpIndex extends React.Component {
     return (
       <View style={styles.content}>
         <View style={styles.contentInner}>
-          <Txt style={styles.body}>{section.body}</Txt>
+          <Txt style={styles.body}>{section.content}</Txt>
         </View>
       </View>
     );
@@ -72,26 +49,37 @@ class HelpIndex extends React.Component {
   render() {
     return (
       <Container>
-        <ScrollContainer withPadding>
-          <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            colors={["#fff", "#EFF3FF"]}
-            style={styles.container}
-          >
-            <Accordion
-              activeSections={this.state.activeSections}
-              sections={faq}
-              renderSectionTitle={this._renderSectionTitle}
-              renderHeader={this._renderHeader}
-              renderContent={this._renderContent}
-              touchableProps={{
-                underlayColor: "transparent"
-              }}
-              onChange={this._updateSections}
-            />
-          </LinearGradient>
-        </ScrollContainer>
+        <Query query="GET_FAQ">
+          {({ loading, error, data, refetch, networkStatus }) => {
+            if (loading) return <Loader fullscreen />;
+            if (error) {
+              return <View />;
+            }
+
+            return (
+              <ScrollContainer withPadding>
+              <LinearGradient
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                colors={["#fff", "#EFF3FF"]}
+                style={styles.container}
+              >
+                <Accordion
+                  activeSections={this.state.activeSections}
+                  sections={data.faqs}
+                  renderSectionTitle={this._renderSectionTitle}
+                  renderHeader={this._renderHeader}
+                  renderContent={this._renderContent}
+                  touchableProps={{
+                    underlayColor: "transparent"
+                  }}
+                  onChange={this._updateSections}
+                />
+              </LinearGradient>
+            </ScrollContainer>
+            );
+          }}
+        </Query>
       </Container>
     );
   }

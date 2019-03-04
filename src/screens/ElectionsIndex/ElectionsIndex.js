@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
   },
   electionsList: {
     paddingTop: 10,
+  },
+  noElectionsBox: {
+    paddingTop: 30,
+    paddingLeft: 25,
+    paddingRight: 25,
   }
 });
 
@@ -80,23 +85,57 @@ class ElectionsIndex extends React.Component {
                   {t('electionsIndex.boxText') !== "" ?
                     <Txt copy center>{t('electionsIndex.boxText')}</Txt> : null}
                 </BoxGradient>
-
-                <View style={styles.electionsList}>
-                  {data.elections.map(election => {
-                    return (
-                      <ElectionPill
-                        key={election.id}
-                        {...election}
-                        onPress={() => {
-                          this.props.navigation.navigate("Details", {
-                            title: election.name,
-                            election: election
-                          });
-                        }}
-                      />
-                    )
-                  })}
+                
+                {data.elections.length > 0 ?
+                  <View style={styles.electionsList}>
+                    {data.elections.map(election => {
+                      return (
+                        <ElectionPill
+                          key={election.id}
+                          {...election}
+                          onPress={() => {
+                            this.props.navigation.navigate("Details", {
+                              title: election.name,
+                              election: election
+                            });
+                          }}
+                        />
+                      )
+                    })}
+                  </View>
+                :
+                <View style={styles.noElectionsBox}>
+                  <Txt copy center>{t('electionsIndex.noElections')}</Txt>
                 </View>
+                }
+                
+                
+                {data.pastElections.length > 0 ?
+                  <View style={{ paddingTop: 60, paddingBottom: 100 }}>
+                    <BoxGradient>
+                      <Title mainBig center>{t('electionsIndex.boxPastTitle')}</Title>
+                      {t('electionsIndex.boxPastText') !== "" ?
+                        <Txt copy center>{t('electionsIndex.boxText')}</Txt> : null}
+                    </BoxGradient>
+
+                    <View style={styles.electionsList}>
+                      {data.pastElections.map(election => {
+                        return (
+                          <ElectionPill
+                            key={election.id}
+                            {...election}
+                            onPress={() => {
+                              this.props.navigation.navigate("Details", {
+                                title: election.name,
+                                election: election
+                              });
+                            }}
+                          />
+                        )
+                      })}
+                    </View>
+                  </View>
+                  : null}
               </ScrollContainer>
             )
           }}

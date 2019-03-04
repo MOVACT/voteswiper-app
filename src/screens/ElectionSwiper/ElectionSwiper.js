@@ -49,7 +49,7 @@ class ElectionSwiper extends React.Component {
     // firebase.analytics().setCurrentScreen("ElectionSwiper", "ElectionSwiper");
   }
 
-  trackAnswer = (question, answer) => {
+  trackAnswer = (answer, question) => {
     /* fetch("https://api.wahlswiper.de/v1/track-answer", {
       method: "POST",
       headers: {

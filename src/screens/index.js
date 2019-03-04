@@ -4,6 +4,7 @@ import SettingsCountry from './SettingsCountry/SettingsCountry';
 import ElectionDetails from './ElectionDetails/ElectionDetails';
 import ElectionSwiper from './ElectionSwiper/ElectionSwiper';
 import HelpIndex from './HelpIndex/HelpIndex';
+import InfosIndex from './InfosIndex/InfosIndex';
 
 export {
   ElectionsIndex,
@@ -11,5 +12,6 @@ export {
   SelectCountry,
   SettingsCountry,
   ElectionSwiper,
-  HelpIndex
+  HelpIndex,
+  InfosIndex,
 };

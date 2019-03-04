@@ -45,6 +45,33 @@ const GET_ELECTIONS = gql`
         }
       }
     }
+    pastElections: elections(locale: $locale, country: $country, past: true) {
+      id
+      name
+      slug
+      card
+      voting_day
+      partner_logo
+      partner_name
+      partner_text
+      voting_day
+      parties {
+        id
+        name
+        slug
+        full_name
+        logo
+        pivot {
+          program
+          program_pdf
+          answers {
+            question_id
+            answer
+            reason
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -62,10 +89,21 @@ const GET_QUESTIONS = gql`
   }
 `;
 
+const GET_FAQ = gql`
+  query Faqs($locale: String!) {
+    faqs(locale: $locale) {
+      id
+      title
+      content
+    }
+  }
+`;
+
 const queries = {
   GET_COUNTRIES,
   GET_ELECTIONS,
-  GET_QUESTIONS
+  GET_QUESTIONS,
+  GET_FAQ
 };
 
 class ApiQuery extends React.Component {

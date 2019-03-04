@@ -13,7 +13,7 @@ if (width < iPhone6) {
 export default StyleSheet.create({
   withPadding: {
     paddingHorizontal: widthPaddingPadding,
-    paddingTop: headerHeight() + 10,
+    //paddingTop: headerHeight() + 10,
     paddingBottom: widthPaddingPadding,
   },
   flex: {
