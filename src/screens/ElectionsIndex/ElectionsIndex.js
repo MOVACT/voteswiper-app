@@ -4,7 +4,7 @@ import { inject, observer } from "mobx-react/native";
 import Matomo from "react-native-matomo";
 import { Container, Txt, Loader, ScrollContainer, BoxGradient, Title, ElectionPill } from "components";
 import stores from "stores";
-import { getCountryFlag, t, Query } from "util";
+import { getCountryFlag, t, Query, locale } from "util";
 import ChevronRight from "../../icons/ChevronRight";
 
 const styles = StyleSheet.create({
@@ -28,7 +28,33 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingLeft: 25,
     paddingRight: 25,
-  }
+  },
+  info: {
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.2)',
+    paddingBottom: 15,
+    paddingLeft: 25,
+    paddingRight: 25,
+    borderRadius: 5,
+    marginBottom: 15,
+  },
+  infoActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    paddingTop: 15,
+  },
+  infoAction: {
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+  },
+  infoMainAction: {
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    backgroundColor: '#fff',
+    borderRadius: 3,
+  },
 });
 
 class ElectionsIndex extends React.Component {
@@ -56,6 +82,8 @@ class ElectionsIndex extends React.Component {
   }
 
   render() {
+    const languageNotice = this.props.app.languageNotice;
+    const shouldShow = languageNotice.shouldShow;
     return (
       <Container>
         <Query query="GET_ELECTIONS" variables={{country: this.props.app.country.id}}>
@@ -64,6 +92,8 @@ class ElectionsIndex extends React.Component {
             if (error) {
               return <View />;
             }
+
+            console.log('render2');
 
             return (
               <ScrollContainer
@@ -80,6 +110,17 @@ class ElectionsIndex extends React.Component {
                   />
                 }
               >
+                {locale() === "en" && shouldShow === true ?
+                  <View style={styles.info}>
+                    <Title h1 center>Do you speak german?</Title>
+                    <Txt copy center>If so, then we advise you to switch the app language to german to get the questionairre in the original language it was created.</Txt>
+                    
+                    <View style={styles.infoActions}>
+                      <TouchableOpacity onPress={() => { this.props.app.setLanguage(this.props.app.country.country_code); }} style={styles.infoMainAction}><Txt copy center medium style={{ color: '#392F52' }}>Switch to german</Txt></TouchableOpacity>
+                      <TouchableOpacity onPress={() => { this.props.app.dismissLanguageNotice(); }} style={styles.infoAction}><Txt copy center medium>Dismiss</Txt></TouchableOpacity>
+                    </View>
+                  </View>
+                 : null}
                 <BoxGradient>
                   <Title mainBig center>{t('electionsIndex.boxTitle')}</Title>
                   {t('electionsIndex.boxText') !== "" ?

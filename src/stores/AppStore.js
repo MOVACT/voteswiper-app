@@ -3,7 +3,8 @@ import { persist } from 'mobx-persist';
 
 class AppStore {
   @persist('object') @observable country = null;
-  @persist @observable language = null;
+  @observable language = null;
+  @observable languageNotice = { shouldShow: true };
 
   @action setCountry = country => {
     this.country = country;
@@ -20,6 +21,15 @@ class AppStore {
 
   @action completeIntro = () => {
     this.didCompleteIntro = 2;
+  }
+
+  @action setLanguage(locale) {
+    this.language = locale;
+    this.languageNotice = { shouldShow: false };
+  }
+
+  @action dismissLanguageNotice = () => {
+    this.languageNotice = { shouldShow: false };
   }
 }
 
