@@ -43,12 +43,12 @@ class ElectionPill extends React.Component {
         onPressOut={() => {
           this.setState({ active: false });
         }}
-        /*disabled={!this.props.active}*/
+        disabled={!this.props.active}
       >
         <View
           style={[
             styles.shadow,
-            // this.props.active ? {} : styles.disabled,
+            this.props.active ? {} : styles.disabled,
           ]}
         >
           <View style={styles.cardHolder}>
@@ -70,7 +70,11 @@ class ElectionPill extends React.Component {
             <View style={styles.content}>
               <Txt medium style={styles.title}>{this.props.name}</Txt>
               <Txt medium style={styles.subTitle}>
-                {moment(this.props.voting_day).format('LL')}
+                {this.props.active ?
+                  moment(this.props.voting_day).format('LL')
+                  :
+                  `Verfügbar ab ${moment(this.props.active_date).format('LL')}`
+                }
               </Txt>
             </View>
             <View style={styles.iconHolder}>

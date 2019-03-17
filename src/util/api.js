@@ -11,6 +11,7 @@ const GET_COUNTRIES = gql`
       name
       slug
       country_code
+      language_code
       elections_count
     }
   }
@@ -28,6 +29,8 @@ const GET_ELECTIONS = gql`
       partner_name
       partner_text
       voting_day
+      active
+      active_date
       parties {
         id
         name
@@ -55,6 +58,8 @@ const GET_ELECTIONS = gql`
       partner_name
       partner_text
       voting_day
+      active
+      active_date
       parties {
         id
         name

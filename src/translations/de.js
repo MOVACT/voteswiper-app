@@ -1,4 +1,6 @@
 const lang = {
+  "name": "Deutsch",
+
   "navigation.backTitle": "Zurück",
   "navigation.helpTitle": "FAQ",
   "navigation.electionsTitle": "WAHLEN",
@@ -37,6 +39,12 @@ const lang = {
   "settingsCountry.title": "Länder",
   "settingsCountry.boxTitle": "Wechsle in ein anderes Land",
   "settingsCountry.boxText": "Wir haben die Fragen aus anderen Ländern neben den Landessprachen auch auf Englisch übersetzt, sodass du dich auch über die Parteien und ihre Standpunkte dort informieren kannst.",
+
+  "settings.title": "Einstellungen",
+  "settingsLanguage.boxTitle": "App-Sprache",
+  "settingsLanguage.boxText": "Ändere die Sprache, in der die App angezeigt wird.",
+  "settings.systemDefault": "System-Standard",
+  "settings.systemDefaultText": "Nutzt die Sprache deines Telefons, falls eine Übersetzung existiert. Wenn nicht, dann Englisch.",
 
   // Screen:ElectionsIndex
   "electionsIndex.boxTitle": "Aktuelle Wahlen",

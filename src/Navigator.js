@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Dimensions, Platform, TouchableOpacity } from "react-native";
 import { createAppContainer, createStackNavigator, createBottomTabNavigator } from "react-navigation";
-import { ElectionsIndex, InfosIndex, SettingsCountry, ElectionDetails, ElectionSwiper, HelpIndex } from "screens";
+import { ElectionsIndex, InfosIndex, SettingsCountry, Settings, ElectionDetails, ElectionSwiper, HelpIndex } from "screens";
 import { t } from "util";
 import HelpIcon from "./icons/HelpCircle";
 import InfosIcon from "./icons/InfoCircle";
@@ -70,6 +70,7 @@ const ElectionsStack = createStackNavigator(
   {
     Index: { screen: ElectionsIndex },
     SettingsCountry: { screen: SettingsCountry },
+    Settings: { screen: Settings },
     Details: { screen: ElectionDetails },
   },
   {
@@ -84,7 +85,7 @@ const ElectionsStack = createStackNavigator(
       headerRight: (
         <TouchableOpacity
           onPress={() => {
-            console.log(navigation);
+            navigation.navigate('Settings');
           }}
           style={{ marginRight: 30 }}
         >

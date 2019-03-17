@@ -118,7 +118,7 @@ class ElectionsIndex extends React.Component {
                     
                     <View style={styles.infoActions}>
                       <TouchableOpacity onPress={() => {
-                        this.props.app.setLanguage(this.props.app.country.country_code);
+                        this.props.app.setLanguage(this.props.app.country.language_code);
                         RNRestart.Restart();
                       }} style={styles.infoMainAction}><Txt copy center medium style={{ color: '#392F52' }}>Switch to german</Txt></TouchableOpacity>
                       <TouchableOpacity onPress={() => { this.props.app.dismissLanguageNotice(); }} style={styles.infoAction}><Txt copy center medium>Dismiss</Txt></TouchableOpacity>

@@ -350,6 +350,13 @@
 			remoteGlobalIDString = 3245CDED1BFEE35C00EABF68;
 			remoteInfo = RCTRestart;
 		};
+		32E16CDB223E92AD00931DF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FCA765DD064C99B932D52B /* BNFMatomo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A01249D21B5AF5E004E207B;
+			remoteInfo = BNFMatomo;
+		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -529,6 +536,8 @@
 		320A85422223404100ECE289 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32A051032225DBD20050CB5E /* voteswiper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "voteswiper-Bridging-Header.h"; sourceTree = "<group>"; };
 		32A051042225DBD30050CB5E /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		32E16CC2223E8E3C00931DF4 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		32E16CC3223E8E4300931DF4 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A4E17E7702D412BBA1D3434 /* RNShare.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNShare.xcodeproj; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; };
 		496ED1D6BFD2403C9DC5924C /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 		4A958FD314BD497C9211829E /* RNBlur.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNBlur.xcodeproj; path = "../node_modules/react-native-blur/ios/RNBlur.xcodeproj"; sourceTree = "<group>"; };
@@ -1034,6 +1043,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				32E16CDC223E92AD00931DF4 /* PBXTargetDependency */,
 				320A852422233A4E00ECE289 /* PBXTargetDependency */,
 			);
 			name = voteswiper;
@@ -1148,6 +1158,8 @@
 				it,
 				nl,
 				pl,
+				sv,
+				fi,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -1773,6 +1785,11 @@
 			target = 320A851C22233A4E00ECE289 /* OneSignalNotificationServiceExtension */;
 			targetProxy = 320A852322233A4E00ECE289 /* PBXContainerItemProxy */;
 		};
+		32E16CDC223E92AD00931DF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BNFMatomo;
+			targetProxy = 32E16CDB223E92AD00931DF4 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1796,6 +1813,8 @@
 				320A853722233CAC00ECE289 /* it */,
 				320A853822233CC600ECE289 /* nl */,
 				320A853922233CE200ECE289 /* pl */,
+				32E16CC2223E8E3C00931DF4 /* sv */,
+				32E16CC3223E8E4300931DF4 /* fi */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

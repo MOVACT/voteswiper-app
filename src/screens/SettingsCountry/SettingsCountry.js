@@ -2,6 +2,7 @@ import React from "react";
 import { View, RefreshControl } from "react-native";
 import { StackActions, NavigationActions } from 'react-navigation';
 import { inject, observer } from "mobx-react/native";
+import OneSignal from "react-native-onesignal";
 import { Container, ScrollContainer, Txt, BoxGradient } from "components";
 import { Title, CountryPill, Loader } from "components";
 import { t, Query } from "util";
@@ -47,6 +48,10 @@ class SettingsCountry extends React.Component {
                     return (
                       <CountryPill
                         onPress={() => {
+                          OneSignal.sendTags({
+                            country_id: country.id,
+                            country_slug: country.slug
+                          });
                           this.props.app.setCountry(country);
                           const resetAction = StackActions.reset({
                             index: 0,
@@ -63,6 +68,7 @@ class SettingsCountry extends React.Component {
                     );
                   })}
                 </View>
+                <View style={{ height: 90 }} />
               </ScrollContainer>
             );
           }}

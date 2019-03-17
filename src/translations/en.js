@@ -1,4 +1,6 @@
 const lang = {
+  "name": "English",
+
   "navigation.backTitle": "Back",
   "navigation.helpTitle": "FAQ",
   "navigation.electionsTitle": "ELECTIONS",
@@ -37,6 +39,12 @@ const lang = {
   "settingsCountry.title": "Countries",
   "settingsCountry.boxTitle": "Change country",
   "settingsCountry.boxText": "We have translated the questionaiires from other countries in English so you can try them out and learn about the other countries parties.",
+
+  "settings.title": "Settings",
+  "settingsLanguage.boxTitle": "App Language",
+  "settingsLanguage.boxText": "Pick the language you want to use the app in.",
+  "settings.systemDefault": "Default",
+  "settings.systemDefaultText": "Uses your phone's language if translations are available, otherwise english.",
 
   // Screen:ElectionsIndex
   "electionsIndex.boxTitle": "Current Elections",
