@@ -69,9 +69,9 @@ const lang = {
   "infosIndex.paragraph2": "Wir stehen auf klare Kante. Bei uns gibt’s nur „Ja“ und „Nein“, kein „vielleicht“. Das bringt die Parteien manchmal ins Schwitzen, hilft dir aber bei der Entscheidung. Natürlich kannst du einzelne Fragen auch ohne Antwort überspringen.",
   "infosIndex.paragraph3": "Wählen gehen ist so einfach wie Online-Dating – der „Match“ hält dann jedoch mindestens eine Legislaturperiode lang.",
   "infosIndex.imprintButton": "Imprint",
-  "infosIndex.imprintLink": "https://www.voteswiper.org/de/imprint",
+  "infosIndex.imprintLink": "https://www.voteswiper.org/en/imprint",
   "infosIndex.privacyButton": "Privacy",
-  "infosIndex.privacyLink": "https://www.voteswiper.org/de/privacy",
+  "infosIndex.privacyLink": "https://www.voteswiper.org/en/privacy",
 }
 
 export default lang;
