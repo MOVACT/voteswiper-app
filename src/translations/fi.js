@@ -6,6 +6,9 @@ const lang = {
   "navigation.electionsTitle": "VAALIT",
   "navigation.infoTitle": "TIETOA",
 
+  // Component:ElectionPill
+  "electionPill.availableFrom": "Saatavilla: {1}",
+
   // Countdown
   "countdown.days": "Päivää",
   "countdown.hours": "Tuntia",

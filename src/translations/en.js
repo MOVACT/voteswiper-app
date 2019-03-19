@@ -6,6 +6,9 @@ const lang = {
   "navigation.electionsTitle": "ELECTIONS",
   "navigation.infoTitle": "ABOUT",
 
+  // Component:ElectionPill
+  "electionPill.availableFrom": "Available from {1}",
+
   // Countdown
   "countdown.days": "DAYS",
   "countdown.hours": "HOURS",

@@ -6,6 +6,9 @@ const lang = {
   "navigation.electionsTitle": "Választások",
   "navigation.infoTitle": "Rólunk",
 
+  // Component:ElectionPill
+  "electionPill.availableFrom": "Elérhető: {1}",
+
   // Countdown
   "countdown.days": "Nap",
   "countdown.hours": "Óra",

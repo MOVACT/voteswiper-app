@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TouchableWithoutFeedback, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { moment, cdn } from 'util';
+import { moment, cdn, t } from 'util';
 import ArrowRightCircle from '../../icons/ArrowRightCircle';
 import Txt from '../Txt/Txt';
 import styles from './styles';
@@ -73,7 +73,7 @@ class ElectionPill extends React.Component {
                 {this.props.active ?
                   moment(this.props.voting_day).format('LL')
                   :
-                  `Verfügbar ab ${moment(this.props.active_date).format('LL')}`
+                  t('electionPill.availableFrom', moment(this.props.active_date).format('LL'))
                 }
               </Txt>
             </View>
