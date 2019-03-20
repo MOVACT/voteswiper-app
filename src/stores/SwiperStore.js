@@ -7,6 +7,7 @@ class SwiperStore {
 
   @action
   setElection = election => {
+    // console.log('SET ELECTION', election);
     this.election = election;
   };
 

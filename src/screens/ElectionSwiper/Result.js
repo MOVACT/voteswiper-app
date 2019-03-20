@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 import { captureRef } from "react-native-view-shot";
 import LinearGradient from "react-native-linear-gradient";
 import { inject, observer } from "mobx-react";
@@ -14,6 +15,7 @@ import {
   TouchableOpacity,
   Linking
 } from "react-native";
+import { config } from "common";
 import { ButtonDark, ResultBar, Loader, Title, Txt } from "components";
 import styles from "./styles";
 import Download from "../../icons/Download";
@@ -39,7 +41,7 @@ class Result extends React.Component {
     this.delay = 0;
 
     this.props.parties.map(party => {
-      this.partyScore.push({ name: party.slug, score: 0 });
+      this.partyScore.push({ name: party.slug, id: party.id, score: 0 });
       return null;
     });
 
@@ -62,7 +64,6 @@ class Result extends React.Component {
 
         this.props.parties.map(party => {
           let addToScore = 0;
-
 
           const partyAnswer = party.pivot.answers.find(
             a => a.question_id === question.id
@@ -101,18 +102,22 @@ class Result extends React.Component {
   }
 
   trackResult = (answers, result, relevantQuestionsCount) => {
-    fetch("https://api.wahlswiper.de/v1/result", {
-      method: "POST",
+    axios.post(config.apiUrl, {
+      query: `mutation Result($election_id: Int!, $result: String!, $top_party_id: Int!, $platform: String!) {
+        result(election_id: $election_id, result: $result, top_party_id: $top_party_id, platform: $platform) {
+          success
+        }
+      }`,
+      variables: {
+        election_id: this.props.swiper.election.id,
+        result: JSON.stringify(answers),
+        top_party_id: result[0].id,
+        platform: Platform.OS,
+      }
+    }, {
       headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        election: this.props.swiper.election.slug,
-        relevantQuestionsCount: relevantQuestionsCount,
-        answers: answers,
-        result: result,
-        device: Platform.OS
-      })
+        'Content-Type': 'application/json'
+      }
     });
   };
 

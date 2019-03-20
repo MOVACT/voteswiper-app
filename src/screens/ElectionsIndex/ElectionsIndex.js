@@ -94,7 +94,7 @@ class ElectionsIndex extends React.Component {
               return <View />;
             }
 
-            console.log('render2');
+            //console.log('render2');
 
             return (
               <ScrollContainer
@@ -170,6 +170,7 @@ class ElectionsIndex extends React.Component {
                             key={election.id}
                             {...election}
                             onPress={() => {
+                              console.log(data.pastElections, election);
                               this.props.navigation.navigate("Details", {
                                 title: election.name,
                                 election: election

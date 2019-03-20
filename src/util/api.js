@@ -33,14 +33,17 @@ const GET_ELECTIONS = gql`
       active_date
       parties {
         id
+        election_id
         name
         slug
         full_name
         logo
         pivot {
+          id
           program
           program_pdf
           answers {
+            id
             question_id
             answer
             reason
@@ -62,14 +65,17 @@ const GET_ELECTIONS = gql`
       active_date
       parties {
         id
+        election_id
         name
         slug
         full_name
         logo
         pivot {
+          id
           program
           program_pdf
           answers {
+            id
             question_id
             answer
             reason

@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   Platform
 } from "react-native";
+import axios from "axios";
+import { config } from "common";
 import { Container, Swiper, Txt, FullScreenVideo } from "components";
 import NoButton from "./partials/NoButton";
 import YesButton from "./partials/YesButton";
@@ -50,25 +52,23 @@ class ElectionSwiper extends React.Component {
   }
 
   trackAnswer = (answer, question) => {
-    /* fetch("https://api.wahlswiper.de/v1/track-answer", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        election: this.props.swiper.election.slug,
-        questionId: question,
+    axios.post(config.apiUrl, {
+      query: `mutation Swipe($election_id: Int!, $question_id: Int!, $answer: Int!, $platform: String!) {
+        swipe(election_id: $election_id, question_id: $question_id, answer: $answer, platform: $platform) {
+          success
+        }
+      }`,
+      variables: {
+        election_id: this.props.swiper.election.id,
+        question_id: question,
         answer: answer,
-        device: Platform.OS
-      })
-    });*7
-
-    // FIREBASE
-    /*firebase.analytics().logEvent("thesis_answered", {
-      id: question,
-      election: this.props.swiper.election.slug,
-      answer: answer
-    });*/
+        platform: Platform.OS,
+      }
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
   };
 
   nopeView = pan => {

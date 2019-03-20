@@ -23,7 +23,7 @@ class Init extends React.Component {
     }
 
     const Navigator = require('./Navigator').default;
-    console.log(Navigator);
+    //console.log(Navigator);
     return (
       <Navigator />
     );

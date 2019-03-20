@@ -49,7 +49,7 @@ class ElectionDetails extends React.Component {
             const election = this.props.navigation.state.params.election;
 
             return (
-              <ScrollContainer withPadding contentInset={{ top: 0 }} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', paddingTop: headerHeight() + 10, paddingBottom: headerHeight() + 10 }}>
+              <ScrollContainer withPadding contentInset={{ top: 0 }} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: headerHeight() + 10 }}>
                 <BoxGradient>
                   {moment().isAfter(moment(election.voting_day)) ? (
                     <View>

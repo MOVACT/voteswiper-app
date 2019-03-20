@@ -40,7 +40,7 @@ class Settings extends React.Component {
 
   render() {
     const { language } = this.props.app;
-    console.log(language);
+    // console.log(language);
     return (
       <Container>
         <ScrollContainer
