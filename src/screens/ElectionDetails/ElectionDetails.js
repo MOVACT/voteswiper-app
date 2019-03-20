@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
-import { View } from "react-native";
+import { View, Platform } from "react-native";
 import Matomo from "react-native-matomo";
+import axios from "axios";
 import {
   Container,
   ScrollContainer,
@@ -16,7 +17,7 @@ import {
 } from "components";
 import styles from "./styles";
 import { moment, Query, t, locale } from "util";
-import { headerHeight } from "../../common";
+import { headerHeight, config } from "common";
 // mport PartnerInfo from './PartnerInfo';
 
 // eslint-disable-next-line
@@ -35,6 +36,24 @@ class ElectionDetails extends React.Component {
   componentDidMount() {
     Matomo.trackScreen(`${this.props.navigation.state.params.election.slug}`, 'ElectionDetails');
   }
+
+  trackInitiation = (election) => {
+    axios.post(config.apiUrl, {
+      query: `mutation Initiate($election_id: Int!, $platform: String!) {
+        initiate(election_id: $election_id, platform: $platform) {
+          success
+        }
+      }`,
+      variables: {
+        election_id: election,
+        platform: Platform.OS,
+      }
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  };
 
   render() {
     return (
@@ -73,6 +92,7 @@ class ElectionDetails extends React.Component {
                 <Box
                   actionText={t('electionDetails.startButtonText')}
                   actionOnPress={() => {
+                    this.trackInitiation(election.id);
                     this.props.swiper.setElection({
                       ...election,
                       questions: data.questions,

@@ -536,6 +536,7 @@
 		320A85422223404100ECE289 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		32A051032225DBD20050CB5E /* voteswiper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "voteswiper-Bridging-Header.h"; sourceTree = "<group>"; };
 		32A051042225DBD30050CB5E /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		32DFB4872242D18500921F6B /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32E16CC2223E8E3C00931DF4 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32E16CC3223E8E4300931DF4 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A4E17E7702D412BBA1D3434 /* RNShare.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNShare.xcodeproj; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; };
@@ -1160,6 +1161,7 @@
 				pl,
 				sv,
 				fi,
+				da,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -1815,6 +1817,7 @@
 				320A853922233CE200ECE289 /* pl */,
 				32E16CC2223E8E3C00931DF4 /* sv */,
 				32E16CC3223E8E4300931DF4 /* fi */,
+				32DFB4872242D18500921F6B /* da */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
