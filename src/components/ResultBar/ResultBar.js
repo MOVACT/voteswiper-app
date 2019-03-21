@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { View, Animated, Easing, TouchableOpacity } from "react-native";
-// import { Icon } from "util";
 import Txt from "../Txt/Txt";
 import styles from "./styles";
+import ChevronRight from "../../icons/ChevronRight";
 
 class ResultBar extends React.Component {
   static propTypes = {
@@ -138,14 +138,9 @@ class ResultBar extends React.Component {
                     "de-DE"
                   )}%
                 </Txt>
-                {/* {this.props.shareBar !== true ? (
-                  <Icon
-                    name="chevron-right"
-                    size={12}
-                    color="#fff"
-                    style={styles.icon}
-                  />
-                ) : null} */}
+                {this.props.shareBar !== true ? (
+                  <View style={styles.icon}><ChevronRight /></View>
+                ) : null}
               </View>
             </Animated.View>
           </View>

@@ -21,6 +21,7 @@ const lang = {
   "swiper.questionNumber": "Fråga {1} utav {2}",
   "swiper.yes": "Ja",
   "swiper.no": "Nej",
+  "swiper.none": "Noben",
 
   "swiperSelectParties.text": "Välj nu de partier du vill jämföra dina svar med. Du kan välja så många partier som du vill.",
   "swiperSelectParties.checkAll": "Markera alla",
@@ -33,6 +34,13 @@ const lang = {
   "swiperResult.shareTitle": "#VoteSwiper resultat",
   "swiperResult.shareMessage": "Mitt #VoteSwiper-resultat för {1}",
   "swiperResult.screenshotTitle": "VoteSwiper-Resultat för {1}",
+
+  "swiperResult.comparisonWith": "Tvoja primerjava s »{1}«",
+  "swiperResult.readReasoning": "Preberi razlogi stranke »",
+  "swiperResult.closeReasoning": "Blizu",
+  "swiperResult.noReason": "Stranka ni podala razlogov svoje odločitve.",
+  "swiperResult.yourAnswer": "Tvoj odgovor",
+  "swiperResult.party": "Stranka",
 
   // Screen:SelectCountry,
   "selectCountry.title": "Trevligt att du är med!",

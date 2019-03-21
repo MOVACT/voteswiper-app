@@ -21,6 +21,7 @@ const lang = {
   "swiper.questionNumber": "Kysymys {1} / {2}",
   "swiper.yes": "Kyllä",
   "swiper.no": "Ei",
+  "swiper.none": "Ei mitään",
 
   "swiperSelectParties.text": "Valitse puolueet, joiden kanssa haluat vertailla vastauksia. Voit valita niin monta puoluetta kuin haluat.",
   "swiperSelectParties.checkAll": "Poista kaikki",
@@ -33,6 +34,13 @@ const lang = {
   "swiperResult.shareTitle": "#VoteSwiper tulokset",
   "swiperResult.shareMessage": "Minun #VoteSwiper-tulokseni {1}",
   "swiperResult.screenshotTitle": "#VoteSwiper-tulokseni {1}",
+
+  "swiperResult.comparisonWith": "Vertailu sinun ja »{1}« kanssa",
+  "swiperResult.readReasoning": "Lue puolueen perustelut »",
+  "swiperResult.closeReasoning": "Sulje päättely",
+  "swiperResult.noReason": "Puolue ei perustellut vastaustaan.",
+  "swiperResult.yourAnswer": "Vastauksesi",
+  "swiperResult.party": "Puolue",
 
   // Screen:SelectCountry,
   "selectCountry.title": "Kiva että olet mukana!",

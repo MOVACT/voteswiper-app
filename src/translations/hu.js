@@ -21,6 +21,7 @@ const lang = {
   "swiper.questionNumber": "Kérdés {1}/{2}",
   "swiper.yes": "Igen",
   "swiper.no": "Nem",
+  "swiper.none": "Egyik sem",
 
   "swiperSelectParties.text": "Válaszd ki, melyik pártokkal hasonlítsuk össze a véleményed. Bármennyit választhatsz.",
   "swiperSelectParties.checkAll": "Összes kijelölése",
@@ -33,6 +34,13 @@ const lang = {
   "swiperResult.shareTitle": "#VoteSwiper eredmény",
   "swiperResult.shareMessage": "Az én #VoteSwiper eredményem",
   "swiperResult.screenshotTitle": "VoteSwiper eredmény {1}",
+
+  "swiperResult.comparisonWith": "A »{1}« nézeteihez így viszonyulsz",
+  "swiperResult.readReasoning": "Olvasd el a párt indoklását »",
+  "swiperResult.closeReasoning": "Záró érvelés",
+  "swiperResult.noReason": "Ez a párt nem indokolta a döntését.",
+  "swiperResult.yourAnswer": "A te válaszod",
+  "swiperResult.party": "Párt",
 
   // Screen:SelectCountry,
   "selectCountry.title": "Köszönjük hogy itt vagy!",

@@ -21,6 +21,7 @@ const lang = {
   "swiper.questionNumber": "Frage {1} von {2}",
   "swiper.yes": "Ja",
   "swiper.no": "Nein",
+  "swiper.none": "Keine",
 
   "swiperSelectParties.text": "Wähle nun noch die Parteien aus, mit denen du deine Antworten vergleichen möchtest. Du kannst beliebig viele Parteien auswählen.",
   "swiperSelectParties.checkAll": "Alle Auswählen",
@@ -33,6 +34,13 @@ const lang = {
   "swiperResult.shareTitle": "#WahlSwiper Ergebnis",
   "swiperResult.shareMessage": "Mein #WahlSwiper-Ergebnis zur {1}",
   "swiperResult.screenshotTitle": "WahlSwiper-Ergebnis zur {1}",
+
+  "swiperResult.comparisonWith": "Dein Vergleich mit »{1}«",
+  "swiperResult.readReasoning": "Begründung der Partei lesen »",
+  "swiperResult.closeReasoning": "Begründung schließen",
+  "swiperResult.noReason": "Die Partei hat die Entscheidung nicht begründet.",
+  "swiperResult.yourAnswer": "Deine Antwort",
+  "swiperResult.party": "Partei",
 
   // Screen:SelectCountry,
   "selectCountry.title": "Schön, dass du dabei bist!",

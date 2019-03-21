@@ -21,6 +21,7 @@ const lang = {
   "swiper.questionNumber": "Spørgsmål {1} af {2}",
   "swiper.yes": "Ja",
   "swiper.no": "Nej",
+  "swiper.none": "Ingen",
 
   "swiperSelectParties.text": "Vælg nu det parti som du gerne vil sammenligne dine svar med. Du kan vælge flere partier.",
   "swiperSelectParties.checkAll": "Vælg alle",
@@ -33,6 +34,13 @@ const lang = {
   "swiperResult.shareTitle": "#VoteSwiper resultat",
   "swiperResult.shareMessage": "Mit #VoteSwiper resultat for {1}",
   "swiperResult.screenshotTitle": "VoteSwiper resultat for {1}",
+
+  "swiperResult.comparisonWith": "Du sammenlignes med »{1}«",
+  "swiperResult.readReasoning": "Lyt partiets ræsonnement »",
+  "swiperResult.closeReasoning": "Luk argumentationen",
+  "swiperResult.noReason": "Partiet begrundede ikke denne beslutning.",
+  "swiperResult.yourAnswer": "Dit svar",
+  "swiperResult.party": "Parti",
 
   // Screen:SelectCountry,
   "selectCountry.title": "Tak for din deltagelse!",

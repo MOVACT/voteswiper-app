@@ -21,6 +21,7 @@ const lang = {
   "swiper.questionNumber": "Question {1} of {2}",
   "swiper.yes": "Yes",
   "swiper.no": "No",
+  "swiper.none": "None",
 
   "swiperSelectParties.text": "Now select the parties with which you want to compare your answers. You can select as many parties as you like.",
   "swiperSelectParties.checkAll": "Choose all",
@@ -33,6 +34,13 @@ const lang = {
   "swiperResult.shareTitle": "#VoteSwiper Result",
   "swiperResult.shareMessage": "My #VoteSwiper-Result for the {1}",
   "swiperResult.screenshotTitle": "VoteSwiper-Result for {1}",
+
+  "swiperResult.comparisonWith": "Your comparison with »{1}«",
+  "swiperResult.readReasoning": "Read the party's reasoning »",
+  "swiperResult.closeReasoning": "Close reasoning",
+  "swiperResult.noReason": "The party did not give reasons for its decision.",
+  "swiperResult.yourAnswer": "Your answer",
+  "swiperResult.party": "Party",
 
   // Screen:SelectCountry,
   "selectCountry.title": "Great to have you!",
