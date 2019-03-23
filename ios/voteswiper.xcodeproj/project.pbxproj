@@ -534,6 +534,12 @@
 		320A853C22233EBA00ECE289 /* launch_icon_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_icon_de.png; sourceTree = "<group>"; };
 		320A853E22233F6300ECE289 /* launch_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_icon.png; sourceTree = "<group>"; };
 		320A85422223404100ECE289 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		323FA94F2246A80600B332C9 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		323FA9502246A82B00B332C9 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		323FA9512246A83F00B332C9 /* lt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lt; path = lt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		323FA9522246A85400B332C9 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		323FA9532246A86300B332C9 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		323FA9542246A86D00B332C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32A051032225DBD20050CB5E /* voteswiper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "voteswiper-Bridging-Header.h"; sourceTree = "<group>"; };
 		32A051042225DBD30050CB5E /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		32DFB4872242D18500921F6B /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1162,6 +1168,12 @@
 				sv,
 				fi,
 				da,
+				et,
+				el,
+				lt,
+				ro,
+				sl,
+				es,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -1818,6 +1830,12 @@
 				32E16CC2223E8E3C00931DF4 /* sv */,
 				32E16CC3223E8E4300931DF4 /* fi */,
 				32DFB4872242D18500921F6B /* da */,
+				323FA94F2246A80600B332C9 /* et */,
+				323FA9502246A82B00B332C9 /* el */,
+				323FA9512246A83F00B332C9 /* lt */,
+				323FA9522246A85400B332C9 /* ro */,
+				323FA9532246A86300B332C9 /* sl */,
+				323FA9542246A86D00B332C9 /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

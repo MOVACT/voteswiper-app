@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, ScrollView } from 'react-native';
 import { headerHeight } from 'common';
 import styles from './styles';
+import { isIphoneX } from 'util';
 
 const height = headerHeight();
 
@@ -23,7 +24,7 @@ class ScrollContainer extends React.Component {
           <ScrollView
            {...this.props}
            style={[{
-             marginTop: headerHeight(),
+             marginTop: isIphoneX() ? headerHeight() : headerHeight() + 10,
            }, this.props.style]}
           >
             <View style={this.props.withPadding ? styles.withPadding : {}}>

@@ -42,6 +42,12 @@ const lang = {
   "swiperResult.yourAnswer": "Vastauksesi",
   "swiperResult.party": "Puolue",
 
+  "swiperResult.yourResult": "Sinun tuloksesi",
+  "swiperResult.chooseParties": "Valita puolueita",
+  "swiperResult.share": "Share",
+  "swiperResult.parties": "Puolueet",
+  "swiperResult.filterParties": "Suodata puolueita",
+
   // Screen:SelectCountry,
   "selectCountry.title": "Kiva että olet mukana!",
   "selectCountry.introText": "Aloittaaksesi VoteSwiperin, valitse se maa, jossa asut tai se maa, jossa äänestät.",

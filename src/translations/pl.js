@@ -42,6 +42,12 @@ const lang = {
   "swiperResult.yourAnswer": "Twoja odpowiedź",
   "swiperResult.party": "Partia",
 
+  "swiperResult.yourResult": "Twój rezultat",
+  "swiperResult.chooseParties": "Wybierz partie",
+  "swiperResult.share": "Share",
+  "swiperResult.parties": "Partie",
+  "swiperResult.filterParties": "Filtruj partie",
+
   // Screen:SelectCountry,
   "selectCountry.title": "Witaj!",
   "selectCountry.introText": "Aby rozpocząć, wybierz kraj w którym mieszkasz, lub w którym jesteś uprawiony/a do głosowania.",

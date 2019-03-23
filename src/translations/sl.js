@@ -42,6 +42,12 @@ const lang = {
   "swiperResult.yourAnswer": "Tvoj odgovor",
   "swiperResult.party": "Stranka",
 
+  "swiperResult.yourResult": "Tvoj rezultat",
+  "swiperResult.chooseParties": "Izberite stranke",
+  "swiperResult.share": "Share",
+  "swiperResult.parties": "Stranke",
+  "swiperResult.filterParties": "Filtriraj stranke",
+
   // Screen:SelectCountry,
   "selectCountry.title": "Dobrodošli!",
   "selectCountry.introText": "Za začetek, izberi državo v kateri živiš ali imaš volilno pravico.",

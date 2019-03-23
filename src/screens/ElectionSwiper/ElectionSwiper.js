@@ -374,7 +374,7 @@ class ElectionSwiper extends React.Component {
           </View>
           <View style={styles.headerTitle}>
             <Txt medium style={styles.headerTitleText}>
-              Parteien auswählen
+              {t('swiperResult.chooseParties')}
             </Txt>
           </View>
         </Animated.View>
@@ -396,7 +396,7 @@ class ElectionSwiper extends React.Component {
           </View> */}
           <View style={styles.headerTitle}>
             <Txt medium style={styles.headerTitleText}>
-              Dein Ergebnis
+              {t('swiperResult.yourResult')}
             </Txt>
           </View>
         </Animated.View>

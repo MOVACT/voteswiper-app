@@ -42,6 +42,12 @@ const lang = {
   "swiperResult.yourAnswer": "Sinu vastus",
   "swiperResult.party": "Erakond",
 
+  "swiperResult.yourResult": "Sinu tulemus",
+  "swiperResult.chooseParties": "Valima erakondi",
+  "swiperResult.share": "Share",
+  "swiperResult.parties": "Erakonnad",
+  "swiperResult.filterParties": "Filtreeri erakondi",
+
   // Screen:SelectCountry,
   "selectCountry.title": "Rõõm, et oled meiega!",
   "selectCountry.introText": "Alustamiseks vali riik, kus elad või riik, kus saad hääletada.",

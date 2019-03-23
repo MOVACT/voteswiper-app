@@ -42,6 +42,12 @@ const lang = {
   "swiperResult.yourAnswer": "A te válaszod",
   "swiperResult.party": "Párt",
 
+  "swiperResult.yourResult": "Eredményed",
+  "swiperResult.chooseParties": "Válasszon pártokat",
+  "swiperResult.share": "Share",
+  "swiperResult.parties": "Pártok",
+  "swiperResult.filterParties": "Pártok szűrése",
+
   // Screen:SelectCountry,
   "selectCountry.title": "Köszönjük hogy itt vagy!",
   "selectCountry.introText": "A kezdéshez válaszd ki az országot ahol élsz, vagy ahol szavazásra vagy jogosult.",

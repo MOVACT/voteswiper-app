@@ -42,6 +42,12 @@ const lang = {
   "swiperResult.yourAnswer": "Răspunsul tău",
   "swiperResult.party": "Partid",
 
+  "swiperResult.yourResult": "Rezultatul tău",
+  "swiperResult.chooseParties": "Selectați partidele",
+  "swiperResult.share": "Share",
+  "swiperResult.parties": "Partidele",
+  "swiperResult.filterParties": "Filtrați partidele",
+
   // Screen:SelectCountry,
   "selectCountry.title": "Bine ați venit",
   "selectCountry.introText": "Pentru a începe, vă rugăm să selectați țara în care locuiți sau unde puteți vota.",

@@ -42,6 +42,12 @@ const lang = {
   "swiperResult.yourAnswer": "Tavo atsakymas",
   "swiperResult.party": "Partija",
 
+  "swiperResult.yourResult": "Tavo rezultatas",
+  "swiperResult.chooseParties": "Pasirinkite partijas",
+  "swiperResult.share": "Share",
+  "swiperResult.parties": "Partijas",
+  "swiperResult.filterParties": "Filtruoti partijas",
+
   // Screen:SelectCountry,
   "selectCountry.title": "Šaunu, kad esate su mumis!",
   "selectCountry.introText": "Jei norite pradėti, pasirinkite šalį, kurioje jūs gyvenate, arba kur galite balsuoti.",

@@ -151,7 +151,7 @@ class Result extends React.Component {
             </View>
             <View style={styles.topMatchContent}>
               <Title h5dark style={styles.topMatchSubTitle}>
-                {t('swiperResult.topmatch')}
+                {t('swiperResult.topmatch').toUpperCase()}
               </Title>
               <Txt medium style={styles.topMatchTitle}>
                 {party.full_name}
@@ -251,9 +251,9 @@ class Result extends React.Component {
     return <View style={styles.container}>
       <ScrollView>
         <View style={styles.resultToolbar}>
-          <ButtonDark onPress={this.share} arrow={false} text="Teilen" icon="share" />
+          <ButtonDark onPress={this.share} arrow={false} text={t('swiperResult.share')} icon="share" />
           <View style={styles.resultToolbarButton}>
-            <ButtonDark onPress={this.props.closeResult} arrow={false} text={width < iPhone6 ? "Parteien" : "Parteien filtern"} icon="edit" center />
+            <ButtonDark onPress={this.props.closeResult} arrow={false} text={width < iPhone6 ? t('swiperResult.parties') : t('swiperResult.filterParties')} icon="edit" center />
           </View>
         </View>
 

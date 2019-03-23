@@ -42,6 +42,12 @@ const lang = {
   "swiperResult.yourAnswer": "Tvoj odgovor",
   "swiperResult.party": "Stranka",
 
+  "swiperResult.yourResult": "Ditt resultat",
+  "swiperResult.chooseParties": "Välj parter",
+  "swiperResult.share": "Share",
+  "swiperResult.parties": "Partier",
+  "swiperResult.filterParties": "Filtrera partier",
+
   // Screen:SelectCountry,
   "selectCountry.title": "Trevligt att du är med!",
   "selectCountry.introText": "För att komma igång, välj det land där du bor eller det land där du får rösta.",

@@ -70,6 +70,12 @@ const lang = {
   "electionDetails.infoText": "Σας θέτουμε μια σειρά πολιτικών ερωτήσεων. Απαντήστε στις ερωτήσεις σύροντας δεξιά ή αριστερά και θα σας αποκαλύψουμε το πολιτικό κόμμα που ταιριάζει με τις απόψεις σας.",
   "electionDetails.startButtonText": "Ξεκινήστε τώρα",
 
+  "swiperResult.yourResult": "Το αποτέλεσμά σας",
+  "swiperResult.chooseParties": "Επιλέξτε μέρη",
+  "swiperResult.share": "Share",
+  "swiperResult.parties": "κόμματα",
+  "swiperResult.filterParties": "Φιλτράρετε τα μέρη",
+
   // Screen:HelpIndex
   "helpIndex.title": "Συχνές Ερωτήσεις",
 
