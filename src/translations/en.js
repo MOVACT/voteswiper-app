@@ -23,7 +23,7 @@ const lang = {
   "swiper.no": "No",
   "swiper.none": "None",
 
-  "swiperSelectParties.text": "Now select the parties with which you want to compare your answers. You can select as many parties as you like.",
+  "swiperSelectParties.text": "Select the parties with which you want to compare your answers. You can select as many parties as you like.",
   "swiperSelectParties.checkAll": "Choose all",
   "swiperSelectParties.uncheckAll": "Uncheck all",
   "swiperSelectParties.chooseMinOne": "Select at least one party to proceed",
@@ -49,7 +49,7 @@ const lang = {
   // Screen:SettingsCountry
   "settingsCountry.title": "Countries",
   "settingsCountry.boxTitle": "Change country",
-  "settingsCountry.boxText": "We have translated the questionaiires from other countries in English so you can try them out and learn about the other countries parties.",
+  "settingsCountry.boxText": "We have translated the surveys from all other countries to English so you can take them and learn about the parties in other countries.",
 
   "settings.title": "Settings",
   "settingsLanguage.boxTitle": "App Language",
