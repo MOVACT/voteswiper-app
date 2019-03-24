@@ -24,7 +24,7 @@ class App extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar barStyle="light-content" backgroundColor="#392F52" />
         <ApolloProvider client={client}>
           <Provider {...stores}>
             <Init />

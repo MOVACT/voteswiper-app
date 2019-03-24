@@ -3,17 +3,17 @@ package com.wahlswiper;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.avishayil.rnrestart.ReactNativeRestartPackage;
-import de.bonify.reactnativematomo.MatomoPackage;
-import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
-import com.brentvatne.react.ReactVideoPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
+import com.brentvatne.react.ReactVideoPackage;
+import com.horcrux.svg.SvgPackage;
 import cl.json.RNSharePackage;
 import cl.json.ShareApplication;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
+import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
+import de.bonify.reactnativematomo.MatomoPackage;
 import com.reactcommunity.rnlocalize.RNLocalizePackage;
-import com.horcrux.svg.SvgPackage;
-import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.cmcewen.blurview.BlurViewPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -35,16 +35,16 @@ public class MainApplication extends Application implements ShareApplication, Re
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactNativeRestartPackage(),
-            new MatomoPackage(),
-            new ReactNativeOneSignalPackage(),
-            new ReactVideoPackage(),
             new RNViewShotPackage(),
-            new RNSharePackage(),
-            new RNLocalizePackage(),
+            new ReactVideoPackage(),
             new SvgPackage(),
-            new RNGestureHandlerPackage(),
+            new RNSharePackage(),
+            new ReactNativeRestartPackage(),
+            new ReactNativeOneSignalPackage(),
+            new MatomoPackage(),
+            new RNLocalizePackage(),
             new LinearGradientPackage(),
+            new RNGestureHandlerPackage(),
             new BlurViewPackage()
       );
     }
@@ -66,8 +66,8 @@ public class MainApplication extends Application implements ShareApplication, Re
     SoLoader.init(this, /* native exopackage */ false);
   }
 
-    @Override
-    public String getFileProviderAuthority() {
-          return BuildConfig.APPLICATION_ID + ".provider";
-    }
+  @Override
+  public String getFileProviderAuthority() {
+        return BuildConfig.APPLICATION_ID + ".provider";
+  }
 }

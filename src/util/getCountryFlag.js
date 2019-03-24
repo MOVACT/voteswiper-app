@@ -45,6 +45,7 @@ function getCountryFlag(identifier, props) {
     case "nl":
       return <NL {...passProps} />;
     case "et":
+    case "ee":
       return <ET {...passProps} />;
     case "lt":
       return <LT {...passProps} />;

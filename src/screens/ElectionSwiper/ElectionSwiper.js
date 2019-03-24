@@ -483,7 +483,7 @@ class ElectionSwiper extends React.Component {
     return (
       <Swiper
         ref={swiper => (this.swiper = swiper)}
-        cards={this.props.swiper.election.questions.slice()}
+        cards={this.props.swiper.election.questions.peek()}
         renderCard={cardData => (
           <Card
             {...cardData}

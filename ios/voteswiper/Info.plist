@@ -43,7 +43,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>To save your VoteSwiper result as image.</string>
 	<key>UIAppFonts</key>
