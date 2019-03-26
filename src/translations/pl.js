@@ -1,5 +1,6 @@
 const lang = {
   "name": "Polski",
+  "countryLanguage": "polish",
 
   "navigation.backTitle": "Powrót",
   "navigation.helpTitle": "FAQ",

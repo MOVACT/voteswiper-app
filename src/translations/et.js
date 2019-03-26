@@ -1,5 +1,6 @@
 const lang = {
   "name": "Eesti",
+  "countryLanguage": "estonian",
 
   "navigation.backTitle": "Tagasi",
   "navigation.helpTitle": "KKK",

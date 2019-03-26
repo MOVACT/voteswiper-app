@@ -1,5 +1,6 @@
 const lang = {
   "name": "Ελληνικά",
+  "countryLanguage": "greek",
 
   "navigation.backTitle": "Πίσω",
   "navigation.helpTitle": "FAQ",

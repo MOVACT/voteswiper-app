@@ -1,5 +1,6 @@
 const lang = {
   "name": "Suomalainen",
+  "countryLanguage": "finnish",
 
   "navigation.backTitle": "Takaisin",
   "navigation.helpTitle": "FAQ",
