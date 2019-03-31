@@ -127,7 +127,7 @@ class ApiQuery extends React.Component {
       ...this.props.variables
     };
 
-    variables.locale = locale();
+    variables.locale = 'en';
 
     return variables;
   }
