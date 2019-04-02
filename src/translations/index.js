@@ -1,5 +1,6 @@
 import en from './en';
 import de from './de';
+import cs from './cs';
 import sv from './sv';
 import fi from './fi';
 import hu from './hu';
@@ -17,6 +18,7 @@ import sl from './sl';
 const lang = {
   en: en,
   de: de,
+  cs: cs,
   da: da,
   fi: fi,
   fr: fr,

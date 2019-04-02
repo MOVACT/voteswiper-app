@@ -30,7 +30,7 @@ class ElectionDetails extends React.Component {
 
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.state.params.title}`,
-    headerRight: <ShareButton message="Probiere den WahlSwiper aus: " url={`https://www.wahlswiper.de/wahlen/${navigation.state.params.election.slug}`} title="Finde deine Partei" />
+    headerRight: <ShareButton message="#VoteSwiper #WahlSwiper #Vote4Friendship" url={`https://www.voteswiper.org/${locale()}/${navigation.state.params.country.slug}/${navigation.state.params.election.slug}`} title="#VoteSwiper" />
   });
 
   componentDidMount() {

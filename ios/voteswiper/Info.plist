@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0.1</string>
+	<string>3.0.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>55</string>
+	<string>59</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>whatsapp</string>
@@ -42,8 +42,12 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>To send you push notifications for your country based on your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>To send you push notifications for your country based on your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>To send you push notifications for your country based on your location</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>To save your VoteSwiper result as image.</string>
 	<key>UIAppFonts</key>

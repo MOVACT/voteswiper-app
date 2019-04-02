@@ -141,7 +141,8 @@ class ElectionsIndex extends React.Component {
                           onPress={() => {
                             this.props.navigation.navigate("Details", {
                               title: election.name,
-                              election: election
+                              election: election,
+                              country: this.props.app.country,
                             });
                           }}
                         />
@@ -173,7 +174,8 @@ class ElectionsIndex extends React.Component {
                               console.log(data.pastElections, election);
                               this.props.navigation.navigate("Details", {
                                 title: election.name,
-                                election: election
+                                election: election,
+                                country: this.props.app.country,
                               });
                             }}
                           />

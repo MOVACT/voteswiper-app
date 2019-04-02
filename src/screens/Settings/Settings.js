@@ -8,6 +8,7 @@ import { t } from "util";
 import styles from "./styles";
 import { config } from "common";
 import translations from "translations";
+import { isIphoneX } from "../../util";
 
 class Settings extends React.Component {
   static navigationOptions = {
@@ -40,6 +41,13 @@ class Settings extends React.Component {
 
   render() {
     const { language } = this.props.app;
+
+    let height = 49;
+
+    if (isIphoneX()) {
+      height = 70;
+    }
+
     // console.log(language);
     return (
       <Container>
@@ -90,19 +98,20 @@ class Settings extends React.Component {
               )
             })}
           </View>
-          {this.state.pick !== null ?
-            <View style={{ paddingTop: 10 }}>
-              <ButtonGradient
-                text="Save"
-                onPress={() => {
-                  this.props.app.setLanguage(this.state.pick);
-                  RNRestart.Restart();
-                }}
-              />
-            </View>
-            : null}
           <View style={{ height: 90 }} />
         </ScrollContainer>
+        
+        {this.state.pick !== null ?
+        <View style={{ position: 'absolute', bottom:height, left: 0, right: 0, zIndex: 100, padding: 15, backgroundColor: 'rgba(0,0,0,0.3)' }}>
+          <ButtonGradient
+            text="Save"
+            onPress={() => {
+              this.props.app.setLanguage(this.state.pick);
+              RNRestart.Restart();
+            }}
+          />
+        </View>
+        : null}
       </Container>
     );
   }

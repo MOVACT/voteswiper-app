@@ -4,6 +4,7 @@ import locale from './locale';
 require("moment/locale/de.js");
 require("moment/locale/da.js");
 require("moment/locale/et.js");
+require("moment/locale/cs.js");
 require("moment/locale/fi.js");
 require("moment/locale/fr.js");
 require("moment/locale/hu.js");
