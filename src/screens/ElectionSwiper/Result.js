@@ -162,7 +162,7 @@ class Result extends React.Component {
                   /* firebase.analytics().logEvent("requested_wahlprogramm", {
                     party: party.name
                   }); */
-                  Linking.openURL(party.program);
+                  Linking.openURL(party.pivot.program);
                 }}
                 style={styles.programLink}
               >

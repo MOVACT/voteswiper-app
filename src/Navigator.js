@@ -201,7 +201,10 @@ const ModalStack = createStackNavigator(
   {
     mode: "modal",
     headerMode: "none",
-    initialRouteName: "ModalSwiper"
+    initialRouteName: "ModalSwiper",
+    navigationOptions: {
+      gesturesEnabled: false,
+    }
   }
 );
 

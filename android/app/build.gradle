@@ -116,8 +116,8 @@ android {
         applicationId "com.wahlswiper"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 34
-        versionName "3.0.2"
+        versionCode 35
+        versionName "3.0.3"
     }
     signingConfigs {
         release {

@@ -69,7 +69,7 @@ class Countdown extends React.Component {
 
         <View style={styles.column}>
           <Txt bold style={styles.number}>{('0' + this.state.seconds).slice(-2)}</Txt>
-          <Txt medium style={styles.label}>{t('countdown.secondy')}</Txt>
+          <Txt medium style={styles.label}>{t('countdown.seconds')}</Txt>
         </View>
       </View>
     );
