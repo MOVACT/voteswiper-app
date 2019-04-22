@@ -22,7 +22,7 @@ class Card extends React.Component {
     thumbnail: PropTypes.string.isRequired,
     playVideo: PropTypes.func.isRequired,
     video_legacy: PropTypes.bool.isRequired,
-    video_url: PropTypes.string.isRequired,
+    video_url: PropTypes.string,
     id: PropTypes.number.isRequired
   };
 
@@ -118,22 +118,24 @@ class Card extends React.Component {
               resizeMode="cover"
               style={styles.cardThumbnail}
             />
-            <TouchableOpacity
-              style={styles.videoControl}
-              onPress={() => {
-                this.props.playVideo(video_url, video_legacy, id, title, question);
-              }}
-            >
-              <LinearGradient
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 1 }}
-                colors={["#DB67AE", "#8186D7"]}
-                style={styles.videoPlay}
-                activeOpacity={0.9}
+            {video_url !== null && video_url !== '' && typeof video_url !== "undefined" ?
+              <TouchableOpacity
+                style={styles.videoControl}
+                onPress={() => {
+                  this.props.playVideo(video_url, video_legacy, id, title, question);
+                }}
               >
-                <Play height={24} width={21} />
-              </LinearGradient>
-            </TouchableOpacity>
+                <LinearGradient
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                  colors={["#DB67AE", "#8186D7"]}
+                  style={styles.videoPlay}
+                  activeOpacity={0.9}
+                >
+                  <Play height={24} width={21} />
+                </LinearGradient>
+              </TouchableOpacity>
+              : null}
           </View>
 
           <View style={styles.cardContent}>
