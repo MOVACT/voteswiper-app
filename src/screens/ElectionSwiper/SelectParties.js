@@ -9,7 +9,7 @@ import {
   Easing
 } from "react-native";
 import PropTypes from "prop-types";
-import { Txt, FadeIn, ButtonGradient } from "components";
+import { Txt, FadeIn, ButtonGradient, Loader } from "components";
 import LinearGradient from "react-native-linear-gradient";
 import styles from "./styles";
 import Result from "./Result";
@@ -107,6 +107,10 @@ class SelectParties extends React.Component {
   };
 
   render() {
+    if (this.props.swiper.loadingRecalculated) {
+      return <Loader fullscreen />;
+    }
+  
     if (this.state.showResult) {
       return (
         <Result

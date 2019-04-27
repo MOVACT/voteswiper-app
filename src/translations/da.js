@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Ja",
   "swiper.no": "Nej",
   "swiper.none": "Ingen",
+  "swiper.skip": "Springe",
+  "swiperResult.editAnswers": "Rediger svar",
 
   "swiperSelectParties.text": "Vælg nu det parti som du gerne vil sammenligne dine svar med. Du kan vælge flere partier.",
   "swiperSelectParties.checkAll": "Vælg alle",

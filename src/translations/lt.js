@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Taip",
   "swiper.no": "Ne",
   "swiper.none": "Nei vienas",
+  "swiper.skip": "Praleisti",
+  "swiperResult.editAnswers": "Redaguoti atsakymus",
 
   "swiperSelectParties.text": "Dabar pasirinkite partijas, su kuriomis norite palyginti savo atsakymus. Galite pasirinkti kiek norite partijų.",
   "swiperSelectParties.checkAll": "Pasirinkti visus",

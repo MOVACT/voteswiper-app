@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Ja",
   "swiper.no": "Ne",
   "swiper.none": "Noben",
+  "swiper.skip": "Skakljati",
+  "swiperResult.editAnswers": "Uredite odgovore",
 
   "swiperSelectParties.text": "Izberi stranke z kateremi si želiš primerjati tvoje odgovori. Lahko izbereš kolikor strank si želiš.",
   "swiperSelectParties.checkAll": "Izberi vse",

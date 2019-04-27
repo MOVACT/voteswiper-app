@@ -17,6 +17,7 @@ const SvgFi = props => (
         y={0.25}
         width={41.5}
         height={29.5}
+        fill="#fff"
         rx={2}
       />
       <Path

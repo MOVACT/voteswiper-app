@@ -23,6 +23,7 @@ const lang = {
   "swiper.yes": "Ja",
   "swiper.no": "Nein",
   "swiper.none": "Keine",
+  "swiper.skip": "Überspringen",
 
   "swiperSelectParties.text": "Wähle nun noch die Parteien aus, mit denen du deine Antworten vergleichen möchtest. Du kannst beliebig viele Parteien auswählen.",
   "swiperSelectParties.checkAll": "Alle Auswählen",
@@ -48,6 +49,8 @@ const lang = {
   "swiperResult.share": "Teilen",
   "swiperResult.parties": "Parteien",
   "swiperResult.filterParties": "Parteien filtern",
+
+  "swiperResult.editAnswers": "Antworten bearbeiten",
 
   // Screen:SelectCountry,
   "selectCountry.title": "Schön, dass du dabei bist!",

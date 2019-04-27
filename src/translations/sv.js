@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Ja",
   "swiper.no": "Nej",
   "swiper.none": "Noben",
+  "swiper.skip": "Skip",
+  "swiperResult.editAnswers": "Redigera svar",
 
   "swiperSelectParties.text": "Välj nu de partier du vill jämföra dina svar med. Du kan välja så många partier som du vill.",
   "swiperSelectParties.checkAll": "Markera alla",

@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Jah",
   "swiper.no": "Ei",
   "swiper.none": "Mitte ükski",
+  "swiper.skip": "Vahele jätma",
+  "swiperResult.editAnswers": "Muuda vastuseid",
 
   "swiperSelectParties.text": "Vali kõik erakonnad kelle vahel oma tulemusi võrrelda. Võimalik on valida rohkem kui üks.",
   "swiperSelectParties.checkAll": "Vali kõik",

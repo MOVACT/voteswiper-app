@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Ναι",
   "swiper.no": "Όχι",
   "swiper.none": "Κανένα",
+  "swiper.skip": "παραλείπω",
+  "swiperResult.editAnswers": "Επεξεργασία απαντήσεων",
 
   "swiperSelectParties.text": "Επιλέξτε τώρα τα κόμματα με τα οποία θέλετε να συγκρίνετε τις απαντήσεις σας. Μπορείτε να επιλέξετε όσα κόμματα θέλετε.",
   "swiperSelectParties.checkAll": "Επιλογή όλων",

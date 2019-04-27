@@ -84,11 +84,17 @@ export default StyleSheet.create({
     flexDirection: "column",
     alignItems: "center"
   },
+  partyDetailLogoContainer: {
+    marginTop: questionsPadding,
+    marginBottom: 15,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+  },
   partyDetailLogo: {
     width: 200,
     height: 70,
-    marginTop: questionsPadding,
-    marginBottom: 15,
   },
   partyDetailButton: {
     width,

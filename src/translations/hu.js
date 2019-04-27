@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Igen",
   "swiper.no": "Nem",
   "swiper.none": "Egyik sem",
+  "swiper.skip": "Átugrál",
+  "swiperResult.editAnswers": "Válaszok szerkesztése",
 
   "swiperSelectParties.text": "Válaszd ki, melyik pártokkal hasonlítsuk össze a véleményed. Bármennyit választhatsz.",
   "swiperSelectParties.checkAll": "Összes kijelölése",

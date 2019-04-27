@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Ano",
   "swiper.no": "Ne",
   "swiper.none": "Žadné",
+  "swiper.skip": "vynechat",
+  "swiperResult.editAnswers": "Upravit odpovědi",
 
   "swiperSelectParties.text": "Nyní vyberte strany, se kterými chcete porovnat své odpovědi. Můžete vybrat libovolný počet stran.",
   "swiperSelectParties.checkAll": "Vyberte vše",

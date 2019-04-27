@@ -250,11 +250,22 @@ class Result extends React.Component {
 
     return <View style={styles.container}>
       <ScrollView>
-        <View style={styles.resultToolbar}>
-          <ButtonDark onPress={this.share} arrow={false} text={t('swiperResult.share')} icon="share" />
-          <View style={styles.resultToolbarButton}>
-            <ButtonDark onPress={this.props.closeResult} arrow={false} text={width < iPhone6 ? t('swiperResult.parties') : t('swiperResult.filterParties')} icon="edit" center />
+        <View style={styles.resultToolbarContainer}>
+          <View style={styles.resultToolbar}>
+            <ButtonDark onPress={this.share} arrow={false} text={t('swiperResult.share')} icon="share" />
+            <View style={styles.resultToolbarButton}>
+              <ButtonDark onPress={this.props.closeResult} arrow={false} text={width < iPhone6 ? t('swiperResult.parties') : t('swiperResult.filterParties')} icon="edit" center />
+            </View>
           </View>
+          <ButtonDark
+            onPress={() => {
+              this.props.swiper.openEditAnswers();
+            }}
+            arrow={true}
+            text={t('swiperResult.editAnswers')}
+            icon="share"
+            center
+          />
         </View>
 
         <View style={styles.resultList}>

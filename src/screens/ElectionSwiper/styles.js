@@ -29,7 +29,7 @@ let swiperMarginTop = 0;
 let cardInnerPadding = 25;
 let cardHeight = height - 90 - headerHeight() - 80;
 let yesNoButtonInnerHeight = 60;
-let yesNoButtonFontSize = 18;
+let yesNoButtonFontSize = 16;
 let containerPaddingHorizontal = 30;
 let partyLogoHeight = 50;
 
@@ -45,7 +45,7 @@ if (width < iPhone6) {
   cardInnerPadding = 15;
   cardHeight = cardHeight = height - 90 - headerHeight() - 45;
   yesNoButtonInnerHeight = 50;
-  yesNoButtonFontSize = 16;
+  yesNoButtonFontSize = 12;
   containerPaddingHorizontal = 20;
   paddingTile = 5;
   paddingList = 15;
@@ -66,18 +66,19 @@ const cardWidth = width - 2 * cardMarginLeft;
 
 export default StyleSheet.create({
   yesNoButton: {
-    borderRadius,
+    borderRadius: 100,
     shadowColor: "#000",
     backgroundColor: "#fff",
     shadowOffset: { width: 0, height: 20 },
     shadowOpacity: 0.4,
     shadowRadius: 40,
     elevation: 2,
-    flex: 1,
-    marginHorizontal: 10
+    // flex: 1,
+    marginHorizontal: 10,
+    width: yesNoButtonInnerHeight,
   },
   yesNoButtonInner: {
-    borderRadius,
+    borderRadius: 100,
     backgroundColor: "transparent",
     height: yesNoButtonInnerHeight,
     justifyContent: "center",
@@ -89,7 +90,7 @@ export default StyleSheet.create({
     color: "#fff"
   },
   yesNoButtonBg: {
-    borderRadius,
+    borderRadius: 100,
     position: "absolute",
     top: 0,
     left: 0,
@@ -103,10 +104,10 @@ export default StyleSheet.create({
   },
   yesNoControls: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     paddingHorizontal: 20,
-    paddingBottom: 30
+    paddingBottom: Platform.OS === 'android' ? 30 : 40,
   },
   content: {
     flex: 1,
@@ -376,11 +377,13 @@ export default StyleSheet.create({
   },
 
   /* Result */
+  resultToolbarContainer: {
+    paddingTop: 20,
+    paddingHorizontal: containerPaddingHorizontal,
+  },
   resultToolbar: {
     flexDirection: "row",
     alignItems: "flex-start",
-    paddingHorizontal: containerPaddingHorizontal,
-    paddingTop: 20
   },
   resultToolbarButton: {
     paddingLeft: 10,
@@ -467,5 +470,27 @@ export default StyleSheet.create({
   selectPartyActionText: {
     alignSelf: "center",
     color: "#fff"
+  },
+
+
+  editAnswersContainer: {
+    padding: containerPaddingHorizontal,
+    paddingBottom: 150
+  },
+  editAnswer: {
+    position: 'relative',
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    borderColor: '#fff',
+    flex: 1,
+  },
+  editAnswerActive: {
+    backgroundColor: '#fff',
+  },
+
+  explainerContent: {
+    padding: containerPaddingHorizontal,
   }
 });

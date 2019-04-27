@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Da",
   "swiper.no": "Nu",
   "swiper.none": "Nici unul",
+  "swiper.skip": "Sări",
+  "swiperResult.editAnswers": "Editați răspunsurile",
 
   "swiperSelectParties.text": "Acum, selectați partidurile cu care doriți să comparați răspunsurile. Puteți selecta câte doriți.",
   "swiperSelectParties.checkAll": "Alegeți toate",

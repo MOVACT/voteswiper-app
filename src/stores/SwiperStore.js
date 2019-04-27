@@ -4,6 +4,9 @@ class SwiperStore {
   @observable answers = {};
   @observable parties = {};
   @observable election = null;
+  @observable editAnswers = false;
+  @observable changedAnswers = false;
+  @observable loadingRecalculated = false;
 
   @action
   setElection = election => {
@@ -121,7 +124,67 @@ class SwiperStore {
     if (typeof this.answers[this.election.slug] != "undefined") {
       this.answers[this.election.slug] = {};
     }
+    this.editAnswers = false;
+    this.changedAnswers = false;
+    this.loadingRecalculated = false;
   };
+
+  @action
+  openEditAnswers = () => {
+    this.editAnswers = this.answers[this.election.slug];
+  }
+
+  @action
+  closeEditAnswers = () => {
+    this.editAnswers = false;
+  }
+
+  @action
+  setEditAnswer = (id, answer) => {
+    if (typeof this.editAnswers === "undefined") {
+      this.editAnswers = {};
+    }
+
+    if (typeof this.editAnswers[id] === "undefined") {
+      this.editAnswers[id] = {
+        answer: 0,
+        doubleWeight: false
+      };
+    }
+
+    this.editAnswers[id].answer = answer;
+    this.changedAnswers = true;
+  };
+
+  @action
+  toggleEditDoubleWeight = id => {
+    if (typeof this.editAnswers === "undefined") {
+      this.editAnswers = {};
+    }
+
+    if (typeof this.editAnswers[id] === "undefined") {
+      this.editAnswers[id] = {
+        answer: 0,
+        doubleWeight: false
+      };
+    }
+
+    this.editAnswers[id].doubleWeight = !this.editAnswers[id].doubleWeight;
+    this.changedAnswers = true;
+  };
+
+  @action
+  startUpdating =() => {
+    this.loadingRecalculated = true;
+    this.answers[this.election.slug] = this.editAnswers;
+    this.editAnswers = false;
+    this.changedAnswers = false;
+  }
+
+  @action
+  updateResult = () => {
+    this.loadingRecalculated = false;
+  }
 }
 
 export default SwiperStore;

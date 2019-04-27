@@ -1,5 +1,5 @@
 const lang = {
-  "name": "Suomalainen",
+  "name": "Suomi",
   "countryLanguage": "finnish",
 
   "navigation.backTitle": "Takaisin",
@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Kyllä",
   "swiper.no": "Ei",
   "swiper.none": "Ei mitään",
+  "swiper.skip": "Jättää väliin",
+  "swiperResult.editAnswers": "Muokkaa vastauksia",
 
   "swiperSelectParties.text": "Valitse puolueet, joiden kanssa haluat vertailla vastauksia. Voit valita niin monta puoluetta kuin haluat.",
   "swiperSelectParties.checkAll": "Poista kaikki",

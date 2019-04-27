@@ -6,11 +6,13 @@ import {
   Animated,
   Easing,
   TouchableOpacity,
-  Platform
+  Platform,
+  ScrollView
 } from "react-native";
 import axios from "axios";
 import { config } from "common";
-import { Container, Swiper, Txt, FullScreenVideo } from "components";
+import LinearGradient from "react-native-linear-gradient";
+import { Container, Swiper, Txt, FullScreenVideo, Title, BoxGradient, ButtonGradient } from "components";
 import NoButton from "./partials/NoButton";
 import YesButton from "./partials/YesButton";
 import Card from "./partials/Card";
@@ -20,6 +22,8 @@ import styles from "./styles";
 import SelectParties from "./SelectParties";
 import Close from "../../icons/Close";
 import { t } from "util";
+import Skip from '../../icons/Skip';
+import Check from '../../icons/Check';
 
 class ElectionSwiper extends React.Component {
   static propTypes = {
@@ -270,6 +274,10 @@ class ElectionSwiper extends React.Component {
             }}
             disabled={this.state.isSwipingBack}
           />
+          <TouchableOpacity onPress={() => { this.swipeNext(); }} style={{ paddingLeft: 10, paddingRight: 10, flexDirection: 'column', alignItems: "center", justifyContent: "center" }}>
+            <Skip width={20} height={20} />
+            <Txt style={{ fontSize: 12, color: '#fff', paddingTop: 5 }}>{t('swiper.skip')}</Txt>
+          </TouchableOpacity>
           <YesButton
             onPress={() => {
               if (!this.state.isSwipingBack) {
@@ -535,6 +543,16 @@ class ElectionSwiper extends React.Component {
     );
   }
 
+  getAnswer = id => {
+    if (
+      this.props.swiper.editAnswers[id] == null
+    ) {
+      return { doubleWeight: false, answer: 0 };
+    }
+
+    return this.props.swiper.editAnswers[id];
+  };
+
   render() {
     return (
       <Container noPadding>
@@ -563,6 +581,109 @@ class ElectionSwiper extends React.Component {
             }}
           />
         ) : null}
+
+        {this.props.swiper.editAnswers !== false ?
+          <View style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, zIndex: 1000 }}>
+            <Container noPadding>
+              <View style={styles.root}>
+                <View style={styles.header}>
+                  <View style={styles.headerAbsolute}>
+                    <View style={styles.headerLeft}>
+                      <PrevButton
+                        onPress={() => {
+                          this.props.swiper.closeEditAnswers();
+                        }}
+                      />
+                    </View>
+                    <View style={styles.headerTitle}>
+                      <Txt medium style={styles.headerTitleText}>
+                      {t('swiperResult.editAnswers')}
+                      </Txt>
+                    </View>
+                  </View>
+                  <View style={styles.headerRight}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        this.props.swiper.closeEditAnswers();
+                      }}
+                      style={styles.headerButton}
+                    >
+                      <Close />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+    
+                <View style={styles.content}>
+                  <View style={styles.container}>
+                    <ScrollView style={{ marginTop: 10 }}>
+                      <View style={styles.editAnswersContainer}>
+                        {this.props.swiper.election.questions.map(question => {
+                          const answer = this.getAnswer(question.id).answer;
+                          const doubleWeight = this.getAnswer(question.id).doubleWeight;
+    
+                          return (
+                            <View style={{ marginBottom: 20, marginTop: 10 }} key={question.id}>
+                              <BoxGradient>
+                                <Title mainBig style={{ fontSize: 16, lineHeight: 20, color: '#fff' }}>{question.question}</Title>
+                                <TouchableOpacity onPress={() => { this.props.swiper.toggleEditDoubleWeight(question.id); }} style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center' }}>
+                                  <View style={{ borderRadius: 3, borderWidth: 2, width: 20, borderColor: '#fff', height: 20, justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
+                                    {doubleWeight === true ? <Check /> : null}
+                                  </View>
+                                  <Txt style={{ color: '#fff' }}>{t('swiper.doubleWeight')}</Txt>
+                                </TouchableOpacity>
+                                <View style={{ flexDirection: 'row', width: '100%', paddingTop: 15 }}>
+                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 2); }} style={[{ borderTopLeftRadius: 5, borderBottomLeftRadius: 5 }, styles.editAnswer, answer === 2 ? styles.editAnswerActive : null]}>
+                                    <Txt medium style={{ color: answer === 2 ? '#3A3155' : '#fff' }}>{t('swiper.yes')}</Txt>
+                                  </TouchableOpacity>
+                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 1); }} style={[ { borderLeftWidth: 0, borderRightWidth: 0 }, styles.editAnswer, answer === 1 ? styles.editAnswerActive : null]}>
+                                    <Txt medium style={{ color: answer === 1 ? '#3A3155' : '#fff' }}>{t('swiper.no')}</Txt>
+                                  </TouchableOpacity>
+                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 0); }} style={[{ borderBottomRightRadius: 5, borderTopRightRadius: 5 }, styles.editAnswer, answer === 0 ? styles.editAnswerActive : null]}>
+                                    <Txt medium style={{ color: answer === 0 ? '#3A3155' : '#fff' }}>{t('swiper.none')}</Txt>
+                                  </TouchableOpacity>
+                                </View>
+                              </BoxGradient>
+                            </View>
+                          );
+                        })}
+                      </View>
+                    </ScrollView>
+                  </View>
+                </View>
+              </View>
+            </Container>
+
+            {this.props.swiper.changedAnswers === true ?
+              <View
+                style={[
+                  styles.progress
+                ]}
+              >
+                <LinearGradient
+                  start={{ x: 0, y: 1 }}
+                  end={{ x: 0, y: 0 }}
+                  colors={["rgba(0, 0, 0, 1)", "transparent"]}
+                  style={styles.progressBg}
+                >
+                  <ButtonGradient
+                    onPress={() => {
+                      this.props.swiper.startUpdating();
+                      console.log('hi');
+                      setTimeout(() => {
+                        console.log('hi2');
+                        this.props.swiper.updateResult();
+                      }, 500);
+                      
+                    }}
+                    text={"Zum Ergebnis"}
+                  />
+                </LinearGradient>
+              </View>
+              : null}
+            </View>
+          : null
+        }
+
       </Container>
     );
   }

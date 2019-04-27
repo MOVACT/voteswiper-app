@@ -9,11 +9,14 @@ import {
   Platform
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import { withNavigation } from "react-navigation";
 import { Title, Txt } from "components";
 import stores from "stores";
 import styles from "../styles";
 import Play from "../../../icons/Play";
 import { cdn, t } from "util";
+import SvgCircleHelp from "../../../icons/HelpCircle";
+import SvgCircleInfo from "../../../icons/InfoCircle";
 
 class Card extends React.Component {
   static propTypes = {
@@ -94,6 +97,64 @@ class Card extends React.Component {
     );
   };
 
+  renderThumbnail = () => {
+    const {
+      question,
+      title,
+      thumbnail,
+      video_url,
+      video_legacy,
+      explainer_text,
+      id
+    } = this.props;
+
+    if (video_url !== null && video_url !== '' && typeof video_url !== "undefined") {
+      return (
+        <TouchableOpacity
+          style={styles.videoControl}
+          onPress={() => {
+            this.props.playVideo(video_url, video_legacy, id, title, question);
+          }}
+        >
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            colors={["#DB67AE", "#8186D7"]}
+            style={styles.videoPlay}
+            activeOpacity={0.9}
+          >
+            <Play height={24} width={21} />
+          </LinearGradient>
+        </TouchableOpacity>
+      );
+    }
+
+    if (explainer_text !== null && explainer_text !== '') {
+      return (
+        <TouchableOpacity
+          style={styles.videoControl}
+          onPress={() => {
+            this.props.navigation.navigate("ModalQuestionInfo", {
+              ...this.props
+            });
+          }}
+        >
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            colors={["#DB67AE", "#8186D7"]}
+            style={[styles.videoPlay, { paddingLeft: 0 }]}
+            activeOpacity={0.9}
+          >
+            <SvgCircleInfo></SvgCircleInfo>
+          </LinearGradient>
+        </TouchableOpacity>
+      );
+    }
+
+    return null;
+  }
+
   render() {
     const {
       question,
@@ -118,24 +179,7 @@ class Card extends React.Component {
               resizeMode="cover"
               style={styles.cardThumbnail}
             />
-            {video_url !== null && video_url !== '' && typeof video_url !== "undefined" ?
-              <TouchableOpacity
-                style={styles.videoControl}
-                onPress={() => {
-                  this.props.playVideo(video_url, video_legacy, id, title, question);
-                }}
-              >
-                <LinearGradient
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
-                  colors={["#DB67AE", "#8186D7"]}
-                  style={styles.videoPlay}
-                  activeOpacity={0.9}
-                >
-                  <Play height={24} width={21} />
-                </LinearGradient>
-              </TouchableOpacity>
-              : null}
+            {this.renderThumbnail()}
           </View>
 
           <View style={styles.cardContent}>
@@ -171,4 +215,4 @@ class Card extends React.Component {
   }
 }
 
-export default Card;
+export default withNavigation(Card);

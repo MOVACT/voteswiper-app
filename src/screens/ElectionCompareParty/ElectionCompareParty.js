@@ -67,11 +67,13 @@ class ElectionCompareParty extends React.Component {
             <View style={styles.container}>
               <ScrollView>
                 <View style={compareStyles.partyDetail}>
-                  <Image
-                    source={{ uri: cdn(party.logo) }}
-                    style={compareStyles.partyDetailLogo}
-                    resizeMode="contain"
-                  />
+                  <View style={compareStyles.partyDetailLogoContainer}>
+                    <Image
+                      source={{ uri: cdn(party.logo) }}
+                      style={compareStyles.partyDetailLogo}
+                      resizeMode="contain"
+                    />
+                  </View>
 
                   <Txt medium style={compareStyles.partyDetailTitle}>
                     {party.full_name}
@@ -104,6 +106,13 @@ class ElectionCompareParty extends React.Component {
 
                     return (
                       <Box key={question.id}>
+                        {userAnswer.doubleWeight === true ?
+                          <View style={{ justifyContent: 'flex-start' }}>
+                            <View style={{ backgroundColor: '#E6E90F', paddingVertical: 5, paddingHorizontal: 10, marginBottom: 5, borderRadius: 3 }}>
+                              <Txt medium style={{  color: '#000',  lineHeight: 16,  textAlign: 'center' }}>{t('swiper.doubleWeighted')}</Txt>
+                            </View>
+                          </View>
+                          : null}
                         <Title mainBig style={compareStyles.thesis}>
                           {question.question}
                         </Title>
@@ -141,7 +150,7 @@ class ElectionCompareParty extends React.Component {
 
                         <View style={compareStyles.answers}>
                           <View style={compareStyles.answer}>
-                            <Title h5dark>{t('swiperResult.yourAnswer')}</Title>
+                            <Title h5dark uppercase>{t('swiperResult.yourAnswer')}</Title>
                             {userAnswer.answer == 0 ? (
                               <View style={compareStyles.noneLabel}>
                                 <Txt medium style={compareStyles.labelText}>
@@ -165,7 +174,7 @@ class ElectionCompareParty extends React.Component {
                             ) : null}
                           </View>
                           <View style={compareStyles.answer}>
-                            <Title h5dark>{t('swiperResult.party')}</Title>
+                            <Title h5dark uppercase>{t('swiperResult.party')}</Title>
                             {partyAnswer.answer === 0 ? (
                               <View style={compareStyles.noneLabel}>
                                 <Txt medium style={compareStyles.labelText}>

@@ -23,6 +23,8 @@ const lang = {
   "swiper.yes": "Sí",
   "swiper.no": "No",
   "swiper.none": "Ninguno(a)",
+  "swiper.skip": "Omitir",
+  "swiperResult.editAnswers": "Editar respuestas",
 
   "swiperSelectParties.text": "Ahora selecciona los partidos con los que quieres comparar tus respuestas. Puedes seleccionar la cantidad de partidos que quieras.",
   "swiperSelectParties.checkAll": "Seleccionar todos",
