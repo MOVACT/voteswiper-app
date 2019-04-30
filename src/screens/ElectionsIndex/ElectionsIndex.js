@@ -114,7 +114,7 @@ class ElectionsIndex extends React.Component {
                 {locale() === "en" && shouldShow === true ?
                   <View style={styles.info}>
                     <Title h1 center>Do you speak {t('countryLanguage')}?</Title>
-                    <Txt copy center>If so, then we advise you to switch the app language to german to get the questionairre in the original language it was created.</Txt>
+                    <Txt copy center>If so, then we advise you to switch the app language to german to get the questionnaire in the original language it was created.</Txt>
                     
                     <View style={styles.infoActions}>
                       <TouchableOpacity onPress={() => {

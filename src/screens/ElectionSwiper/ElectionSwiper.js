@@ -632,13 +632,13 @@ class ElectionSwiper extends React.Component {
                                   <Txt style={{ color: '#fff' }}>{t('swiper.doubleWeight')}</Txt>
                                 </TouchableOpacity>
                                 <View style={{ flexDirection: 'row', width: '100%', paddingTop: 15 }}>
-                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 1); }} style={[ { borderLeftWidth: 0, borderRightWidth: 0 }, styles.editAnswer, answer === 1 ? styles.editAnswerActive : null]}>
+                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 1); }} style={[ { borderTopLeftRadius: 5, borderBottomLeftRadius: 5 }, styles.editAnswer, answer === 1 ? styles.editAnswerActive : null]}>
                                     <Txt medium style={{ color: answer === 1 ? '#3A3155' : '#fff' }}>{t('swiper.no')}</Txt>
                                   </TouchableOpacity>
-                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 0); }} style={[{ borderBottomRightRadius: 5, borderTopRightRadius: 5 }, styles.editAnswer, answer === 0 ? styles.editAnswerActive : null]}>
+                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 0); }} style={[{ borderLeftWidth: 0, borderRightWidth: 0 }, styles.editAnswer, answer === 0 ? styles.editAnswerActive : null]}>
                                     <Txt medium style={{ color: answer === 0 ? '#3A3155' : '#fff' }}>{t('swiper.none')}</Txt>
                                   </TouchableOpacity>
-                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 2); }} style={[{ borderTopLeftRadius: 5, borderBottomLeftRadius: 5 }, styles.editAnswer, answer === 2 ? styles.editAnswerActive : null]}>
+                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 2); }} style={[{ borderBottomRightRadius: 5, borderTopRightRadius: 5 }, styles.editAnswer, answer === 2 ? styles.editAnswerActive : null]}>
                                     <Txt medium style={{ color: answer === 2 ? '#3A3155' : '#fff' }}>{t('swiper.yes')}</Txt>
                                   </TouchableOpacity>
                                 </View>

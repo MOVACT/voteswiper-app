@@ -70,7 +70,7 @@ const lang = {
   "electionsIndex.boxTitle": "Current Elections",
   "electionsIndex.boxText": "Please choose the election for which you want to take the quiz.",
   "electionsIndex.boxPastTitle": "Past Elections",
-  "electionsIndex.boxPastText": "The following VoteSwiper are for previous elections. Please note, that the opinions stated in these questionairres may have changed by now.",
+  "electionsIndex.boxPastText": "The following VoteSwiper are for previous elections. Please note, that the opinions stated in these questionnaires may have changed by now.",
   "electionsIndex.noElections": "There are no current VoteSwiper available for this country. Please check back later.",
 
   // Screen:ElectionDetails
