@@ -1,22 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Animated,
   Image,
   TouchableOpacity,
   Easing,
-  Platform
-} from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import { withNavigation } from "react-navigation";
-import { Title, Txt } from "components";
-import stores from "stores";
-import styles from "../styles";
-import Play from "../../../icons/Play";
-import { cdn, t } from "util";
-import SvgCircleHelp from "../../../icons/HelpCircle";
-import SvgCircleInfo from "../../../icons/InfoCircle";
+  Platform,
+} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import {withNavigation} from 'react-navigation';
+import {Title, Txt} from 'components';
+import stores from 'stores';
+import styles from '../styles';
+import Play from '../../../icons/Play';
+import {cdn, t} from 'util';
+import SvgCircleInfo from '../../../icons/InfoCircle';
 
 class Card extends React.Component {
   static propTypes = {
@@ -26,7 +25,7 @@ class Card extends React.Component {
     playVideo: PropTypes.func.isRequired,
     video_legacy: PropTypes.bool.isRequired,
     video_url: PropTypes.string,
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
   };
 
   constructor(props) {
@@ -36,12 +35,12 @@ class Card extends React.Component {
 
     this.state = {
       anim: new Animated.Value(
-        stores.swiper.getDoubleWeightValue(this.props.id) === false ? 0 : 1
+        stores.swiper.getDoubleWeightValue(this.props.id) === false ? 0 : 1,
       ),
       toggle:
         stores.swiper.getDoubleWeightValue(this.props.id) === false
           ? false
-          : true
+          : true,
     };
   }
 
@@ -70,11 +69,11 @@ class Card extends React.Component {
         stores.swiper.getDoubleWeightValue(this.props.id) === false ? 1 : 0,
       duration: 150,
       easing: Easing.ease,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start(() => {
       stores.swiper.toggleDoubleWeight(this.props.id);
       this.setState({
-        toggle: !this.state.toggle
+        toggle: !this.state.toggle,
       });
     });
   };
@@ -82,17 +81,17 @@ class Card extends React.Component {
   renderBorder = () => {
     const scaleStyle = this.state.anim.interpolate({
       inputRange: [0, 1],
-      outputRange: [1.05, 1]
+      outputRange: [1.05, 1],
     });
 
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       return null;
     }
 
     return (
       <Animated.View
         pointerEvents="none"
-        style={[styles.cardBorder, { transform: [{ scale: scaleStyle }] }]}
+        style={[styles.cardBorder, {transform: [{scale: scaleStyle}]}]}
       />
     );
   };
@@ -105,24 +104,26 @@ class Card extends React.Component {
       video_url,
       video_legacy,
       explainer_text,
-      id
+      id,
     } = this.props;
 
-    if (video_url !== null && video_url !== '' && typeof video_url !== "undefined") {
+    if (
+      video_url !== null &&
+      video_url !== '' &&
+      typeof video_url !== 'undefined'
+    ) {
       return (
         <TouchableOpacity
           style={styles.videoControl}
           onPress={() => {
             this.props.playVideo(video_url, video_legacy, id, title, question);
-          }}
-        >
+          }}>
           <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            colors={["#DB67AE", "#8186D7"]}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 1}}
+            colors={['#DB67AE', '#8186D7']}
             style={styles.videoPlay}
-            activeOpacity={0.9}
-          >
+            activeOpacity={0.9}>
             <Play height={24} width={21} />
           </LinearGradient>
         </TouchableOpacity>
@@ -134,26 +135,24 @@ class Card extends React.Component {
         <TouchableOpacity
           style={styles.videoControl}
           onPress={() => {
-            this.props.navigation.navigate("ModalQuestionInfo", {
-              ...this.props
+            this.props.navigation.navigate('ModalQuestionInfo', {
+              ...this.props,
             });
-          }}
-        >
+          }}>
           <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            colors={["#DB67AE", "#8186D7"]}
-            style={[styles.videoPlay, { paddingLeft: 0 }]}
-            activeOpacity={0.9}
-          >
-            <SvgCircleInfo></SvgCircleInfo>
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 1}}
+            colors={['#DB67AE', '#8186D7']}
+            style={[styles.videoPlay, {paddingLeft: 0}]}
+            activeOpacity={0.9}>
+            <SvgCircleInfo />
           </LinearGradient>
         </TouchableOpacity>
       );
     }
 
     return null;
-  }
+  };
 
   render() {
     const {
@@ -162,20 +161,19 @@ class Card extends React.Component {
       thumbnail,
       video_url,
       video_legacy,
-      id
+      id,
     } = this.props;
 
     return (
       <View style={styles.card}>
         <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-          colors={["#FFFFFF", "#D9DAEB"]}
-          style={[styles.cardInner]}
-        >
+          start={{x: 0, y: 0}}
+          end={{x: 0, y: 1}}
+          colors={['#FFFFFF', '#D9DAEB']}
+          style={[styles.cardInner]}>
           <View style={styles.cardVideo}>
             <Image
-              source={{ uri: cdn(thumbnail) }}
+              source={{uri: cdn(thumbnail)}}
               resizeMode="cover"
               style={styles.cardThumbnail}
             />
@@ -186,7 +184,7 @@ class Card extends React.Component {
             <Title h5dark uppercase center>
               {title}
             </Title>
-            <Title mainBig center textCenter style={{ color: '#392F52' }}>
+            <Title mainBig center textCenter style={{color: '#392F52'}}>
               {question}
             </Title>
           </View>
@@ -195,14 +193,12 @@ class Card extends React.Component {
 
         <TouchableOpacity
           onPress={this.toggleDoubleWeight}
-          style={styles.doubleWeightLabelContainer}
-        >
+          style={styles.doubleWeightLabelContainer}>
           <Animated.View
             style={[
               styles.doubleWeightLabel,
-              this.state.toggle === true ? styles.doubleWeightedLabel : {}
-            ]}
-          >
+              this.state.toggle === true ? styles.doubleWeightedLabel : {},
+            ]}>
             <Txt medium style={styles.doubleWeightLabelText}>
               {this.state.toggle === false
                 ? t('swiper.doubleWeight')
