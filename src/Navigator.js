@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, View, Dimensions, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
@@ -176,6 +182,10 @@ const TabStack = createBottomTabNavigator(
         );
       },
     }),
+    containerStyle: {
+      position: 'absolute',
+      zIndex: 1,
+    },
     tabBarOptions: {
       activeTintColor: '#fff',
       inactiveTintColor: 'rgba(255, 255, 255, 0.5)',
@@ -184,7 +194,9 @@ const TabStack = createBottomTabNavigator(
         backgroundColor: 'rgba(57,47,82,0.9)',
         borderTopWidth: 0,
         height: 50,
-        position: 'absolute',
+        width: '100%',
+        position: Platform.OS === 'android' ? 'relative' : 'absolute',
+        zIndex: 100,
         bottom: 0,
         left: 0,
         right: 0,

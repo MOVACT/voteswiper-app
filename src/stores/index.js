@@ -17,7 +17,8 @@ export default {
   swiper,
 };
 
-hydrateApp('app', app).then(() => {
+hydrateApp('app', app).then((err) => {
+  console.log(err);
   setTimeout(() => {
     app.setHydrated();
   }, 500);

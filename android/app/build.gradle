@@ -3,7 +3,7 @@ buildscript {
         maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
     }
     dependencies {
-        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.9, 0.99.99]'
     }
 }
 
@@ -144,6 +144,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 40
         versionName "3.1.0"
+        multiDexEnabled true
     }
     signingConfigs {
         debug {
@@ -196,16 +197,7 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-view-shot')
-    implementation project(':react-native-video')
-    implementation project(':react-native-svg')
-    implementation project(':react-native-share')
-    implementation project(':react-native-restart')
-    implementation project(':react-native-onesignal')
-    implementation project(':react-native-matomo')
-    implementation project(':react-native-localize')
-    implementation project(':react-native-linear-gradient')
-    implementation project(':react-native-gesture-handler')
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
