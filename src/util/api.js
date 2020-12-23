@@ -1,7 +1,7 @@
-import React from "react";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
-import locale from "./locale";
+import React from 'react';
+import gql from 'graphql-tag';
+import {Query} from 'react-apollo';
+import locale from './locale';
 
 // Queries
 const GET_COUNTRIES = gql`
@@ -114,23 +114,23 @@ const queries = {
   GET_COUNTRIES,
   GET_ELECTIONS,
   GET_QUESTIONS,
-  GET_FAQ
+  GET_FAQ,
 };
 
 class ApiQuery extends React.Component {
   static defaultProps = {
-    variables: {}
+    variables: {},
   };
 
   getVariables = () => {
     const variables = {
-      ...this.props.variables
+      ...this.props.variables,
     };
 
     variables.locale = locale();
 
     return variables;
-  }
+  };
   render() {
     const props = this.props;
 
@@ -140,11 +140,10 @@ class ApiQuery extends React.Component {
         notifyOnNetworkStatusChange
         {...props}
         query={queries[this.props.query]}
-        variables={this.getVariables()}
-      >
+        variables={this.getVariables()}>
         {this.props.children}
       </Query>
-    )
+    );
   }
 }
 

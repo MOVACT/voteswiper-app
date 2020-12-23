@@ -1,27 +1,35 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { inject, observer } from "mobx-react";
+import React from 'react';
+import PropTypes from 'prop-types';
+import {inject, observer} from 'mobx-react';
 import {
   View,
   Animated,
   Easing,
   TouchableOpacity,
   Platform,
-  ScrollView
-} from "react-native";
-import axios from "axios";
-import { config } from "common";
-import LinearGradient from "react-native-linear-gradient";
-import { Container, Swiper, Txt, FullScreenVideo, Title, BoxGradient, ButtonGradient } from "components";
-import NoButton from "./partials/NoButton";
-import YesButton from "./partials/YesButton";
-import Card from "./partials/Card";
-import PrevButton from "./partials/PrevButton";
-import NextButton from "./partials/NextButton";
-import styles from "./styles";
-import SelectParties from "./SelectParties";
-import Close from "../../icons/Close";
-import { t } from "util";
+  ScrollView,
+} from 'react-native';
+import axios from 'axios';
+import {config} from 'common';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  Container,
+  Swiper,
+  Txt,
+  FullScreenVideo,
+  Title,
+  BoxGradient,
+  ButtonGradient,
+} from 'components';
+import NoButton from './partials/NoButton';
+import YesButton from './partials/YesButton';
+import Card from './partials/Card';
+import PrevButton from './partials/PrevButton';
+import NextButton from './partials/NextButton';
+import styles from './styles';
+import SelectParties from './SelectParties';
+import Close from '../../icons/Close';
+import {t} from 'util';
 import Skip from '../../icons/Skip';
 import Check from '../../icons/Check';
 
@@ -29,12 +37,12 @@ class ElectionSwiper extends React.Component {
   static propTypes = {
     navigation: PropTypes.object.isRequired,
     swiper: PropTypes.object.isRequired,
-    app: PropTypes.object.isRequired
+    app: PropTypes.object.isRequired,
   };
 
   static navigationOptions = {
     gesturesEnabled: false,
-    swipeEnabled: false
+    swipeEnabled: false,
   };
 
   constructor(props) {
@@ -47,7 +55,7 @@ class ElectionSwiper extends React.Component {
       isSwipingBack: false,
       noMoreCards: false,
 
-      finishAnimation: new Animated.Value(0)
+      finishAnimation: new Animated.Value(0),
     };
   }
 
@@ -56,32 +64,36 @@ class ElectionSwiper extends React.Component {
   }
 
   trackAnswer = (answer, question) => {
-    axios.post(config.apiUrl, {
-      query: `mutation Swipe($election_id: Int!, $question_id: Int!, $answer: Int!, $platform: String!) {
+    axios.post(
+      config.apiUrl,
+      {
+        query: `mutation Swipe($election_id: Int!, $question_id: Int!, $answer: Int!, $platform: String!) {
         swipe(election_id: $election_id, question_id: $question_id, answer: $answer, platform: $platform) {
           success
         }
       }`,
-      variables: {
-        election_id: this.props.swiper.election.id,
-        question_id: question,
-        answer: answer,
-        platform: Platform.OS,
-      }
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+        variables: {
+          election_id: this.props.swiper.election.id,
+          question_id: question,
+          answer: answer,
+          platform: Platform.OS,
+        },
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
   };
 
-  nopeView = pan => {
+  nopeView = (pan) => {
     let opacity = pan.x.interpolate({
       inputRange: [-90, -(90 / 2)],
       outputRange: [1, 0],
-      extrapolate: "clamp"
+      extrapolate: 'clamp',
     });
-    let animatedStyles = { opacity: opacity };
+    let animatedStyles = {opacity: opacity};
 
     return (
       <Animated.View
@@ -91,13 +103,13 @@ class ElectionSwiper extends React.Component {
     );
   };
 
-  yupView = pan => {
+  yupView = (pan) => {
     let opacity = pan.x.interpolate({
       inputRange: [90 / 2, 90],
       outputRange: [0, 1],
-      extrapolate: "clamp"
+      extrapolate: 'clamp',
     });
-    let animatedStyles = { opacity: opacity };
+    let animatedStyles = {opacity: opacity};
 
     return (
       <Animated.View
@@ -110,13 +122,13 @@ class ElectionSwiper extends React.Component {
   setIsSwipingBack = (isSwipingBack, cb) => {
     this.setState(
       {
-        isSwipingBack
+        isSwipingBack,
       },
-      cb
+      cb,
     );
   };
 
-  getQuestionID = index => {
+  getQuestionID = (index) => {
     return this.props.swiper.election.questions[index].id;
   };
 
@@ -128,7 +140,7 @@ class ElectionSwiper extends React.Component {
       this.setIsSwipingBack(true, () => {
         this.swiper._goToPrevCard(() => {
           this.updateIndex(this.state.currentIndex - 1, {
-            isSwipingBack: false
+            isSwipingBack: false,
           });
         });
       });
@@ -145,20 +157,20 @@ class ElectionSwiper extends React.Component {
       this.setIsSwipingBack(true, () => {
         this.swiper._goToNextCard(() => {
           this.updateIndex(this.state.currentIndex + 1, {
-            isSwipingBack: false
+            isSwipingBack: false,
           });
         });
       });
     }
   };
 
-  onDragLeft = card => {
+  onDragLeft = (card) => {
     this.props.swiper.setAnswer(card.id, 1);
     this.trackAnswer(1, card.id);
     this.updateIndex(this.state.currentIndex + 1, {});
   };
 
-  onDragRight = card => {
+  onDragRight = (card) => {
     this.props.swiper.setAnswer(card.id, 2);
     this.trackAnswer(2, card.id);
     this.updateIndex(this.state.currentIndex + 1, {});
@@ -170,27 +182,30 @@ class ElectionSwiper extends React.Component {
    * the animation
    */
   goToLastCard = () => {
-    this.setState({
-      noMoreCards: false,
-    }, () => {
-      this.setIsSwipingBack(true, () => {
-        this.swiper._goToPrevCard(() => {
-          Animated.timing(
-            this.state.finishAnimation, // The value to drive
-            {
-              toValue: 0,
-              useNativeDriver: true,
-              easing: Easing.ease
-            }
-          ).start(() => {
-            this.setState({
-              isSwipingBack: false,
-              currentIndex: this.state.currentIndex - 1
+    this.setState(
+      {
+        noMoreCards: false,
+      },
+      () => {
+        this.setIsSwipingBack(true, () => {
+          this.swiper._goToPrevCard(() => {
+            Animated.timing(
+              this.state.finishAnimation, // The value to drive
+              {
+                toValue: 0,
+                useNativeDriver: true,
+                easing: Easing.ease,
+              },
+            ).start(() => {
+              this.setState({
+                isSwipingBack: false,
+                currentIndex: this.state.currentIndex - 1,
+              });
             });
           });
         });
-      });
-    });
+      },
+    );
   };
 
   goToParties = () => {
@@ -199,8 +214,8 @@ class ElectionSwiper extends React.Component {
       {
         toValue: 1,
         useNativeDriver: true,
-        easing: Easing.ease
-      }
+        easing: Easing.ease,
+      },
     ).start();
   };
 
@@ -219,12 +234,12 @@ class ElectionSwiper extends React.Component {
         {
           toValue: 1,
           useNativeDriver: true,
-          easing: Easing.ease
-        }
+          easing: Easing.ease,
+        },
       ).start(() => {
         this.setState({
           ...otherValues,
-          currentIndex: newIndex
+          currentIndex: newIndex,
         });
       }); // Start the animation
 
@@ -233,7 +248,7 @@ class ElectionSwiper extends React.Component {
 
     this.setState({
       ...otherValues,
-      currentIndex: newIndex
+      currentIndex: newIndex,
     });
   };
 
@@ -243,15 +258,15 @@ class ElectionSwiper extends React.Component {
       {
         toValue: 2,
         useNativeDriver: true,
-        easing: Easing.ease
-      }
+        easing: Easing.ease,
+      },
     ).start();
   };
 
   renderFooterButtons = () => {
     const translateY = this.state.finishAnimation.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 100]
+      outputRange: [0, 100],
     });
 
     if (this.state.currentIndex < this.props.swiper.election.questions.length) {
@@ -260,10 +275,9 @@ class ElectionSwiper extends React.Component {
           style={[
             styles.yesNoControls,
             {
-              transform: [{ translateY }]
-            }
-          ]}
-        >
+              transform: [{translateY}],
+            },
+          ]}>
           <NoButton
             onPress={() => {
               if (!this.state.isSwipingBack) {
@@ -274,9 +288,21 @@ class ElectionSwiper extends React.Component {
             }}
             disabled={this.state.isSwipingBack}
           />
-          <TouchableOpacity onPress={() => { this.swipeNext(); }} style={{ paddingLeft: 10, paddingRight: 10, flexDirection: 'column', alignItems: "center", justifyContent: "center" }}>
+          <TouchableOpacity
+            onPress={() => {
+              this.swipeNext();
+            }}
+            style={{
+              paddingLeft: 10,
+              paddingRight: 10,
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
             <Skip width={20} height={20} />
-            <Txt style={{ fontSize: 12, color: '#fff', paddingTop: 5 }}>{t('swiper.skip')}</Txt>
+            <Txt style={{fontSize: 12, color: '#fff', paddingTop: 5}}>
+              {t('swiper.skip')}
+            </Txt>
           </TouchableOpacity>
           <YesButton
             onPress={() => {
@@ -298,32 +324,32 @@ class ElectionSwiper extends React.Component {
   renderHeader = () => {
     const translateY = this.state.finishAnimation.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, -100]
+      outputRange: [0, -100],
     });
 
     const opacity = this.state.finishAnimation.interpolate({
       inputRange: [0, 1],
-      outputRange: [1, 0]
+      outputRange: [1, 0],
     });
 
     const translateYParties = this.state.finishAnimation.interpolate({
       inputRange: [0, 1, 2],
-      outputRange: [-100, 0, -100]
+      outputRange: [-100, 0, -100],
     });
 
     const opacityParties = this.state.finishAnimation.interpolate({
       inputRange: [0, 1, 2],
-      outputRange: [0, 1, 0]
+      outputRange: [0, 1, 0],
     });
 
     const translateYResult = this.state.finishAnimation.interpolate({
       inputRange: [0, 1, 2],
-      outputRange: [-100, -100, 0]
+      outputRange: [-100, -100, 0],
     });
 
     const opacityResult = this.state.finishAnimation.interpolate({
       inputRange: [0, 1, 2],
-      outputRange: [0, 0, 1]
+      outputRange: [0, 0, 1],
     });
 
     return (
@@ -332,11 +358,10 @@ class ElectionSwiper extends React.Component {
           style={[
             styles.headerAbsolute,
             {
-              transform: [{ translateY }],
-              opacity
-            }
-          ]}
-        >
+              transform: [{translateY}],
+              opacity,
+            },
+          ]}>
           <View style={styles.headerLeft}>
             <PrevButton
               onPress={() => {
@@ -356,10 +381,14 @@ class ElectionSwiper extends React.Component {
           </View>
           <View style={styles.headerTitle}>
             <Txt medium style={styles.headerTitleText}>
-              {t('swiper.questionNumber', this.state.currentIndex + 1 >
-              this.props.swiper.election.questions.length
-                ? this.props.swiper.election.questions.length
-                : this.state.currentIndex + 1, this.props.swiper.election.questions.length)}
+              {t(
+                'swiper.questionNumber',
+                this.state.currentIndex + 1 >
+                  this.props.swiper.election.questions.length
+                  ? this.props.swiper.election.questions.length
+                  : this.state.currentIndex + 1,
+                this.props.swiper.election.questions.length,
+              )}
             </Txt>
           </View>
         </Animated.View>
@@ -367,18 +396,19 @@ class ElectionSwiper extends React.Component {
           style={[
             styles.headerAbsolute,
             {
-              transform: [{ translateY: translateYParties }],
-              opacity: opacityParties
-            }
-          ]}
-        >
+              transform: [{translateY: translateYParties}],
+              opacity: opacityParties,
+            },
+          ]}>
           <View style={styles.headerLeft}>
-            {Platform.OS !== 'android' ? <PrevButton
-              onPress={() => {
-                this.goToLastCard();
-              }}
-              disabled={this.state.currentIndex < 1}
-            /> : null}
+            {Platform.OS !== 'android' ? (
+              <PrevButton
+                onPress={() => {
+                  this.goToLastCard();
+                }}
+                disabled={this.state.currentIndex < 1}
+              />
+            ) : null}
           </View>
           <View style={styles.headerTitle}>
             <Txt medium style={styles.headerTitleText}>
@@ -390,11 +420,10 @@ class ElectionSwiper extends React.Component {
           style={[
             styles.headerAbsolute,
             {
-              transform: [{ translateY: translateYResult }],
-              opacity: opacityResult
-            }
-          ]}
-        >
+              transform: [{translateY: translateYResult}],
+              opacity: opacityResult,
+            },
+          ]}>
           {/* <View style={styles.headerLeft}>
             <PrevButton
               onPress={() => {
@@ -412,10 +441,9 @@ class ElectionSwiper extends React.Component {
           <TouchableOpacity
             onPress={() => {
               this.props.swiper.clearAnswers();
-              this.props.navigation.dispatch({ type: "Navigation/BACK" });
+              this.props.navigation.dispatch({type: 'Navigation/BACK'});
             }}
-            style={styles.headerButton}
-          >
+            style={styles.headerButton}>
             <Close />
           </TouchableOpacity>
         </View>
@@ -427,9 +455,9 @@ class ElectionSwiper extends React.Component {
     if (Platform.OS === 'ios') {
       return (
         <Swiper
-          ref={swiper => (this.swiper = swiper)}
+          ref={(swiper) => (this.swiper = swiper)}
           cards={this.props.swiper.election.questions.peek()}
-          renderCard={cardData => (
+          renderCard={(cardData) => (
             <Card
               {...cardData}
               playVideo={(uri, videoLegacy, id, title, thesis) => {
@@ -437,8 +465,8 @@ class ElectionSwiper extends React.Component {
                   .analytics()
                   .logEvent("video_played", { id, title, thesis }); */
                 this.setState({
-                  video: { uri },
-                  videoLegacy
+                  video: {uri},
+                  videoLegacy,
                 });
               }}
             />
@@ -449,7 +477,7 @@ class ElectionSwiper extends React.Component {
               <SelectParties
                 navigation={this.props.navigation}
                 onShowResult={this.onShowResult}
-                ref={selectPartiesRef =>
+                ref={(selectPartiesRef) =>
                   (this.selectPartiesRef = selectPartiesRef)
                 }
               />
@@ -481,18 +509,16 @@ class ElectionSwiper extends React.Component {
         <SelectParties
           navigation={this.props.navigation}
           onShowResult={this.onShowResult}
-          ref={selectPartiesRef =>
-            (this.selectPartiesRef = selectPartiesRef)
-          }
+          ref={(selectPartiesRef) => (this.selectPartiesRef = selectPartiesRef)}
         />
       );
     }
 
     return (
       <Swiper
-        ref={swiper => (this.swiper = swiper)}
+        ref={(swiper) => (this.swiper = swiper)}
         cards={this.props.swiper.election.questions.peek()}
-        renderCard={cardData => (
+        renderCard={(cardData) => (
           <Card
             {...cardData}
             playVideo={(uri, videoLegacy, id, title, thesis) => {
@@ -500,8 +526,8 @@ class ElectionSwiper extends React.Component {
                 .analytics()
                 .logEvent("video_played", { id, title, thesis });*/
               this.setState({
-                video: { uri },
-                videoLegacy
+                video: {uri},
+                videoLegacy,
               });
             }}
           />
@@ -515,7 +541,7 @@ class ElectionSwiper extends React.Component {
             <SelectParties
               navigation={this.props.navigation}
               onShowResult={this.onShowResult}
-              ref={selectPartiesRef =>
+              ref={(selectPartiesRef) =>
                 (this.selectPartiesRef = selectPartiesRef)
               }
             />
@@ -543,11 +569,9 @@ class ElectionSwiper extends React.Component {
     );
   }
 
-  getAnswer = id => {
-    if (
-      this.props.swiper.editAnswers[id] == null
-    ) {
-      return { doubleWeight: false, answer: 0 };
+  getAnswer = (id) => {
+    if (this.props.swiper.editAnswers[id] == null) {
+      return {doubleWeight: false, answer: 0};
     }
 
     return this.props.swiper.editAnswers[id];
@@ -561,9 +585,7 @@ class ElectionSwiper extends React.Component {
 
           {/* CONTENT */}
           <View style={styles.content}>
-            <View style={styles.swiper}>
-              {this.renderCardStack()}
-            </View>
+            <View style={styles.swiper}>{this.renderCardStack()}</View>
 
             {this.renderFooterButtons()}
           </View>
@@ -572,18 +594,25 @@ class ElectionSwiper extends React.Component {
         {this.state.video !== false ? (
           <FullScreenVideo
             source={this.state.video}
-            legacy={this.state.videoLegacy}
             onClose={() => {
               this.setState({
                 video: false,
-                videoLegacy: false
+                videoLegacy: false,
               });
             }}
           />
         ) : null}
 
-        {this.props.swiper.editAnswers !== false ?
-          <View style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, zIndex: 1000 }}>
+        {this.props.swiper.editAnswers !== false ? (
+          <View
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+              zIndex: 1000,
+            }}>
             <Container noPadding>
               <View style={styles.root}>
                 <View style={styles.header}>
@@ -597,7 +626,7 @@ class ElectionSwiper extends React.Component {
                     </View>
                     <View style={styles.headerTitle}>
                       <Txt medium style={styles.headerTitleText}>
-                      {t('swiperResult.editAnswers')}
+                        {t('swiperResult.editAnswers')}
                       </Txt>
                     </View>
                   </View>
@@ -606,46 +635,157 @@ class ElectionSwiper extends React.Component {
                       onPress={() => {
                         this.props.swiper.closeEditAnswers();
                       }}
-                      style={styles.headerButton}
-                    >
+                      style={styles.headerButton}>
                       <Close />
                     </TouchableOpacity>
                   </View>
                 </View>
-    
+
                 <View style={styles.content}>
                   <View style={styles.container}>
-                    <ScrollView style={{ marginTop: 10 }}>
+                    <ScrollView style={{marginTop: 10}}>
                       <View style={styles.editAnswersContainer}>
-                        {this.props.swiper.election.questions.map(question => {
-                          const answer = this.getAnswer(question.id).answer;
-                          const doubleWeight = this.getAnswer(question.id).doubleWeight;
-    
-                          return (
-                            <View style={{ marginBottom: 20, marginTop: 10 }} key={question.id}>
-                              <BoxGradient>
-                                <Title mainBig style={{ fontSize: 16, lineHeight: 20, color: '#fff' }}>{question.question}</Title>
-                                <TouchableOpacity onPress={() => { this.props.swiper.toggleEditDoubleWeight(question.id); }} style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center' }}>
-                                  <View style={{ borderRadius: 3, borderWidth: 2, width: 20, borderColor: '#fff', height: 20, justifyContent: 'center', alignItems: 'center', marginRight: 10 }}>
-                                    {doubleWeight === true ? <Check /> : null}
+                        {this.props.swiper.election.questions.map(
+                          (question) => {
+                            const answer = this.getAnswer(question.id).answer;
+                            const doubleWeight = this.getAnswer(question.id)
+                              .doubleWeight;
+
+                            return (
+                              <View
+                                style={{marginBottom: 20, marginTop: 10}}
+                                key={question.id}>
+                                <BoxGradient>
+                                  <Title
+                                    mainBig
+                                    style={{
+                                      fontSize: 16,
+                                      lineHeight: 20,
+                                      color: '#fff',
+                                    }}>
+                                    {question.question}
+                                  </Title>
+                                  <TouchableOpacity
+                                    onPress={() => {
+                                      this.props.swiper.toggleEditDoubleWeight(
+                                        question.id,
+                                      );
+                                    }}
+                                    style={{
+                                      marginTop: 10,
+                                      flexDirection: 'row',
+                                      alignItems: 'center',
+                                    }}>
+                                    <View
+                                      style={{
+                                        borderRadius: 3,
+                                        borderWidth: 2,
+                                        width: 20,
+                                        borderColor: '#fff',
+                                        height: 20,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        marginRight: 10,
+                                      }}>
+                                      {doubleWeight === true ? <Check /> : null}
+                                    </View>
+                                    <Txt style={{color: '#fff'}}>
+                                      {t('swiper.doubleWeight')}
+                                    </Txt>
+                                  </TouchableOpacity>
+                                  <View
+                                    style={{
+                                      flexDirection: 'row',
+                                      width: '100%',
+                                      paddingTop: 15,
+                                    }}>
+                                    <TouchableOpacity
+                                      activeOpacity={1}
+                                      onPress={() => {
+                                        this.props.swiper.setEditAnswer(
+                                          question.id,
+                                          1,
+                                        );
+                                      }}
+                                      style={[
+                                        {
+                                          borderTopLeftRadius: 5,
+                                          borderBottomLeftRadius: 5,
+                                        },
+                                        styles.editAnswer,
+                                        answer === 1
+                                          ? styles.editAnswerActive
+                                          : null,
+                                      ]}>
+                                      <Txt
+                                        medium
+                                        style={{
+                                          color:
+                                            answer === 1 ? '#3A3155' : '#fff',
+                                        }}>
+                                        {t('swiper.no')}
+                                      </Txt>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                      activeOpacity={1}
+                                      onPress={() => {
+                                        this.props.swiper.setEditAnswer(
+                                          question.id,
+                                          0,
+                                        );
+                                      }}
+                                      style={[
+                                        {
+                                          borderLeftWidth: 0,
+                                          borderRightWidth: 0,
+                                        },
+                                        styles.editAnswer,
+                                        answer === 0
+                                          ? styles.editAnswerActive
+                                          : null,
+                                      ]}>
+                                      <Txt
+                                        medium
+                                        style={{
+                                          color:
+                                            answer === 0 ? '#3A3155' : '#fff',
+                                        }}>
+                                        {t('swiper.none')}
+                                      </Txt>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                      activeOpacity={1}
+                                      onPress={() => {
+                                        this.props.swiper.setEditAnswer(
+                                          question.id,
+                                          2,
+                                        );
+                                      }}
+                                      style={[
+                                        {
+                                          borderBottomRightRadius: 5,
+                                          borderTopRightRadius: 5,
+                                        },
+                                        styles.editAnswer,
+                                        answer === 2
+                                          ? styles.editAnswerActive
+                                          : null,
+                                      ]}>
+                                      <Txt
+                                        medium
+                                        style={{
+                                          color:
+                                            answer === 2 ? '#3A3155' : '#fff',
+                                        }}>
+                                        {t('swiper.yes')}
+                                      </Txt>
+                                    </TouchableOpacity>
                                   </View>
-                                  <Txt style={{ color: '#fff' }}>{t('swiper.doubleWeight')}</Txt>
-                                </TouchableOpacity>
-                                <View style={{ flexDirection: 'row', width: '100%', paddingTop: 15 }}>
-                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 1); }} style={[ { borderTopLeftRadius: 5, borderBottomLeftRadius: 5 }, styles.editAnswer, answer === 1 ? styles.editAnswerActive : null]}>
-                                    <Txt medium style={{ color: answer === 1 ? '#3A3155' : '#fff' }}>{t('swiper.no')}</Txt>
-                                  </TouchableOpacity>
-                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 0); }} style={[{ borderLeftWidth: 0, borderRightWidth: 0 }, styles.editAnswer, answer === 0 ? styles.editAnswerActive : null]}>
-                                    <Txt medium style={{ color: answer === 0 ? '#3A3155' : '#fff' }}>{t('swiper.none')}</Txt>
-                                  </TouchableOpacity>
-                                  <TouchableOpacity activeOpacity={1} onPress={() => { this.props.swiper.setEditAnswer(question.id, 2); }} style={[{ borderBottomRightRadius: 5, borderTopRightRadius: 5 }, styles.editAnswer, answer === 2 ? styles.editAnswerActive : null]}>
-                                    <Txt medium style={{ color: answer === 2 ? '#3A3155' : '#fff' }}>{t('swiper.yes')}</Txt>
-                                  </TouchableOpacity>
-                                </View>
-                              </BoxGradient>
-                            </View>
-                          );
-                        })}
+                                </BoxGradient>
+                              </View>
+                            );
+                          },
+                        )}
                       </View>
                     </ScrollView>
                   </View>
@@ -653,38 +793,30 @@ class ElectionSwiper extends React.Component {
               </View>
             </Container>
 
-            {this.props.swiper.changedAnswers === true ?
-              <View
-                style={[
-                  styles.progress
-                ]}
-              >
+            {this.props.swiper.changedAnswers === true ? (
+              <View style={[styles.progress]}>
                 <LinearGradient
-                  start={{ x: 0, y: 1 }}
-                  end={{ x: 0, y: 0 }}
-                  colors={["rgba(0, 0, 0, 1)", "transparent"]}
-                  style={styles.progressBg}
-                >
+                  start={{x: 0, y: 1}}
+                  end={{x: 0, y: 0}}
+                  colors={['rgba(0, 0, 0, 1)', 'transparent']}
+                  style={styles.progressBg}>
                   <ButtonGradient
                     onPress={() => {
                       this.props.swiper.startUpdating();
                       setTimeout(() => {
                         this.props.swiper.updateResult();
                       }, 500);
-                      
                     }}
                     text={t('swiperResult.yourResult')}
                   />
                 </LinearGradient>
               </View>
-              : null}
-            </View>
-          : null
-        }
-
+            ) : null}
+          </View>
+        ) : null}
       </Container>
     );
   }
 }
 
-export default inject("app", "swiper")(observer(ElectionSwiper));
+export default inject('app', 'swiper')(observer(ElectionSwiper));
