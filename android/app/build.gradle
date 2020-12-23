@@ -89,7 +89,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -142,8 +142,8 @@ android {
         applicationId "com.wahlswiper"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 40
-        versionName "3.1.0"
+        versionCode 41
+        versionName "3.2.0"
         multiDexEnabled true
     }
     signingConfigs {
