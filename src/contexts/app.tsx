@@ -1,16 +1,17 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
+import {Country} from 'types/api';
 
 interface Context {
   hydrated: boolean;
-  country: null;
+  country: null | Country;
   language: null | string;
   languageNotice: {
     shouldShow: boolean;
   };
   setHydrated: (hydrated: boolean) => void;
   setLocale: (locale: string) => void;
-  setCountry: (country: null) => void;
+  setCountry: (country: null | Country) => void;
   dismissLanguageNotice: () => void;
 }
 
@@ -18,7 +19,7 @@ const AppContext = React.createContext<Context>({} as Context);
 
 const AppProvider: React.FC = ({children}) => {
   const [hydrated, setHydrated] = React.useState(false);
-  const [country, setCountry] = React.useState(null);
+  const [country, setCountry] = React.useState<null | Country>(null);
   const [language, setLanguage] = React.useState<null | string>(null);
   const [languageNotice, setLanguageNotice] = React.useState({
     shouldShow: true,

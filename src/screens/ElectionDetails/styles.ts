@@ -1,6 +1,11 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   electionDate: {
     paddingTop: 0,
     marginTop: 0,
@@ -24,5 +29,8 @@ export default StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     paddingTop: 15,
-  }
+  },
+  textColor: {
+    color: '#392F52',
+  },
 });

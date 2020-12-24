@@ -1,13 +1,18 @@
 import React from 'react';
 import {Provider} from 'mobx-react/native';
 import {ApolloProvider} from 'react-apollo';
+import {enableScreens} from 'react-native-screens';
 import {View, StatusBar, StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 import OneSignal from 'react-native-onesignal';
 import Matomo from 'react-native-matomo';
 import stores from 'stores';
 import client from 'util/client';
 import Init from './Init';
 import AppProvider from 'contexts/app';
+import SwiperProvider from 'contexts/swiper';
+
+enableScreens();
 
 const styles = StyleSheet.create({
   app: {
@@ -26,9 +31,13 @@ const App: React.FC = () => {
       <StatusBar barStyle="light-content" backgroundColor="#392F52" />
       <ApolloProvider client={client}>
         <AppProvider>
-          <Provider {...stores}>
-            <Init />
-          </Provider>
+          <SwiperProvider>
+            <Provider {...stores}>
+              <NavigationContainer>
+                <Init />
+              </NavigationContainer>
+            </Provider>
+          </SwiperProvider>
         </AppProvider>
       </ApolloProvider>
     </View>

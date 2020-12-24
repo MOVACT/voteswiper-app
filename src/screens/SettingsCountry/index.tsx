@@ -1,23 +1,28 @@
 import React from 'react';
 import {View, RefreshControl} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import OneSignal from 'react-native-onesignal';
-import {Txt, BoxGradient} from 'components';
 import Container from 'components/Container';
 import ScrollContainer from 'components/ScrollContainer';
+import Txt from 'components/Txt';
+import BoxGradient from 'components/BoxGradient';
 import Title from 'components/Title';
 import CountryPill from 'components/CountryPill';
 import Loader from 'components/Loader';
 import t from 'util/t';
-import {useQuery} from 'util/api';
 import styles from './styles';
 import {useApp} from 'contexts/app';
-import {Country} from 'types/api';
+import {useQuery} from 'util/api';
 
-const SelectCountry: React.FC = () => {
+const SettingsCountry: React.FC = () => {
   const {setCountry} = useApp();
-  const {loading, error, data, refetch} = useQuery('GET_COUNTRIES');
+  const {reset} = useNavigation();
 
-  if (loading) {
+  const {loading, error, data, refetch, networkStatus} = useQuery(
+    'GET_COUNTRIES',
+  );
+
+  if (loading && networkStatus !== 4) {
     return (
       <Container>
         <Loader />
@@ -27,14 +32,17 @@ const SelectCountry: React.FC = () => {
   if (error) {
     return <View />;
   }
+
   return (
     <Container>
       <ScrollContainer
         withPadding
         refreshControl={
           <RefreshControl
-            refreshing={data.loading && data.networkStatus === 4 ? true : false}
-            onRefresh={refetch}
+            refreshing={loading && networkStatus === 4}
+            onRefresh={() => {
+              refetch();
+            }}
             colors={['#ffffff']}
             enabled
             tintColor={'#ffffff'}
@@ -42,14 +50,14 @@ const SelectCountry: React.FC = () => {
         }>
         <BoxGradient>
           <Title mainBig center>
-            {t('selectCountry.title')}
+            {t('settingsCountry.boxTitle')}
           </Title>
           <Txt copy center>
-            {t('selectCountry.introText')}
+            {t('settingsCountry.boxText')}
           </Txt>
         </BoxGradient>
         <View style={styles.countriesList}>
-          {data.countries.map((country: Country) => {
+          {data.countries.map((country) => {
             return (
               <CountryPill
                 onPress={() => {
@@ -58,6 +66,10 @@ const SelectCountry: React.FC = () => {
                     country_slug: country.slug,
                   });
                   setCountry(country);
+                  reset({
+                    index: 0,
+                    routes: [{name: 'Index'}],
+                  });
                 }}
                 key={country.id}
                 locale={country.country_code}
@@ -66,9 +78,10 @@ const SelectCountry: React.FC = () => {
             );
           })}
         </View>
+        <View style={styles.offset} />
       </ScrollContainer>
     </Container>
   );
 };
 
-export default SelectCountry;
+export default SettingsCountry;

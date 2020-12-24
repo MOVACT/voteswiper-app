@@ -19,6 +19,7 @@ interface Props {
   name: string;
   voting_day: string;
   active_date: string;
+  active: boolean;
 }
 
 const ElectionPill: React.FC<Props> = ({
@@ -27,17 +28,18 @@ const ElectionPill: React.FC<Props> = ({
   name,
   voting_day,
   active_date,
+  active,
 }) => {
-  const [active, setActive] = React.useState(false);
+  const [clickActive, setActiveClick] = React.useState(false);
 
   return (
     <TouchableWithoutFeedback
       onPress={onPress}
       onPressIn={() => {
-        setActive(true);
+        setActiveClick(true);
       }}
       onPressOut={() => {
-        setActive(false);
+        setActiveClick(false);
       }}
       disabled={!active}>
       <View style={[styles.shadow, active ? {} : styles.disabled]}>
@@ -51,7 +53,7 @@ const ElectionPill: React.FC<Props> = ({
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 0, y: 1}}
-          colors={['#fff', active ? '#D2DCFD' : '#EFF3FF']}
+          colors={['#fff', clickActive ? '#D2DCFD' : '#EFF3FF']}
           style={styles.root}>
           <View style={styles.content}>
             <Txt medium style={styles.title}>

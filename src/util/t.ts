@@ -2,9 +2,7 @@ import {config} from 'common';
 import translations from 'translations';
 import locale from './locale';
 
-const lang = function () {
-  const args = arguments;
-
+const lang = function (...args: any[]) {
   const strings = translations[locale()];
   const string = args[0];
 
@@ -16,15 +14,18 @@ const lang = function () {
 
     return translations[config.fallbackLocale][string].replace(
       /{(\d+)}/g,
-      function (match, number) {
+      function (match: any, number: number) {
         return typeof args[number] !== 'undefined' ? args[number] : match;
       },
     );
   }
 
-  return strings[string].replace(/{(\d+)}/g, function (match, number) {
-    return typeof args[number] !== 'undefined' ? args[number] : match;
-  });
+  return strings[string].replace(
+    /{(\d+)}/g,
+    function (match: any, number: number) {
+      return typeof args[number] !== 'undefined' ? args[number] : match;
+    },
+  );
 };
 
 export default lang;

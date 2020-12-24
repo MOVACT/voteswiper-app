@@ -6,7 +6,7 @@ import {
   ViewStyle,
   ScrollViewProps,
 } from 'react-native';
-import {headerHeight} from 'common';
+import {useHeaderHeight} from '@react-navigation/stack';
 import styles from './styles';
 import {isIphoneX} from 'util/iPhoneXHelper';
 
@@ -21,6 +21,8 @@ const ScrollContainer: React.FC<Props> = ({
   children,
   ...props
 }) => {
+  const headerHeight = useHeaderHeight();
+
   return (
     <View style={styles.flex}>
       <View style={styles.flex}>
@@ -28,7 +30,7 @@ const ScrollContainer: React.FC<Props> = ({
           {...props}
           style={[
             {
-              marginTop: isIphoneX() ? headerHeight() : headerHeight() + 10,
+              marginTop: headerHeight + 10,
             },
             style,
           ]}>

@@ -12,7 +12,6 @@ interface Props {
   textCenter?: boolean;
   uppercase?: boolean;
   style?: StyleProp<TextStyle>;
-  children: string;
 }
 
 const Title: React.FC<Props> = ({
@@ -39,7 +38,7 @@ const Title: React.FC<Props> = ({
         style,
       ]}
       medium={h1 || h5 || h5dark ? true : false}>
-      {uppercase ? children.toUpperCase() : children}
+      {uppercase ? children.toString().toUpperCase() : children}
     </Txt>
   );
 };

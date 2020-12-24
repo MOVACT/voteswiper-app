@@ -1,11 +1,13 @@
 import {isIphoneX} from 'util/iPhoneXHelper';
-import {Header} from 'react-navigation-stack';
 
 const headerHeight = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // const height = useHeaderHeight();
+  const height = 100;
   if (isIphoneX()) {
-    return Header.HEIGHT + 30;
+    return height + 30;
   }
-  return Header.HEIGHT;
+  return height;
 };
 
 export default headerHeight;

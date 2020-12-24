@@ -9,7 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {withNavigation} from 'react-navigation';
+//import {useNavigation} from '@react-navigation/native';
 import {Title, Txt} from 'components';
 import stores from 'stores';
 import styles from '../styles';
@@ -211,4 +211,4 @@ class Card extends React.Component {
   }
 }
 
-export default withNavigation(Card);
+export default Card;

@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.2",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/bottom-tabs": "^5.11.2",
+    "@react-navigation/native": "^5.8.10",
+    "@react-navigation/stack": "^5.12.8",
     "apollo-boost": "^0.4.9",
     "axios": "^0.18.0",
     "clamp": "^1.0.1",
@@ -31,15 +35,12 @@
     "react-native-onesignal": "^3.9.3",
     "react-native-reanimated": "^1.13.2",
     "react-native-restart": "^0.0.20",
+    "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.16.1",
     "react-native-share": "^4.1.1",
     "react-native-svg": "^12.1.0",
     "react-native-video": "^5.1.0-alpha8",
-    "react-native-view-shot": "^3.1.2",
-    "react-navigation": "^4.4.3",
-    "react-navigation-drawer": "^1.4.0",
-    "react-navigation-stack": "^1.7.3",
-    "react-navigation-tabs": "^1.2.0"
+    "react-native-view-shot": "^3.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

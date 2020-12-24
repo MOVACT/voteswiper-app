@@ -1,13 +1,13 @@
-import ElectionsIndex from './ElectionsIndex/ElectionsIndex';
+import ElectionsIndex from './ElectionsIndex';
 import SelectCountry from './SelectCountry';
-import SettingsCountry from './SettingsCountry/SettingsCountry';
-import ElectionDetails from './ElectionDetails/ElectionDetails';
+import SettingsCountry from './SettingsCountry';
+import ElectionDetails from './ElectionDetails';
 import ElectionSwiper from './ElectionSwiper/ElectionSwiper';
 import ElectionCompareParty from './ElectionCompareParty/ElectionCompareParty';
 import ElectionQuestioninfo from './ElectionQuestioninfo/ElectionQuestioninfo';
-import HelpIndex from './HelpIndex/HelpIndex';
-import InfosIndex from './InfosIndex/InfosIndex';
-import Settings from './Settings/Settings';
+import HelpIndex from './HelpIndex';
+import InfosIndex from './InfosIndex';
+import Settings from './Settings';
 
 export {
   ElectionsIndex,

@@ -1,10 +1,9 @@
-import { StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   countriesList: {
     paddingTop: 10,
   },
-
   language: {
     padding: 15,
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
@@ -15,5 +14,17 @@ export default StyleSheet.create({
   },
   activeLanguage: {
     borderColor: '#E6E90F',
-  }
+  },
+  offset: {
+    height: 90,
+  },
+  button: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
+    padding: 15,
+    backgroundColor: 'rgba(0,0,0,0.3)',
+  },
 });

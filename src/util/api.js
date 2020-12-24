@@ -1,6 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import {Query} from 'react-apollo';
+import {Query, useQuery as useApolloQuery} from 'react-apollo';
 import locale from './locale';
 
 // Queries
@@ -147,4 +147,21 @@ class ApiQuery extends React.Component {
   }
 }
 
+// @TODO: add types
+const useQuery = (query, props = {}) => {
+  const vars = React.useMemo(() => {
+    const queryVars = props.variables ? props.variables : {};
+    queryVars.locale = locale();
+    return queryVars;
+  }, [props]);
+
+  return useApolloQuery(queries[query], {
+    fetchPolicy: 'network-only',
+    notifyOnNetworkStatusChange: true,
+    ...props,
+    variables: vars,
+  });
+};
+
+export {useQuery};
 export default ApiQuery;
