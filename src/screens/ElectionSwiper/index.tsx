@@ -3,24 +3,22 @@ import PropTypes from 'prop-types';
 import {inject, observer} from 'mobx-react';
 import {
   View,
-  Animated,
   Easing,
   TouchableOpacity,
   Platform,
   ScrollView,
 } from 'react-native';
+import Animated from 'react-native-reanimated';
 import axios from 'axios';
-import {config} from 'common';
+import config from 'common/config';
 import LinearGradient from 'react-native-linear-gradient';
-import {
-  Container,
-  Swiper,
-  Txt,
-  FullScreenVideo,
-  Title,
-  BoxGradient,
-  ButtonGradient,
-} from 'components';
+import Container from 'components/Container';
+import Swiper from 'components/Swiper/Swiper';
+import Txt from 'components/Txt';
+import FullScreenVideo from 'components/FullScreenVideo';
+import Title from 'components/Title';
+import BoxGradient from 'components/BoxGradient';
+import ButtonGradient from 'components/ButtonGradient';
 import NoButton from './partials/NoButton';
 import YesButton from './partials/YesButton';
 import Card from './partials/Card';
@@ -28,66 +26,52 @@ import PrevButton from './partials/PrevButton';
 import NextButton from './partials/NextButton';
 import styles from './styles';
 import SelectParties from './SelectParties';
-import Close from '../../icons/Close';
-import {t} from 'util';
-import Skip from '../../icons/Skip';
-import Check from '../../icons/Check';
+import Close from 'icons/Close';
+import t from 'util/t';
+import Skip from 'icons/Skip';
+import Check from 'icons/Check';
+import {useSwiper} from 'contexts/swiper';
 
-class ElectionSwiper extends React.Component {
-  static propTypes = {
-    navigation: PropTypes.object.isRequired,
-    swiper: PropTypes.object.isRequired,
-    app: PropTypes.object.isRequired,
-  };
+const ElectionSwiper: React.FC = () => {
+  const finishAnimation = React.useRef(new Animated.Value(0));
+  const swiper = React.useRef();
 
-  static navigationOptions = {
-    gesturesEnabled: false,
-    swipeEnabled: false,
-  };
+  const [video, setVideo] = React.useState(false);
+  const [videoLegacy, setVideoLegacy] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [isSwipingBack, setIsSwipingBack] = React.useState(false);
+  const [noMoreCards, setNoMoreCards] = React.useState(false);
 
-  constructor(props) {
-    super(props);
+  const {election, setAnswer} = useSwiper();
 
-    this.state = {
-      video: false,
-      videoLegacy: false,
-      currentIndex: 0,
-      isSwipingBack: false,
-      noMoreCards: false,
-
-      finishAnimation: new Animated.Value(0),
-    };
-  }
-
-  componentDidMount() {
-    // firebase.analytics().setCurrentScreen("ElectionSwiper", "ElectionSwiper");
-  }
-
-  trackAnswer = (answer, question) => {
-    axios.post(
-      config.apiUrl,
-      {
-        query: `mutation Swipe($election_id: Int!, $question_id: Int!, $answer: Int!, $platform: String!) {
+  const trackAnswer = React.useCallback(
+    (answer: number, question: number) => {
+      axios.post(
+        config.apiUrl,
+        {
+          query: `mutation Swipe($election_id: Int!, $question_id: Int!, $answer: Int!, $platform: String!) {
         swipe(election_id: $election_id, question_id: $question_id, answer: $answer, platform: $platform) {
           success
         }
       }`,
-        variables: {
-          election_id: this.props.swiper.election.id,
-          question_id: question,
-          answer: answer,
-          platform: Platform.OS,
+          variables: {
+            election_id: election.id,
+            question_id: question,
+            answer: answer,
+            platform: Platform.OS,
+          },
         },
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      },
-    );
-  };
+      );
+    },
+    [election],
+  );
 
-  nopeView = (pan) => {
+  const nopeView = (pan) => {
     let opacity = pan.x.interpolate({
       inputRange: [-90, -(90 / 2)],
       outputRange: [1, 0],
@@ -103,7 +87,7 @@ class ElectionSwiper extends React.Component {
     );
   };
 
-  yupView = (pan) => {
+  const yupView = (pan) => {
     let opacity = pan.x.interpolate({
       inputRange: [90 / 2, 90],
       outputRange: [0, 1],
@@ -119,63 +103,75 @@ class ElectionSwiper extends React.Component {
     );
   };
 
-  setIsSwipingBack = (isSwipingBack, cb) => {
-    this.setState(
-      {
-        isSwipingBack,
-      },
-      cb,
-    );
-  };
+  const getQuestionID = React.useCallback(
+    (index: number) => {
+      return election.questions[index].id;
+    },
+    [election],
+  );
 
-  getQuestionID = (index) => {
-    return this.props.swiper.election.questions[index].id;
-  };
+  const swipePrev = React.useCallback(() => {
+    trackAnswer(0, getQuestionID(currentIndex));
 
-  swipePrev = () => {
-    // this.props.swiperStore.goBack();
-    // this.countDown();
-    this.trackAnswer(0, this.getQuestionID(this.state.currentIndex));
-    if (!this.state.isSwipingBack) {
-      this.setIsSwipingBack(true, () => {
-        this.swiper._goToPrevCard(() => {
-          this.updateIndex(this.state.currentIndex - 1, {
-            isSwipingBack: false,
-          });
+    if (!isSwipingBack) {
+      setIsSwipingBack(true);
+      swiper.current._goToPrevCard(() => {
+        updateIndex(currentIndex - 1, {
+          isSwipingBack: false,
         });
       });
     }
-  };
+  }, [currentIndex, getQuestionID, isSwipingBack, trackAnswer]);
 
-  swipeNext = () => {
-    // this.props.swiperStore.goBack();
-    // this.countDown();
-    const id = this.getQuestionID(this.state.currentIndex);
-    this.trackAnswer(0, id);
-    this.props.swiper.setAnswer(id, 0);
-    if (!this.state.isSwipingBack) {
-      this.setIsSwipingBack(true, () => {
-        this.swiper._goToNextCard(() => {
-          this.updateIndex(this.state.currentIndex + 1, {
-            isSwipingBack: false,
-          });
+  const swipeNext = React.useCallback(() => {
+    const id = getQuestionID(currentIndex);
+    trackAnswer(0, id);
+    setAnswer(id, 0);
+
+    if (!isSwipingBack) {
+      setIsSwipingBack(true);
+      swiper.current._goToNextCard(() => {
+        updateIndex(currentIndex + 1, {
+          isSwipingBack: false,
         });
       });
     }
-  };
+  }, [currentIndex, getQuestionID, isSwipingBack, trackAnswer, setAnswer]);
 
-  onDragLeft = (card) => {
-    this.props.swiper.setAnswer(card.id, 1);
-    this.trackAnswer(1, card.id);
-    this.updateIndex(this.state.currentIndex + 1, {});
-  };
+  const onDragLeft = React.useCallback(
+    (card) => {
+      setAnswer(card.id, 1);
+      trackAnswer(1, card.id);
+      updateIndex(currentIndex + 1);
+    },
+    [setAnswer, trackAnswer, currentIndex],
+  );
 
-  onDragRight = (card) => {
-    this.props.swiper.setAnswer(card.id, 2);
-    this.trackAnswer(2, card.id);
-    this.updateIndex(this.state.currentIndex + 1, {});
-  };
+  const onDragRight = React.useCallback(
+    (card) => {
+      setAnswer(card.id, 2);
+      trackAnswer(2, card.id);
+      updateIndex(currentIndex + 1);
+    },
+    [setAnswer, trackAnswer, currentIndex],
+  );
 
+  /**
+   * When the user is selecting a party and hits the
+   * back button we need to update the index and reverse
+   * the animation
+   */
+  const goToLastCard = React.useCallback(() => {
+    setNoMoreCards(false);
+
+    setIsSwipingBack(true);
+    swiper.current._goToPrevCard(() => {});
+  }, []);
+
+  return <View />;
+};
+
+class ElectionSwiper extends React.Component {
   /**
    * When the user is selecting a party and hits the
    * back button we need to update the index and reverse
@@ -819,4 +815,4 @@ class ElectionSwiper extends React.Component {
   }
 }
 
-export default inject('app', 'swiper')(observer(ElectionSwiper));
+export default ElectionSwiper;

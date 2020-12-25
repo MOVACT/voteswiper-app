@@ -2,7 +2,7 @@ import ElectionsIndex from './ElectionsIndex';
 import SelectCountry from './SelectCountry';
 import SettingsCountry from './SettingsCountry';
 import ElectionDetails from './ElectionDetails';
-import ElectionSwiper from './ElectionSwiper/ElectionSwiper';
+import ElectionSwiper from './ElectionSwiper';
 import ElectionCompareParty from './ElectionCompareParty/ElectionCompareParty';
 import ElectionQuestioninfo from './ElectionQuestioninfo/ElectionQuestioninfo';
 import HelpIndex from './HelpIndex';

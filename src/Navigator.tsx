@@ -13,6 +13,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ElectionsIndex from 'screens/ElectionsIndex';
 import ElectionDetails from 'screens/ElectionDetails';
 import SettingsCountry from 'screens/SettingsCountry';
+import ElectionSwiper from 'screens/ElectionSwiper';
 import HelpIndex from 'screens/HelpIndex';
 import InfosIndex from 'screens/InfosIndex';
 import Settings from 'screens/Settings';
@@ -230,7 +231,7 @@ const TabNavigator: React.FC = () => {
   );
 };
 
-/*const ModalStack = createStackNavigator();
+const ModalStack = createStackNavigator();
 
 const ModalNavigator: React.FC = () => {
   return (
@@ -239,17 +240,17 @@ const ModalNavigator: React.FC = () => {
       headerMode="none"
       screenOptions={{gestureEnabled: false}}>
       <ModalStack.Screen name="ModalSwiper" component={ElectionSwiper} />
-      <ModalStack.Screen
+      {/*<ModalStack.Screen
         name="ModalCompareParty"
         component={ElectionCompareParty}
       />
       <ModalStack.Screen
         name="ModalQuestionInfo"
         component={ElectionQuestioninfo}
-      />
+      />*/}
     </ModalStack.Navigator>
   );
-};*/
+};
 
 const RootStack = createStackNavigator();
 
@@ -257,7 +258,7 @@ const Navigator: React.FC = () => {
   return (
     <RootStack.Navigator initialRouteName="Tabs" headerMode="none" mode="modal">
       <RootStack.Screen name="Tabs" component={TabNavigator} />
-      {/*<RootStack.Screen name="ModalSwiper" component={ModalNavigator} />*/}
+      <RootStack.Screen name="ModalSwiper" component={ModalNavigator} />
     </RootStack.Navigator>
   );
 };
