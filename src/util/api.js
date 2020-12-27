@@ -1,7 +1,8 @@
-import React from "react";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
-import locale from "./locale";
+import React from 'react';
+import gql from 'graphql-tag';
+import {useQuery as useApolloQuery} from 'react-apollo';
+import locale from './locale';
+import {useApp} from 'contexts/app';
 
 // Queries
 const GET_COUNTRIES = gql`
@@ -114,38 +115,24 @@ const queries = {
   GET_COUNTRIES,
   GET_ELECTIONS,
   GET_QUESTIONS,
-  GET_FAQ
+  GET_FAQ,
 };
 
-class ApiQuery extends React.Component {
-  static defaultProps = {
-    variables: {}
-  };
+// @TODO: add types
+const useQuery = (query, props = {}) => {
+  const {language} = useApp();
+  const vars = React.useMemo(() => {
+    const queryVars = props.variables ? props.variables : {};
+    queryVars.locale = locale(language);
+    return queryVars;
+  }, [props, language]);
 
-  getVariables = () => {
-    const variables = {
-      ...this.props.variables
-    };
+  return useApolloQuery(queries[query], {
+    fetchPolicy: 'network-only',
+    notifyOnNetworkStatusChange: true,
+    ...props,
+    variables: vars,
+  });
+};
 
-    variables.locale = locale();
-
-    return variables;
-  }
-  render() {
-    const props = this.props;
-
-    return (
-      <Query
-        fetchPolicy="network-only"
-        notifyOnNetworkStatusChange
-        {...props}
-        query={queries[this.props.query]}
-        variables={this.getVariables()}
-      >
-        {this.props.children}
-      </Query>
-    )
-  }
-}
-
-export default ApiQuery;
+export {useQuery};

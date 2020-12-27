@@ -11,7 +11,6 @@
 		049D5B1A7A2904631667BDD3 /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA4EC43E0AD134956E26E663 /* libPods-OneSignalNotificationServiceExtension.a */; };
 		062D23DCC9D24908B98BA2B9 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08E4497F703E448C92C65683 /* Rubik-Regular.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1844DCA6CDC48089C7BD2A61 /* libPods-voteswiper-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EB04EE662B0ECAFF1116DD5 /* libPods-voteswiper-tvOS.a */; };
@@ -20,12 +19,12 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* voteswiperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* voteswiperTests.m */; };
+		320A58FF2599121200C39BE5 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320A58FE2599121200C39BE5 /* Launch Screen.storyboard */; };
 		320A852122233A4E00ECE289 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 320A852022233A4E00ECE289 /* NotificationService.m */; };
 		320A852522233A4E00ECE289 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 320A851D22233A4E00ECE289 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		320A852B22233A8600ECE289 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A852A22233A8600ECE289 /* UIKit.framework */; };
 		320A852D22233A8D00ECE289 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A852C22233A8D00ECE289 /* SystemConfiguration.framework */; };
 		320A853122233BF900ECE289 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 320A853322233BF900ECE289 /* InfoPlist.strings */; };
-		320A853B22233EAD00ECE289 /* launch_gradient.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 320A853A22233EAD00ECE289 /* launch_gradient.jpg */; };
 		320A853D22233EBA00ECE289 /* launch_icon_de.png in Resources */ = {isa = PBXBuildFile; fileRef = 320A853C22233EBA00ECE289 /* launch_icon_de.png */; };
 		320A853F22233F6300ECE289 /* launch_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 320A853E22233F6300ECE289 /* launch_icon.png */; };
 		32A051052225DBD30050CB5E /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A051042225DBD30050CB5E /* test.swift */; };
@@ -91,7 +90,6 @@
 		13B07F961A680F5B00A75B9A /* voteswiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = voteswiper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = voteswiper/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = voteswiper/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = voteswiper/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = voteswiper/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = voteswiper/main.m; sourceTree = "<group>"; };
@@ -105,6 +103,8 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E702E6DA5264BEDBC96D936 /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		2E8A78B24898463E9CB368B9 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Bold.ttf"; path = "../src/resources/fonts/Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		320A454D25991B1A0021DC83 /* launchscreen_icon_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen_icon_de.png; sourceTree = "<group>"; };
+		320A58FE2599121200C39BE5 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		320A851822233A0600ECE289 /* voteswiper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = voteswiper.entitlements; path = voteswiper/voteswiper.entitlements; sourceTree = "<group>"; };
 		320A851D22233A4E00ECE289 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		320A851F22233A4E00ECE289 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
@@ -119,10 +119,9 @@
 		320A853722233CAC00ECE289 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		320A853822233CC600ECE289 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		320A853922233CE200ECE289 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		320A853A22233EAD00ECE289 /* launch_gradient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launch_gradient.jpg; sourceTree = "<group>"; };
 		320A853C22233EBA00ECE289 /* launch_icon_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_icon_de.png; sourceTree = "<group>"; };
 		320A853E22233F6300ECE289 /* launch_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_icon.png; sourceTree = "<group>"; };
-		320A85422223404100ECE289 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3225C6B8259918AE00E481B7 /* launchscreen_gradient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launchscreen_gradient.jpg; sourceTree = "<group>"; };
 		323FA94F2246A80600B332C9 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		323FA9502246A82B00B332C9 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		323FA9512246A83F00B332C9 /* lt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lt; path = lt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -231,16 +230,16 @@
 		13B07FAE1A68108700A75B9A /* voteswiper */ = {
 			isa = PBXGroup;
 			children = (
+				320A454D25991B1A0021DC83 /* launchscreen_icon_de.png */,
+				3225C6B8259918AE00E481B7 /* launchscreen_gradient.jpg */,
 				320A853C22233EBA00ECE289 /* launch_icon_de.png */,
 				320A853E22233F6300ECE289 /* launch_icon.png */,
-				320A853A22233EAD00ECE289 /* launch_gradient.jpg */,
 				320A851822233A0600ECE289 /* voteswiper.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				320A853322233BF900ECE289 /* InfoPlist.strings */,
 				32A051042225DBD30050CB5E /* test.swift */,
@@ -335,6 +334,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				320A58FE2599121200C39BE5 /* Launch Screen.storyboard */,
 				13B07FAE1A68108700A75B9A /* voteswiper */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* voteswiperTests */,
@@ -556,13 +556,12 @@
 			files = (
 				320A853D22233EBA00ECE289 /* launch_icon_de.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				320A853B22233EAD00ECE289 /* launch_gradient.jpg in Resources */,
 				ED3B51ED531741B58C7A9387 /* Rubik-Bold.ttf in Resources */,
 				320A853F22233F6300ECE289 /* launch_icon.png in Resources */,
 				CD7D75BEAFB9446AB0B03D5F /* Rubik-Medium.ttf in Resources */,
 				062D23DCC9D24908B98BA2B9 /* Rubik-Regular.ttf in Resources */,
 				4EFCBEB258A0403293FB63BE /* Wahlswiper.ttf in Resources */,
+				320A58FF2599121200C39BE5 /* Launch Screen.storyboard in Resources */,
 				320A853122233BF900ECE289 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -833,16 +832,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-				320A85422223404100ECE289 /* de */,
-			);
-			name = LaunchScreen.xib;
-			path = voteswiper;
-			sourceTree = "<group>";
-		};
 		320A853322233BF900ECE289 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -978,7 +967,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = voteswiper/voteswiper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 69;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 6FB3Z6BNU5;
 				HEADER_SEARCH_PATHS = (
@@ -996,6 +985,7 @@
 				);
 				INFOPLIST_FILE = voteswiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.2.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1019,7 +1009,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = voteswiper/voteswiper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 69;
 				DEVELOPMENT_TEAM = 6FB3Z6BNU5;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1036,6 +1026,7 @@
 				);
 				INFOPLIST_FILE = voteswiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.2.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1285,6 +1276,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 69;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 6FB3Z6BNU5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1297,6 +1289,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				MARKETING_VERSION = 3.2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.movact.wahlswiper.OneSignalNotificationServiceExtension;
@@ -1320,6 +1313,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 69;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6FB3Z6BNU5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1332,6 +1326,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				MARKETING_VERSION = 3.2.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.movact.wahlswiper.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
