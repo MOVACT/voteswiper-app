@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Ingen',
   'swiper.skip': 'Springe',
   'swiperResult.editAnswers': 'Rediger svar',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Vælg nu det parti som du gerne vil sammenligne dine svar med. Du kan vælge flere partier.',

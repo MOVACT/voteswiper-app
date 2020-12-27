@@ -6,7 +6,7 @@ import styles from './styles';
 
 interface Props {
   actionText?: string;
-  actionOnPress: (event?: GestureResponderEvent) => void;
+  actionOnPress?: (event?: GestureResponderEvent) => void;
   withBorder?: boolean;
   topMargin?: number;
 }
@@ -34,7 +34,7 @@ const Box: React.FC<Props> = ({
         </LinearGradient>
       </View>
 
-      {actionText ? (
+      {actionText && actionOnPress ? (
         <View style={styles.action}>
           <ButtonGradient text={actionText} onPress={actionOnPress} />
         </View>

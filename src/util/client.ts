@@ -1,6 +1,6 @@
 import {InMemoryCache, defaultDataIdFromObject} from 'apollo-cache-inmemory';
 import ApolloClient from 'apollo-boost';
-import {config} from 'common';
+import config from 'common/config';
 
 const cache = new InMemoryCache({
   dataIdFromObject: (object) => {

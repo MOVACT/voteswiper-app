@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, RefreshControl} from 'react-native';
 import OneSignal from 'react-native-onesignal';
-import {Txt, BoxGradient} from 'components';
+import Txt from 'components/Txt';
+import BoxGradient from 'components/BoxGradient';
 import Container from 'components/Container';
 import ScrollContainer from 'components/ScrollContainer';
 import Title from 'components/Title';

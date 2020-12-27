@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Ei mitään',
   'swiper.skip': 'Jättää väliin',
   'swiperResult.editAnswers': 'Muokkaa vastauksia',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Valitse puolueet, joiden kanssa haluat vertailla vastauksia. Voit valita niin monta puoluetta kuin haluat.',

@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Egyik sem',
   'swiper.skip': 'Átugrál',
   'swiperResult.editAnswers': 'Válaszok szerkesztése',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Válaszd ki, melyik pártokkal hasonlítsuk össze a véleményed. Bármennyit választhatsz.',

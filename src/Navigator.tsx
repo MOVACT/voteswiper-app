@@ -23,6 +23,9 @@ import InfosIcon from './icons/InfoCircle';
 import ElectionsIcon from './icons/Swiper';
 import SettingsIcon from './icons/Cog';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import Swiper from 'screens/Swiper';
+import SwiperVideo from 'screens/SwiperVideo';
+import SwiperExplainer from 'screens/SwiperExplainer';
 
 const iPhone6 = 375;
 const {width} = Dimensions.get('window');
@@ -88,6 +91,15 @@ function getIcon(name) {
   }
 }
 
+const headerScreenOptions = {
+  headerStyle: navigatorStyles.header,
+  headerTransparent: true,
+  headerTintColor: '#ffffff',
+  headerBackTitleStyle: navigatorStyles.backTitle,
+  headerBackTitle: t('navigation.backTitle'),
+  headerTitleStyle: navigatorStyles.titleStyle,
+};
+
 const ElectionsStack = createStackNavigator();
 
 const ElectionsNavigator: React.FC = () => {
@@ -95,11 +107,7 @@ const ElectionsNavigator: React.FC = () => {
     <ElectionsStack.Navigator
       initialRouteName="Index"
       screenOptions={({navigation}) => ({
-        headerStyle: navigatorStyles.header,
-        headerTransparent: true,
-        headerTintColor: '#ffffff',
-        headerBackTitleStyle: navigatorStyles.backTitle,
-        headerBackTitle: t('navigation.backTitle'),
+        ...headerScreenOptions,
         headerRight: () => (
           <TouchableOpacity
             onPress={() => {
@@ -109,7 +117,6 @@ const ElectionsNavigator: React.FC = () => {
             <SettingsIcon />
           </TouchableOpacity>
         ),
-        headerTitleStyle: navigatorStyles.titleStyle,
       })}>
       <ElectionsStack.Screen name="Index" component={ElectionsIndex} />
       <ElectionsStack.Screen
@@ -237,9 +244,25 @@ const ModalNavigator: React.FC = () => {
   return (
     <ModalStack.Navigator
       initialRouteName="ModalSwiper"
-      headerMode="none"
-      screenOptions={{gestureEnabled: false}}>
-      <ModalStack.Screen name="ModalSwiper" component={ElectionSwiper} />
+      screenOptions={{
+        gestureEnabled: false,
+        ...headerScreenOptions,
+      }}>
+      <ModalStack.Screen
+        name="ModalSwiper"
+        options={{title: ''}}
+        component={Swiper}
+      />
+      <ModalStack.Screen
+        name="ModalVideo"
+        options={{title: ''}}
+        component={SwiperVideo}
+      />
+      <ModalStack.Screen
+        name="ModalExplainer"
+        options={{title: ''}}
+        component={SwiperExplainer}
+      />
       {/*<ModalStack.Screen
         name="ModalCompareParty"
         component={ElectionCompareParty}
@@ -258,7 +281,11 @@ const Navigator: React.FC = () => {
   return (
     <RootStack.Navigator initialRouteName="Tabs" headerMode="none" mode="modal">
       <RootStack.Screen name="Tabs" component={TabNavigator} />
-      <RootStack.Screen name="ModalSwiper" component={ModalNavigator} />
+      <RootStack.Screen
+        name="ModalSwiper"
+        options={{gestureEnabled: false}}
+        component={ModalNavigator}
+      />
     </RootStack.Navigator>
   );
 };

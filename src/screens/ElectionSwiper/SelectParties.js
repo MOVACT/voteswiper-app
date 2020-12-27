@@ -9,11 +9,15 @@ import {
   Easing
 } from "react-native";
 import PropTypes from "prop-types";
-import { Txt, FadeIn, ButtonGradient, Loader } from "components";
+import Txt from 'components/Txt';
+import FadeIn from 'components/FadeIn';
+import ButtonGradient from 'components/ButtonGradient',
+import Loader from 'components/Loader';
 import LinearGradient from "react-native-linear-gradient";
 import styles from "./styles";
 import Result from "./Result";
-import { cdn, t } from "util";
+import cdn from 'util/cdn';
+import t from 'util/t';
 
 class SelectParties extends React.Component {
   static propTypes = {

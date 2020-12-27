@@ -59,6 +59,7 @@ const FullScreenVideo: React.FC<Props> = ({onClose, source}) => {
         <Video
           source={source} // Can be a URL or a local file.
           ref={player}
+          allowsExternalPlayback={false}
           resizeMode={'contain'}
           muted={false}
           style={styles.video}

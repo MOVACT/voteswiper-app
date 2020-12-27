@@ -24,6 +24,11 @@ const lang = {
   'swiper.no': 'Nein',
   'swiper.none': 'Keine',
   'swiper.skip': 'Überspringen',
+  'swiper.cancelTitle': 'Möchtest du wirklich abbrechen?',
+  'swiper.cancelText':
+    'Dein Fortschritt geht dann verloren und du musst von vorne beginnen.',
+  'swiper.cancelActionNo': 'Nein, zurück',
+  'swiper.cancelActionYes': 'Ja',
 
   'swiperSelectParties.text':
     'Wähle nun noch die Parteien aus, mit denen du deine Antworten vergleichen möchtest. Du kannst beliebig viele Parteien auswählen.',

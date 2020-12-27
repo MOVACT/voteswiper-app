@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Mitte ükski',
   'swiper.skip': 'Vahele jätma',
   'swiperResult.editAnswers': 'Muuda vastuseid',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Vali kõik erakonnad kelle vahel oma tulemusi võrrelda. Võimalik on valida rohkem kui üks.',

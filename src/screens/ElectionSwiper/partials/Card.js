@@ -10,12 +10,14 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 //import {useNavigation} from '@react-navigation/native';
-import {Title, Txt} from 'components';
+import Title from 'components/Title';
+import Txt from 'components/Txt';
 import stores from 'stores';
 import styles from '../styles';
-import Play from '../../../icons/Play';
-import {cdn, t} from 'util';
-import SvgCircleInfo from '../../../icons/InfoCircle';
+import Play from 'icons/Play';
+import cdn from 'util/cdn';
+import t from 'util/t';
+import SvgCircleInfo from 'icons/InfoCircle';
 
 class Card extends React.Component {
   static propTypes = {

@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Κανένα',
   'swiper.skip': 'παραλείπω',
   'swiperResult.editAnswers': 'Επεξεργασία απαντήσεων',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Επιλέξτε τώρα τα κόμματα με τα οποία θέλετε να συγκρίνετε τις απαντήσεις σας. Μπορείτε να επιλέξετε όσα κόμματα θέλετε.',

@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Nici unul',
   'swiper.skip': 'Sări',
   'swiperResult.editAnswers': 'Editați răspunsurile',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Acum, selectați partidurile cu care doriți să comparați răspunsurile. Puteți selecta câte doriți.',

@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Noben',
   'swiper.skip': 'Skip',
   'swiperResult.editAnswers': 'Redigera svar',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Välj nu de partier du vill jämföra dina svar med. Du kan välja så många partier som du vill.',

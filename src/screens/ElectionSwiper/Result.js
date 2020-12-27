@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
-import { captureRef } from "react-native-view-shot";
-import LinearGradient from "react-native-linear-gradient";
-import { inject, observer } from "mobx-react";
-import { toJS } from "mobx";
+import React from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import {captureRef} from 'react-native-view-shot';
+import LinearGradient from 'react-native-linear-gradient';
+import {inject, observer} from 'mobx-react';
+import {toJS} from 'mobx';
 import Share from 'react-native-share';
 import {
   ScrollView,
@@ -13,16 +13,21 @@ import {
   Platform,
   Image,
   TouchableOpacity,
-  Linking
-} from "react-native";
-import { config } from "common";
-import { ButtonDark, ResultBar, Loader, Title, Txt } from "components";
-import styles from "./styles";
-import Download from "../../icons/Download";
-import { cdn, t } from "util";
+  Linking,
+} from 'react-native';
+import config from 'common/config';
+import ButtonDark from 'components/ButtonDark';
+import ResultBar from 'components/ResultBar';
+import Loader from 'components/Loader';
+import Title from 'components/Title';
+import Txt from 'components/Txt';
+import styles from './styles';
+import Download from 'icons/Download';
+import cdn from 'util/cdn';
+import t from 'util/t';
 
 const iPhone6 = 375;
-const { width } = Dimensions.get("window");
+const {width} = Dimensions.get('window');
 
 class Result extends React.Component {
   static propTypes = {
@@ -30,7 +35,7 @@ class Result extends React.Component {
     navigation: PropTypes.object.isRequired,
     parties: PropTypes.object.isRequired,
     closeResult: PropTypes.func.isRequired,
-    election: PropTypes.object.isRequired
+    election: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -40,8 +45,8 @@ class Result extends React.Component {
     this.partyScore = [];
     this.delay = 0;
 
-    this.props.parties.map(party => {
-      this.partyScore.push({ name: party.slug, id: party.id, score: 0 });
+    this.props.parties.map((party) => {
+      this.partyScore.push({name: party.slug, id: party.id, score: 0});
       return null;
     });
 
@@ -50,23 +55,23 @@ class Result extends React.Component {
     this.state = {
       loading: true,
       screenshotLoading: false,
-      screenshot: null
+      screenshot: null,
     };
   }
 
   componentDidMount() {
-    this.props.swiper.election.questions.map(question => {
+    this.props.swiper.election.questions.map((question) => {
       const userAnswer = this.getAnswer(question.id);
       const pointsToAdd = userAnswer.doubleWeight === true ? 2 : 1;
 
       if (userAnswer.answer !== 0) {
         this.relevantQuestionsCount = this.relevantQuestionsCount + pointsToAdd;
 
-        this.props.parties.map(party => {
+        this.props.parties.map((party) => {
           let addToScore = 0;
 
           const partyAnswer = party.pivot.answers.find(
-            a => a.question_id === question.id
+            (a) => a.question_id === question.id,
           ).answer;
           // console.log(partyAnswer, party.slug);
           // If party has not given answer, zero points
@@ -75,7 +80,7 @@ class Result extends React.Component {
             addToScore = userAnswer.answer === partyAnswer ? pointsToAdd : 0;
           }
 
-          const index = this.partyScore.findIndex(i => i.name === party.slug);
+          const index = this.partyScore.findIndex((i) => i.name === party.slug);
           this.partyScore[index].score =
             this.partyScore[index].score + addToScore;
           return null;
@@ -91,60 +96,63 @@ class Result extends React.Component {
     this.trackResult(
       toJS(this.props.swiper.answers[this.props.swiper.election.slug]),
       ordered,
-      this.relevantQuestionsCount
+      this.relevantQuestionsCount,
     );
 
     setTimeout(() => {
       this.setState({
-        loading: false
+        loading: false,
       });
     }, 1000);
   }
 
   trackResult = (answers, result, relevantQuestionsCount) => {
-    axios.post(config.apiUrl, {
-      query: `mutation Result($election_id: Int!, $result: String!, $top_party_id: Int!, $platform: String!) {
+    axios.post(
+      config.apiUrl,
+      {
+        query: `mutation Result($election_id: Int!, $result: String!, $top_party_id: Int!, $platform: String!) {
         result(election_id: $election_id, result: $result, top_party_id: $top_party_id, platform: $platform) {
           success
         }
       }`,
-      variables: {
-        election_id: this.props.swiper.election.id,
-        result: JSON.stringify(answers),
-        top_party_id: result[0].id,
-        platform: Platform.OS,
-      }
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+        variables: {
+          election_id: this.props.swiper.election.id,
+          result: JSON.stringify(answers),
+          top_party_id: result[0].id,
+          platform: Platform.OS,
+        },
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
   };
 
-  getAnswer = id => {
+  getAnswer = (id) => {
     if (
       this.props.swiper.answers[this.props.swiper.election.slug][id] == null
     ) {
-      return { doubleWeight: false, answer: 0 };
+      return {doubleWeight: false, answer: 0};
     }
 
     return this.props.swiper.answers[this.props.swiper.election.slug][id];
   };
 
-  renderTopMatch = party => {
+  renderTopMatch = (party) => {
     if (this.isFirst === true) {
       this.isFirst = false;
       return (
         <View style={styles.topMatchContainer}>
           <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            colors={["#FFFFFF", "#D9DAEB"]}
-            style={[styles.topMatch]}
-          >
+            start={{x: 0, y: 0}}
+            end={{x: 0, y: 1}}
+            colors={['#FFFFFF', '#D9DAEB']}
+            style={[styles.topMatch]}>
             <View style={styles.topMatchLogo}>
               <Image
-                source={{ uri: cdn(party.logo) }}
+                source={{uri: cdn(party.logo)}}
                 style={styles.topMatchLogoImage}
                 resizeMode="contain"
               />
@@ -164,8 +172,7 @@ class Result extends React.Component {
                   }); */
                   Linking.openURL(party.pivot.program);
                 }}
-                style={styles.programLink}
-              >
+                style={styles.programLink}>
                 <Download />
                 <Txt medium style={styles.programLinkText}>
                   {t('swiperResult.program')}
@@ -181,7 +188,7 @@ class Result extends React.Component {
   renderBar = (result, shareBar) => {
     if (
       this.props.swiper.parties[this.props.swiper.election.slug].indexOf(
-        result.name
+        result.name,
       ) === -1
     ) {
       return null;
@@ -196,7 +203,7 @@ class Result extends React.Component {
 
     this.delay = this.delay + 200;
 
-    const party = this.props.parties.find(p => p.slug === result.name);
+    const party = this.props.parties.find((p) => p.slug === result.name);
 
     return (
       <View key={party.slug}>
@@ -204,10 +211,10 @@ class Result extends React.Component {
           key={party.slug}
           shareBar={shareBar}
           onPress={() => {
-            this.props.navigation.navigate("ModalCompareParty", {
+            this.props.navigation.navigate('ModalCompareParty', {
               party,
               election: this.props.swiper.election,
-              getAnswer: this.getAnswer
+              getAnswer: this.getAnswer,
             });
           }}
           name={party.name}
@@ -220,17 +227,17 @@ class Result extends React.Component {
   };
 
   share = () => {
-    this.setState({ screenshotLoading: true }, () => {
+    this.setState({screenshotLoading: true}, () => {
       captureRef(this.screenshotArea, {
-        format: "png",
-        result: "data-uri"
-      }).then(result => {
-        this.setState({ screenshotLoading: false });
+        format: 'png',
+        result: 'data-uri',
+      }).then((result) => {
+        this.setState({screenshotLoading: false});
         Share.open({
           title: t('swiperResult.shareTitle'),
           message: t('swiperResult.shareMessage', this.props.election.name),
-          type: "image/png",
-          url: result
+          type: 'image/png',
+          url: result,
         });
       });
     });
@@ -248,44 +255,63 @@ class Result extends React.Component {
     const ordered = this.partyScore.slice(0);
     ordered.sort((a, b) => (a.score - b.score > 0 ? -1 : 1));
 
-    return <View style={styles.container}>
-      <ScrollView>
-        <View style={styles.resultToolbarContainer}>
-          <View style={styles.resultToolbar}>
-            <ButtonDark onPress={this.share} arrow={false} text={t('swiperResult.share')} icon="share" />
-            <View style={styles.resultToolbarButton}>
-              <ButtonDark onPress={this.props.closeResult} arrow={false} text={width < iPhone6 ? t('swiperResult.parties') : t('swiperResult.filterParties')} icon="edit" center />
+    return (
+      <View style={styles.container}>
+        <ScrollView>
+          <View style={styles.resultToolbarContainer}>
+            <View style={styles.resultToolbar}>
+              <ButtonDark
+                onPress={this.share}
+                arrow={false}
+                text={t('swiperResult.share')}
+                icon="share"
+              />
+              <View style={styles.resultToolbarButton}>
+                <ButtonDark
+                  onPress={this.props.closeResult}
+                  arrow={false}
+                  text={
+                    width < iPhone6
+                      ? t('swiperResult.parties')
+                      : t('swiperResult.filterParties')
+                  }
+                  icon="edit"
+                  center
+                />
+              </View>
             </View>
+            <ButtonDark
+              onPress={() => {
+                this.props.swiper.openEditAnswers();
+              }}
+              arrow={true}
+              text={t('swiperResult.editAnswers')}
+              icon="share"
+              center
+            />
           </View>
-          <ButtonDark
-            onPress={() => {
-              this.props.swiper.openEditAnswers();
-            }}
-            arrow={true}
-            text={t('swiperResult.editAnswers')}
-            icon="share"
-            center
-          />
-        </View>
 
-        <View style={styles.resultList}>
-          {ordered.map(result => {
-            return this.renderBar(result);
+          <View style={styles.resultList}>
+            {ordered.map((result) => {
+              return this.renderBar(result);
+            })}
+          </View>
+
+          <View style={{height: 100}} />
+        </ScrollView>
+        <View
+          style={styles.screenshotArea}
+          ref={(screenshotArea) => (this.screenshotArea = screenshotArea)}>
+          <Title h1>
+            {t('swiperResult.screenshotTitle', this.props.election.name)}
+          </Title>
+          {ordered.map((result) => {
+            return this.renderBar(result, true);
           })}
         </View>
-
-        <View style={{ height: 100 }} />
-      </ScrollView>
-      <View style={styles.screenshotArea} ref={screenshotArea => (this.screenshotArea = screenshotArea)}>
-        <Title h1>
-          {t('swiperResult.screenshotTitle', this.props.election.name)}
-        </Title>
-        {ordered.map(result => {
-          return this.renderBar(result, true);
-        })}
       </View>
-    </View>;
+    );
   }
 }
 
-export default inject("swiper")(observer(Result));
+export default inject('swiper')(observer(Result));

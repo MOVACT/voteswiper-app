@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Žadné',
   'swiper.skip': 'vynechat',
   'swiperResult.editAnswers': 'Upravit odpovědi',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Nyní vyberte strany, se kterými chcete porovnat své odpovědi. Můžete vybrat libovolný počet stran.',

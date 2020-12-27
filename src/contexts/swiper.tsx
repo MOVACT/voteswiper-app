@@ -6,7 +6,7 @@ interface Answer {
   doubleWeight: boolean;
 }
 interface Answers {
-  [key: string]: {
+  [key: number]: {
     [id: number]: Answer;
   };
 }
@@ -15,7 +15,7 @@ interface Party {
   slug: string;
 }
 interface Parties {
-  [key: string]: string[];
+  [key: number]: string[];
 }
 
 interface Context {
@@ -28,7 +28,7 @@ interface Context {
   setElection: (election: null | Election) => void;
   setAnswer: (id: number, answer: number) => void;
   toggleDoubleWeight: (id: number) => void;
-  getDoubleWeightValue: (id: number) => void;
+  getDoubleWeightValue: (id: number) => boolean;
   toggleParty: (party: string) => void;
   selectAllParties: (partiesList: Party[]) => void;
   isUnselected: () => void;
@@ -61,20 +61,20 @@ const SwiperProvider: React.FC = ({children}) => {
       const answersCopy: Answers = answers;
 
       // add election object if it doesn't exist yet
-      if (!answersCopy[election.slug]) {
-        answersCopy[election.slug] = {};
+      if (!answersCopy[election!.id]) {
+        answersCopy[election!.id] = {};
       }
 
       // add default
-      if (!answersCopy[election.slug][id]) {
-        answersCopy[election.slug][id] = {
+      if (!answersCopy[election!.id][id]) {
+        answersCopy[election!.id][id] = {
           answer: 0,
           doubleWeight: false,
         };
       }
 
       // apply answer
-      answersCopy[election.slug][id].answer = answer;
+      answersCopy[election!.id][id].answer = answer;
 
       setAnswers(answersCopy);
     },
@@ -86,22 +86,26 @@ const SwiperProvider: React.FC = ({children}) => {
       const answersCopy: Answers = answers;
 
       // add election object if it doesn't exist yet
-      if (!answersCopy[election.slug]) {
-        answersCopy[election.slug] = {};
+      if (!answersCopy[election!.id]) {
+        answersCopy[election!.id] = {};
       }
 
       // add default
-      if (!answersCopy[election.slug][id]) {
-        answersCopy[election.slug][id] = {
+      if (!answersCopy[election!.id][id]) {
+        answersCopy[election!.id][id] = {
           answer: 0,
           doubleWeight: false,
         };
       }
 
-      answersCopy[election.slug][id].doubleWeight = !answersCopy[election.slug][
+      answersCopy[election!.id][id].doubleWeight = !answersCopy[election!.id][
         id
       ].doubleWeight;
 
+      // trigger a rerender on the swiper
+      // this should be improved somewhere else asap
+      // @ts-ignore
+      setElection({...election});
       setAnswers(answersCopy);
     },
     [answers, election],
@@ -109,11 +113,11 @@ const SwiperProvider: React.FC = ({children}) => {
 
   const getDoubleWeightValue = React.useCallback(
     (id: number) => {
-      if (!answers[election.slug] || !answers[election.slug][id]) {
+      if (!answers[election!.id] || !answers[election!.id][id]) {
         return false;
       }
 
-      return answers[election.slug][id].doubleWeight;
+      return answers[election!.id][id].doubleWeight;
     },
     [answers, election],
   );
@@ -121,16 +125,16 @@ const SwiperProvider: React.FC = ({children}) => {
   const toggleParty = React.useCallback(
     (party: string) => {
       const partiesCopy = parties;
-      if (!partiesCopy[election.slug]) {
-        partiesCopy[election.slug] = [];
+      if (!partiesCopy[election!.id]) {
+        partiesCopy[election!.id] = [];
       }
 
-      const index = partiesCopy[election.slug].indexOf(party);
+      const index = partiesCopy[election!.id].indexOf(party);
 
       if (index > -1) {
-        partiesCopy[election.slug].splice(index, 1);
+        partiesCopy[election!.id].splice(index, 1);
       } else {
-        partiesCopy[election.slug].push(party);
+        partiesCopy[election!.id].push(party);
       }
 
       setParties(partiesCopy);
@@ -142,14 +146,14 @@ const SwiperProvider: React.FC = ({children}) => {
     (partiesList: Party[]) => {
       const partiesCopy = parties;
 
-      if (!partiesCopy[election.slug]) {
-        partiesCopy[election.slug] = [];
+      if (!partiesCopy[election!.id]) {
+        partiesCopy[election!.id] = [];
       }
 
       partiesList.map((partyEntry) => {
-        const index = partiesCopy[election.slug].indexOf(partyEntry.slug);
+        const index = partiesCopy[election!.id].indexOf(partyEntry.slug);
         if (index < 0) {
-          partiesCopy[election.slug].push(partyEntry.slug);
+          partiesCopy[election!.id].push(partyEntry.slug);
         }
       });
 
@@ -159,12 +163,12 @@ const SwiperProvider: React.FC = ({children}) => {
   );
 
   const isUnselected = React.useCallback(() => {
-    return !parties[election.slug] || parties[election.slug].length === 0;
+    return !parties[election!.id] || parties[election!.id].length === 0;
   }, [parties, election]);
 
   const unselectAllParties = React.useCallback(() => {
     const partiesCopy = parties;
-    partiesCopy[election.slug] = [];
+    partiesCopy[election!.id] = [];
 
     setParties(partiesCopy);
   }, [parties, election]);
@@ -172,8 +176,7 @@ const SwiperProvider: React.FC = ({children}) => {
   const isPartyActive = React.useCallback(
     (party: Party) => {
       return (
-        parties[election.slug] &&
-        parties[election.slug].indexOf(party.slug) > -1
+        parties[election!.id] && parties[election!.id].indexOf(party.slug) > -1
       );
     },
     [parties, election],
@@ -182,8 +185,8 @@ const SwiperProvider: React.FC = ({children}) => {
   const clearAnswers = React.useCallback(() => {
     const answersCopy = answers;
 
-    if (answersCopy[election.slug]) {
-      answersCopy[election.slug] = {};
+    if (answersCopy[election!.id]) {
+      answersCopy[election!.id] = {};
     }
 
     setAnswers(answersCopy);
@@ -193,7 +196,7 @@ const SwiperProvider: React.FC = ({children}) => {
   }, [answers, election]);
 
   const openEditAnswers = React.useCallback(() => {
-    setEditAnswers(answers[election.slug]);
+    setEditAnswers(answers[election!.id]);
   }, [answers, election]);
 
   const closeEditAnswers = React.useCallback(() => {
@@ -202,6 +205,10 @@ const SwiperProvider: React.FC = ({children}) => {
 
   const setEditAnswer = React.useCallback(
     (id: number, answer: number) => {
+      if (editAnswers === false) {
+        return;
+      }
+
       const editAnswersCopy = editAnswers;
       if (!editAnswersCopy[id]) {
         editAnswersCopy[id] = {
@@ -219,6 +226,10 @@ const SwiperProvider: React.FC = ({children}) => {
 
   const toggleEditDoubleWeight = React.useCallback(
     (id: number) => {
+      if (editAnswers === false) {
+        return;
+      }
+
       const editAnswersCopy = editAnswers;
       if (!editAnswersCopy[id]) {
         editAnswersCopy[id] = {
@@ -239,7 +250,7 @@ const SwiperProvider: React.FC = ({children}) => {
 
     const answersCopy = answers;
     if (editAnswers !== false) {
-      answersCopy[election.slug] = editAnswers;
+      answersCopy[election!.id] = editAnswers;
     }
     setAnswers(answersCopy);
     setEditAnswers(false);

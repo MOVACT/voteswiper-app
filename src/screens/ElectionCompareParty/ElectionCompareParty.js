@@ -1,44 +1,49 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Animated,
   TouchableOpacity,
   ScrollView,
   Image,
-  Linking
-} from "react-native";
-import { Container, Txt, Title, Box, ButtonDark } from "components";
-import styles from "../ElectionSwiper/styles";
-import compareStyles from "./styles";
-import Close from "../../icons/Close";
-import { cdn, t } from "util";
+  Linking,
+} from 'react-native';
+import Container from 'components/Container';
+import Txt from 'components/Txt';
+import Title from 'components/Title';
+import Box from 'components/Box';
+import ButtonDark from 'components/ButtonDark';
+import styles from '../ElectionSwiper/styles';
+import compareStyles from './styles';
+import Close from 'icons/Close';
+import cdn from 'util/cdn';
+import t from 'util/t';
 
 class ElectionCompareParty extends React.Component {
   static propTypes = {
-    navigation: PropTypes.object.isRequired
+    navigation: PropTypes.object.isRequired,
   };
 
-  static navigationOptions = ({ navigation }) => ({
-    title: `Vergleich mit ${navigation.state.params.party.name}`
+  static navigationOptions = ({navigation}) => ({
+    title: `Vergleich mit ${navigation.state.params.party.name}`,
   });
 
   constructor(props) {
     super(props);
 
     this.state = {
-      showReason: null
+      showReason: null,
     };
   }
 
-  getPartyAnswer = question => {
+  getPartyAnswer = (question) => {
     const party = this.props.navigation.state.params.party;
 
-    return party.pivot.answers.find(a => a.question_id === question);
+    return party.pivot.answers.find((a) => a.question_id === question);
   };
 
   render() {
-    const { party, election, getAnswer } = this.props.navigation.state.params;
+    const {party, election, getAnswer} = this.props.navigation.state.params;
 
     return (
       <Container noPadding>
@@ -53,10 +58,9 @@ class ElectionCompareParty extends React.Component {
           <View style={styles.headerRight}>
             <TouchableOpacity
               onPress={() => {
-                this.props.navigation.dispatch({ type: "Navigation/BACK" });
+                this.props.navigation.dispatch({type: 'Navigation/BACK'});
               }}
-              style={styles.headerButton}
-            >
+              style={styles.headerButton}>
               <Close />
             </TouchableOpacity>
           </View>
@@ -69,7 +73,7 @@ class ElectionCompareParty extends React.Component {
                 <View style={compareStyles.partyDetail}>
                   <View style={compareStyles.partyDetailLogoContainer}>
                     <Image
-                      source={{ uri: cdn(party.logo) }}
+                      source={{uri: cdn(party.logo)}}
                       style={compareStyles.partyDetailLogo}
                       resizeMode="contain"
                     />
@@ -79,40 +83,56 @@ class ElectionCompareParty extends React.Component {
                     {party.full_name}
                   </Txt>
 
-                  {typeof party.pivot.url !== 'undefined' ? 
-                  <View style={compareStyles.partyDetailButton}>
-                    <ButtonDark
-                      text="Webseite"
-                      onPress={() => {
-                        Linking.openURL(party.pivot.url);
-                      }}
-                    />
-                  </View> : null}
-                  {typeof party.pivot.program !== 'undefined' ?
-                  <View style={compareStyles.partyDetailButton}>
-                    <ButtonDark
-                      text={t('swiperResult.program')}
-                      onPress={() => {
-                        Linking.openURL(party.pivot.program);
-                      }}
-                    />
-                  </View>
-                  : null}
+                  {typeof party.pivot.url !== 'undefined' ? (
+                    <View style={compareStyles.partyDetailButton}>
+                      <ButtonDark
+                        text="Webseite"
+                        onPress={() => {
+                          Linking.openURL(party.pivot.url);
+                        }}
+                      />
+                    </View>
+                  ) : null}
+                  {typeof party.pivot.program !== 'undefined' ? (
+                    <View style={compareStyles.partyDetailButton}>
+                      <ButtonDark
+                        text={t('swiperResult.program')}
+                        onPress={() => {
+                          Linking.openURL(party.pivot.program);
+                        }}
+                      />
+                    </View>
+                  ) : null}
                 </View>
                 <View style={compareStyles.questions}>
-                  {election.questions.map(question => {
+                  {election.questions.map((question) => {
                     const userAnswer = getAnswer(question.id);
                     const partyAnswer = this.getPartyAnswer(question.id);
 
                     return (
                       <Box key={question.id}>
-                        {userAnswer.doubleWeight === true ?
-                          <View style={{ justifyContent: 'flex-start' }}>
-                            <View style={{ backgroundColor: '#E6E90F', paddingVertical: 5, paddingHorizontal: 10, marginBottom: 5, borderRadius: 3 }}>
-                              <Txt medium style={{  color: '#000',  lineHeight: 16,  textAlign: 'center' }}>{t('swiper.doubleWeighted')}</Txt>
+                        {userAnswer.doubleWeight === true ? (
+                          <View style={{justifyContent: 'flex-start'}}>
+                            <View
+                              style={{
+                                backgroundColor: '#E6E90F',
+                                paddingVertical: 5,
+                                paddingHorizontal: 10,
+                                marginBottom: 5,
+                                borderRadius: 3,
+                              }}>
+                              <Txt
+                                medium
+                                style={{
+                                  color: '#000',
+                                  lineHeight: 16,
+                                  textAlign: 'center',
+                                }}>
+                                {t('swiper.doubleWeighted')}
+                              </Txt>
                             </View>
                           </View>
-                          : null}
+                        ) : null}
                         <Title mainBig style={compareStyles.thesis}>
                           {question.question}
                         </Title>
@@ -121,14 +141,13 @@ class ElectionCompareParty extends React.Component {
                           <TouchableOpacity
                             onPress={() => {
                               if (this.state.showReason === question.id) {
-                                this.setState({ showReason: null });
+                                this.setState({showReason: null});
 
                                 return null;
                               }
 
-                              this.setState({ showReason: question.id });
-                            }}
-                          >
+                              this.setState({showReason: question.id});
+                            }}>
                             <Txt style={compareStyles.reasonLink} medium>
                               {this.state.showReason === question.id
                                 ? t('swiperResult.closeReasoning')
@@ -136,7 +155,9 @@ class ElectionCompareParty extends React.Component {
                             </Txt>
                           </TouchableOpacity>
                         ) : (
-                          <Txt medium style={compareStyles.reasonLink}>{t('swiperResult.noReason')}</Txt>
+                          <Txt medium style={compareStyles.reasonLink}>
+                            {t('swiperResult.noReason')}
+                          </Txt>
                         )}
 
                         {partyAnswer.reason &&
@@ -150,7 +171,9 @@ class ElectionCompareParty extends React.Component {
 
                         <View style={compareStyles.answers}>
                           <View style={compareStyles.answer}>
-                            <Title h5dark uppercase>{t('swiperResult.yourAnswer')}</Title>
+                            <Title h5dark uppercase>
+                              {t('swiperResult.yourAnswer')}
+                            </Title>
                             {userAnswer.answer == 0 ? (
                               <View style={compareStyles.noneLabel}>
                                 <Txt medium style={compareStyles.labelText}>
@@ -168,31 +191,33 @@ class ElectionCompareParty extends React.Component {
                             {userAnswer.answer === 2 ? (
                               <View style={compareStyles.yesLabel}>
                                 <Txt medium style={compareStyles.labelText}>
-                                {t('swiper.yes')}
+                                  {t('swiper.yes')}
                                 </Txt>
                               </View>
                             ) : null}
                           </View>
                           <View style={compareStyles.answer}>
-                            <Title h5dark uppercase>{t('swiperResult.party')}</Title>
+                            <Title h5dark uppercase>
+                              {t('swiperResult.party')}
+                            </Title>
                             {partyAnswer.answer === 0 ? (
                               <View style={compareStyles.noneLabel}>
                                 <Txt medium style={compareStyles.labelText}>
-                                {t('swiper.none')}
+                                  {t('swiper.none')}
                                 </Txt>
                               </View>
                             ) : null}
                             {partyAnswer.answer === 1 ? (
                               <View style={compareStyles.noLabel}>
                                 <Txt medium style={compareStyles.labelText}>
-                                {t('swiper.no')}
+                                  {t('swiper.no')}
                                 </Txt>
                               </View>
                             ) : null}
                             {partyAnswer.answer === 2 ? (
                               <View style={compareStyles.yesLabel}>
                                 <Txt medium style={compareStyles.labelText}>
-                                {t('swiper.yes')}
+                                  {t('swiper.yes')}
                                 </Txt>
                               </View>
                             ) : null}
@@ -202,7 +227,7 @@ class ElectionCompareParty extends React.Component {
                     );
                   })}
                 </View>
-                <View style={{ height: 100 }} />
+                <View style={{height: 100}} />
               </ScrollView>
             </View>
           </View>

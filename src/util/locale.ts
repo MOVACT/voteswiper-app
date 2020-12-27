@@ -1,6 +1,6 @@
 import * as RNLocalize from 'react-native-localize';
 import stores from 'stores';
-import {config} from 'common';
+import config from 'common/config';
 
 function currentLocale() {
   if (stores.app.language === null) {

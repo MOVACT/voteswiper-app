@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Noben',
   'swiper.skip': 'Skakljati',
   'swiperResult.editAnswers': 'Uredite odgovore',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Izberi stranke z kateremi si želiš primerjati tvoje odgovori. Lahko izbereš kolikor strank si želiš.',

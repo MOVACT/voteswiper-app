@@ -1,4 +1,4 @@
-import {config} from 'common';
+import config from 'common/config';
 import translations from 'translations';
 import locale from './locale';
 

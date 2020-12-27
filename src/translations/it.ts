@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Nessuna',
   'swiper.skip': 'Trascurare',
   'swiperResult.editAnswers': 'Modifica risposte',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Ora seleziona i parti con i quali vuoi confrontare le tue risposte. Scegli tutti i partiti che vuoi.',

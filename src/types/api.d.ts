@@ -9,6 +9,12 @@ export interface Country {
 
 export interface Question {
   id: number;
+  question: string;
+  title: string;
+  video_url: null | string;
+  video_legacy: false;
+  thumbnail: string;
+  explainer_text: null | string;
 }
 
 export interface Election {

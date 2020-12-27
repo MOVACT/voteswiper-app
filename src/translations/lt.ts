@@ -25,6 +25,10 @@ const lang = {
   'swiper.none': 'Nei vienas',
   'swiper.skip': 'Praleisti',
   'swiperResult.editAnswers': 'Redaguoti atsakymus',
+  'swiper.cancelTitle': 'Do you really want to quit?',
+  'swiper.cancelText': 'Your current progress will be lost.',
+  'swiper.cancelActionNo': 'No, go back',
+  'swiper.cancelActionYes': 'Yes',
 
   'swiperSelectParties.text':
     'Dabar pasirinkite partijas, su kuriomis norite palyginti savo atsakymus. Galite pasirinkti kiek norite partijų.',

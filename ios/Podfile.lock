@@ -241,6 +241,8 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
+  - react-native-blur (0.8.0):
+    - React
   - react-native-onesignal (3.9.3):
     - OneSignal (= 2.16.1)
     - React (< 1.0.0, >= 0.13.0)
@@ -375,6 +377,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
   - react-native-onesignal (from `../node_modules/react-native-onesignal`)
   - react-native-restart (from `../node_modules/react-native-restart`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -451,6 +454,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-blur:
+    :path: "../node_modules/@react-native-community/blur"
   react-native-onesignal:
     :path: "../node_modules/react-native-onesignal"
   react-native-restart:
@@ -530,6 +535,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
+  react-native-blur: cad4d93b364f91e7b7931b3fa935455487e5c33c
   react-native-onesignal: f92b6fae16388422f1b5d73b2c31e7000f481ae8
   react-native-restart: a01029aadfe8e71f9e8205fdb17da2f0a4472d50
   react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
