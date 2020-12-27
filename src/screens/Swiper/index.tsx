@@ -36,6 +36,8 @@ const Swiper: React.FC = () => {
   const [cardIndex, setCardIndex] = React.useState(0);
   const [exitConfirmation, showExitConfirmation] = React.useState(false);
 
+  const controlBottomSize = bottom === 0 ? 20 : bottom;
+
   const trackAnswer = React.useCallback(
     (question: number, answer: number) => {
       axios.post(
@@ -212,7 +214,12 @@ const Swiper: React.FC = () => {
               backgroundColor="transparent"
               cardHorizontalMargin={containerPaddingHorizontal}
               cardTopMargin={containerPaddingHorizontal}
-              cardBottomMargin={buttonSize + bottom + controlsPaddingTop}
+              cardBottomMargin={
+                buttonSize +
+                controlBottomSize +
+                controlsPaddingTop +
+                (Platform.OS === 'android' ? 20 : 0)
+              }
               marginBottom={headerHeight}
               disableBottomSwipe
               animateOverlayLabelsOpacity
@@ -261,8 +268,8 @@ const Swiper: React.FC = () => {
             style={[
               styles.controls,
               {
-                height: buttonSize + bottom + controlsPaddingTop,
-                paddingBottom: bottom,
+                height: buttonSize + controlBottomSize + controlsPaddingTop,
+                paddingBottom: controlBottomSize,
               },
             ]}>
             <MainButton

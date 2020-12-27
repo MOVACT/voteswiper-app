@@ -56,6 +56,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    position: 'relative',
+    zIndex: 50,
     paddingHorizontal: containerPaddingHorizontal + 20,
   },
   skip: {

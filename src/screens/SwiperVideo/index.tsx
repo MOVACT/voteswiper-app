@@ -1,4 +1,5 @@
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import Container from 'components/Container';
 import FullScreenVideo from 'components/FullScreenVideo';
 import React from 'react';
 import {ModalStackParamList} from 'types/routes';
@@ -14,12 +15,14 @@ const SwiperVideo: React.FC = () => {
     });
   }, [setOptions]);
   return (
-    <FullScreenVideo
-      source={{uri: params.video}}
-      onClose={() => {
-        goBack();
-      }}
-    />
+    <Container noPadding>
+      <FullScreenVideo
+        source={{uri: params.video}}
+        onClose={() => {
+          goBack();
+        }}
+      />
+    </Container>
   );
 };
 

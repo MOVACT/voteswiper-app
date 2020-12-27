@@ -188,47 +188,50 @@ const SwiperResult: React.FC = () => {
     });
   }, [election, getAnswer, trackResult]);
 
-  const renderTopMatch = React.useCallback((party: Party) => {
-    if (isFirst.current === true) {
-      isFirst.current = false;
+  const renderTopMatch = React.useCallback(
+    (party: Party) => {
+      if (isFirst.current === true) {
+        isFirst.current = false;
 
-      return (
-        <View style={styles.topMatchContainer}>
-          <LinearGradient
-            start={{x: 0, y: 0}}
-            end={{x: 0, y: 1}}
-            colors={['#FFFFFF', '#D9DAEB']}
-            style={[styles.topMatch]}>
-            <View style={styles.topMatchLogo}>
-              <Image
-                source={{uri: cdn(party.logo)}}
-                style={styles.topMatchLogoImage}
-              />
-            </View>
-            <View style={styles.topMatchContent}>
-              <Title h5dark style={styles.topMatchSubTitle}>
-                {t('swiperResult.topmatch').toUpperCase()}
-              </Title>
-              <Txt medium style={styles.topMatchTitle}>
-                {party.full_name}
-              </Txt>
-
-              <TouchableOpacity
-                onPress={() => {
-                  Linking.openURL(party.pivot.program);
-                }}
-                style={styles.programLink}>
-                <Download />
-                <Txt medium style={styles.programLinkText}>
-                  {t('swiperResult.program')}
+        return (
+          <View style={styles.topMatchContainer}>
+            <LinearGradient
+              start={{x: 0, y: 0}}
+              end={{x: 0, y: 1}}
+              colors={['#FFFFFF', '#D9DAEB']}
+              style={[styles.topMatch]}>
+              <View style={styles.topMatchLogo}>
+                <Image
+                  source={{uri: cdn(party.logo)}}
+                  style={styles.topMatchLogoImage}
+                />
+              </View>
+              <View style={styles.topMatchContent}>
+                <Title h5dark style={styles.topMatchSubTitle}>
+                  {t('swiperResult.topmatch').toUpperCase()}
+                </Title>
+                <Txt medium style={styles.topMatchTitle}>
+                  {party.full_name}
                 </Txt>
-              </TouchableOpacity>
-            </View>
-          </LinearGradient>
-        </View>
-      );
-    }
-  }, []);
+
+                <TouchableOpacity
+                  onPress={() => {
+                    Linking.openURL(party.pivot.program);
+                  }}
+                  style={styles.programLink}>
+                  <Download />
+                  <Txt medium style={styles.programLinkText}>
+                    {t('swiperResult.program')}
+                  </Txt>
+                </TouchableOpacity>
+              </View>
+            </LinearGradient>
+          </View>
+        );
+      }
+    },
+    [t],
+  );
 
   const renderBar = React.useCallback(
     (

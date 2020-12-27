@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {StyleSheet, View, Dimensions} from 'react-native';
+import {StyleSheet, View, Dimensions, Platform} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ElectionsIndex from 'screens/ElectionsIndex';
@@ -179,6 +179,7 @@ const TabNavigator: React.FC = () => {
         style: {
           backgroundColor: 'rgb(39, 31, 59)',
           borderTopWidth: 0,
+          paddingBottom: Platform.OS === 'android' ? 5 : 0,
         },
         activeTintColor: '#fff',
         inactiveTintColor: 'rgba(255, 255, 255, 0.5)',

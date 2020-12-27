@@ -21,6 +21,7 @@ export default StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 20},
     shadowOpacity: 0.4,
+    //elevation: 5,
     shadowRadius: 40,
   },
   inner: {
@@ -77,14 +78,17 @@ export default StyleSheet.create({
     color: '#392F52',
   },
   doubleWeightContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
     height: 32,
     overflow: 'hidden',
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  doubleWeightContainerIOS: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
   },
   doubleWeightLabel: {
     height: 30,

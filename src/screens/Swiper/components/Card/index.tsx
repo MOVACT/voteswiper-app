@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {View} from 'react-native';
+import {View, Platform} from 'react-native';
 import {Question} from 'types/api';
 import styles from './styles';
 import cdn from 'util/cdn';
@@ -64,7 +64,7 @@ const Card: React.FC<Question> = ({
         ) : null}
       </View>
     );
-  }, [thumbnail, video_url, explainer_text]);
+  }, [thumbnail, video_url, explainer_text, navigate, question, title]);
 
   const border = React.useMemo(() => {
     const scaleStyle = borderAnimation.current.interpolate({
@@ -91,6 +91,29 @@ const Card: React.FC<Question> = ({
 
   const isDoubleWeighted = getDoubleWeightValue(id);
 
+  const doubleWeight = React.useMemo(() => {
+    return (
+      <TouchableOpacity
+        onPress={toggleDoubleWeightState}
+        style={[
+          styles.doubleWeightContainer,
+          Platform.OS === 'ios' ? styles.doubleWeightContainerIOS : null,
+        ]}>
+        <View
+          style={[
+            styles.doubleWeightLabel,
+            isDoubleWeighted ? styles.doubleWeightedLabel : {},
+          ]}>
+          <Txt medium style={styles.doubleWeightText}>
+            {isDoubleWeighted === false
+              ? t('swiper.doubleWeight')
+              : t('swiper.doubleWeighted')}
+          </Txt>
+        </View>
+      </TouchableOpacity>
+    );
+  }, [isDoubleWeighted, toggleDoubleWeightState, t]);
+
   return (
     <View style={styles.card}>
       <LinearGradient
@@ -106,25 +129,13 @@ const Card: React.FC<Question> = ({
           <Title mainBig center textCenter style={styles.questionText}>
             {question}
           </Title>
+
+          {Platform.OS === 'android' && doubleWeight}
         </View>
 
-        {border}
+        {Platform.OS === 'android' ? null : border}
 
-        <TouchableOpacity
-          onPress={toggleDoubleWeightState}
-          style={styles.doubleWeightContainer}>
-          <View
-            style={[
-              styles.doubleWeightLabel,
-              isDoubleWeighted ? styles.doubleWeightedLabel : {},
-            ]}>
-            <Txt medium style={styles.doubleWeightText}>
-              {isDoubleWeighted === false
-                ? t('swiper.doubleWeight')
-                : t('swiper.doubleWeighted')}
-            </Txt>
-          </View>
-        </TouchableOpacity>
+        {Platform.OS === 'ios' && doubleWeight}
       </LinearGradient>
     </View>
   );
