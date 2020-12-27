@@ -1,5 +1,4 @@
 import moment from 'moment';
-import locale from './locale';
 
 require('moment/locale/de.js');
 require('moment/locale/da.js');
@@ -17,6 +16,6 @@ require('moment/locale/sv.js');
 require('moment/locale/es.js');
 require('moment/locale/sl.js');
 
-moment.locale(locale());
+moment.locale('de');
 
 export default moment;

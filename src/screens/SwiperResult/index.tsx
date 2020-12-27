@@ -282,12 +282,12 @@ const SwiperResult: React.FC = () => {
       setScreenshotLoading(false);
       Share.open({
         title: t('swiperResult.shareTitle'),
-        message: t('swiperResult.shareMessage', election!.name),
+        message: t('swiperResult.shareMessage', [election!.name]),
         type: 'image/png',
         url: result,
       });
     });
-  }, [election]);
+  }, [election, t]);
 
   if (loading) {
     return (
@@ -360,7 +360,7 @@ const SwiperResult: React.FC = () => {
       </View>
 
       <View style={styles.screenshotArea} ref={screenshotArea}>
-        <Title h1>{t('swiperResult.screenshotTitle', election!.name)}</Title>
+        <Title h1>{t('swiperResult.screenshotTitle', [election!.name])}</Title>
         {ordered.map((result) => {
           return renderBar(result, true);
         })}

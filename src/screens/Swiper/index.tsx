@@ -91,13 +91,12 @@ const Swiper: React.FC = () => {
             </View>
             <View style={styles.headerTitle}>
               <Txt medium style={styles.headerTitleText}>
-                {t(
-                  'swiper.questionNumber',
+                {t('swiper.questionNumber', [
                   cardIndex + 1 > election!.questions.length
                     ? election!.questions.length
                     : cardIndex + 1,
                   election!.questions.length,
-                )}
+                ])}
               </Txt>
             </View>
           </View>
@@ -120,7 +119,7 @@ const Swiper: React.FC = () => {
         );
       },
     });
-  }, [setOptions, clearAnswers, dispatch, cardIndex, election]);
+  }, [setOptions, clearAnswers, dispatch, cardIndex, election, t]);
 
   const handleBackButton = React.useCallback(() => {
     showExitConfirmation(true);

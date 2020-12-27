@@ -59,10 +59,9 @@ const ElectionPill: React.FC<Props> = ({
             <Txt medium style={styles.subTitle}>
               {active
                 ? moment(voting_day).format('LL')
-                : t(
-                    'electionPill.availableFrom',
+                : t('electionPill.availableFrom', [
                     moment(active_date).format('LL'),
-                  )}
+                  ])}
             </Txt>
           </View>
           <View>

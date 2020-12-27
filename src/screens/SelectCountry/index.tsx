@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, RefreshControl} from 'react-native';
+import {View, RefreshControl, ScrollView} from 'react-native';
 import OneSignal from 'react-native-onesignal';
 import Txt from 'components/Txt';
 import BoxGradient from 'components/BoxGradient';
 import Container from 'components/Container';
-import ScrollContainer from 'components/ScrollContainer';
+import scrollContainerStyles from 'components/ScrollContainer/styles';
 import Title from 'components/Title';
 import CountryPill from 'components/CountryPill';
 import Loader from 'components/Loader';
@@ -12,10 +12,12 @@ import {useQuery} from 'util/api';
 import styles from './styles';
 import {useApp} from 'contexts/app';
 import {Country} from 'types/api';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const SelectCountry: React.FC = () => {
   const {setCountry, t} = useApp();
   const {loading, error, data, refetch} = useQuery('GET_COUNTRIES');
+  const {top, bottom} = useSafeAreaInsets();
 
   if (loading) {
     return (
@@ -29,8 +31,11 @@ const SelectCountry: React.FC = () => {
   }
   return (
     <Container>
-      <ScrollContainer
-        withPadding
+      <ScrollView
+        contentContainerStyle={[
+          scrollContainerStyles.withPadding,
+          {paddingTop: top + 20, paddingBottom: bottom + 20},
+        ]}
         refreshControl={
           <RefreshControl
             refreshing={data.loading && data.networkStatus === 4 ? true : false}
@@ -66,7 +71,7 @@ const SelectCountry: React.FC = () => {
             );
           })}
         </View>
-      </ScrollContainer>
+      </ScrollView>
     </Container>
   );
 };

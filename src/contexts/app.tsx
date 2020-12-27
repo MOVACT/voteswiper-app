@@ -4,6 +4,7 @@ import {Country} from 'types/api';
 import translations from 'translations';
 import locale from 'util/locale';
 import config from 'common/config';
+import moment from 'moment';
 interface Context {
   hydrated: boolean;
   country: null | Country;
@@ -113,8 +114,8 @@ const AppProvider: React.FC = ({children}) => {
         return translations[config.fallbackLocale][string].replace(
           /{(\d+)}/g,
           function (match: any, number: number) {
-            return typeof vars![number + 1] !== 'undefined'
-              ? vars![number + 1]
+            return typeof vars![number - 1] !== 'undefined'
+              ? vars![number - 1]
               : match;
           },
         );
@@ -123,8 +124,8 @@ const AppProvider: React.FC = ({children}) => {
       return strings[string].replace(
         /{(\d+)}/g,
         function (match: any, number: number) {
-          return typeof vars![number + 1] !== 'undefined'
-            ? vars![number + 1]
+          return typeof vars![number - 1] !== 'undefined'
+            ? vars![number - 1]
             : match;
         },
       );

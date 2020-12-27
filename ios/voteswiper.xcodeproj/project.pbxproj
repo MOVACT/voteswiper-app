@@ -20,6 +20,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* voteswiperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* voteswiperTests.m */; };
+		320A58A025990A4100C39BE5 /* Launcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 320A58A225990A4100C39BE5 /* Launcher.storyboard */; };
 		320A852122233A4E00ECE289 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 320A852022233A4E00ECE289 /* NotificationService.m */; };
 		320A852522233A4E00ECE289 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 320A851D22233A4E00ECE289 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		320A852B22233A8600ECE289 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A852A22233A8600ECE289 /* UIKit.framework */; };
@@ -105,6 +106,8 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E702E6DA5264BEDBC96D936 /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		2E8A78B24898463E9CB368B9 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Bold.ttf"; path = "../src/resources/fonts/Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		320A58A125990A4100C39BE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Launcher.storyboard; sourceTree = "<group>"; };
+		320A58AC25990B5E00C39BE5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Launcher.storyboard; sourceTree = "<group>"; };
 		320A851822233A0600ECE289 /* voteswiper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = voteswiper.entitlements; path = voteswiper/voteswiper.entitlements; sourceTree = "<group>"; };
 		320A851D22233A4E00ECE289 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		320A851F22233A4E00ECE289 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
@@ -335,6 +338,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				320A58A225990A4100C39BE5 /* Launcher.storyboard */,
 				13B07FAE1A68108700A75B9A /* voteswiper */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* voteswiperTests */,
@@ -558,6 +562,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				320A853B22233EAD00ECE289 /* launch_gradient.jpg in Resources */,
+				320A58A025990A4100C39BE5 /* Launcher.storyboard in Resources */,
 				ED3B51ED531741B58C7A9387 /* Rubik-Bold.ttf in Resources */,
 				320A853F22233F6300ECE289 /* launch_icon.png in Resources */,
 				CD7D75BEAFB9446AB0B03D5F /* Rubik-Medium.ttf in Resources */,
@@ -843,6 +848,15 @@
 			path = voteswiper;
 			sourceTree = "<group>";
 		};
+		320A58A225990A4100C39BE5 /* Launcher.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				320A58A125990A4100C39BE5 /* Base */,
+				320A58AC25990B5E00C39BE5 /* de */,
+			);
+			name = Launcher.storyboard;
+			sourceTree = "<group>";
+		};
 		320A853322233BF900ECE289 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -978,7 +992,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = voteswiper/voteswiper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 67;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 6FB3Z6BNU5;
 				HEADER_SEARCH_PATHS = (
@@ -996,6 +1010,7 @@
 				);
 				INFOPLIST_FILE = voteswiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.2.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1019,7 +1034,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = voteswiper/voteswiper.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 67;
 				DEVELOPMENT_TEAM = 6FB3Z6BNU5;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1036,6 +1051,7 @@
 				);
 				INFOPLIST_FILE = voteswiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 3.2.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1285,6 +1301,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 67;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 6FB3Z6BNU5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1297,6 +1314,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				MARKETING_VERSION = 3.2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.movact.wahlswiper.OneSignalNotificationServiceExtension;
@@ -1320,6 +1338,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 67;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6FB3Z6BNU5;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1332,6 +1351,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				MARKETING_VERSION = 3.2.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = de.movact.wahlswiper.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
