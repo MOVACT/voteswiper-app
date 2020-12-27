@@ -9,7 +9,6 @@ import SettingsCountry from 'screens/SettingsCountry';
 import HelpIndex from 'screens/HelpIndex';
 import InfosIndex from 'screens/InfosIndex';
 import Settings from 'screens/Settings';
-import t from 'util/t';
 import HelpIcon from './icons/HelpCircle';
 import InfosIcon from './icons/InfoCircle';
 import ElectionsIcon from './icons/Swiper';
@@ -23,6 +22,7 @@ import SwiperResult from 'screens/SwiperResult';
 import SwiperCompareParty from 'screens/SwiperCompareParty';
 import SwiperEditAnswers from 'screens/SwiperEditAnswers';
 import {SvgProps} from 'react-native-svg';
+import {useApp} from 'contexts/app';
 
 const iPhone6 = 375;
 const {width} = Dimensions.get('window');
@@ -81,23 +81,24 @@ function getIcon(name: string): React.FC<SvgProps> {
   return ElectionsIcon;
 }
 
+const ElectionsStack = createStackNavigator();
+
 const headerScreenOptions = {
   headerStyle: navigatorStyles.header,
   headerTransparent: true,
   headerTintColor: '#ffffff',
   headerBackTitleStyle: navigatorStyles.backTitle,
-  headerBackTitle: t('navigation.backTitle'),
   headerTitleStyle: navigatorStyles.titleStyle,
 };
 
-const ElectionsStack = createStackNavigator();
-
 const ElectionsNavigator: React.FC = () => {
+  const {t} = useApp();
   return (
     <ElectionsStack.Navigator
       initialRouteName="Index"
       screenOptions={({navigation}) => ({
         ...headerScreenOptions,
+        //headerBackTitle: t('navigation.backTitle'),
         headerRight: () => (
           <TouchableOpacity
             onPress={() => {
@@ -128,6 +129,7 @@ const ElectionsNavigator: React.FC = () => {
 const HelpStack = createStackNavigator();
 
 const HelpNavigator: React.FC = () => {
+  const {t} = useApp();
   return (
     <HelpStack.Navigator
       initialRouteName="Index"
@@ -148,6 +150,7 @@ const HelpNavigator: React.FC = () => {
 const InfoStack = createStackNavigator();
 
 const InfoNavigator = () => {
+  const {t} = useApp();
   return (
     <InfoStack.Navigator
       initialRouteName="Index"
@@ -168,6 +171,7 @@ const InfoNavigator = () => {
 const TabStack = createBottomTabNavigator();
 
 const TabNavigator: React.FC = () => {
+  const {t} = useApp();
   return (
     <TabStack.Navigator
       initialRouteName="Elections"
@@ -231,6 +235,7 @@ const TabNavigator: React.FC = () => {
 const ModalStack = createStackNavigator();
 
 const ModalNavigator: React.FC = () => {
+  const {t} = useApp();
   return (
     <ModalStack.Navigator
       initialRouteName="Swiper"

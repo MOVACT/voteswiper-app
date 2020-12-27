@@ -20,7 +20,6 @@ import Loader from 'components/Loader';
 import swiperStyles from '../Swiper/styles';
 import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
-import t from 'util/t';
 import ButtonDark from 'components/ButtonDark';
 import {sm} from 'common/breakpoints';
 import ResultBar from 'components/ResultBar';
@@ -33,12 +32,14 @@ import Close from 'icons/Close';
 import Download from 'icons/Download';
 import {captureRef} from 'react-native-view-shot';
 import ExitConfirmDialog from 'screens/Swiper/components/ExitConfirmDialog';
+import {useApp} from 'contexts/app';
 
 const {width} = Dimensions.get('window');
 
 const SwiperResult: React.FC = () => {
   const screenshotArea = React.useRef<View>(null);
   const headerHeight = useHeaderHeight();
+  const {t} = useApp();
   const {goBack, navigate, dangerouslyGetParent, setOptions} = useNavigation();
   const {
     election,

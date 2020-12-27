@@ -11,7 +11,6 @@ import BoxGradient from 'components/BoxGradient';
 import Title from 'components/Title';
 import ElectionPill from 'components/ElectionPill';
 import getCountryFlag from 'util/getCountryFlag';
-import t from 'util/t';
 import {useQuery} from 'util/api';
 import locale from 'util/locale';
 import ChevronRight from '../../icons/ChevronRight';
@@ -28,6 +27,7 @@ const ElectionsIndex: React.FC = () => {
     country,
     setLocale,
     dismissLanguageNotice,
+    t,
   } = useApp();
   const {loading, error, data, refetch, networkStatus} = useQuery(
     'GET_ELECTIONS',
@@ -110,7 +110,9 @@ const ElectionsIndex: React.FC = () => {
               <TouchableOpacity
                 onPress={() => {
                   setLocale(country!.language_code);
-                  RNRestart.Restart();
+                  setTimeout(() => {
+                    RNRestart.Restart();
+                  }, 500);
                 }}
                 style={styles.infoMainAction}>
                 <Txt copy center medium style={styles.switchText}>

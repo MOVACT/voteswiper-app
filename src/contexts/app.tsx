@@ -1,7 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import {Country} from 'types/api';
-
+import translations from 'translations';
+import locale from 'util/locale';
+import config from 'common/config';
 interface Context {
   hydrated: boolean;
   country: null | Country;
@@ -10,14 +12,17 @@ interface Context {
     shouldShow: boolean;
   };
   setHydrated: (hydrated: boolean) => void;
-  setLocale: (locale: string) => void;
+  setLocale: (locale: string | null) => void;
   setCountry: (country: null | Country) => void;
   dismissLanguageNotice: () => void;
+  t: (string: string, vars?: any[]) => string;
 }
 
 const AppContext = React.createContext<Context>({} as Context);
 
 const AppProvider: React.FC = ({children}) => {
+  const initialLanguageCheck = React.useRef(true);
+  const initialCountryCheck = React.useRef(true);
   const [hydrated, setHydrated] = React.useState(false);
   const [country, setCountry] = React.useState<null | Country>(null);
   const [language, setLanguage] = React.useState<null | string>(null);
@@ -39,7 +44,7 @@ const AppProvider: React.FC = ({children}) => {
         setLanguageNotice(JSON.parse(storedLanguageNotice));
       }
 
-      setLanguage(storedLanguage !== null ? JSON.parse(storedLanguage) : null);
+      setLanguage(storedLanguage !== null ? storedLanguage : null);
       setHydrated(true);
     };
     fetchFromStorage();
@@ -47,19 +52,29 @@ const AppProvider: React.FC = ({children}) => {
 
   // persist country
   React.useEffect(() => {
-    if (country === null) {
-      AsyncStorage.removeItem('@country');
+    if (initialCountryCheck.current === true) {
+      initialCountryCheck.current = false;
     } else {
-      AsyncStorage.setItem('@country', JSON.stringify(country));
+      if (country === null) {
+        AsyncStorage.removeItem('@country');
+      } else {
+        AsyncStorage.setItem('@country', JSON.stringify(country));
+      }
     }
   }, [country]);
 
   // persist language
   React.useEffect(() => {
-    if (language === null) {
-      AsyncStorage.removeItem('@language');
+    if (initialLanguageCheck.current === true) {
+      initialLanguageCheck.current = false;
     } else {
-      AsyncStorage.setItem('@language', JSON.stringify(language));
+      if (language === null) {
+        AsyncStorage.removeItem('@language');
+      } else {
+        AsyncStorage.setItem('@language', language).catch((err) =>
+          console.log(err),
+        );
+      }
     }
   }, [language]);
 
@@ -68,8 +83,8 @@ const AppProvider: React.FC = ({children}) => {
     AsyncStorage.setItem('@languageNotice', JSON.stringify(languageNotice));
   }, [languageNotice]);
 
-  const setLocale = React.useCallback((locale: string) => {
-    setLanguage(locale);
+  const setLocale = React.useCallback((loc: string | null) => {
+    setLanguage(loc);
     setLanguageNotice({
       shouldShow: false,
     });
@@ -80,6 +95,42 @@ const AppProvider: React.FC = ({children}) => {
       shouldShow: false,
     });
   }, []);
+
+  const t = React.useCallback(
+    (string: string, vars?: any[]) => {
+      // @ts-ignore
+      const strings = translations[locale(language)];
+
+      if (typeof strings[string] === 'undefined') {
+        // Fallback
+        if (
+          // @ts-ignore
+          typeof translations[config.fallbackLocale][string] === 'undefined'
+        ) {
+          return '#UNDEFINED#';
+        }
+        // @ts-ignore
+        return translations[config.fallbackLocale][string].replace(
+          /{(\d+)}/g,
+          function (match: any, number: number) {
+            return typeof vars![number + 1] !== 'undefined'
+              ? vars![number + 1]
+              : match;
+          },
+        );
+      }
+
+      return strings[string].replace(
+        /{(\d+)}/g,
+        function (match: any, number: number) {
+          return typeof vars![number + 1] !== 'undefined'
+            ? vars![number + 1]
+            : match;
+        },
+      );
+    },
+    [language],
+  );
 
   return (
     <AppContext.Provider
@@ -92,6 +143,7 @@ const AppProvider: React.FC = ({children}) => {
         setLocale,
         setCountry,
         dismissLanguageNotice,
+        t,
       }}>
       {children}
     </AppContext.Provider>

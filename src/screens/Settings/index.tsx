@@ -7,16 +7,15 @@ import Txt from 'components/Txt';
 import BoxGradient from 'components/BoxGradient';
 import Title from 'components/Title';
 import ButtonGradient from 'components/ButtonGradient';
-import t from 'util/t';
 import styles from './styles';
 import config from 'common/config';
 import translations from 'translations';
 import {useApp} from 'contexts/app';
 
 const Settings: React.FC = () => {
-  const {language, setLocale} = useApp();
+  const {language, setLocale, t} = useApp();
 
-  const [pick, setPick] = React.useState(null);
+  const [pick, setPick] = React.useState<null | string>(null);
 
   const activeStyle = (lang: string) => {
     if (pick !== null) {
@@ -87,8 +86,10 @@ const Settings: React.FC = () => {
           <ButtonGradient
             text="Save"
             onPress={() => {
-              setLocale(pick);
-              RNRestart.Restart();
+              setLocale(pick === 'default' ? null : pick);
+              setTimeout(() => {
+                RNRestart.Restart();
+              }, 500);
             }}
           />
         </View>

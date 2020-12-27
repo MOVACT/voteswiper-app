@@ -5,12 +5,12 @@ import Container from 'components/Container';
 import ScrollContainer from 'components/ScrollContainer';
 import Title from 'components/Title';
 import Txt from 'components/Txt';
+import {useApp} from 'contexts/app';
 import {useSwiper} from 'contexts/swiper';
 import React from 'react';
 import {Image, Linking, View, TouchableOpacity} from 'react-native';
 import {ModalStackParamList} from 'types/routes';
 import cdn from 'util/cdn';
-import t from 'util/t';
 import styles from './styles';
 
 type ComparePartyScreenRouteProp = RouteProp<
@@ -20,6 +20,7 @@ type ComparePartyScreenRouteProp = RouteProp<
 
 const SwiperCompareParty: React.FC = () => {
   const {setOptions} = useNavigation();
+  const {t} = useApp();
   const {params} = useRoute<ComparePartyScreenRouteProp>();
   const {answers, election} = useSwiper();
   const [showReason, setReason] = React.useState<null | number>(null);

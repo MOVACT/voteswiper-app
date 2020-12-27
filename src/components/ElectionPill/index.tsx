@@ -7,12 +7,12 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'util/momentLocale';
-import t from 'util/t';
 import cdn from 'util/cdn';
 import ArrowRightCircle from '../../icons/ArrowRightCircle';
 import Txt from '../Txt';
 import styles from './styles';
 import {Election} from 'types/api';
+import {useApp} from 'contexts/app';
 
 interface Props extends Election {
   onPress: (event: GestureResponderEvent) => void;
@@ -26,6 +26,7 @@ const ElectionPill: React.FC<Props> = ({
   active_date,
   active,
 }) => {
+  const {t} = useApp();
   const [clickActive, setActiveClick] = React.useState(false);
 
   return (

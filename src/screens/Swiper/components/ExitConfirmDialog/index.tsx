@@ -9,9 +9,9 @@ import {
   TouchableWithoutFeedback,
   GestureResponderEvent,
 } from 'react-native';
-import t from 'util/t';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
+import {useApp} from 'contexts/app';
 
 interface Props {
   onCancel: (event: GestureResponderEvent) => void;
@@ -20,6 +20,7 @@ interface Props {
 
 const ExitConfirmDialog: React.FC<Props> = ({onCancel, onConfirm}) => {
   const {setOptions} = useNavigation();
+  const {t} = useApp();
   const [activeYes, setActiveYes] = React.useState(false);
   const [activeNo, setActiveNo] = React.useState(false);
 

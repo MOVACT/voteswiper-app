@@ -12,7 +12,6 @@ import {
 import Animated, {Easing} from 'react-native-reanimated';
 import styles from './styles';
 import swiperStyles from '../Swiper/styles';
-import t from 'util/t';
 import cdn from 'util/cdn';
 import Txt from 'components/Txt';
 import {useSwiper} from 'contexts/swiper';
@@ -22,8 +21,10 @@ import ButtonGradient from 'components/ButtonGradient';
 import ExitConfirmDialog from 'screens/Swiper/components/ExitConfirmDialog';
 import Close from 'icons/Close';
 import NavigationButton from 'screens/Swiper/components/NavigationButton';
+import {useApp} from 'contexts/app';
 
 const SwiperChooseParties: React.FC = () => {
+  const {t} = useApp();
   const delay = React.useRef(200);
   const {navigate, goBack, setOptions, dangerouslyGetParent} = useNavigation();
   const animation = React.useRef(new Animated.Value(0));

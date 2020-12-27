@@ -20,7 +20,6 @@ import Box from 'components/Box';
 import styles from './styles';
 import moment from 'util/momentLocale';
 import {useQuery} from 'util/api';
-import t from 'util/t';
 import locale from 'util/locale';
 import config from 'common/config';
 import {ElectionStackParamList} from 'types/routes';
@@ -34,7 +33,7 @@ type ElectionDetailsScreenRouteProp = RouteProp<
 
 const ElectionDetails: React.FC = () => {
   const {setOptions, navigate} = useNavigation();
-  const {language} = useApp();
+  const {language, t} = useApp();
   const {setElection} = useSwiper();
   const {params} = useRoute<ElectionDetailsScreenRouteProp>();
   const {loading, error, data} = useQuery('GET_QUESTIONS', {

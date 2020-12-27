@@ -8,14 +8,13 @@ import ScrollContainer from 'components/ScrollContainer';
 import Title from 'components/Title';
 import CountryPill from 'components/CountryPill';
 import Loader from 'components/Loader';
-import t from 'util/t';
 import {useQuery} from 'util/api';
 import styles from './styles';
 import {useApp} from 'contexts/app';
 import {Country} from 'types/api';
 
 const SelectCountry: React.FC = () => {
-  const {setCountry} = useApp();
+  const {setCountry, t} = useApp();
   const {loading, error, data, refetch} = useQuery('GET_COUNTRIES');
 
   if (loading) {

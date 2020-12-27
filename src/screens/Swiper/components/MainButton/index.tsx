@@ -1,4 +1,5 @@
 import Txt from 'components/Txt';
+import {useApp} from 'contexts/app';
 import React from 'react';
 import {
   GestureResponderEvent,
@@ -6,7 +7,6 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import t from 'util/t';
 import styles from './styles';
 
 interface Props {
@@ -17,6 +17,7 @@ interface Props {
 
 const YesButton: React.FC<Props> = ({onPress, type, disabled = false}) => {
   const [active, setActive] = React.useState(false);
+  const {t} = useApp();
 
   const colors = {
     yes: [active === true ? '#12A73B' : '#00E640', '#12A73B'],

@@ -6,15 +6,16 @@ import Title from 'components/Title';
 import Txt from 'components/Txt';
 import {useSwiper} from 'contexts/swiper';
 import React from 'react';
-import t from 'util/t';
 import {View, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import Check from 'icons/Check';
 import LinearGradient from 'react-native-linear-gradient';
 import ButtonGradient from 'components/ButtonGradient';
 import {useNavigation} from '@react-navigation/native';
+import {useApp} from 'contexts/app';
 
 const SwiperEditAnswers: React.FC = () => {
+  const {t} = useApp();
   const {
     editAnswers,
     changedAnswers,

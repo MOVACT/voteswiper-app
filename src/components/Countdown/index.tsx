@@ -2,8 +2,8 @@ import React from 'react';
 import {View} from 'react-native';
 import Txt from '../Txt';
 import moment from 'util/momentLocale';
-import t from 'util/t';
 import styles from './styles';
+import {useApp} from 'contexts/app';
 
 interface Props {
   date: string;
@@ -28,6 +28,7 @@ const calculateRemainingTime = (date: string) => {
 
 const Countdown: React.FC<Props> = ({date}) => {
   const interval = React.useRef(null);
+  const {t} = useApp();
   const [remainingTime, setRemainingTime] = React.useState<{
     total: number;
     days: number;

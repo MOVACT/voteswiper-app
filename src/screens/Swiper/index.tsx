@@ -20,15 +20,16 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import Skip from 'icons/Skip';
 import Close from 'icons/Close';
 import Txt from 'components/Txt';
-import t from 'util/t';
 import config from 'common/config';
 import {Question} from 'types/api';
 import NavigationButton from './components/NavigationButton';
 import ExitConfirmDialog from './components/ExitConfirmDialog';
+import {useApp} from 'contexts/app';
 
 const Swiper: React.FC = () => {
   const $swiper = React.useRef<DeckSwiper<Question>>(null);
   const headerHeight = useHeaderHeight();
+  const {t} = useApp();
   const {bottom} = useSafeAreaInsets();
   const {setOptions, dispatch, navigate} = useNavigation();
   const {election, clearAnswers, setAnswer} = useSwiper();

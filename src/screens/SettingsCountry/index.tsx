@@ -9,13 +9,12 @@ import BoxGradient from 'components/BoxGradient';
 import Title from 'components/Title';
 import CountryPill from 'components/CountryPill';
 import Loader from 'components/Loader';
-import t from 'util/t';
 import styles from './styles';
 import {useApp} from 'contexts/app';
 import {useQuery} from 'util/api';
 
 const SettingsCountry: React.FC = () => {
-  const {setCountry} = useApp();
+  const {setCountry, t} = useApp();
   const {reset} = useNavigation();
 
   const {loading, error, data, refetch, networkStatus} = useQuery(

@@ -5,10 +5,11 @@ import ScrollContainer from 'components/ScrollContainer';
 import Title from 'components/Title';
 import Txt from 'components/Txt';
 import ButtonDark from 'components/ButtonDark';
-import t from 'util/t';
 import styles from './styles';
+import {useApp} from 'contexts/app';
 
 const InfosIndex: React.FC = () => {
+  const {t} = useApp();
   return (
     <Container>
       <ScrollContainer withPadding>

@@ -5,7 +5,6 @@ import {View} from 'react-native';
 import {Question} from 'types/api';
 import styles from './styles';
 import cdn from 'util/cdn';
-import t from 'util/t';
 import Play from 'icons/Play';
 import SvgCircleInfo from 'icons/InfoCircle';
 import Title from 'components/Title';
@@ -13,6 +12,7 @@ import Animated, {Easing} from 'react-native-reanimated';
 import {useSwiper} from 'contexts/swiper';
 import Txt from 'components/Txt';
 import {useNavigation} from '@react-navigation/native';
+import {useApp} from 'contexts/app';
 
 const Card: React.FC<Question> = ({
   id,
@@ -23,6 +23,7 @@ const Card: React.FC<Question> = ({
   question,
 }) => {
   const {navigate} = useNavigation();
+  const {t} = useApp();
   const {getDoubleWeightValue, toggleDoubleWeight} = useSwiper();
   const borderAnimation = React.useRef(
     new Animated.Value(getDoubleWeightValue(id) === false ? 0 : 1),
