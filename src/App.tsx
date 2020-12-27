@@ -10,6 +10,7 @@ import Init from './Init';
 import AppProvider from 'contexts/app';
 import SwiperProvider from 'contexts/swiper';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import Container from 'components/Container';
 
 enableScreens();
 
@@ -26,20 +27,22 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <SafeAreaProvider>
-      <View style={styles.app}>
-        <StatusBar barStyle="light-content" backgroundColor="#392F52" />
-        <ApolloProvider client={client}>
-          <AppProvider>
-            <SwiperProvider>
-              <NavigationContainer>
-                <Init />
-              </NavigationContainer>
-            </SwiperProvider>
-          </AppProvider>
-        </ApolloProvider>
-      </View>
-    </SafeAreaProvider>
+    <Container noPadding>
+      <SafeAreaProvider>
+        <View style={styles.app}>
+          <StatusBar barStyle="light-content" backgroundColor="#392F52" />
+          <ApolloProvider client={client}>
+            <AppProvider>
+              <SwiperProvider>
+                <NavigationContainer>
+                  <Init />
+                </NavigationContainer>
+              </SwiperProvider>
+            </AppProvider>
+          </ApolloProvider>
+        </View>
+      </SafeAreaProvider>
+    </Container>
   );
 };
 
