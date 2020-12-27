@@ -30,7 +30,7 @@ const Swiper: React.FC = () => {
   const $swiper = React.useRef<DeckSwiper<Question>>(null);
   const headerHeight = useHeaderHeight();
   const {bottom} = useSafeAreaInsets();
-  const {setOptions, dispatch} = useNavigation();
+  const {setOptions, dispatch, navigate} = useNavigation();
   const {election, clearAnswers, setAnswer} = useSwiper();
   const [cardIndex, setCardIndex] = React.useState(0);
   const [exitConfirmation, showExitConfirmation] = React.useState(false);
@@ -129,6 +129,14 @@ const Swiper: React.FC = () => {
   useFocusEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', handleBackButton);
 
+    /**
+     * Go to last card if one comes back after he finished
+     */
+    if (cardIndex === election!.questions.length) {
+      $swiper.current?.jumpToCardIndex(cardIndex - 1);
+      setCardIndex(cardIndex - 1);
+    }
+
     return () => {
       BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
     };
@@ -187,6 +195,9 @@ const Swiper: React.FC = () => {
               keyExtractor={(cardData) => cardData.id.toString()}
               renderCard={(card) => {
                 return <Card {...card} />;
+              }}
+              onSwipedAll={() => {
+                navigate('ChooseParties');
               }}
               onSwiped={(index) => {
                 setCardIndex(index + 1);

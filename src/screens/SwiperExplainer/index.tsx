@@ -8,13 +8,10 @@ import React from 'react';
 import {ModalStackParamList} from 'types/routes';
 import styles from './styles';
 
-type ModalVideoScreenRouteProp = RouteProp<
-  ModalStackParamList,
-  'ModalExplainer'
->;
+type ExplainerScreenRouteProp = RouteProp<ModalStackParamList, 'Explainer'>;
 
 const SwiperExplainer: React.FC = () => {
-  const {params} = useRoute<ModalVideoScreenRouteProp>();
+  const {params} = useRoute<ExplainerScreenRouteProp>();
 
   return (
     <Container>

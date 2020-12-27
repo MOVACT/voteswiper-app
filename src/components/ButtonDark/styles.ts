@@ -5,6 +5,7 @@ const borderRadius = 10;
 export default StyleSheet.create({
   button: {
     marginTop: 10,
+    position: 'relative',
   },
   inner: {
     borderRadius,

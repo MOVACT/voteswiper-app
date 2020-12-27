@@ -18,15 +18,22 @@ import ChevronRight from '../../icons/ChevronRight';
 import styles from './styles';
 
 import {useApp} from 'contexts/app';
+import {Election} from 'types/api';
 
 const ElectionsIndex: React.FC = () => {
   const {navigate, setOptions} = useNavigation();
-  const {languageNotice, country, setLocale, dismissLanguageNotice} = useApp();
+  const {
+    languageNotice,
+    language,
+    country,
+    setLocale,
+    dismissLanguageNotice,
+  } = useApp();
   const {loading, error, data, refetch, networkStatus} = useQuery(
     'GET_ELECTIONS',
     {
       variables: {
-        country: country.id,
+        country: country!.id,
       },
     },
   );
@@ -40,13 +47,13 @@ const ElectionsIndex: React.FC = () => {
           }}
           style={styles.countryLink}>
           <View style={styles.countryFlag}>
-            {getCountryFlag(country.country_code, {
+            {getCountryFlag(country!.country_code, {
               width: 28,
               height: 20,
             })}
           </View>
           <Txt style={styles.countryLinkText} medium>
-            {country.name}
+            {country!.name}
           </Txt>
           <ChevronRight />
         </TouchableOpacity>
@@ -89,7 +96,7 @@ const ElectionsIndex: React.FC = () => {
             tintColor={'#ffffff'}
           />
         }>
-        {locale() === 'en' && languageNotice.shouldShow === true ? (
+        {locale(language) === 'en' && languageNotice.shouldShow === true ? (
           <View style={styles.info}>
             <Title h1 center>
               Do you speak {t('countryLanguage')}?
@@ -102,7 +109,7 @@ const ElectionsIndex: React.FC = () => {
             <View style={styles.infoActions}>
               <TouchableOpacity
                 onPress={() => {
-                  setLocale(country.language_code);
+                  setLocale(country!.language_code);
                   RNRestart.Restart();
                 }}
                 style={styles.infoMainAction}>
@@ -135,7 +142,7 @@ const ElectionsIndex: React.FC = () => {
 
         {data.elections.length > 0 ? (
           <View style={styles.electionsList}>
-            {data.elections.map((election) => {
+            {data.elections.map((election: Election) => {
               return (
                 <ElectionPill
                   key={election.id}

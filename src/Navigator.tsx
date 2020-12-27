@@ -1,19 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {StyleSheet, View, Dimensions, Platform} from 'react-native';
+import {StyleSheet, View, Dimensions} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-// import {
-// SettingsCountry,
-// ElectionQuestioninfo,
-// ElectionDetails,
-// ElectionCompareParty,
-// ElectionSwiper,
-// } from 'screens';
 import ElectionsIndex from 'screens/ElectionsIndex';
 import ElectionDetails from 'screens/ElectionDetails';
 import SettingsCountry from 'screens/SettingsCountry';
-import ElectionSwiper from 'screens/ElectionSwiper';
 import HelpIndex from 'screens/HelpIndex';
 import InfosIndex from 'screens/InfosIndex';
 import Settings from 'screens/Settings';
@@ -26,6 +18,11 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import Swiper from 'screens/Swiper';
 import SwiperVideo from 'screens/SwiperVideo';
 import SwiperExplainer from 'screens/SwiperExplainer';
+import SwiperChooseParties from 'screens/SwiperChooseParties';
+import SwiperResult from 'screens/SwiperResult';
+import SwiperCompareParty from 'screens/SwiperCompareParty';
+import SwiperEditAnswers from 'screens/SwiperEditAnswers';
+import {SvgProps} from 'react-native-svg';
 
 const iPhone6 = 375;
 const {width} = Dimensions.get('window');
@@ -66,21 +63,12 @@ const navigatorStyles = StyleSheet.create({
     fontWeight: '600',
     color: '#fff',
   },
-  /*titleContainerStyle: {
-    alignContent: 'center',
-    justifyContent: 'center',
-    paddingLeft: 0,
-    marginLeft: 0,
-    textAlign: 'center',
-    backgroundColor: 'red',
-    width: '100%',
-  },*/
   settingsIcon: {
     marginRight: 30,
   },
 });
 
-function getIcon(name) {
+function getIcon(name: string): React.FC<SvgProps> {
   switch (name) {
     case 'Elections':
       return ElectionsIcon;
@@ -89,6 +77,8 @@ function getIcon(name) {
     case 'Infos':
       return InfosIcon;
   }
+
+  return ElectionsIcon;
 }
 
 const headerScreenOptions = {
@@ -243,34 +233,46 @@ const ModalStack = createStackNavigator();
 const ModalNavigator: React.FC = () => {
   return (
     <ModalStack.Navigator
-      initialRouteName="ModalSwiper"
+      initialRouteName="Swiper"
       screenOptions={{
         gestureEnabled: false,
         ...headerScreenOptions,
       }}>
       <ModalStack.Screen
-        name="ModalSwiper"
+        name="Swiper"
         options={{title: ''}}
         component={Swiper}
       />
       <ModalStack.Screen
-        name="ModalVideo"
+        name="Video"
         options={{title: ''}}
         component={SwiperVideo}
       />
       <ModalStack.Screen
-        name="ModalExplainer"
+        name="Explainer"
         options={{title: ''}}
         component={SwiperExplainer}
       />
-      {/*<ModalStack.Screen
-        name="ModalCompareParty"
-        component={ElectionCompareParty}
+      <ModalStack.Screen
+        name="ChooseParties"
+        options={{title: ''}}
+        component={SwiperChooseParties}
       />
       <ModalStack.Screen
-        name="ModalQuestionInfo"
-        component={ElectionQuestioninfo}
-      />*/}
+        name="Result"
+        options={{title: ''}}
+        component={SwiperResult}
+      />
+      <ModalStack.Screen
+        name="CompareParty"
+        options={{title: ''}}
+        component={SwiperCompareParty}
+      />
+      <ModalStack.Screen
+        name="EditAnswers"
+        options={{title: t('swiperResult.editAnswers')}}
+        component={SwiperEditAnswers}
+      />
     </ModalStack.Navigator>
   );
 };
@@ -282,7 +284,7 @@ const Navigator: React.FC = () => {
     <RootStack.Navigator initialRouteName="Tabs" headerMode="none" mode="modal">
       <RootStack.Screen name="Tabs" component={TabNavigator} />
       <RootStack.Screen
-        name="ModalSwiper"
+        name="Swiper"
         options={{gestureEnabled: false}}
         component={ModalNavigator}
       />

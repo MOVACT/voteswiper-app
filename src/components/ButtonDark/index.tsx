@@ -5,7 +5,7 @@ import Txt from '../Txt';
 import styles from './styles';
 
 interface Props {
-  text: string;
+  text: string | React.ReactElement;
   icon?: string;
   center?: boolean;
   onPress: (event: GestureResponderEvent) => void;

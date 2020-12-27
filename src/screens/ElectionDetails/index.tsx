@@ -25,6 +25,7 @@ import locale from 'util/locale';
 import config from 'common/config';
 import {ElectionStackParamList} from 'types/routes';
 import {useSwiper} from 'contexts/swiper';
+import {useApp} from 'contexts/app';
 
 type ElectionDetailsScreenRouteProp = RouteProp<
   ElectionStackParamList,
@@ -33,6 +34,7 @@ type ElectionDetailsScreenRouteProp = RouteProp<
 
 const ElectionDetails: React.FC = () => {
   const {setOptions, navigate} = useNavigation();
+  const {language} = useApp();
   const {setElection} = useSwiper();
   const {params} = useRoute<ElectionDetailsScreenRouteProp>();
   const {loading, error, data} = useQuery('GET_QUESTIONS', {
@@ -45,9 +47,9 @@ const ElectionDetails: React.FC = () => {
       headerRight: () => (
         <ShareButton
           message="#VoteSwiper #WahlSwiper"
-          url={`https://www.voteswiper.org/${locale()}/${params.country.slug}/${
-            params.election.slug
-          }`}
+          url={`https://www.voteswiper.org/${locale(language)}/${
+            params.country.slug
+          }/${params.election.slug}`}
           title="#VoteSwiper"
         />
       ),
@@ -130,7 +132,7 @@ const ElectionDetails: React.FC = () => {
               ...election,
               questions: data.questions,
             });
-            navigate('ModalSwiper');
+            navigate('Swiper');
           }}
           withBorder>
           <Title mainBig center textCenter style={styles.textColor}>

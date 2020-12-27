@@ -12,14 +12,10 @@ import cdn from 'util/cdn';
 import ArrowRightCircle from '../../icons/ArrowRightCircle';
 import Txt from '../Txt';
 import styles from './styles';
+import {Election} from 'types/api';
 
-interface Props {
+interface Props extends Election {
   onPress: (event: GestureResponderEvent) => void;
-  card: string;
-  name: string;
-  voting_day: string;
-  active_date: string;
-  active: boolean;
 }
 
 const ElectionPill: React.FC<Props> = ({

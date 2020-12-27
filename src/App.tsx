@@ -1,12 +1,10 @@
 import React from 'react';
-import {Provider} from 'mobx-react/native';
 import {ApolloProvider} from 'react-apollo';
 import {enableScreens} from 'react-native-screens';
 import {View, StatusBar, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import OneSignal from 'react-native-onesignal';
 import Matomo from 'react-native-matomo';
-import stores from 'stores';
 import client from 'util/client';
 import Init from './Init';
 import AppProvider from 'contexts/app';
@@ -34,11 +32,9 @@ const App: React.FC = () => {
         <ApolloProvider client={client}>
           <AppProvider>
             <SwiperProvider>
-              <Provider {...stores}>
-                <NavigationContainer>
-                  <Init />
-                </NavigationContainer>
-              </Provider>
+              <NavigationContainer>
+                <Init />
+              </NavigationContainer>
             </SwiperProvider>
           </AppProvider>
         </ApolloProvider>

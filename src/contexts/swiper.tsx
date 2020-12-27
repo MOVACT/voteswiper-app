@@ -1,5 +1,5 @@
 import React from 'react';
-import {Election} from 'types/api';
+import {Election, Party} from 'types/api';
 
 interface Answer {
   answer: number;
@@ -10,12 +10,8 @@ interface Answers {
     [id: number]: Answer;
   };
 }
-
-interface Party {
-  slug: string;
-}
 interface Parties {
-  [key: number]: string[];
+  [key: number]: number[];
 }
 
 interface Context {
@@ -29,11 +25,11 @@ interface Context {
   setAnswer: (id: number, answer: number) => void;
   toggleDoubleWeight: (id: number) => void;
   getDoubleWeightValue: (id: number) => boolean;
-  toggleParty: (party: string) => void;
+  toggleParty: (party: number) => void;
   selectAllParties: (partiesList: Party[]) => void;
-  isUnselected: () => void;
+  isUnselected: () => boolean;
   unselectAllParties: () => void;
-  isPartyActive: (party: Party) => void;
+  isPartyActive: (party: Party) => boolean;
   clearAnswers: () => void;
   openEditAnswers: () => void;
   closeEditAnswers: () => void;
@@ -43,7 +39,7 @@ interface Context {
   updateResult: () => void;
 }
 
-const SwiperContext = React.createContext({} as Context);
+export const SwiperContext = React.createContext({} as Context);
 
 const SwiperProvider: React.FC = ({children}) => {
   const [election, setElection] = React.useState<null | Election>(null);
@@ -76,7 +72,7 @@ const SwiperProvider: React.FC = ({children}) => {
       // apply answer
       answersCopy[election!.id][id].answer = answer;
 
-      setAnswers(answersCopy);
+      setAnswers({...answersCopy});
     },
     [answers, election],
   );
@@ -106,7 +102,7 @@ const SwiperProvider: React.FC = ({children}) => {
       // this should be improved somewhere else asap
       // @ts-ignore
       setElection({...election});
-      setAnswers(answersCopy);
+      setAnswers({...answersCopy});
     },
     [answers, election],
   );
@@ -123,7 +119,7 @@ const SwiperProvider: React.FC = ({children}) => {
   );
 
   const toggleParty = React.useCallback(
-    (party: string) => {
+    (party: number) => {
       const partiesCopy = parties;
       if (!partiesCopy[election!.id]) {
         partiesCopy[election!.id] = [];
@@ -137,7 +133,7 @@ const SwiperProvider: React.FC = ({children}) => {
         partiesCopy[election!.id].push(party);
       }
 
-      setParties(partiesCopy);
+      setParties({...partiesCopy});
     },
     [parties, election],
   );
@@ -151,13 +147,13 @@ const SwiperProvider: React.FC = ({children}) => {
       }
 
       partiesList.map((partyEntry) => {
-        const index = partiesCopy[election!.id].indexOf(partyEntry.slug);
+        const index = partiesCopy[election!.id].indexOf(partyEntry.id);
         if (index < 0) {
-          partiesCopy[election!.id].push(partyEntry.slug);
+          partiesCopy[election!.id].push(partyEntry.id);
         }
       });
 
-      setParties(partiesCopy);
+      setParties({...partiesCopy});
     },
     [parties, election],
   );
@@ -170,13 +166,17 @@ const SwiperProvider: React.FC = ({children}) => {
     const partiesCopy = parties;
     partiesCopy[election!.id] = [];
 
-    setParties(partiesCopy);
+    setParties({...partiesCopy});
   }, [parties, election]);
 
   const isPartyActive = React.useCallback(
     (party: Party) => {
+      if (!parties[election!.id]) {
+        return false;
+      }
+
       return (
-        parties[election!.id] && parties[election!.id].indexOf(party.slug) > -1
+        parties[election!.id] && parties[election!.id].indexOf(party.id) > -1
       );
     },
     [parties, election],
@@ -189,7 +189,7 @@ const SwiperProvider: React.FC = ({children}) => {
       answersCopy[election!.id] = {};
     }
 
-    setAnswers(answersCopy);
+    setAnswers({...answersCopy});
     setEditAnswers(false);
     setChangedAnswers(false);
     setLoadingRecalculated(false);
@@ -218,7 +218,7 @@ const SwiperProvider: React.FC = ({children}) => {
       }
 
       editAnswersCopy[id].answer = answer;
-      setEditAnswers(editAnswersCopy);
+      setEditAnswers({...editAnswersCopy});
       setChangedAnswers(true);
     },
     [editAnswers],
@@ -239,7 +239,7 @@ const SwiperProvider: React.FC = ({children}) => {
       }
 
       editAnswersCopy[id].doubleWeight = !editAnswersCopy[id].doubleWeight;
-      setEditAnswers(editAnswersCopy);
+      setEditAnswers({...editAnswersCopy});
       setChangedAnswers(true);
     },
     [editAnswers],
@@ -252,7 +252,7 @@ const SwiperProvider: React.FC = ({children}) => {
     if (editAnswers !== false) {
       answersCopy[election!.id] = editAnswers;
     }
-    setAnswers(answersCopy);
+    setAnswers({...answersCopy});
     setEditAnswers(false);
     setChangedAnswers(false);
   }, [answers, election, editAnswers]);

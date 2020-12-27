@@ -37,11 +37,11 @@ const Card: React.FC<Question> = ({
             style={styles.videoLink}
             onPress={() => {
               if (video_url) {
-                navigate('ModalVideo', {
+                navigate('Video', {
                   video: video_url,
                 });
               } else {
-                navigate('ModalExplainer', {
+                navigate('Explainer', {
                   explainer: explainer_text,
                   question,
                   title,

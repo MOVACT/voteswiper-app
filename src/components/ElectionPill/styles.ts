@@ -17,8 +17,8 @@ export default StyleSheet.create({
     aspectRatio: 16 / 9,
   },
   cardHolder: {
-    borderTopLeftRadius: borderRadius,
-    borderTopRightRadius: borderRadius,
+    borderTopLeftRadius: borderRadius - 1,
+    borderTopRightRadius: borderRadius - 1,
     overflow: 'hidden',
   },
   root: {

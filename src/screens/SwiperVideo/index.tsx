@@ -3,11 +3,11 @@ import FullScreenVideo from 'components/FullScreenVideo';
 import React from 'react';
 import {ModalStackParamList} from 'types/routes';
 
-type ModalVideoScreenRouteProp = RouteProp<ModalStackParamList, 'ModalVideo'>;
+type VideoScreenRouteProp = RouteProp<ModalStackParamList, 'Video'>;
 
 const SwiperVideo: React.FC = () => {
   const {setOptions, goBack} = useNavigation();
-  const {params} = useRoute<ModalVideoScreenRouteProp>();
+  const {params} = useRoute<VideoScreenRouteProp>();
   React.useEffect(() => {
     setOptions({
       headerShown: false,
