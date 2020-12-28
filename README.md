@@ -1,4 +1,4 @@
-# VoteSwiper / WahlSwiper
+# VoteSwiper / WahlSwiper - App
 
 [![License](https://img.shields.io/badge/License-GPL%203.0-green.svg)](./LICENSE) [![Last Commit](https://img.shields.io/github/last-commit/movact/voteswiper-app)](https://github.com/MOVACT/voteswiper-app/commits) [![Open issues](https://img.shields.io/github/issues/movact/voteswiper-app)](https://github.com/MOVACT/voteswiper-app/issues) [![Follow WahlSwiper](https://img.shields.io/twitter/follow/wahlswiper)](https://www.twitter.com/wahlswiper)
 
@@ -6,7 +6,7 @@ VoteSwiper (in Germany better known as WahlSwiper) is a cross-platform voting ad
 
 We started this project in 2017 for the federal election and since then grow a user base of over one million. While we operated closed source for a long time, we believe the right thing to do is to disclose the source code of the whole project for transparency and to invite others to help grow this project.
 
-**Source code for the API and web version will be available soon.**
+**Source code for the API will be available soon.**
 
 ## Development
 
