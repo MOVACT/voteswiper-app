@@ -1,5 +1,3 @@
-import {number} from 'prop-types';
-
 export interface Country {
   id: number;
   country_code: string;
