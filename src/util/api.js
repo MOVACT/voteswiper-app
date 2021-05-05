@@ -128,7 +128,7 @@ const useQuery = (query, props = {}) => {
   }, [props, language]);
 
   return useApolloQuery(queries[query], {
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'no-cache',
     notifyOnNetworkStatusChange: true,
     ...props,
     variables: vars,
