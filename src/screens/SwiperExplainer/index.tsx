@@ -1,10 +1,10 @@
 import {RouteProp, useRoute} from '@react-navigation/native';
-import {View} from 'react-native';
 import Container from 'components/Container';
 import ScrollContainer from 'components/ScrollContainer';
 import Title from 'components/Title';
 import Txt from 'components/Txt';
 import React from 'react';
+import {View} from 'react-native';
 import {ModalStackParamList} from 'types/routes';
 import styles from './styles';
 
@@ -18,9 +18,9 @@ const SwiperExplainer: React.FC = () => {
       <ScrollContainer>
         <View style={styles.content}>
           <Title h5 uppercase>
-            {params.title}
+            {params.topic}
           </Title>
-          <Title mainBig>{params.question}</Title>
+          <Title mainBig>{params.thesis}</Title>
 
           <Txt style={styles.text}>{params.explainer}</Txt>
         </View>

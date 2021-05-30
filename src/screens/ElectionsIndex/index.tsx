@@ -1,41 +1,29 @@
-import React from 'react';
-import {View, TouchableOpacity, RefreshControl} from 'react-native';
-import Matomo from 'react-native-matomo';
-import RNRestart from 'react-native-restart';
-import {useNavigation, useFocusEffect} from '@react-navigation/native';
-import Loader from 'components/Loader';
-import Container from 'components/Container';
-import Txt from 'components/Txt';
-import ScrollContainer from 'components/ScrollContainer';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import BoxGradient from 'components/BoxGradient';
-import Title from 'components/Title';
+import Container from 'components/Container';
 import ElectionPill from 'components/ElectionPill';
+import Loader from 'components/Loader';
+import ScrollContainer from 'components/ScrollContainer';
+import Title from 'components/Title';
+import Txt from 'components/Txt';
+import {ENDPOINTS, useFetch} from 'connectors/api';
+import {useApp} from 'contexts/app';
+import React from 'react';
+import {RefreshControl, TouchableOpacity, View} from 'react-native';
+import Matomo from 'react-native-matomo';
+import {Election, ElectionsData} from 'types/api';
 import getCountryFlag from 'util/getCountryFlag';
-import {useQuery} from 'util/api';
-import locale from 'util/locale';
+import moment from 'util/momentLocale';
 import ChevronRight from '../../icons/ChevronRight';
 import styles from './styles';
 
-import {useApp} from 'contexts/app';
-import {Election} from 'types/api';
-
 const ElectionsIndex: React.FC = () => {
   const {navigate, setOptions} = useNavigation();
-  const {
-    languageNotice,
-    language,
-    country,
-    setLocale,
-    dismissLanguageNotice,
-    t,
-  } = useApp();
-  const {loading, error, data, refetch, networkStatus} = useQuery(
-    'GET_ELECTIONS',
-    {
-      variables: {
-        country: country!.id,
-      },
-    },
+  const {country, t} = useApp();
+
+  const {loading, error, data, refetch} = useFetch<Election[], ElectionsData>(
+    ENDPOINTS.ELECTIONS,
+    {data: {country: country!.id, include: 'all'}},
   );
 
   React.useEffect(() => {
@@ -69,7 +57,23 @@ const ElectionsIndex: React.FC = () => {
 
   useFocusEffect(trackScreen);
 
-  if (loading && networkStatus !== 4) {
+  const upcomingElections = React.useMemo(() => {
+    if (!data) {
+      return [];
+    }
+    return data.filter((election) =>
+      moment().isSameOrBefore(election.voting_day, 'day'),
+    );
+  }, [data]);
+
+  const pastElections = React.useMemo(() => {
+    if (!data) {
+      return [];
+    }
+    return data.filter((election) => moment().isAfter(election.voting_day));
+  }, [data]);
+
+  if (loading) {
     return (
       <Container>
         <Loader fullscreen />
@@ -78,7 +82,7 @@ const ElectionsIndex: React.FC = () => {
   }
 
   if (error) {
-    return <View />;
+    return <Container />;
   }
 
   return (
@@ -87,7 +91,7 @@ const ElectionsIndex: React.FC = () => {
         withPadding
         refreshControl={
           <RefreshControl
-            refreshing={loading && networkStatus === 4}
+            refreshing={loading}
             onRefresh={() => {
               refetch();
             }}
@@ -96,41 +100,6 @@ const ElectionsIndex: React.FC = () => {
             tintColor={'#ffffff'}
           />
         }>
-        {locale(language) === 'en' && languageNotice.shouldShow === true ? (
-          <View style={styles.info}>
-            <Title h1 center>
-              Do you speak {t('countryLanguage')}?
-            </Title>
-            <Txt copy center>
-              If so, then we advise you to switch the app language to german to
-              get the questionnaire in the original language it was created.
-            </Txt>
-
-            <View style={styles.infoActions}>
-              <TouchableOpacity
-                onPress={() => {
-                  setLocale(country!.language_code);
-                  setTimeout(() => {
-                    RNRestart.Restart();
-                  }, 500);
-                }}
-                style={styles.infoMainAction}>
-                <Txt copy center medium style={styles.switchText}>
-                  Switch to german
-                </Txt>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => {
-                  dismissLanguageNotice();
-                }}
-                style={styles.infoAction}>
-                <Txt copy center medium>
-                  Dismiss
-                </Txt>
-              </TouchableOpacity>
-            </View>
-          </View>
-        ) : null}
         <BoxGradient>
           <Title mainBig center>
             {t('electionsIndex.boxTitle')}
@@ -142,9 +111,9 @@ const ElectionsIndex: React.FC = () => {
           ) : null}
         </BoxGradient>
 
-        {data.elections.length > 0 ? (
+        {upcomingElections.length > 0 ? (
           <View style={styles.electionsList}>
-            {data.elections.map((election: Election) => {
+            {upcomingElections.map((election: Election) => {
               return (
                 <ElectionPill
                   key={election.id}
@@ -168,7 +137,7 @@ const ElectionsIndex: React.FC = () => {
           </View>
         )}
 
-        {data.pastElections.length > 0 ? (
+        {pastElections.length > 0 ? (
           <View style={styles.pastElectionsContainer}>
             <BoxGradient>
               <Title mainBig center>
@@ -182,7 +151,7 @@ const ElectionsIndex: React.FC = () => {
             </BoxGradient>
 
             <View style={styles.electionsList}>
-              {data.pastElections.map((election) => {
+              {pastElections.map((election) => {
                 return (
                   <ElectionPill
                     key={election.id}

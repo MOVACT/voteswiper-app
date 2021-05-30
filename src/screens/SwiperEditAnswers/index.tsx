@@ -1,18 +1,19 @@
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import BoxGradient from 'components/BoxGradient';
+import ButtonGradient from 'components/ButtonGradient';
 import Container from 'components/Container';
 import Loader from 'components/Loader';
 import ScrollContainer from 'components/ScrollContainer';
 import Title from 'components/Title';
 import Txt from 'components/Txt';
-import {useSwiper} from 'contexts/swiper';
-import React from 'react';
-import {View, TouchableOpacity} from 'react-native';
-import styles from './styles';
-import Check from 'icons/Check';
-import LinearGradient from 'react-native-linear-gradient';
-import ButtonGradient from 'components/ButtonGradient';
-import {useNavigation} from '@react-navigation/native';
 import {useApp} from 'contexts/app';
+import {useSwiper} from 'contexts/swiper';
+import Check from 'icons/Check';
+import React from 'react';
+import {TouchableOpacity, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import styles from './styles';
 
 const SwiperEditAnswers: React.FC = () => {
   const {t} = useApp();
@@ -26,7 +27,7 @@ const SwiperEditAnswers: React.FC = () => {
     setEditAnswer,
     election,
   } = useSwiper();
-  const {goBack} = useNavigation();
+  const {replace} = useNavigation<StackNavigationProp<any>>();
 
   const getAnswer = React.useCallback(
     (id: number) => {
@@ -59,7 +60,7 @@ const SwiperEditAnswers: React.FC = () => {
             <View key={question.id} style={styles.question}>
               <BoxGradient>
                 <Title mainBig style={styles.title}>
-                  {question.question}
+                  {question.thesis}
                 </Title>
 
                 <TouchableOpacity
@@ -141,11 +142,10 @@ const SwiperEditAnswers: React.FC = () => {
             style={styles.progressBg}>
             <ButtonGradient
               onPress={() => {
-                // navigate('Result');
                 startUpdating();
                 setTimeout(() => {
                   updateResult();
-                  goBack();
+                  replace('Result');
                 }, 500);
               }}
               text={t('swiperResult.yourResult')}

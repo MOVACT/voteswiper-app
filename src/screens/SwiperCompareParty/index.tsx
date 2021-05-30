@@ -8,9 +8,8 @@ import Txt from 'components/Txt';
 import {useApp} from 'contexts/app';
 import {useSwiper} from 'contexts/swiper';
 import React from 'react';
-import {Image, Linking, View, TouchableOpacity} from 'react-native';
+import {Image, Linking, TouchableOpacity, View} from 'react-native';
 import {ModalStackParamList} from 'types/routes';
-import cdn from 'util/cdn';
 import styles from './styles';
 
 type ComparePartyScreenRouteProp = RouteProp<
@@ -57,7 +56,7 @@ const SwiperCompareParty: React.FC = () => {
         <View style={styles.party}>
           <View style={styles.partyLogoContainer}>
             <Image
-              source={{uri: cdn(party.logo)}}
+              source={{uri: party.logo.public_link}}
               style={styles.partyLogo}
               resizeMode="contain"
             />
@@ -67,24 +66,24 @@ const SwiperCompareParty: React.FC = () => {
             {party.full_name}
           </Txt>
 
-          {party.pivot.url && (
+          {party.url && (
             <View style={styles.partyButton}>
               <ButtonDark
                 text="Webseite"
                 center
                 onPress={() => {
-                  Linking.openURL(party.pivot.url as string);
+                  Linking.openURL(party.url as string);
                 }}
               />
             </View>
           )}
-          {party.pivot.program && (
+          {party.pivot.program_link && (
             <View style={styles.partyButton}>
               <ButtonDark
                 center
                 text={t('swiperResult.program')}
                 onPress={() => {
-                  Linking.openURL(party.pivot.program);
+                  Linking.openURL(party.pivot.program_link as string);
                 }}
               />
             </View>
@@ -112,7 +111,7 @@ const SwiperCompareParty: React.FC = () => {
                   </View>
                 )}
                 <Title mainBig style={styles.thesis}>
-                  {question.question}
+                  {question.thesis}
                 </Title>
 
                 {partyAnswer.reason ? (

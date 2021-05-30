@@ -1,18 +1,17 @@
+import {useApp} from 'contexts/app';
 import React from 'react';
 import {
-  View,
-  TouchableWithoutFeedback,
-  Image,
   GestureResponderEvent,
+  Image,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {Election} from 'types/api';
 import moment from 'util/momentLocale';
-import cdn from 'util/cdn';
 import ArrowRightCircle from '../../icons/ArrowRightCircle';
 import Txt from '../Txt';
 import styles from './styles';
-import {Election} from 'types/api';
-import {useApp} from 'contexts/app';
 
 interface Props extends Election {
   onPress: (event: GestureResponderEvent) => void;
@@ -23,8 +22,8 @@ const ElectionPill: React.FC<Props> = ({
   card,
   name,
   voting_day,
-  active_date,
-  active,
+  playable,
+  playable_date,
 }) => {
   const {t} = useApp();
   const [clickActive, setActiveClick] = React.useState(false);
@@ -38,11 +37,11 @@ const ElectionPill: React.FC<Props> = ({
       onPressOut={() => {
         setActiveClick(false);
       }}
-      disabled={!active}>
-      <View style={[styles.shadow, active ? {} : styles.disabled]}>
+      disabled={!playable}>
+      <View style={[styles.shadow, playable ? {} : styles.disabled]}>
         <View style={styles.cardHolder}>
           <Image
-            source={{uri: cdn(card)}}
+            source={{uri: card.public_link}}
             resizeMode="cover"
             style={styles.card}
           />
@@ -57,10 +56,10 @@ const ElectionPill: React.FC<Props> = ({
               {name}
             </Txt>
             <Txt medium style={styles.subTitle}>
-              {active
+              {playable
                 ? moment(voting_day).format('LL')
                 : t('electionPill.availableFrom', [
-                    moment(active_date).format('LL'),
+                    moment(playable_date).format('LL'),
                   ])}
             </Txt>
           </View>

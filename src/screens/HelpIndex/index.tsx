@@ -1,16 +1,19 @@
-import React from 'react';
-import {View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import Accordion from 'react-native-collapsible/Accordion';
-import Container from 'components/Container';
-import Txt from 'components/Txt';
+/*import Container from 'components/Container';
 import Loader from 'components/Loader';
 import ScrollContainer from 'components/ScrollContainer';
+import Txt from 'components/Txt';
+import React from 'react';
+import {View} from 'react-native';
+import Accordion from 'react-native-collapsible/Accordion';
+import LinearGradient from 'react-native-linear-gradient';
 import {useQuery} from 'util/api';
-import styles from './styles';
+import styles from './styles';*/
+import Container from 'components/Container';
+import React from 'react';
 
 const HelpIndex: React.FC = () => {
-  const [activeSections, setActiveSections] = React.useState([]);
+  return <Container />;
+  /*const [activeSections, setActiveSections] = React.useState([]);
   const {loading, error, data} = useQuery('GET_FAQ');
 
   if (loading) {
@@ -74,7 +77,7 @@ const HelpIndex: React.FC = () => {
         </LinearGradient>
       </ScrollContainer>
     </Container>
-  );
+  );*/
 };
 
 export default HelpIndex;

@@ -1,22 +1,24 @@
-import React from 'react';
-import {View, RefreshControl, ScrollView} from 'react-native';
-import OneSignal from 'react-native-onesignal';
-import Txt from 'components/Txt';
 import BoxGradient from 'components/BoxGradient';
 import Container from 'components/Container';
-import scrollContainerStyles from 'components/ScrollContainer/styles';
-import Title from 'components/Title';
 import CountryPill from 'components/CountryPill';
 import Loader from 'components/Loader';
-import {useQuery} from 'util/api';
-import styles from './styles';
+import scrollContainerStyles from 'components/ScrollContainer/styles';
+import Title from 'components/Title';
+import Txt from 'components/Txt';
+import {ENDPOINTS, useFetch} from 'connectors/api';
 import {useApp} from 'contexts/app';
-import {Country} from 'types/api';
+import React from 'react';
+import {RefreshControl, ScrollView, View} from 'react-native';
+import OneSignal from 'react-native-onesignal';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {Country} from 'types/api';
+import styles from './styles';
 
 const SelectCountry: React.FC = () => {
   const {setCountry, t} = useApp();
-  const {loading, error, data, refetch} = useQuery('GET_COUNTRIES');
+  const {loading, error, data, refetch} = useFetch<Country[]>(
+    ENDPOINTS.COUNTRIES,
+  );
   const {top, bottom} = useSafeAreaInsets();
 
   if (loading) {
@@ -38,7 +40,7 @@ const SelectCountry: React.FC = () => {
         ]}
         refreshControl={
           <RefreshControl
-            refreshing={data.loading && data.networkStatus === 4 ? true : false}
+            refreshing={loading}
             onRefresh={refetch}
             colors={['#ffffff']}
             enabled
@@ -54,7 +56,7 @@ const SelectCountry: React.FC = () => {
           </Txt>
         </BoxGradient>
         <View style={styles.countriesList}>
-          {data.countries.map((country: Country) => {
+          {data.map((country: Country) => {
             return (
               <CountryPill
                 onPress={() => {

@@ -1,4 +1,6 @@
 const config = {
+  api: 'http://laravel.test/api',
+  apiVersion: 1,
   apiUrl: 'https://www.voteswiper.org/!',
   fallbackLocale: 'en',
   locales: [

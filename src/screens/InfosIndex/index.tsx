@@ -1,12 +1,12 @@
-import React from 'react';
-import {View, Linking} from 'react-native';
+import ButtonDark from 'components/ButtonDark';
 import Container from 'components/Container';
 import ScrollContainer from 'components/ScrollContainer';
 import Title from 'components/Title';
 import Txt from 'components/Txt';
-import ButtonDark from 'components/ButtonDark';
-import styles from './styles';
 import {useApp} from 'contexts/app';
+import React from 'react';
+import {Linking, View} from 'react-native';
+import styles from './styles';
 
 const InfosIndex: React.FC = () => {
   const {t} = useApp();

@@ -3,15 +3,15 @@ import {useNavigation} from '@react-navigation/native';
 import Box from 'components/Box';
 import Title from 'components/Title';
 import Txt from 'components/Txt';
+import {useApp} from 'contexts/app';
 import React from 'react';
 import {
-  View,
-  TouchableWithoutFeedback,
   GestureResponderEvent,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
-import {useApp} from 'contexts/app';
 
 interface Props {
   onCancel: (event: GestureResponderEvent) => void;

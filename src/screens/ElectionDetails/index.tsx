@@ -1,30 +1,35 @@
-import React from 'react';
-import {View, Platform} from 'react-native';
-import Matomo from 'react-native-matomo';
 import {
-  useNavigation,
-  useFocusEffect,
-  useRoute,
   RouteProp,
+  useFocusEffect,
+  useNavigation,
+  useRoute,
 } from '@react-navigation/native';
-import axios from 'axios';
+import Box from 'components/Box';
+import BoxGradient from 'components/BoxGradient';
 import Container from 'components/Container';
+import Countdown from 'components/Countdown';
+import Loader from 'components/Loader';
 import ScrollContainer from 'components/ScrollContainer';
 import ShareButton from 'components/ShareButton';
-import Loader from 'components/Loader';
-import BoxGradient from 'components/BoxGradient';
-import Countdown from 'components/Countdown';
 import Title from 'components/Title';
 import Txt from 'components/Txt';
-import Box from 'components/Box';
-import styles from './styles';
-import moment from 'util/momentLocale';
-import {useQuery} from 'util/api';
-import locale from 'util/locale';
-import config from 'common/config';
-import {ElectionStackParamList} from 'types/routes';
-import {useSwiper} from 'contexts/swiper';
+import {ENDPOINTS, fetch, useFetch} from 'connectors/api';
 import {useApp} from 'contexts/app';
+import {useSwiper} from 'contexts/swiper';
+import React from 'react';
+import {Platform, View} from 'react-native';
+import Matomo from 'react-native-matomo';
+import {
+  InitiateData,
+  PartiesData,
+  Party,
+  Question,
+  QuestionsData,
+} from 'types/api';
+import {ElectionStackParamList} from 'types/routes';
+import locale from 'util/locale';
+import moment from 'util/momentLocale';
+import styles from './styles';
 
 type ElectionDetailsScreenRouteProp = RouteProp<
   ElectionStackParamList,
@@ -36,8 +41,18 @@ const ElectionDetails: React.FC = () => {
   const {language, t} = useApp();
   const {setElection} = useSwiper();
   const {params} = useRoute<ElectionDetailsScreenRouteProp>();
-  const {loading, error, data} = useQuery('GET_QUESTIONS', {
-    variables: {election: params.election.id},
+
+  const {loading, error, data} = useFetch<Question[], QuestionsData>(
+    ENDPOINTS.QUESTIONS,
+    {data: {id: params.election.id}},
+  );
+
+  const {
+    loading: loadingParties,
+    error: errorParties,
+    data: parties,
+  } = useFetch<Party[], PartiesData>(ENDPOINTS.PARTIES, {
+    data: {id: params.election.id},
   });
 
   React.useEffect(() => {
@@ -62,37 +77,27 @@ const ElectionDetails: React.FC = () => {
 
   useFocusEffect(trackScreen);
 
-  const trackInitiation = React.useCallback((election) => {
-    axios.post(
-      config.apiUrl,
-      {
-        query: `mutation Initiate($election_id: Int!, $platform: String!) {
-        initiate(election_id: $election_id, platform: $platform) {
-          success
-        }
-      }`,
-        variables: {
-          election_id: election,
+  const trackInitiation = React.useCallback(
+    (election) => {
+      fetch<InitiateData>(ENDPOINTS.COUNT_INITIATE, language!, {
+        data: {
+          election_id: election!.id,
           platform: Platform.OS,
         },
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-  }, []);
+      });
+    },
+    [language],
+  );
 
-  if (loading) {
+  if (loading || loadingParties) {
     return (
       <Container>
         <Loader fullscreen />
       </Container>
     );
   }
-  if (error) {
-    return <View />;
+  if (error || errorParties) {
+    return <Container />;
   }
 
   const {election} = params;
@@ -129,7 +134,8 @@ const ElectionDetails: React.FC = () => {
             trackInitiation(election.id);
             setElection({
               ...election,
-              questions: data.questions,
+              questions: data,
+              parties,
             });
             navigate('Swiper');
           }}

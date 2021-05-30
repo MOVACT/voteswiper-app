@@ -6,6 +6,6 @@ export type ElectionStackParamList = {
 
 export type ModalStackParamList = {
   Video: {video: string};
-  Explainer: {explainer: string; question: string; title: string};
+  Explainer: {explainer: string; thesis: string; topic: string};
   CompareParty: {party: Party};
 };

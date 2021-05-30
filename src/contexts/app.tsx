@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React from 'react';
-import {Country} from 'types/api';
-import translations from 'translations';
-import locale from 'util/locale';
 import config from 'common/config';
-import moment from 'moment';
+import React from 'react';
+import translations from 'translations';
+import {Country} from 'types/api';
+import locale from 'util/locale';
+
 interface Context {
   hydrated: boolean;
   country: null | Country;
@@ -33,7 +33,7 @@ const AppProvider: React.FC = ({children}) => {
 
   React.useEffect(() => {
     const fetchFromStorage = async () => {
-      const storedCountry = await AsyncStorage.getItem('@country');
+      const storedCountry = await AsyncStorage.getItem('@defaultCountry');
       const storedLanguageNotice = await AsyncStorage.getItem(
         '@languageNotice',
       );
@@ -57,9 +57,9 @@ const AppProvider: React.FC = ({children}) => {
       initialCountryCheck.current = false;
     } else {
       if (country === null) {
-        AsyncStorage.removeItem('@country');
+        AsyncStorage.removeItem('@defaultCountry');
       } else {
-        AsyncStorage.setItem('@country', JSON.stringify(country));
+        AsyncStorage.setItem('@defaultCountry', JSON.stringify(country));
       }
     }
   }, [country]);

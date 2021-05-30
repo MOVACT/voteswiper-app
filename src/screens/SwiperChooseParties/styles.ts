@@ -1,5 +1,5 @@
 import {sm} from 'common/breakpoints';
-import {StyleSheet, Dimensions} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {ifIphoneX} from 'util/iPhoneXHelper';
 
 const {width} = Dimensions.get('window');
@@ -88,6 +88,11 @@ export default StyleSheet.create({
   },
   partySelected: {
     borderColor: '#E6E90F',
+  },
+  partyName: {
+    alignSelf: 'center',
+    fontSize: 12,
+    paddingTop: 10,
   },
   progress: {
     position: 'absolute',

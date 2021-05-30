@@ -1,27 +1,28 @@
-import React from 'react';
-import {View, RefreshControl} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import OneSignal from 'react-native-onesignal';
-import Container from 'components/Container';
-import ScrollContainer from 'components/ScrollContainer';
-import Txt from 'components/Txt';
 import BoxGradient from 'components/BoxGradient';
-import Title from 'components/Title';
+import Container from 'components/Container';
 import CountryPill from 'components/CountryPill';
 import Loader from 'components/Loader';
-import styles from './styles';
+import ScrollContainer from 'components/ScrollContainer';
+import Title from 'components/Title';
+import Txt from 'components/Txt';
+import {ENDPOINTS, useFetch} from 'connectors/api';
 import {useApp} from 'contexts/app';
-import {useQuery} from 'util/api';
+import React from 'react';
+import {RefreshControl, View} from 'react-native';
+import OneSignal from 'react-native-onesignal';
+import {Country} from 'types/api';
+import styles from './styles';
 
 const SettingsCountry: React.FC = () => {
   const {setCountry, t} = useApp();
   const {reset} = useNavigation();
 
-  const {loading, error, data, refetch, networkStatus} = useQuery(
-    'GET_COUNTRIES',
+  const {loading, error, data, refetch} = useFetch<Country[]>(
+    ENDPOINTS.COUNTRIES,
   );
 
-  if (loading && networkStatus !== 4) {
+  if (loading) {
     return (
       <Container>
         <Loader />
@@ -38,7 +39,7 @@ const SettingsCountry: React.FC = () => {
         withPadding
         refreshControl={
           <RefreshControl
-            refreshing={loading && networkStatus === 4}
+            refreshing={loading}
             onRefresh={() => {
               refetch();
             }}
@@ -56,7 +57,7 @@ const SettingsCountry: React.FC = () => {
           </Txt>
         </BoxGradient>
         <View style={styles.countriesList}>
-          {data.countries.map((country) => {
+          {data.map((country) => {
             return (
               <CountryPill
                 onPress={() => {

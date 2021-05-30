@@ -1,16 +1,14 @@
-import React from 'react';
-import {ApolloProvider} from 'react-apollo';
-import {enableScreens} from 'react-native-screens';
-import {View, StatusBar, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import OneSignal from 'react-native-onesignal';
-import Matomo from 'react-native-matomo';
-import client from 'util/client';
-import Init from './Init';
+import Container from 'components/Container';
 import AppProvider from 'contexts/app';
 import SwiperProvider from 'contexts/swiper';
+import React from 'react';
+import {StatusBar, StyleSheet, View} from 'react-native';
+import Matomo from 'react-native-matomo';
+import OneSignal from 'react-native-onesignal';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import Container from 'components/Container';
+import {enableScreens} from 'react-native-screens';
+import Init from './Init';
 
 enableScreens();
 
@@ -31,15 +29,13 @@ const App: React.FC = () => {
       <SafeAreaProvider>
         <View style={styles.app}>
           <StatusBar barStyle="light-content" backgroundColor="#392F52" />
-          <ApolloProvider client={client}>
-            <AppProvider>
-              <SwiperProvider>
-                <NavigationContainer>
-                  <Init />
-                </NavigationContainer>
-              </SwiperProvider>
-            </AppProvider>
-          </ApolloProvider>
+          <AppProvider>
+            <SwiperProvider>
+              <NavigationContainer>
+                <Init />
+              </NavigationContainer>
+            </SwiperProvider>
+          </AppProvider>
         </View>
       </SafeAreaProvider>
     </Container>

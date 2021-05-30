@@ -1,5 +1,5 @@
 import React from 'react';
-import {Election, Party} from 'types/api';
+import {Election, Party, Question} from 'types/api';
 
 interface Answer {
   answer: number;
@@ -14,14 +14,19 @@ interface Parties {
   [key: number]: number[];
 }
 
+interface ElectionFull extends Election {
+  questions: Question[];
+  parties: Party[];
+}
+
 interface Context {
-  election: null | Election;
+  election: null | ElectionFull;
   answers: Answers;
   parties: Parties;
   editAnswers: false | {[id: number]: Answer};
   changedAnswers: boolean;
   loadingRecalculated: boolean;
-  setElection: (election: null | Election) => void;
+  setElection: (election: null | ElectionFull) => void;
   setAnswer: (id: number, answer: number) => void;
   toggleDoubleWeight: (id: number) => void;
   getDoubleWeightValue: (id: number) => boolean;
@@ -42,7 +47,7 @@ interface Context {
 export const SwiperContext = React.createContext({} as Context);
 
 const SwiperProvider: React.FC = ({children}) => {
-  const [election, setElection] = React.useState<null | Election>(null);
+  const [election, setElection] = React.useState<null | ElectionFull>(null);
   const [answers, setAnswers] = React.useState<Answers>({});
   const [parties, setParties] = React.useState<Parties>({});
 

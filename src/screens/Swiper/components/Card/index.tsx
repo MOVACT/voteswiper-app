@@ -1,26 +1,24 @@
+import {useNavigation} from '@react-navigation/native';
+import Title from 'components/Title';
+import Txt from 'components/Txt';
+import {useApp} from 'contexts/app';
+import {useSwiper} from 'contexts/swiper';
+import SvgCircleInfo from 'icons/InfoCircle';
+import Play from 'icons/Play';
 import React from 'react';
-import {Image, TouchableOpacity} from 'react-native';
+import {Image, Platform, TouchableOpacity, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {View, Platform} from 'react-native';
+import Animated, {Easing} from 'react-native-reanimated';
 import {Question} from 'types/api';
 import styles from './styles';
-import cdn from 'util/cdn';
-import Play from 'icons/Play';
-import SvgCircleInfo from 'icons/InfoCircle';
-import Title from 'components/Title';
-import Animated, {Easing} from 'react-native-reanimated';
-import {useSwiper} from 'contexts/swiper';
-import Txt from 'components/Txt';
-import {useNavigation} from '@react-navigation/native';
-import {useApp} from 'contexts/app';
 
 const Card: React.FC<Question> = ({
   id,
   thumbnail,
   video_url,
   explainer_text,
-  title,
-  question,
+  thesis,
+  topic,
 }) => {
   const {navigate} = useNavigation();
   const {t} = useApp();
@@ -31,7 +29,10 @@ const Card: React.FC<Question> = ({
   const cardThumbnail = React.useMemo(() => {
     return (
       <View style={styles.thumbnail}>
-        <Image source={{uri: cdn(thumbnail)}} style={styles.thumbnailImage} />
+        <Image
+          source={{uri: thumbnail.public_link}}
+          style={styles.thumbnailImage}
+        />
         {video_url || explainer_text ? (
           <TouchableOpacity
             activeOpacity={0.9}
@@ -44,8 +45,8 @@ const Card: React.FC<Question> = ({
               } else {
                 navigate('Explainer', {
                   explainer: explainer_text,
-                  question,
-                  title,
+                  thesis,
+                  topic,
                 });
               }
             }}>
@@ -64,7 +65,7 @@ const Card: React.FC<Question> = ({
         ) : null}
       </View>
     );
-  }, [thumbnail, video_url, explainer_text, navigate, question, title]);
+  }, [thumbnail, video_url, explainer_text, navigate, thesis, topic]);
 
   const border = React.useMemo(() => {
     const scaleStyle = borderAnimation.current.interpolate({
@@ -124,10 +125,10 @@ const Card: React.FC<Question> = ({
         {cardThumbnail}
         <View style={styles.content}>
           <Title h5dark uppercase center>
-            {title}
+            {topic}
           </Title>
           <Title mainBig center textCenter style={styles.questionText}>
-            {question}
+            {thesis}
           </Title>
 
           {Platform.OS === 'android' && doubleWeight}

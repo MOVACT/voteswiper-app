@@ -1,45 +1,43 @@
-import axios from 'axios';
-import {useSwiper} from 'contexts/swiper';
-import {useHeaderHeight} from '@react-navigation/stack';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
-import Share from 'react-native-share';
+import {useHeaderHeight} from '@react-navigation/stack';
+import {sm} from 'common/breakpoints';
+import ButtonDark from 'components/ButtonDark';
+import Container from 'components/Container';
+import Loader from 'components/Loader';
+import ResultBar from 'components/ResultBar';
+import Title from 'components/Title';
+import Txt from 'components/Txt';
+import {ENDPOINTS, fetch} from 'connectors/api';
+import {useApp} from 'contexts/app';
+import {useSwiper} from 'contexts/swiper';
+import Close from 'icons/Close';
+import Download from 'icons/Download';
 import React from 'react';
 import {
+  ActivityIndicator,
+  BackHandler,
   Dimensions,
   Image,
   Linking,
   Platform,
-  View,
   TouchableOpacity,
-  ActivityIndicator,
-  BackHandler,
+  View,
 } from 'react-native';
-import config from 'common/config';
-import Container from 'components/Container';
-import Loader from 'components/Loader';
-import swiperStyles from '../Swiper/styles';
 import {ScrollView} from 'react-native-gesture-handler';
-import styles from './styles';
-import ButtonDark from 'components/ButtonDark';
-import {sm} from 'common/breakpoints';
-import ResultBar from 'components/ResultBar';
-import {Party} from 'types/api';
 import LinearGradient from 'react-native-linear-gradient';
-import cdn from 'util/cdn';
-import Title from 'components/Title';
-import Txt from 'components/Txt';
-import Close from 'icons/Close';
-import Download from 'icons/Download';
+import Share from 'react-native-share';
 import {captureRef} from 'react-native-view-shot';
 import ExitConfirmDialog from 'screens/Swiper/components/ExitConfirmDialog';
-import {useApp} from 'contexts/app';
+import {Party, ResultData} from 'types/api';
+import swiperStyles from '../Swiper/styles';
+import styles from './styles';
 
 const {width} = Dimensions.get('window');
 
 const SwiperResult: React.FC = () => {
   const screenshotArea = React.useRef<View>(null);
   const headerHeight = useHeaderHeight();
-  const {t} = useApp();
+  const {t, language} = useApp();
   const {goBack, navigate, dangerouslyGetParent, setOptions} = useNavigation();
   const {
     election,
@@ -93,7 +91,7 @@ const SwiperResult: React.FC = () => {
         );
       },
     });
-  }, [setOptions, goBack]);
+  }, [setOptions, goBack, t]);
 
   const handleBackButton = React.useCallback(() => {
     showExitConfirmation(true);
@@ -121,29 +119,16 @@ const SwiperResult: React.FC = () => {
 
   const trackResult = React.useCallback(
     (result) => {
-      axios.post(
-        config.apiUrl,
-        {
-          query: `mutation Result($election_id: Int!, $result: String!, $top_party_id: Int!, $platform: String!) {
-        result(election_id: $election_id, result: $result, top_party_id: $top_party_id, platform: $platform) {
-          success
-        }
-      }`,
-          variables: {
-            election_id: election!.id,
-            result: JSON.stringify(answers[election!.id]),
-            top_party_id: result[0].id,
-            platform: Platform.OS,
-          },
+      fetch<ResultData>(ENDPOINTS.SAVE_RESULT, language!, {
+        data: {
+          election_id: election!.id,
+          result: JSON.stringify(answers[election!.id]),
+          top_party_id: result[0].id,
+          platform: Platform.OS,
         },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      );
+      });
     },
-    [election, answers],
+    [election, answers, language],
   );
 
   React.useEffect(() => {
@@ -179,13 +164,13 @@ const SwiperResult: React.FC = () => {
           return null;
         });
       }
-
-      const ordered = partyScore.current.slice(0);
-      ordered.sort((a, b) => (a.score - b.score > 0 ? -1 : 1));
-      trackResult(ordered);
-
-      setLoading(false);
     });
+
+    const ordered = partyScore.current.slice(0);
+    ordered.sort((a, b) => (a.score - b.score > 0 ? -1 : 1));
+    trackResult(ordered);
+
+    setLoading(false);
   }, [election, getAnswer, trackResult]);
 
   const renderTopMatch = React.useCallback(
@@ -202,7 +187,7 @@ const SwiperResult: React.FC = () => {
               style={[styles.topMatch]}>
               <View style={styles.topMatchLogo}>
                 <Image
-                  source={{uri: cdn(party.logo)}}
+                  source={{uri: party.logo.public_link}}
                   style={styles.topMatchLogoImage}
                 />
               </View>
@@ -214,16 +199,18 @@ const SwiperResult: React.FC = () => {
                   {party.full_name}
                 </Txt>
 
-                <TouchableOpacity
-                  onPress={() => {
-                    Linking.openURL(party.pivot.program);
-                  }}
-                  style={styles.programLink}>
-                  <Download />
-                  <Txt medium style={styles.programLinkText}>
-                    {t('swiperResult.program')}
-                  </Txt>
-                </TouchableOpacity>
+                {party.pivot.program_link && (
+                  <TouchableOpacity
+                    onPress={() => {
+                      Linking.openURL(party.pivot.program_link as string);
+                    }}
+                    style={styles.programLink}>
+                    <Download />
+                    <Txt medium style={styles.programLinkText}>
+                      {t('swiperResult.program')}
+                    </Txt>
+                  </TouchableOpacity>
+                )}
               </View>
             </LinearGradient>
           </View>

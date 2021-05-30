@@ -1,35 +1,34 @@
-import {useHeaderHeight} from '@react-navigation/stack';
 import {
-  useNavigation,
-  useFocusEffect,
   StackActions,
+  useFocusEffect,
+  useNavigation,
 } from '@react-navigation/native';
-import DeckSwiper from 'react-native-deck-swiper';
+import {useHeaderHeight} from '@react-navigation/stack';
 import Container from 'components/Container';
-import axios from 'axios';
-import React from 'react';
-import {View, Platform, BackHandler} from 'react-native';
-import styles, {containerPaddingHorizontal, controlsPaddingTop} from './styles';
-import Card from './components/Card';
-import {useSwiper} from 'contexts/swiper';
 import Loader from 'components/Loader';
-import MainButton from './components/MainButton';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {buttonSize} from './components/MainButton/styles';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import Skip from 'icons/Skip';
-import Close from 'icons/Close';
 import Txt from 'components/Txt';
-import config from 'common/config';
-import {Question} from 'types/api';
-import NavigationButton from './components/NavigationButton';
-import ExitConfirmDialog from './components/ExitConfirmDialog';
+import {ENDPOINTS, fetch} from 'connectors/api';
 import {useApp} from 'contexts/app';
+import {useSwiper} from 'contexts/swiper';
+import Close from 'icons/Close';
+import Skip from 'icons/Skip';
+import React from 'react';
+import {BackHandler, Platform, View} from 'react-native';
+import DeckSwiper from 'react-native-deck-swiper';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {CountAnswerData, Question} from 'types/api';
+import Card from './components/Card';
+import ExitConfirmDialog from './components/ExitConfirmDialog';
+import MainButton from './components/MainButton';
+import {buttonSize} from './components/MainButton/styles';
+import NavigationButton from './components/NavigationButton';
+import styles, {containerPaddingHorizontal, controlsPaddingTop} from './styles';
 
 const Swiper: React.FC = () => {
   const $swiper = React.useRef<DeckSwiper<Question>>(null);
   const headerHeight = useHeaderHeight();
-  const {t} = useApp();
+  const {t, language} = useApp();
   const {bottom} = useSafeAreaInsets();
   const {setOptions, dispatch, navigate} = useNavigation();
   const {election, clearAnswers, setAnswer} = useSwiper();
@@ -40,29 +39,16 @@ const Swiper: React.FC = () => {
 
   const trackAnswer = React.useCallback(
     (question: number, answer: number) => {
-      axios.post(
-        config.apiUrl,
-        {
-          query: `mutation Swipe($election_id: Int!, $question_id: Int!, $answer: Int!, $platform: String!) {
-            swipe(election_id: $election_id, question_id: $question_id, answer: $answer, platform: $platform) {
-              success
-            }
-          }`,
-          variables: {
-            election_id: election!.id,
-            question_id: question,
-            answer: answer,
-            platform: Platform.OS,
-          },
+      fetch<CountAnswerData>(ENDPOINTS.COUNT_ANSWER, language!, {
+        data: {
+          election_id: election!.id,
+          question_id: question,
+          answer: answer,
+          platform: Platform.OS,
         },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      );
+      });
     },
-    [election],
+    [election, language],
   );
 
   React.useEffect(() => {

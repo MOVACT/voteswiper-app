@@ -1,16 +1,16 @@
-import React from 'react';
-import {View, TouchableOpacity} from 'react-native';
-import RNRestart from 'react-native-restart';
+import config from 'common/config';
+import BoxGradient from 'components/BoxGradient';
+import ButtonGradient from 'components/ButtonGradient';
 import Container from 'components/Container';
 import ScrollContainer from 'components/ScrollContainer';
-import Txt from 'components/Txt';
-import BoxGradient from 'components/BoxGradient';
 import Title from 'components/Title';
-import ButtonGradient from 'components/ButtonGradient';
-import styles from './styles';
-import config from 'common/config';
-import translations from 'translations';
+import Txt from 'components/Txt';
 import {useApp} from 'contexts/app';
+import React from 'react';
+import {TouchableOpacity, View} from 'react-native';
+import RNRestart from 'react-native-restart';
+import translations from 'translations';
+import styles from './styles';
 
 const Settings: React.FC = () => {
   const {language, setLocale, t} = useApp();
@@ -72,6 +72,7 @@ const Settings: React.FC = () => {
                 style={[styles.language, activeStyle(lang)]}
                 key={lang}>
                 <Txt copy medium>
+                  {/* @ts-ignore */}
                   {translations[lang].name}
                 </Txt>
               </TouchableOpacity>

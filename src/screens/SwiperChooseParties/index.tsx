@@ -1,7 +1,13 @@
-import Container from 'components/Container';
-import React from 'react';
-import {useHeaderHeight} from '@react-navigation/stack';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import {useHeaderHeight} from '@react-navigation/stack';
+import ButtonGradient from 'components/ButtonGradient';
+import Container from 'components/Container';
+import FadeIn from 'components/FadeIn';
+import Txt from 'components/Txt';
+import {useApp} from 'contexts/app';
+import {useSwiper} from 'contexts/swiper';
+import Close from 'icons/Close';
+import React from 'react';
 import {
   BackHandler,
   Image,
@@ -9,19 +15,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Animated, {Easing} from 'react-native-reanimated';
-import styles from './styles';
-import swiperStyles from '../Swiper/styles';
-import cdn from 'util/cdn';
-import Txt from 'components/Txt';
-import {useSwiper} from 'contexts/swiper';
-import FadeIn from 'components/FadeIn';
 import LinearGradient from 'react-native-linear-gradient';
-import ButtonGradient from 'components/ButtonGradient';
+import Animated, {Easing} from 'react-native-reanimated';
 import ExitConfirmDialog from 'screens/Swiper/components/ExitConfirmDialog';
-import Close from 'icons/Close';
 import NavigationButton from 'screens/Swiper/components/NavigationButton';
-import {useApp} from 'contexts/app';
+import swiperStyles from '../Swiper/styles';
+import styles from './styles';
 
 const SwiperChooseParties: React.FC = () => {
   const {t} = useApp();
@@ -88,7 +87,7 @@ const SwiperChooseParties: React.FC = () => {
         );
       },
     });
-  }, [setOptions, goBack]);
+  }, [setOptions, goBack, t]);
 
   const handleBackButton = React.useCallback(() => {
     showExitConfirmation(true);
@@ -184,9 +183,12 @@ const SwiperChooseParties: React.FC = () => {
                             isPartyActive(party) ? styles.partySelected : null,
                           ]}>
                           <Image
-                            source={{uri: cdn(party.logo)}}
+                            source={{uri: party.logo.public_link}}
                             style={styles.partyLogo}
                           />
+                          <Txt medium center style={styles.partyName}>
+                            {party.name}
+                          </Txt>
                         </LinearGradient>
                       </TouchableOpacity>
                     </FadeIn>

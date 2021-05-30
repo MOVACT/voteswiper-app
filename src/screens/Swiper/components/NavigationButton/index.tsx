@@ -1,8 +1,8 @@
+import ArrowLeft from 'icons/ArrowLeft';
+import ArrowRight from 'icons/ArrowRight';
 import React from 'react';
 import {GestureResponderEvent, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import ArrowLeft from 'icons/ArrowLeft';
-import ArrowRight from 'icons/ArrowRight';
 import styles from './styles';
 
 interface Props {

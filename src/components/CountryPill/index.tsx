@@ -1,14 +1,14 @@
+import ArrowRightCircle from 'icons/ArrowRightCircle';
 import React from 'react';
 import {
-  View,
-  TouchableWithoutFeedback,
   GestureResponderEvent,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import getCountryFlag from 'util/getCountryFlag';
 import Txt from '../Txt';
 import styles from './styles';
-import ArrowRightCircle from 'icons/ArrowRightCircle';
-import getCountryFlag from 'util/getCountryFlag';
 
 interface Props {
   name: string;

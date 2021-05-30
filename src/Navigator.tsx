@@ -23,6 +23,7 @@ import SwiperCompareParty from 'screens/SwiperCompareParty';
 import SwiperEditAnswers from 'screens/SwiperEditAnswers';
 import {SvgProps} from 'react-native-svg';
 import {useApp} from 'contexts/app';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const iPhone6 = 375;
 const {width} = Dimensions.get('window');
@@ -172,6 +173,7 @@ const TabStack = createBottomTabNavigator();
 
 const TabNavigator: React.FC = () => {
   const {t} = useApp();
+  const {bottom} = useSafeAreaInsets();
   return (
     <TabStack.Navigator
       initialRouteName="Elections"
@@ -184,7 +186,7 @@ const TabNavigator: React.FC = () => {
         activeTintColor: '#fff',
         inactiveTintColor: 'rgba(255, 255, 255, 0.5)',
         tabStyle: {
-          paddingBottom: 0,
+          paddingBottom: bottom,
           paddingTop: 6,
         },
         labelStyle: {
