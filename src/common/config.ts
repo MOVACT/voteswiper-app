@@ -21,6 +21,7 @@ const config = {
     'sl',
     'sv',
   ],
+  storyblokAccessToken: 'b7BTTUOEkSa786viucYnjwtt',
 };
 
 export default config;
