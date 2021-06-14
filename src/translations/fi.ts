@@ -105,9 +105,9 @@ const lang = {
   'infosIndex.paragraph3':
     'Äänestäminen on yhtä helppoa kuin nettideittailu - mutta kun saat "osuman" se kestää ainakin yhden vaalikauden verran.',
   'infosIndex.imprintButton': 'Impressum',
-  'infosIndex.imprintLink': 'https://www.voteswiper.org/fi/imprint',
+  'infosIndex.imprintLink': 'https://www.voteswiper.org/fi/page/imprint',
   'infosIndex.privacyButton': 'Tietosuojaseloste',
-  'infosIndex.privacyLink': 'https://www.voteswiper.org/fi/privacy',
+  'infosIndex.privacyLink': 'https://www.voteswiper.org/fi/page/privacy',
 };
 
 export default lang;

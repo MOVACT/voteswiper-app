@@ -104,9 +104,9 @@ const lang = {
   'infosIndex.paragraph3':
     'Wählen gehen ist so einfach wie Online-Dating – der „Match“ hält dann jedoch mindestens eine Legislaturperiode lang.',
   'infosIndex.imprintButton': 'Imprint',
-  'infosIndex.imprintLink': 'https://www.voteswiper.org/en/imprint',
+  'infosIndex.imprintLink': 'https://www.voteswiper.org/en/page/imprint',
   'infosIndex.privacyButton': 'Privacy',
-  'infosIndex.privacyLink': 'https://www.voteswiper.org/en/privacy',
+  'infosIndex.privacyLink': 'https://www.voteswiper.org/en/page/privacy',
 };
 
 export default lang;

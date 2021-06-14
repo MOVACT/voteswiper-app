@@ -103,9 +103,9 @@ const lang = {
   'infosIndex.paragraph3':
     'Det är lika lätt att rösta som att dejta online - men när du hittar någon som matchar,  kommer det att vara minst en mandatperiod.',
   'infosIndex.imprintButton': 'Impressum',
-  'infosIndex.imprintLink': 'https://www.voteswiper.org/sv/imprint',
+  'infosIndex.imprintLink': 'https://www.voteswiper.org/sv/page/imprint',
   'infosIndex.privacyButton': 'Dataskyddsbeskrivning',
-  'infosIndex.privacyLink': 'https://www.voteswiper.org/sv/privacy',
+  'infosIndex.privacyLink': 'https://www.voteswiper.org/sv/page/privacy',
 };
 
 export default lang;

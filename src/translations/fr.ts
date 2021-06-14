@@ -105,9 +105,9 @@ const lang = {
   'infosIndex.paragraph3':
     'Voter est aussi facile que de faire des rencontres en ligne - à la différence que le "Match" dure au moins le temps d\'une période législative. ',
   'infosIndex.imprintButton': 'Mentions légales',
-  'infosIndex.imprintLink': 'https://www.voteswiper.org/fr/imprint',
+  'infosIndex.imprintLink': 'https://www.voteswiper.org/fr/page/imprint',
   'infosIndex.privacyButton': 'Politique de protection des données ',
-  'infosIndex.privacyLink': 'https://www.voteswiper.org/fr/privacy',
+  'infosIndex.privacyLink': 'https://www.voteswiper.org/fr/page/privacy',
 };
 
 export default lang;
