@@ -63,5 +63,8 @@
     "assets": [
       "./src/resources/fonts/"
     ]
+  },
+  "resolutions": {
+    "graceful-fs": "4.2.4"
   }
 }
