@@ -1,20 +1,30 @@
-/*import Container from 'components/Container';
+import Container from 'components/Container';
 import Loader from 'components/Loader';
 import ScrollContainer from 'components/ScrollContainer';
 import Txt from 'components/Txt';
+import Storyblok from 'connectors/storyblok';
+import {useApp} from 'contexts/app';
 import React from 'react';
 import {View} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import LinearGradient from 'react-native-linear-gradient';
-import {useQuery} from 'util/api';
-import styles from './styles';*/
-import Container from 'components/Container';
-import React from 'react';
+import render from 'util/storyblok-rich-text';
+import styles from './styles';
 
 const HelpIndex: React.FC = () => {
-  return <Container />;
-  /*const [activeSections, setActiveSections] = React.useState([]);
-  const {loading, error, data} = useQuery('GET_FAQ');
+  const [loading, setLoading] = React.useState(true);
+  const [story, setStory] = React.useState<any>(null);
+  const [activeSections, setActiveSections] = React.useState([]);
+  const {language} = useApp();
+
+  React.useEffect(() => {
+    Storyblok.getStory('/page/faq', {language: language ?? 'en'}).then(
+      (response) => {
+        setStory(response.data.story);
+        setLoading(false);
+      },
+    );
+  }, [language]);
 
   if (loading) {
     return (
@@ -22,9 +32,6 @@ const HelpIndex: React.FC = () => {
         <Loader fullscreen />
       </Container>
     );
-  }
-  if (error) {
-    return <View />;
   }
 
   const updateSections = (sections) => {
@@ -48,12 +55,12 @@ const HelpIndex: React.FC = () => {
   const renderContent = (section) => {
     return (
       <View style={styles.content}>
-        <View style={styles.contentInner}>
-          <Txt style={styles.body}>{section.content}</Txt>
-        </View>
+        <View style={styles.contentInner}>{render(section.body)}</View>
       </View>
     );
   };
+
+  console.log('the story', story);
 
   return (
     <Container>
@@ -65,7 +72,7 @@ const HelpIndex: React.FC = () => {
           style={styles.container}>
           <Accordion
             activeSections={activeSections}
-            sections={data.faqs}
+            sections={story.content.questions}
             renderSectionTitle={renderSectionTitle}
             renderHeader={renderHeader}
             renderContent={renderContent}
@@ -77,7 +84,7 @@ const HelpIndex: React.FC = () => {
         </LinearGradient>
       </ScrollContainer>
     </Container>
-  );*/
+  );
 };
 
 export default HelpIndex;

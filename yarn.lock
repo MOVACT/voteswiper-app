@@ -7292,6 +7292,11 @@ storyblok-js-client@^4.1.3:
   dependencies:
     qs "^6.9.4"
 
+storyblok-rich-text-react-renderer@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/storyblok-rich-text-react-renderer/-/storyblok-rich-text-react-renderer-2.3.1.tgz#70db4f45d87cfafaa2a12d2b7f4b6e811f1fdfb0"
+  integrity sha512-9G5G/wsVW/md88WoSWfaP42c+3SqOuDhk1n23yg0aD74rRuBFyS8cq2wiYf9JZWxT0Oz1BxNyFxetjYcRDVVtQ==
+
 stream-buffers@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/stream-buffers/-/stream-buffers-2.2.0.tgz#91d5f5130d1cef96dcfa7f726945188741d09ee4"

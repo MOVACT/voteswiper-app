@@ -22,11 +22,6 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(57,47,82,0.1)',
   },
-  body: {
-    fontSize: 14,
-    lineHeight: 22,
-    color: '#392F52',
-  },
   root: {
     padding: 25,
     ...ifIphoneX({paddingTop: 40}, {paddingTop: 15}),
