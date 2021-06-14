@@ -153,14 +153,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-        release {
+        /*release {
             if (project.hasProperty('WAHLSWIPER_RELEASE_STORE_FILE')) {
                 storeFile file(WAHLSWIPER_RELEASE_STORE_FILE)
                 storePassword WAHLSWIPER_RELEASE_STORE_PASSWORD
                 keyAlias WAHLSWIPER_RELEASE_KEY_ALIAS
                 keyPassword WAHLSWIPER_RELEASE_KEY_PASSWORD
             }
-        }
+        }*/
     }
     splits {
         abi {
@@ -177,7 +177,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
