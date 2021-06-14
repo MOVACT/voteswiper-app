@@ -115,23 +115,12 @@
 		320A853222233BF900ECE289 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		320A853422233C4100ECE289 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		320A853522233C9000ECE289 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		320A853622233CA100ECE289 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		320A853722233CAC00ECE289 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		320A853822233CC600ECE289 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		320A853922233CE200ECE289 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		320A853C22233EBA00ECE289 /* launch_icon_de.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_icon_de.png; sourceTree = "<group>"; };
 		320A853E22233F6300ECE289 /* launch_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_icon.png; sourceTree = "<group>"; };
 		3225C6B8259918AE00E481B7 /* launchscreen_gradient.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launchscreen_gradient.jpg; sourceTree = "<group>"; };
-		323FA94F2246A80600B332C9 /* et */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = et; path = et.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		323FA9502246A82B00B332C9 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		323FA9512246A83F00B332C9 /* lt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = lt; path = lt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		323FA9522246A85400B332C9 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		323FA9532246A86300B332C9 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		323FA9542246A86D00B332C9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32A051032225DBD20050CB5E /* voteswiper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "voteswiper-Bridging-Header.h"; sourceTree = "<group>"; };
 		32A051042225DBD30050CB5E /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		32C3EA4525923D9B0085C376 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
-		32DFB4872242D18500921F6B /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32E16CC2223E8E3C00931DF4 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		32E16CC3223E8E4300931DF4 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		35B1A23B5A2A8D26B24848E0 /* Pods-voteswiper-voteswiperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voteswiper-voteswiperTests.release.xcconfig"; path = "Target Support Files/Pods-voteswiper-voteswiperTests/Pods-voteswiper-voteswiperTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -514,19 +503,8 @@
 				Base,
 				de,
 				fr,
-				hu,
-				it,
-				nl,
-				pl,
 				sv,
 				fi,
-				da,
-				et,
-				el,
-				lt,
-				ro,
-				sl,
-				es,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -838,19 +816,8 @@
 				320A853222233BF900ECE289 /* en */,
 				320A853422233C4100ECE289 /* de */,
 				320A853522233C9000ECE289 /* fr */,
-				320A853622233CA100ECE289 /* hu */,
-				320A853722233CAC00ECE289 /* it */,
-				320A853822233CC600ECE289 /* nl */,
-				320A853922233CE200ECE289 /* pl */,
 				32E16CC2223E8E3C00931DF4 /* sv */,
 				32E16CC3223E8E4300931DF4 /* fi */,
-				32DFB4872242D18500921F6B /* da */,
-				323FA94F2246A80600B332C9 /* et */,
-				323FA9502246A82B00B332C9 /* el */,
-				323FA9512246A83F00B332C9 /* lt */,
-				323FA9522246A85400B332C9 /* ro */,
-				323FA9532246A86300B332C9 /* sl */,
-				323FA9542246A86D00B332C9 /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
