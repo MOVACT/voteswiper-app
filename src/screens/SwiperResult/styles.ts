@@ -1,6 +1,39 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
+const {width} = Dimensions.get('window');
+
+const actionListPadding = 25;
 
 export default StyleSheet.create({
+  actionList: {
+    marginHorizontal: -25,
+  },
+  actionListContainer: {
+    paddingLeft: actionListPadding,
+    paddingRight: 10,
+  },
+  actionItem: {
+    width: (width - actionListPadding * 2) / 2 - 10,
+    paddingRight: 15,
+  },
+  actionButton: {
+    width: '100%',
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    borderColor: 'rgba(255, 255, 255, 0.2)',
+    flexDirection: 'column',
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  actionText: {
+    color: '#fff',
+    fontSize: 12,
+  },
+  actionIcon: {
+    marginBottom: 10,
+  },
   container: {
     padding: 25,
   },
@@ -58,26 +91,5 @@ export default StyleSheet.create({
     fontSize: 12,
     marginLeft: 5,
     color: '#000000',
-  },
-  screenshotArea: {
-    position: 'absolute',
-    left: -1000,
-    top: 150,
-    width: 500,
-    padding: 40,
-    paddingTop: 20,
-    backgroundColor: '#392F52',
-  },
-  shareLoader: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  shareLoaderIcon: {
-    marginTop: -7,
   },
 });

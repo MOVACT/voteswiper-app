@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, TouchableOpacity, GestureResponderEvent} from 'react-native';
+import {GestureResponderEvent, TouchableOpacity, View} from 'react-native';
 import Animated, {Easing} from 'react-native-reanimated';
+import ChevronRight from '../../icons/ChevronRight';
 import Txt from '../Txt';
 import styles from './styles';
-import ChevronRight from '../../icons/ChevronRight';
 
 interface Props {
   onPress: (event: GestureResponderEvent) => void;
@@ -12,6 +12,23 @@ interface Props {
   delay?: number;
   shareBar?: boolean;
 }
+
+export const roundNumber = (num: number, scale: number) => {
+  if (!('' + num).includes('e')) {
+    return +(Math.round(Number(num + 'e+' + scale)) + 'e-' + scale);
+  } else {
+    var arr = ('' + num).split('e');
+    var sig = '';
+    if (+arr[1] + scale > 0) {
+      sig = '+';
+    }
+    return +(
+      Math.round(Number(+arr[0] + 'e' + sig + (+arr[1] + scale))) +
+      'e-' +
+      scale
+    );
+  }
+};
 
 const ResultBar: React.FC<Props> = ({
   delay = 0,
@@ -26,23 +43,6 @@ const ResultBar: React.FC<Props> = ({
   const animation = React.useRef(new Animated.Value(0));
 
   const [initialKick, setInitialKick] = React.useState(false);
-
-  const roundNumber = (num: number, scale: number) => {
-    if (!('' + num).includes('e')) {
-      return +(Math.round(Number(num + 'e+' + scale)) + 'e-' + scale);
-    } else {
-      var arr = ('' + num).split('e');
-      var sig = '';
-      if (+arr[1] + scale > 0) {
-        sig = '+';
-      }
-      return +(
-        Math.round(Number(+arr[0] + 'e' + sig + (+arr[1] + scale))) +
-        'e-' +
-        scale
-      );
-    }
-  };
 
   const opacity = animation.current.interpolate({
     inputRange: [0, 1, 2],
@@ -124,7 +124,7 @@ const ResultBar: React.FC<Props> = ({
 
             <View style={styles.meta}>
               <Txt medium style={styles.text}>
-                {roundNumber(percentage, 2).toLocaleString('de-DE')}%
+                {roundNumber(percentage, 1).toLocaleString('de-DE')}%
               </Txt>
               {shareBar !== true ? (
                 <View style={styles.icon}>

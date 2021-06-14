@@ -41,8 +41,8 @@ export default StyleSheet.create({
   },
   content: {
     backgroundColor: 'rgba(0,0,0,0.1)',
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     flex: 1,
   },
   swiper: {

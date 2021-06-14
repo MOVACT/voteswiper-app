@@ -20,6 +20,7 @@ import React from 'react';
 import {Platform, View} from 'react-native';
 import Matomo from 'react-native-matomo';
 import {
+  Election,
   InitiateData,
   PartiesData,
   Party,
@@ -78,7 +79,7 @@ const ElectionDetails: React.FC = () => {
   useFocusEffect(trackScreen);
 
   const trackInitiation = React.useCallback(
-    (election) => {
+    (election: Election) => {
       fetch<InitiateData>(ENDPOINTS.COUNT_INITIATE, language!, {
         data: {
           election_id: election!.id,
@@ -131,7 +132,7 @@ const ElectionDetails: React.FC = () => {
         <Box
           actionText={t('electionDetails.startButtonText')}
           actionOnPress={() => {
-            trackInitiation(election.id);
+            trackInitiation(election);
             setElection({
               ...election,
               questions: data,

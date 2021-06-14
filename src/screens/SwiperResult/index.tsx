@@ -1,20 +1,20 @@
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {useHeaderHeight} from '@react-navigation/stack';
-import {sm} from 'common/breakpoints';
-import ButtonDark from 'components/ButtonDark';
 import Container from 'components/Container';
 import Loader from 'components/Loader';
-import ResultBar from 'components/ResultBar';
+import ResultBar, {roundNumber} from 'components/ResultBar';
 import Title from 'components/Title';
 import Txt from 'components/Txt';
-import {ENDPOINTS, fetch} from 'connectors/api';
+import {ENDPOINTS, fetch as apiFetch} from 'connectors/api';
 import {useApp} from 'contexts/app';
 import {useSwiper} from 'contexts/swiper';
+import AdjustmentHorizontal from 'icons/AdjustmentHorizontal';
+import BoxMultiple from 'icons/BoxMultiple';
 import Close from 'icons/Close';
 import Download from 'icons/Download';
+import Polaroid from 'icons/Polaroid';
 import React from 'react';
 import {
-  ActivityIndicator,
   BackHandler,
   Dimensions,
   Image,
@@ -26,7 +26,6 @@ import {
 import {ScrollView} from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import Share from 'react-native-share';
-import {captureRef} from 'react-native-view-shot';
 import ExitConfirmDialog from 'screens/Swiper/components/ExitConfirmDialog';
 import {Party, ResultData} from 'types/api';
 import swiperStyles from '../Swiper/styles';
@@ -35,7 +34,6 @@ import styles from './styles';
 const {width} = Dimensions.get('window');
 
 const SwiperResult: React.FC = () => {
-  const screenshotArea = React.useRef<View>(null);
   const headerHeight = useHeaderHeight();
   const {t, language} = useApp();
   const {goBack, navigate, dangerouslyGetParent, setOptions} = useNavigation();
@@ -58,7 +56,6 @@ const SwiperResult: React.FC = () => {
   const relevantQuestionsCount = React.useRef(0);
 
   const [loading, setLoading] = React.useState(true);
-  const [screenshotLoading, setScreenshotLoading] = React.useState(false);
   const [exitConfirmation, showExitConfirmation] = React.useState(false);
 
   React.useEffect(() => {
@@ -119,7 +116,7 @@ const SwiperResult: React.FC = () => {
 
   const trackResult = React.useCallback(
     (result) => {
-      fetch<ResultData>(ENDPOINTS.SAVE_RESULT, language!, {
+      apiFetch<ResultData>(ENDPOINTS.SAVE_RESULT, language!, {
         data: {
           election_id: election!.id,
           result: JSON.stringify(answers[election!.id]),
@@ -263,21 +260,59 @@ const SwiperResult: React.FC = () => {
     [election, parties, renderTopMatch, navigate],
   );
 
+  const ordered = partyScore.current.slice(0);
+  ordered.sort((a, b) => (a.score - b.score > 0 ? -1 : 1));
+
   const shareResult = React.useCallback(() => {
-    setScreenshotLoading(true);
-    captureRef(screenshotArea, {
-      format: 'png',
-      result: 'data-uri',
-    }).then((result) => {
-      setScreenshotLoading(false);
-      Share.open({
-        title: t('swiperResult.shareTitle'),
-        message: t('swiperResult.shareMessage', [election!.name]),
-        type: 'image/png',
-        url: result,
+    const queryString =
+      ordered
+        .map((party) => {
+          let percentage = (party.score * 100) / relevantQuestionsCount.current;
+
+          if (relevantQuestionsCount.current === 0) {
+            percentage = 0;
+          }
+
+          const partyDetails = election!.parties.find((p) => p.id === party.id);
+
+          if (!partyDetails) {
+            return null;
+          }
+
+          return (
+            'score[]=' +
+            encodeURIComponent(
+              `${partyDetails.name},${roundNumber(percentage, 1)}`,
+            )
+          );
+        })
+        .join('&') +
+      '&election=' +
+      encodeURIComponent(election!.name);
+    const url = `https://share.voteswiper.org/api/share-image?${queryString}`;
+
+    fetch(url)
+      .then((response) => {
+        return response.blob();
+      })
+      .then((blob) => {
+        // eslint-disable-next-line no-undef
+        var reader = new FileReader();
+
+        reader.readAsDataURL(blob);
+
+        reader.onloadend = () => {
+          var base64data = reader.result;
+
+          Share.open({
+            title: t('swiperResult.shareTitle'),
+            message: t('swiperResult.shareMessage', [election!.name]),
+            type: 'image/png',
+            url: base64data,
+          });
+        };
       });
-    });
-  }, [election, t]);
+  }, [election, ordered, t]);
 
   if (loading) {
     return (
@@ -287,59 +322,58 @@ const SwiperResult: React.FC = () => {
     );
   }
 
-  const ordered = partyScore.current.slice(0);
-  ordered.sort((a, b) => (a.score - b.score > 0 ? -1 : 1));
+  const actions = [
+    {
+      action: () => {
+        openEditAnswers();
+        navigate('EditAnswers');
+      },
+      icon: AdjustmentHorizontal,
+      label: 'swiperResult.editAnswers',
+    },
+    {
+      action: () => {
+        goBack();
+      },
+      icon: BoxMultiple,
+      label: 'swiperResult.filterParties',
+    },
+    {
+      action: () => {
+        shareResult();
+      },
+      icon: Polaroid,
+      label: 'swiperResult.share',
+    },
+  ];
 
   return (
     <Container>
       <View style={[swiperStyles.content, {marginTop: headerHeight}]}>
         <ScrollView contentContainerStyle={styles.container}>
-          <View style={styles.actions}>
-            <View style={styles.action}>
-              <ButtonDark
-                onPress={() => shareResult()}
-                text={
-                  screenshotLoading ? (
-                    <View style={styles.shareLoader}>
-                      <ActivityIndicator
-                        size="small"
-                        style={styles.shareLoaderIcon}
-                        color="#fff"
-                      />
-                    </View>
-                  ) : (
-                    t('swiperResult.share')
-                  )
-                }
-                icon="share"
-                center
-              />
-            </View>
-            <View style={styles.action}>
-              <ButtonDark
-                onPress={() => {
-                  goBack();
-                }}
-                text={
-                  width < sm
-                    ? t('swiperResult.parties')
-                    : t('swiperResult.filterParties')
-                }
-                icon="edit"
-                center
-              />
-            </View>
-          </View>
-
-          <ButtonDark
-            onPress={() => {
-              openEditAnswers();
-              navigate('EditAnswers');
-            }}
-            text={t('swiperResult.editAnswers')}
-            icon="share"
-            center
-          />
+          <ScrollView
+            nestedScrollEnabled
+            horizontal
+            style={styles.actionList}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.actionListContainer}
+            snapToInterval={(width - 25 * 2) / 2 - 10}>
+            {actions.map((action) => {
+              const Icon = action.icon;
+              return (
+                <View style={styles.actionItem} key={action.label}>
+                  <TouchableOpacity
+                    style={styles.actionButton}
+                    onPress={action.action}>
+                    <Icon stroke="#fff" style={styles.actionIcon} />
+                    <Txt medium style={styles.actionText}>
+                      {t(action.label)}
+                    </Txt>
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+          </ScrollView>
 
           <View style={styles.results}>
             {ordered.map((result) => {
@@ -347,13 +381,6 @@ const SwiperResult: React.FC = () => {
             })}
           </View>
         </ScrollView>
-      </View>
-
-      <View style={styles.screenshotArea} ref={screenshotArea}>
-        <Title h1>{t('swiperResult.screenshotTitle', [election!.name])}</Title>
-        {ordered.map((result) => {
-          return renderBar(result, true);
-        })}
       </View>
 
       {exitConfirmation && (

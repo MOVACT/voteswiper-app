@@ -1,5 +1,5 @@
 import React from 'react';
-import Svg, {Defs, Rect, G, Mask, Use, Path, SvgProps} from 'react-native-svg';
+import Svg, {Defs, G, Mask, Path, Rect, SvgProps, Use} from 'react-native-svg';
 
 const SvgAt: React.FC<SvgProps> = (props) => (
   <Svg width={42} height={30} viewBox="0 0 42 30" {...props}>
