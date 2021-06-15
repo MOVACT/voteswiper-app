@@ -1,7 +1,6 @@
 const config = {
-  api: 'http://laravel.test/api',
+  api: 'https://api.voteswiper.org/api',
   apiVersion: 1,
-  apiUrl: 'https://www.voteswiper.org/!',
   fallbackLocale: 'en',
   locales: ['en', 'de', 'fr', 'fi', 'sv'],
   storyblokAccessToken: 'b7BTTUOEkSa786viucYnjwtt',

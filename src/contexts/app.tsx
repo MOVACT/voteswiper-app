@@ -33,11 +33,11 @@ const AppProvider: React.FC = ({children}) => {
 
   React.useEffect(() => {
     const fetchFromStorage = async () => {
-      const storedCountry = await AsyncStorage.getItem('@defaultCountry');
+      const storedCountry = await AsyncStorage.getItem('@defaultCountry330');
       const storedLanguageNotice = await AsyncStorage.getItem(
-        '@languageNotice',
+        '@languageNotice330',
       );
-      const storedLanguage = await AsyncStorage.getItem('@language');
+      const storedLanguage = await AsyncStorage.getItem('@language330');
 
       setCountry(storedCountry !== null ? JSON.parse(storedCountry) : null);
 
@@ -57,9 +57,9 @@ const AppProvider: React.FC = ({children}) => {
       initialCountryCheck.current = false;
     } else {
       if (country === null) {
-        AsyncStorage.removeItem('@defaultCountry');
+        AsyncStorage.removeItem('@defaultCountry330');
       } else {
-        AsyncStorage.setItem('@defaultCountry', JSON.stringify(country));
+        AsyncStorage.setItem('@defaultCountry330', JSON.stringify(country));
       }
     }
   }, [country]);
@@ -70,9 +70,9 @@ const AppProvider: React.FC = ({children}) => {
       initialLanguageCheck.current = false;
     } else {
       if (language === null) {
-        AsyncStorage.removeItem('@language');
+        AsyncStorage.removeItem('@language330');
       } else {
-        AsyncStorage.setItem('@language', language).catch((err) =>
+        AsyncStorage.setItem('@language330', language).catch((err) =>
           console.log(err),
         );
       }
@@ -81,7 +81,7 @@ const AppProvider: React.FC = ({children}) => {
 
   // persist language
   React.useEffect(() => {
-    AsyncStorage.setItem('@languageNotice', JSON.stringify(languageNotice));
+    AsyncStorage.setItem('@languageNotice330', JSON.stringify(languageNotice));
   }, [languageNotice]);
 
   const setLocale = React.useCallback((loc: string | null) => {
