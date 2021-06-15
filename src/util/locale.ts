@@ -1,7 +1,7 @@
-import * as RNLocalize from 'react-native-localize';
 import config from 'common/config';
+import * as RNLocalize from 'react-native-localize';
 
-const useCurrentLocale = (language: string | null): string => {
+const getCurrentLocale = (language: string | null): string => {
   if (language === null) {
     return RNLocalize.findBestAvailableLanguage(config.locales)!.languageTag;
   }
@@ -13,4 +13,4 @@ const useCurrentLocale = (language: string | null): string => {
   return config.fallbackLocale;
 };
 
-export default useCurrentLocale;
+export default getCurrentLocale;

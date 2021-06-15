@@ -2,7 +2,7 @@ import Container from 'components/Container';
 import Loader from 'components/Loader';
 import ScrollContainer from 'components/ScrollContainer';
 import Txt from 'components/Txt';
-import Storyblok from 'connectors/storyblok';
+import fetchStoryblok from 'connectors/storyblok';
 import {useApp} from 'contexts/app';
 import React from 'react';
 import {View} from 'react-native';
@@ -18,12 +18,10 @@ const HelpIndex: React.FC = () => {
   const {language} = useApp();
 
   React.useEffect(() => {
-    Storyblok.getStory('/page/faq', {language: language ?? 'en'}).then(
-      (response) => {
-        setStory(response.data.story);
-        setLoading(false);
-      },
-    );
+    fetchStoryblok('/page/faq', language ?? 'en').then((response) => {
+      setStory(response.data.story);
+      setLoading(false);
+    });
   }, [language]);
 
   if (loading) {
