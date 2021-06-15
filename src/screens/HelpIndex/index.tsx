@@ -18,7 +18,7 @@ const HelpIndex: React.FC = () => {
   const {language} = useApp();
 
   React.useEffect(() => {
-    fetchStoryblok('/page/faq', language ?? 'en').then((response) => {
+    fetchStoryblok('48429742', language ?? 'en').then((response) => {
       setStory(response.data.story);
       setLoading(false);
     });
