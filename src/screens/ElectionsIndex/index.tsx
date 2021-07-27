@@ -15,6 +15,7 @@ import {Election, ElectionsData} from 'types/api';
 import getCountryFlag from 'util/getCountryFlag';
 import moment from 'util/momentLocale';
 import ChevronRight from '../../icons/ChevronRight';
+import rtl from '../../rtl';
 import styles from './styles';
 
 const ElectionsIndex: React.FC = () => {
@@ -43,7 +44,7 @@ const ElectionsIndex: React.FC = () => {
           <Txt style={styles.countryLinkText} medium>
             {country!.name}
           </Txt>
-          <ChevronRight />
+          <ChevronRight style={rtl.mirror} />
         </TouchableOpacity>
       ),
       title: '',

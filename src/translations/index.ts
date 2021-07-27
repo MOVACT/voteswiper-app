@@ -1,3 +1,4 @@
+import ar from './ar';
 import de from './de';
 import en from './en';
 import fi from './fi';
@@ -10,6 +11,7 @@ const lang = {
   fi: fi,
   fr: fr,
   sv: sv,
+  ar: ar,
 };
 
 export default lang;

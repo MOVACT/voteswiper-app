@@ -1,5 +1,5 @@
 import {sm} from 'common/breakpoints';
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, I18nManager, StyleSheet} from 'react-native';
 import {cardBorderRadius} from './components/Card/styles';
 
 const {width} = Dimensions.get('window');
@@ -53,7 +53,7 @@ export default StyleSheet.create({
   },
   controls: {
     paddingTop: controlsPaddingTop,
-    flexDirection: 'row',
+    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
     position: 'relative',

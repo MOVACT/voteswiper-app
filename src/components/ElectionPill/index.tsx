@@ -10,6 +10,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Election} from 'types/api';
 import moment from 'util/momentLocale';
 import ArrowRightCircle from '../../icons/ArrowRightCircle';
+import rtl from '../../rtl';
 import Txt from '../Txt';
 import styles from './styles';
 
@@ -64,7 +65,12 @@ const ElectionPill: React.FC<Props> = ({
             </Txt>
           </View>
           <View>
-            <ArrowRightCircle fill="#8186D7" width={20} height={20} />
+            <ArrowRightCircle
+              fill="#8186D7"
+              width={20}
+              height={20}
+              style={rtl.mirror}
+            />
           </View>
         </LinearGradient>
       </View>
