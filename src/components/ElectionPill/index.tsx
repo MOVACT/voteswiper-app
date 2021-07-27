@@ -26,8 +26,10 @@ const ElectionPill: React.FC<Props> = ({
   playable,
   playable_date,
 }) => {
-  const {t} = useApp();
+  const {t, language} = useApp();
   const [clickActive, setActiveClick] = React.useState(false);
+
+  moment.locale(language || 'de');
 
   return (
     <TouchableWithoutFeedback

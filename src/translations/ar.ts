@@ -2,114 +2,112 @@ const lang = {
   name: 'عربى',
   countryLanguage: 'arabic',
 
-  'navigation.backTitle': 'Zurück',
-  'navigation.helpTitle': 'FAQ',
-  'navigation.electionsTitle': 'WAHLEN',
-  'navigation.infoTitle': 'INFOS',
+  'navigation.backTitle': 'الرجوع',
+  'navigation.helpTitle': 'أسئلة متكررة',
+  'navigation.electionsTitle': 'الانتخابات',
+  'navigation.infoTitle': 'معلومات',
 
   // Component:ElectionPill
-  'electionPill.availableFrom': 'Verfügbar ab {1}',
+  'electionPill.availableFrom': 'سيكون متوفرًا بدءًا من {1}',
 
   // Countdown
-  'countdown.days': 'TAGE',
-  'countdown.hours': 'STUNDEN',
-  'countdown.minutes': 'MINUTEN',
-  'countdown.seconds': 'SEKUNDEN',
+  'countdown.days': 'الأيام',
+  'countdown.hours': 'الساعات',
+  'countdown.minutes': 'الدقائق',
+  'countdown.seconds': 'الثواني',
 
   // Swiper
-  'swiper.doubleWeight': 'Doppelt gewichten',
-  'swiper.doubleWeighted': 'Doppelt gewichtet',
-  'swiper.questionNumber': 'Frage {1} von {2}',
-  'swiper.yes': 'Ja',
-  'swiper.no': 'Nein',
-  'swiper.none': 'Keine',
-  'swiper.skip': 'Überspringen',
-  'swiper.cancelTitle': 'Möchtest du wirklich abbrechen?',
-  'swiper.cancelText':
-    'Dein Fortschritt geht dann verloren und du musst von vorne beginnen.',
-  'swiper.cancelActionNo': 'Nein, zurück',
-  'swiper.cancelActionYes': 'Ja',
+  'swiper.doubleWeight': 'إعادة التقييم',
+  'swiper.doubleWeighted': 'تمت إعادة التقييم',
+  'swiper.questionNumber': 'سؤال رقم {1} من {2}',
+  'swiper.yes': 'نعم',
+  'swiper.no': 'لا',
+  'swiper.none': 'لا يوجد',
+  'swiper.skip': 'تخطي',
+  'swiper.cancelTitle': 'هل تريد حقًا الإلغاء؟',
+  'swiper.cancelText': 'ستضيع مدخلاتك بعد ذلك وسيتعين عليك البدء من جديد.',
+  'swiper.cancelActionNo': 'لا، ارجع',
+  'swiper.cancelActionYes': 'نعم',
 
   'swiperSelectParties.text':
-    'Wähle nun noch die Parteien aus, mit denen du deine Antworten vergleichen möchtest. Du kannst beliebig viele Parteien auswählen.',
-  'swiperSelectParties.checkAll': 'Alle Auswählen',
-  'swiperSelectParties.uncheckAll': 'Alle abwählen',
-  'swiperSelectParties.chooseMinOne':
-    'Wähle mindestens eine Partei um fortzufahren',
-  'swiperSelectParties.nextButton': 'Weiter',
+    'اختر الآن الأحزاب التي تريد مقارنة إجاباتك معها. يمكنك اختيار أي عدد تريده من الأحزاب.',
+  'swiperSelectParties.checkAll': 'اختر جميعها',
+  'swiperSelectParties.uncheckAll': 'إلغاء الاختيارات جميعها',
+  'swiperSelectParties.chooseMinOne': 'اختر حزب واحد  على الأقل للاستمرار',
+  'swiperSelectParties.nextButton': 'استمر',
 
-  'swiperResult.topmatch': 'Dein Top Match',
-  'swiperResult.program': 'Wahlprogramm',
-  'swiperResult.shareTitle': '#WahlSwiper Ergebnis',
-  'swiperResult.shareMessage': 'Mein #WahlSwiper-Ergebnis zur {1}',
-  'swiperResult.screenshotTitle': 'WahlSwiper-Ergebnis zur {1}',
+  'swiperResult.topmatch': 'أفضل اختيار متطابق معك',
+  'swiperResult.program': 'البرنامج الانتخابي',
+  'swiperResult.shareTitle': 'نتيجة WahlSwiper#',
+  'swiperResult.shareMessage': 'نتيجة WahlSwiper الخاصة بـ {1}',
+  'swiperResult.screenshotTitle': 'نتيجة WahlSwiper لـ {1}',
 
-  'swiperResult.comparisonWith': 'Dein Vergleich mit »{1}«',
-  'swiperResult.readReasoning': 'Begründung der Partei lesen »',
-  'swiperResult.closeReasoning': 'Begründung schließen',
-  'swiperResult.noReason': 'Die Partei hat die Entscheidung nicht begründet.',
-  'swiperResult.yourAnswer': 'Deine Antwort',
-  'swiperResult.party': 'Partei',
+  'swiperResult.comparisonWith': 'مقارنة إجاباتك بـ »{1}«',
+  'swiperResult.readReasoning': 'اقرأ منطق الحزب »',
+  'swiperResult.closeReasoning': 'إغلاق بيان منطق الحزب',
+  'swiperResult.noReason': 'لم يذكر الحزب أسباب القرار.',
+  'swiperResult.yourAnswer': 'إجابتك',
+  'swiperResult.party': 'الحزب',
 
-  'swiperResult.yourResult': 'Dein Ergebnis',
-  'swiperResult.chooseParties': 'Parteien auswählen',
-  'swiperResult.share': 'Teilen',
-  'swiperResult.parties': 'Parteien',
-  'swiperResult.filterParties': 'Parteien filtern',
+  'swiperResult.yourResult': 'نتيجتك',
+  'swiperResult.chooseParties': 'اختيار الأحزاب',
+  'swiperResult.share': 'المشاركة',
+  'swiperResult.parties': 'الأحزاب',
+  'swiperResult.filterParties': 'تصفية الأحزاب',
 
-  'swiperResult.editAnswers': 'Antworten bearbeiten',
+  'swiperResult.editAnswers': 'تصفية الأحزاب',
 
   // Screen:SelectCountry,
-  'selectCountry.title': 'Schön, dass du dabei bist!',
+  'selectCountry.title': 'شكرًا لمشاركتك',
   'selectCountry.introText':
-    'Um loszulegen, wähle das Land in dem du lebst oder in dem du wählen darfst.',
+    'للبدء ، اختر الدولة التي تعيش فيها أو حيث يمكنك التصويت.',
 
   // Screen:SettingsCountry
-  'settingsCountry.title': 'Länder',
-  'settingsCountry.boxTitle': 'Wechsle in ein anderes Land',
+  'settingsCountry.title': 'الدول',
+  'settingsCountry.boxTitle': 'اختر دولة أخرى',
   'settingsCountry.boxText':
     'Wir haben die Fragen aus anderen Ländern neben den Landessprachen auch auf Englisch übersetzt, sodass du dich auch über die Parteien und ihre Standpunkte dort informieren kannst.',
 
-  'settings.title': 'Einstellungen',
-  'settingsLanguage.boxTitle': 'App-Sprache',
-  'settingsLanguage.boxText':
-    'Ändere die Sprache, in der die App angezeigt wird.',
-  'settings.systemDefault': 'System-Standard',
+  'settings.title': 'الإعدادات',
+  'settingsLanguage.boxTitle': 'لغة التطبيق',
+  'settingsLanguage.boxText': 'قم بتغيير اللغة التي يظهر التطبيق بها.',
+  'settings.systemDefault': 'النظام الأساسي',
   'settings.systemDefaultText':
-    'Nutzt die Sprache deines Telefons, falls eine Übersetzung existiert. Wenn nicht, dann Englisch.',
+    'يتم استخدام لغة هاتفك في حالة وجود ترجمة. فإذا لم توجد، يتم استخدام اللغة الإنجليزية.',
 
   // Screen:ElectionsIndex
-  'electionsIndex.boxTitle': 'Aktuelle Wahlen',
-  'electionsIndex.boxText': 'Wähle eine Wahl aus, für die du swipen möchtest.',
-  'electionsIndex.boxPastTitle': 'Vergangene Wahlen',
+  'electionsIndex.boxTitle': 'الانتخابات الحالية',
+  'electionsIndex.boxText':
+    'اختر الانتخابات لبدء المقارنة عن طريق التمرير السريع.',
+  'electionsIndex.boxPastTitle': 'انتخابات سابقة',
   'electionsIndex.boxPastText':
-    'Diese WahlSwiper sind für vergangene Wahlen. Bitte beachte, dass sich die Standpunkte der Parteien zu einzelnen Punkten dieser Umfragen geändert haben könnten.',
+    'نتائج (WahlSwipers) هذه خاصة بالانتخابات الماضية. يرجى ملاحظة أن مواقف الأحزاب ربما تكون قد تغيرت فيما يخص بعض النقاط الفردية في هذه الاستطلاعات.',
   'electionsIndex.noElections':
-    'Für dieses Land sind keine aktuellen WahlSwiper verfügbar.',
+    'لا يوجد WahlSwiper للانتخابات الحالية لهذا البلد.',
 
   // Screen:ElectionDetails
-  'electionDetails.countdownPast': 'Die Wahl fand statt am',
-  'electionDetails.countdown': 'Countdown zur Wahl',
+  'electionDetails.countdownPast': 'تم إجراء الانتخابات في',
+  'electionDetails.countdown': 'العد التنازلي قبل الانتخابات',
   'electionDetails.infoText':
-    'Wir stellen dir einige Fragen zu politischen Themen. Beantworte die Fragen durch swipen und wir matchen dich mit einer Partei, die gut zu deinen Ansichten passt.',
-  'electionDetails.startButtonText': 'Jetzt starten',
+    'سنطرح عليك بعض الأسئلة حول القضايا السياسية. أجب على الأسئلة عن طريق التمرير السريع وسنطابق إجاباتك مع الحزب الأقرب لآرائك.',
+  'electionDetails.startButtonText': 'ابدأ الآن',
 
   // Screen:HelpIndex
-  'helpIndex.title': 'FAQ',
+  'helpIndex.title': 'أسئلة متكررة',
 
   // Screen:InfosIndex
-  'infosIndex.title': 'Informationen',
-  'infosIndex.headline': 'Über den WahlSwiper',
+  'infosIndex.title': 'معلومات',
+  'infosIndex.headline': 'عن WahlSwiper',
   'infosIndex.paragraph1':
-    'Sich eine Meinung zu Wahlen zu bilden soll einfach sein und Spaß machen – das ist unsere Mission beim WahlSwiper. Das Prinzip: Politische Fragen können mit einem einfachen Wisch nach links zu „Nein“ und rechts zu „Ja“ beantwortet werden. Der WahlSwiper errechnet dann die Übereinstimmung mit den Antworten der Parteien.',
+    'يجب أن يكون تكوين رأي حول الانتخابات أمرًا سهلاً وممتعًا - هذه هي مهمتنا في WahlSwiper. الفكرة: يمكن الإجابة على الأسئلة السياسية بتمريرة بسيطة إلى اليسار ب"لا" أو إلى اليمين ب"نعم". ثم يقوم WahlSwiper بمقارنة إجاباتك بإجابات الأحزاب المختلفة.',
   'infosIndex.paragraph2':
-    'Wir stehen auf klare Kante. Bei uns gibt’s nur „Ja“ und „Nein“, kein „vielleicht“. Das bringt die Parteien manchmal ins Schwitzen, hilft dir aber bei der Entscheidung. Natürlich kannst du einzelne Fragen auch ohne Antwort überspringen.',
+    'لدينا ميزة واضحة. ليس عندنا إجابات سوى "نعم" و "لا" فقط؛ لا يوجد "ربما". هذا يجعل الأحزاب تتصبب عرقًا أحيانًا، لكنه يساعدك على اتخاذ القرار. بالطبع ، يمكنك أيضًا تخطي الأسئلة الفردية دون الإجابة عليها.',
   'infosIndex.paragraph3':
-    'Wählen gehen ist so einfach wie Online-Dating – der „Match“ hält dann jedoch mindestens eine Legislaturperiode lang.',
-  'infosIndex.imprintButton': 'Impressum',
-  'infosIndex.imprintLink': 'https://www.voteswiper.org/page/impressum',
-  'infosIndex.privacyButton': 'Datenschutz',
-  'infosIndex.privacyLink': 'https://www.voteswiper.org/page/datenschutz',
+    'التصويت أمر سهل مثل المواعدة عبر الإنترنت – ولكن لديك فرصة للتوافق مع الطرف الذي تواعده لفصل تشريعي واحد على الأقل.',
+  'infosIndex.imprintButton': 'الختم',
+  'infosIndex.imprintLink': 'https://www.voteswiper.org/ar/page/imprint',
+  'infosIndex.privacyButton': 'خصوصية البيانات',
+  'infosIndex.privacyLink': 'https://www.voteswiper.org/ar/page/privacy',
 };
 
 export default lang;
