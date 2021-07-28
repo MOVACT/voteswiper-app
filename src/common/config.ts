@@ -2,7 +2,7 @@ const config = {
   api: 'https://api.voteswiper.org/api',
   apiVersion: 1,
   fallbackLocale: 'en',
-  locales: ['en', 'de', 'fr', 'fi', 'sv', 'ar'],
+  locales: ['en', 'de', 'ru', 'tr', 'fr', 'fi', 'sv', 'ar', 'fa'],
   rtlLocales: ['ar', 'fa'],
   storyblokAccessToken: 'b7BTTUOEkSa786viucYnjwtt',
 };

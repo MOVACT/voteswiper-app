@@ -4,7 +4,9 @@ import en from './en';
 import fa from './fa';
 import fi from './fi';
 import fr from './fr';
+import ru from './ru';
 import sv from './sv';
+import tr from './tr';
 
 const lang = {
   en: en,
@@ -12,6 +14,8 @@ const lang = {
   fi: fi,
   fr: fr,
   sv: sv,
+  tr: tr,
+  ru: ru,
   ar: ar,
   fa: fa,
 };
