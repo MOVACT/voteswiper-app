@@ -7,7 +7,7 @@ import Title from 'components/Title';
 import Txt from 'components/Txt';
 import {useApp} from 'contexts/app';
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {I18nManager, TouchableOpacity, View} from 'react-native';
 import RNRestart from 'react-native-restart';
 import translations from 'translations';
 import styles from './styles';
@@ -60,6 +60,7 @@ const Settings: React.FC = () => {
             <Txt copy>{t('settings.systemDefaultText')}</Txt>
           </TouchableOpacity>
           {config.locales.map((lang) => {
+            console.log(config.rtlLocales.indexOf(lang) > -1);
             return (
               <TouchableOpacity
                 onPress={() => {
@@ -71,7 +72,14 @@ const Settings: React.FC = () => {
                 }}
                 style={[styles.language, activeStyle(lang)]}
                 key={lang}>
-                <Txt copy medium>
+                <Txt
+                  copy
+                  medium
+                  style={
+                    config.rtlLocales.indexOf(lang) > -1
+                      ? styles.rtl
+                      : styles.ltr
+                  }>
                   {/* @ts-ignore */}
                   {translations[lang].name}
                 </Txt>
@@ -89,6 +97,8 @@ const Settings: React.FC = () => {
             onPress={() => {
               setLocale(pick === 'default' ? null : pick);
               setTimeout(() => {
+                I18nManager.forceRTL(config.rtlLocales.indexOf(pick) > -1);
+
                 RNRestart.Restart();
               }, 500);
             }}

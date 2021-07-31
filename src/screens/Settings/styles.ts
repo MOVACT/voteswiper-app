@@ -27,4 +27,10 @@ export default StyleSheet.create({
     padding: 15,
     backgroundColor: 'rgba(0,0,0,0.3)',
   },
+  rtl: {
+    writingDirection: 'rtl',
+  },
+  ltr: {
+    writingDirection: 'ltr',
+  },
 });

@@ -18,6 +18,7 @@ import DeckSwiper from 'react-native-deck-swiper';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {CountAnswerData, Question} from 'types/api';
+import rtl from '../../rtl';
 import Card from './components/Card';
 import ExitConfirmDialog from './components/ExitConfirmDialog';
 import MainButton from './components/MainButton';
@@ -273,7 +274,7 @@ const Swiper: React.FC = () => {
                 }
               }}
               style={styles.skip}>
-              <Skip width={20} height={20} />
+              <Skip width={20} height={20} style={rtl.mirror} />
               <Txt style={styles.skipText}>{t('swiper.skip')}</Txt>
             </TouchableOpacity>
             <MainButton

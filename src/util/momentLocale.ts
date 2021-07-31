@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment/';
 
 require('moment/locale/de.js');
 require('moment/locale/da.js');
@@ -15,6 +15,9 @@ require('moment/locale/ro.js');
 require('moment/locale/sv.js');
 require('moment/locale/es.js');
 require('moment/locale/sl.js');
+require('moment/locale/ar.js');
+require('moment/locale/fa.js');
+require('moment/locale/ru.js');
 
 moment.locale('de');
 
