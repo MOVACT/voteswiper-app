@@ -43,6 +43,8 @@ const ElectionDetails: React.FC = () => {
   const {setElection} = useSwiper();
   const {params} = useRoute<ElectionDetailsScreenRouteProp>();
 
+  moment.locale(language || 'de');
+
   const {loading, error, data} = useFetch<Question[], QuestionsData>(
     ENDPOINTS.QUESTIONS,
     {data: {id: params.election.id}},

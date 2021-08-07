@@ -10,6 +10,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Election} from 'types/api';
 import moment from 'util/momentLocale';
 import ArrowRightCircle from '../../icons/ArrowRightCircle';
+import rtl from '../../rtl';
 import Txt from '../Txt';
 import styles from './styles';
 
@@ -25,8 +26,10 @@ const ElectionPill: React.FC<Props> = ({
   playable,
   playable_date,
 }) => {
-  const {t} = useApp();
+  const {t, language} = useApp();
   const [clickActive, setActiveClick] = React.useState(false);
+
+  moment.locale(language || 'de');
 
   return (
     <TouchableWithoutFeedback
@@ -64,7 +67,12 @@ const ElectionPill: React.FC<Props> = ({
             </Txt>
           </View>
           <View>
-            <ArrowRightCircle fill="#8186D7" width={20} height={20} />
+            <ArrowRightCircle
+              fill="#8186D7"
+              width={20}
+              height={20}
+              style={rtl.mirror}
+            />
           </View>
         </LinearGradient>
       </View>

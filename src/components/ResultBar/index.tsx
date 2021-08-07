@@ -2,6 +2,7 @@ import React from 'react';
 import {GestureResponderEvent, TouchableOpacity, View} from 'react-native';
 import Animated, {Easing} from 'react-native-reanimated';
 import ChevronRight from '../../icons/ChevronRight';
+import rtl from '../../rtl';
 import Txt from '../Txt';
 import styles from './styles';
 
@@ -128,7 +129,7 @@ const ResultBar: React.FC<Props> = ({
               </Txt>
               {shareBar !== true ? (
                 <View style={styles.icon}>
-                  <ChevronRight />
+                  <ChevronRight style={rtl.mirror} />
                 </View>
               ) : null}
             </View>

@@ -10,6 +10,7 @@ import {Image, Platform, TouchableOpacity, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {Easing} from 'react-native-reanimated';
 import {Question} from 'types/api';
+import rtl from '../../../../rtl';
 import styles from './styles';
 
 const Card: React.FC<Question> = ({
@@ -56,7 +57,7 @@ const Card: React.FC<Question> = ({
               colors={['#DB67AE', '#8186D7']}
               style={styles.videoButton}>
               {video_url ? (
-                <Play height={24} width={21} />
+                <Play height={24} width={21} style={rtl.mirror} />
               ) : (
                 <SvgCircleInfo style={styles.infoIcon} />
               )}

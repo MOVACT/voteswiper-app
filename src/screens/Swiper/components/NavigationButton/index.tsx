@@ -3,6 +3,7 @@ import ArrowRight from 'icons/ArrowRight';
 import React from 'react';
 import {GestureResponderEvent, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import rtl from '../../../../rtl';
 import styles from './styles';
 
 interface Props {
@@ -22,7 +23,11 @@ const NavigationButton: React.FC<Props> = ({onPress, disabled, type}) => {
         end={{x: 0, y: 0}}
         colors={['#464872', '#5D5D94']}
         style={[styles.bg, disabled ? styles.disabled : {}]}>
-        {type === 'previous' ? <ArrowLeft /> : <ArrowRight />}
+        {type === 'previous' ? (
+          <ArrowLeft style={rtl.mirror} />
+        ) : (
+          <ArrowRight style={rtl.mirror} />
+        )}
       </LinearGradient>
     </TouchableOpacity>
   );
