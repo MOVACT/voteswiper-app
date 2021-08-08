@@ -53,7 +53,7 @@ const lang = {
 
   'swiperResult.yourResult': 'Dein Ergebnis',
   'swiperResult.chooseParties': 'Parteien auswählen',
-  'swiperResult.share': 'Teilen',
+  'swiperResult.share': 'Als Bild teilen',
   'swiperResult.parties': 'Parteien',
   'swiperResult.filterParties': 'Parteien filtern',
 
@@ -110,6 +110,8 @@ const lang = {
   'infosIndex.imprintLink': 'https://www.voteswiper.org/de/page/impressum',
   'infosIndex.privacyButton': 'Datenschutz',
   'infosIndex.privacyLink': 'https://www.voteswiper.org/de/page/datenschutz',
+
+  'swiperResult.share.loading': 'Lädt...',
 };
 
 export default lang;
