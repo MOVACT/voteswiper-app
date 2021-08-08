@@ -108,6 +108,8 @@ const lang = {
   'infosIndex.imprintLink': 'https://www.voteswiper.org/ar/page/imprint',
   'infosIndex.privacyButton': 'خصوصية البيانات',
   'infosIndex.privacyLink': 'https://www.voteswiper.org/ar/page/privacy',
+
+  'swiperResult.share.loading': 'Loading...',
 };
 
 export default lang;

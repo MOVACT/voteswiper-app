@@ -15,6 +15,7 @@ import Download from 'icons/Download';
 import Polaroid from 'icons/Polaroid';
 import React from 'react';
 import {
+  ActivityIndicator,
   BackHandler,
   Dimensions,
   Image,
@@ -56,6 +57,7 @@ const SwiperResult: React.FC = () => {
   const relevantQuestionsCount = React.useRef(0);
 
   const [loading, setLoading] = React.useState(true);
+  const [loadingScreenshot, setLoadingScreenshot] = React.useState(false);
   const [exitConfirmation, showExitConfirmation] = React.useState(false);
 
   React.useEffect(() => {
@@ -264,6 +266,7 @@ const SwiperResult: React.FC = () => {
   ordered.sort((a, b) => (a.score - b.score > 0 ? -1 : 1));
 
   const shareResult = React.useCallback(() => {
+    setLoadingScreenshot(true);
     const queryString =
       ordered
         .map((party) => {
@@ -303,6 +306,8 @@ const SwiperResult: React.FC = () => {
 
         reader.onloadend = () => {
           var base64data = reader.result;
+
+          setLoadingScreenshot(false);
 
           Share.open({
             title: t('swiperResult.shareTitle'),
@@ -360,6 +365,24 @@ const SwiperResult: React.FC = () => {
             snapToInterval={(width - 25 * 2) / 2 - 10}>
             {actions.map((action) => {
               const Icon = action.icon;
+              if (
+                action.label === 'swiperResult.share' &&
+                loadingScreenshot === true
+              ) {
+                return (
+                  <View style={styles.actionItem} key={action.label}>
+                    <View style={styles.actionButton}>
+                      <ActivityIndicator
+                        color="#fff"
+                        style={styles.actionIcon}
+                      />
+                      <Txt medium style={styles.actionText}>
+                        {t('swiperResult.share.loading')}
+                      </Txt>
+                    </View>
+                  </View>
+                );
+              }
               return (
                 <View style={styles.actionItem} key={action.label}>
                   <TouchableOpacity
