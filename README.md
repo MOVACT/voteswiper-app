@@ -5,7 +5,6 @@
 VoteSwiper (in Germany better known as WahlSwiper) is a cross-platform voting advice app for Android, iOS and web browsers. The app is operated by [MOVACT](https://www.movact.de) primarily for German federale and state elections. The content for the surveys is researched and developed by various institutions, most recently mainly by political scientists at the University of Freiburg.
 
 We started this project in 2017 for the federal election and since then grow a user base of over one million. While we operated closed source for a long time, we believe the right thing to do is to disclose the source code of the whole project for transparency.
-**Source code for the API will be available soon.**
 
 ## Development
 
