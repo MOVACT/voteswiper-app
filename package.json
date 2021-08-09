@@ -20,7 +20,7 @@
     "clamp": "^1.0.1",
     "moment": "^2.24.0",
     "react": "16.13.1",
-    "react-native": "0.63.4",
+    "react-native": "0.64.1",
     "react-native-collapsible": "^1.5.3",
     "react-native-deck-swiper": "https://github.com/movact/react-native-deck-swiper.git#master",
     "react-native-gesture-handler": "^1.9.0",
