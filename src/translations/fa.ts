@@ -30,7 +30,7 @@ const lang = {
   'swiper.cancelActionYes': 'بله',
 
   'swiperSelectParties.text':
-    'حالا دیگر احزاب را انتخاب کن که میخواهی جواب هایت را با آنها میخواهی مقایسه کنی. تا جای که میخواهی میتوانی احزاب انتخاب کنی.',
+    'حالا دیگر احزاب را انتخاب کن که میخواهی جواب هایت را با آنها مقایسه کنی. تا جای که میخواهی میتوانی احزاب انتخاب کنی.',
   'swiperSelectParties.checkAll': 'همه منتخبین',
   'swiperSelectParties.uncheckAll': 'همه غیر منتخبین',
   'swiperSelectParties.chooseMinOne': 'حداقل یک حزب را برای ادامه انتخاب کن',
@@ -73,7 +73,7 @@ const lang = {
   'settingsLanguage.boxText': 'زبان اپ را عوض کن',
   'settings.systemDefault': 'سیستم استاندارد',
   'settings.systemDefaultText':
-    'از زبان تلفنت استفاده میکند درصورتی که ترجمه وجود داشت باشد. وگر نه به انگلیسی.',
+    'از زبان تلفنت استفاده میکند درصورتی که ترجمه وجود داشته باشد. وگر نه به انگلیسی.',
 
   // Screen:ElectionsIndex
   'electionsIndex.boxTitle': 'انتخابات کنونی',
