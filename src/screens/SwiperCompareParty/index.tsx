@@ -26,6 +26,7 @@ const SwiperCompareParty: React.FC = () => {
 
   React.useEffect(() => {
     setOptions({
+      // {1} ile Karşılaştır
       title: `Vergleich mit ${params.party.name}`,
     });
   });

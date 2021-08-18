@@ -19,7 +19,7 @@ const lang = {
   // Swiper
   'swiper.doubleWeight': 'İki kat önemli olarak değerlendir',
   'swiper.doubleWeighted': 'İki kat önemli olarak değerlendirildi',
-  'swiper.questionNumber': '{2} sorudan {1}. soru',
+  'swiper.questionNumber': '{1}/{2}',
   'swiper.yes': 'Evet',
   'swiper.no': 'Hayır',
   'swiper.none': 'Yok',
@@ -36,7 +36,7 @@ const lang = {
   'swiperSelectParties.chooseMinOne': 'Devam etmek için en az bir parti seç',
   'swiperSelectParties.nextButton': 'İleri',
 
-  'swiperResult.topmatch': 'Sana en uygun parti',
+  'swiperResult.topmatch': 'SANA EN UYGUN PARTİ',
   'swiperResult.program': 'Seçim programı',
   'swiperResult.shareTitle': '#WahlSwiper sonucu',
   'swiperResult.shareMessage': '{1} için WahlSwiper sonucum',
@@ -71,7 +71,7 @@ const lang = {
   'settings.title': 'Ayarlar',
   'settingsLanguage.boxTitle': 'Uygulamanın dili',
   'settingsLanguage.boxText': 'Uygulamanın gösterildiği dili değiştir.',
-  'settings.systemDefault': 'Sistem standartı',
+  'settings.systemDefault': 'Sistem Dili',
   'settings.systemDefaultText':
     "Çeviri mevcutsa telefonunun dilini kullanır. Yoksa İngilizce'yi kullanır.",
 
@@ -86,10 +86,10 @@ const lang = {
     'Bu ülke için güncel bir WahlSwiper mevcut değil.',
 
   // Screen:ElectionDetails
-  'electionDetails.countdownPast': 'Seçim {1} tarihinde gerçekleşti.',
+  'electionDetails.countdownPast': 'Seçim tarihinde gerçekleşti.',
   'electionDetails.countdown': 'Seçime geri sayım',
   'electionDetails.infoText':
-    'Sana politik konularla ilgili birkaç soru soracağız. Soruları ekranı kaydırarak cevapla, biz de seni görüşlerine iyi uyan bir parti ile eşleştirelim.',
+    'Sana politik konularla ilgili birkaç soru soracağız. Soruları ekranı kaydırarak cevapla, biz de senin görüşlerine iyi uyan bir parti ile eşleştirelim.',
   'electionDetails.startButtonText': 'Şimdi başla',
 
   // Screen:HelpIndex
@@ -99,11 +99,11 @@ const lang = {
   'infosIndex.title': 'Bilgiler',
   'infosIndex.headline': 'WahlSwiper hakkında',
   'infosIndex.paragraph1':
-    'Seçimler konusunda fikir sahibi olmak kolay ve eğlenceli olmalı - Wahlswiper\'da bizim misyonumuz bu. Prensibimiz: Politik sorular basit bir şekilde ekranı sola kaydırarak  "Hayır" ve sağa kaydırarak "Evet" olarak yanıtlanabilir. WahlSwiper sonrasında partilerin cevaplarıyla ne kadar uyuştuğunu hesaplar.',
+    'Seçimler konusunda fikir sahibi olmak kolay ve eğlenceli olmalı - WahlSwiper\'da bizim misyonumuz bu. Prensibimiz: Politik sorular basit bir şekilde ekranı sola kaydırarak  "Hayır" ve sağa kaydırarak "Evet" olarak yanıtlanabilir. WahlSwiper sonrasında partilerin cevaplarıyla ne kadar uyuştuğunu hesaplar.',
   'infosIndex.paragraph2':
     'Biz net bir pozisyondan yanayız. WahlSwiper\'da sadece "Evet" ve "Hayır" var, "belki" yok. Bu bazen partileri zorluyor, ama sana karar vermende yardımcı oluyor. Tabii ki soruları cevap vermeden de atlayabilirsin.',
   'infosIndex.paragraph3':
-    'Oy vermeye gitmek Online-Dating kadar kolay - eşleştiğin parti en azından bir yasama dönemi süresince sana uygun düşüyor.',
+    'Oy vermeye gitmek İnternet Arkadaşlığı kadar kolay - eşleştiğin parti en azından bir yasama dönemi süresince sana uygun düşüyor.',
   'infosIndex.imprintButton': 'Künye',
   'infosIndex.imprintLink': 'https://www.voteswiper.org/tr/page/imprint',
   'infosIndex.privacyButton': 'Veri koruma',
