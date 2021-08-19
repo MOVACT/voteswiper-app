@@ -18,6 +18,7 @@ require('moment/locale/sl.js');
 require('moment/locale/ar.js');
 require('moment/locale/fa.js');
 require('moment/locale/tr.js');
+require('moment/locale/ku.js');
 require('moment/locale/ru.js');
 
 moment.locale('de');

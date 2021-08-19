@@ -32,7 +32,7 @@ const lang = {
 
   'swiperSelectParties.text':
     'Wähle nun noch die Parteien aus, mit denen du deine Antworten vergleichen möchtest. Du kannst beliebig viele Parteien auswählen.',
-  'swiperSelectParties.checkAll': 'Alle Auswählen',
+  'swiperSelectParties.checkAll': 'Alle auswählen',
   'swiperSelectParties.uncheckAll': 'Alle abwählen',
   'swiperSelectParties.chooseMinOne':
     'Wähle mindestens eine Partei um fortzufahren',
@@ -107,9 +107,9 @@ const lang = {
   'infosIndex.paragraph3':
     'Wählen gehen ist so einfach wie Online-Dating – der „Match“ hält dann jedoch mindestens eine Legislaturperiode lang.',
   'infosIndex.imprintButton': 'Impressum',
-  'infosIndex.imprintLink': 'https://www.voteswiper.org/de/page/impressum',
+  'infosIndex.imprintLink': 'https://www.voteswiper.org/de/page/imprint',
   'infosIndex.privacyButton': 'Datenschutz',
-  'infosIndex.privacyLink': 'https://www.voteswiper.org/de/page/datenschutz',
+  'infosIndex.privacyLink': 'https://www.voteswiper.org/de/page/privacy',
 
   'swiperResult.share.loading': 'Lädt...',
 };

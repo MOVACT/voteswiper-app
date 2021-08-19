@@ -78,16 +78,30 @@ const SwiperCompareParty: React.FC = () => {
               />
             </View>
           )}
-          {party.pivot.program_link && (
+          {party.pivot.program !== null ? (
             <View style={styles.partyButton}>
               <ButtonDark
                 center
                 text={t('swiperResult.program')}
                 onPress={() => {
-                  Linking.openURL(party.pivot.program_link as string);
+                  Linking.openURL(party.pivot.program?.public_link as string);
                 }}
               />
             </View>
+          ) : (
+            <>
+              {party.pivot.program_link && (
+                <View style={styles.partyButton}>
+                  <ButtonDark
+                    center
+                    text={t('swiperResult.program')}
+                    onPress={() => {
+                      Linking.openURL(party.pivot.program_link as string);
+                    }}
+                  />
+                </View>
+              )}
+            </>
           )}
         </View>
 
