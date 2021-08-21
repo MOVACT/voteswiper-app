@@ -277,8 +277,10 @@ const SwiperResult: React.FC = () => {
           }
 
           const partyDetails = election!.parties.find((p) => p.id === party.id);
-
           if (!partyDetails) {
+            return null;
+          }
+          if (parties[election!.id].indexOf(party.id) === -1) {
             return null;
           }
 
@@ -317,7 +319,7 @@ const SwiperResult: React.FC = () => {
           });
         };
       });
-  }, [election, ordered, t]);
+  }, [election, ordered, parties, t]);
 
   if (loading) {
     return (
