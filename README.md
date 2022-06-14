@@ -42,4 +42,4 @@ If you find any security related issues we would appreciate if you safely disclo
 
 ## License
 
-Copyright MOVACT UG (haftungsbeschränkt)
+Copyright MOVACT GmbH
