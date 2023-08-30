@@ -18,7 +18,7 @@ import {useApp} from 'contexts/app';
 import {useSwiper} from 'contexts/swiper';
 import React from 'react';
 import {Platform, View} from 'react-native';
-import Matomo from 'react-native-matomo';
+import {useMatomo} from 'matomo-tracker-react-native';
 import {
   Election,
   InitiateData,
@@ -38,6 +38,7 @@ type ElectionDetailsScreenRouteProp = RouteProp<
 >;
 
 const ElectionDetails: React.FC = () => {
+  const {trackScreenView} = useMatomo();
   const {setOptions, navigate} = useNavigation();
   const {language, t} = useApp();
   const {setElection} = useSwiper();
@@ -75,8 +76,8 @@ const ElectionDetails: React.FC = () => {
   }, [params.country, params.election, params.title]);
 
   const trackScreen = React.useCallback(() => {
-    Matomo.trackScreen(params.election.slug, 'ElectionDetails');
-  }, [params.election]);
+    trackScreenView(params.election.slug + ' / ' + 'ElectionDetails');
+  }, [params.election, trackScreenView]);
 
   useFocusEffect(trackScreen);
 

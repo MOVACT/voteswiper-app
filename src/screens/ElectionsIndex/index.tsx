@@ -10,7 +10,7 @@ import {ENDPOINTS, useFetch} from 'connectors/api';
 import {useApp} from 'contexts/app';
 import React from 'react';
 import {RefreshControl, TouchableOpacity, View} from 'react-native';
-import Matomo from 'react-native-matomo';
+import {useMatomo} from 'matomo-tracker-react-native';
 import {Election, ElectionsData} from 'types/api';
 import getCountryFlag from 'util/getCountryFlag';
 import moment from 'util/momentLocale';
@@ -21,6 +21,7 @@ import styles from './styles';
 const ElectionsIndex: React.FC = () => {
   const {navigate, setOptions} = useNavigation();
   const {country, t} = useApp();
+  const {trackScreenView} = useMatomo();
 
   const {loading, error, data, refetch} = useFetch<Election[], ElectionsData>(
     ENDPOINTS.ELECTIONS,
@@ -53,8 +54,8 @@ const ElectionsIndex: React.FC = () => {
   }, [country]);
 
   const trackScreen = React.useCallback(() => {
-    Matomo.trackScreen('/elections', 'ElectionsIndex');
-  }, []);
+    trackScreenView('/elections' + ' / ElectionsIndex');
+  }, [trackScreenView]);
 
   useFocusEffect(trackScreen);
 
